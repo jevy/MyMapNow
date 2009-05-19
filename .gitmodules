@@ -16,3 +16,6 @@
 [submodule "vendor/plugins/rspec-rails"]
 	path = vendor/plugins/rspec-rails
 	url = git://github.com/dchelimsky/rspec-rails.git
+[submodule "vendor/plugins/exception_notification"]
+	path = vendor/plugins/exception_notification
+	url = git://github.com/collectiveidea/exception_notification.git
