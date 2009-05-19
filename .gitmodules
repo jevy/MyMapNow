@@ -7,3 +7,6 @@
 [submodule "vendor/plugins/rspec"]
 	path = vendor/plugins/rspec
 	url = git://github.com/dchelimsky/rspec.git
+[submodule "vendor/plugins/awesomeness"]
+	path = vendor/plugins/awesomeness
+	url = git://github.com/collectiveidea/awesomeness.git
