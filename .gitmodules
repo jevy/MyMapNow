@@ -19,3 +19,6 @@
 [submodule "vendor/plugins/exception_notification"]
 	path = vendor/plugins/exception_notification
 	url = git://github.com/collectiveidea/exception_notification.git
+[submodule "vendor/plugins/awesome-backup"]
+	path = vendor/plugins/awesome-backup
+	url = git://github.com/collectiveidea/awesome-backup.git
