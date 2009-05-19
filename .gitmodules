@@ -22,3 +22,6 @@
 [submodule "vendor/plugins/awesome-backup"]
 	path = vendor/plugins/awesome-backup
 	url = git://github.com/collectiveidea/awesome-backup.git
+[submodule "vendor/plugins/factory_girl"]
+	path = vendor/plugins/factory_girl
+	url = git://github.com/thoughtbot/factory_girl.git
