@@ -10,3 +10,6 @@
 [submodule "vendor/plugins/awesomeness"]
 	path = vendor/plugins/awesomeness
 	url = git://github.com/collectiveidea/awesomeness.git
+[submodule "vendor/plugins/rspec-on-rails-matchers"]
+	path = vendor/plugins/rspec-on-rails-matchers
+	url = git://github.com/brandon/rspec-on-rails-matchers.git
