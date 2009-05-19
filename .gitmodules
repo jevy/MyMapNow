@@ -31,3 +31,6 @@
 [submodule "vendor/plugins/action_mailer_optional_tls"]
 	path = vendor/plugins/action_mailer_optional_tls
 	url = git://github.com/collectiveidea/action_mailer_optional_tls.git
+[submodule "vendor/plugins/cucumber"]
+	path = vendor/plugins/cucumber
+	url = git://github.com/aslakhellesoy/cucumber.git
