@@ -2,11 +2,15 @@
 <html>
 <head>
   <title>New Page</title>
+  <%= stylesheet_link_tag 'main' %>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-  <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAIuXwI2NXkG0fW3ZmDJgxHRQDQUZc3-zov2Li0VsmrpHReZbmeRT6foQC70l_DAwhy-ZGuT8bHuVo2A" type="text/javascript"></script>
+  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
   <%= javascript_include_tag 'map.js' %>
 </head>
 <body>
-  <%= yield %>
+  <div id="content">
+    <%= yield %>
+  </div>
 </body>
 </html>
