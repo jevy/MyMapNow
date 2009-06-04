@@ -6,7 +6,7 @@ jQuery(function($) {
 $.fn.googlemap = function() {
   return this.each(function() {
     var map = new google.maps.Map(this, {
-      zoom: 12,
+      zoom: 13,
       center: new google.maps.LatLng(45.420833, -75.69),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
