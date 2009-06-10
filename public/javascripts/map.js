@@ -10,7 +10,7 @@ $.fn.googlemap = function() {
       center: new google.maps.LatLng(45.420833, -75.69),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-    this.data('map', map);
+    // this.data('map', map);
 
     $(this).removeClass('loading');
   });

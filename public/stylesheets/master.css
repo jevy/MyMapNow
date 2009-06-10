@@ -47,3 +47,5 @@ aside .type-2 div		{background:url(images/pointer-red.png) no-repeat;}
 aside .type-3 div		{background:url(images/pointer-orange.png) no-repeat;}
 aside .type-4 div		{background:url(images/pointer-purple.png) no-repeat;}
 aside .type-5 div		{background:url(images/pointer-green.png) no-repeat;}
+
+#map                {height:100%;}
