@@ -30,13 +30,13 @@ role :db,  "collectiveidea.com", :primary => true
 # =============================================================================
 # OPTIONAL VARIABLES
 # =============================================================================
-set :deploy_to, "/home/collectiveidea/clients/mymapnow.com" # defaults to "/u/apps/#{application}"
+set :deploy_to, "/home/collectiveidea/clients/mymapnow" # defaults to "/u/apps/#{application}"
 set :user, "collectiveidea"            # defaults to the currently logged in user
 set :use_sudo, false
 set :scm, :git
 set :branch, 'master'
 set :git_enable_submodules, true 
-set :deploy_via, :fast_remote_cache
+set :deploy_via, :remote_cache
 set :ssh_options, {:forward_agent => true}
 # set :scm, :darcs               # defaults to :subversion
 # set :svn, "/path/to/svn"       # defaults to searching the PATH
