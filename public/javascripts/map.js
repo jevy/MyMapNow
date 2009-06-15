@@ -1,20 +1,14 @@
-jQuery(function($) {
-  $('#map').googlemap();
-});
-
-
-$.fn.googlemap = function() {
-  return this.each(function() {
-    var map = new google.maps.Map(this, {
+var Map = {
+  initialize: function() {
+    this.map = new google.maps.Map($('#map')[0], {
       zoom: 13,
       center: new google.maps.LatLng(45.420833, -75.69),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-    // this.data('map', map);
-
-    $(this).removeClass('loading');
-  });
+  }
 }
+
+$(Map.initialize);
     
 //     }
 //   },
