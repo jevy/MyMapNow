@@ -4,36 +4,18 @@
 [submodule "vendor/plugins/annotate_models"]
 	path = vendor/plugins/annotate_models
 	url = git://github.com/collectiveidea/annotate_models.git
-[submodule "vendor/plugins/rspec"]
-	path = vendor/plugins/rspec
-	url = git://github.com/dchelimsky/rspec.git
 [submodule "vendor/plugins/awesomeness"]
 	path = vendor/plugins/awesomeness
 	url = git://github.com/collectiveidea/awesomeness.git
-[submodule "vendor/plugins/rspec-on-rails-matchers"]
-	path = vendor/plugins/rspec-on-rails-matchers
-	url = git://github.com/brandon/rspec-on-rails-matchers.git
-[submodule "vendor/plugins/rspec-rails"]
-	path = vendor/plugins/rspec-rails
-	url = git://github.com/dchelimsky/rspec-rails.git
 [submodule "vendor/plugins/exception_notification"]
 	path = vendor/plugins/exception_notification
 	url = git://github.com/collectiveidea/exception_notification.git
 [submodule "vendor/plugins/awesome-backup"]
 	path = vendor/plugins/awesome-backup
 	url = git://github.com/collectiveidea/awesome-backup.git
-[submodule "vendor/plugins/factory_girl"]
-	path = vendor/plugins/factory_girl
-	url = git://github.com/thoughtbot/factory_girl.git
-[submodule "vendor/plugins/webrat"]
-	path = vendor/plugins/webrat
-	url = git://github.com/brynary/webrat.git
 [submodule "vendor/plugins/action_mailer_optional_tls"]
 	path = vendor/plugins/action_mailer_optional_tls
 	url = git://github.com/collectiveidea/action_mailer_optional_tls.git
-[submodule "vendor/plugins/cucumber"]
-	path = vendor/plugins/cucumber
-	url = git://github.com/aslakhellesoy/cucumber.git
 [submodule "vendor/plugins/html5"]
 	path = vendor/plugins/html5
 	url = git://github.com/collectiveidea/html5.git
