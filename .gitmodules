@@ -34,3 +34,6 @@
 [submodule "vendor/plugins/cucumber"]
 	path = vendor/plugins/cucumber
 	url = git://github.com/aslakhellesoy/cucumber.git
+[submodule "vendor/plugins/html5"]
+	path = vendor/plugins/html5
+	url = git://github.com/collectiveidea/html5.git
