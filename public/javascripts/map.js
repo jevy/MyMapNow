@@ -13,7 +13,7 @@ var Map = {
     //   northeast: [bounds.getNorthEast().lat(), bounds.getNorthEast().lng()]
     //   }
     $.getJSON('/items.js', function(data) {
-      console.log(data);
+      // console.log(data);
       items = data;
       $.each(data, function() {
         $('<li class="type-1"><h2>' + this.title + '</h2></li>').appendTo('aside ol');
