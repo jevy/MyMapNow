@@ -16,7 +16,6 @@ end
 require 'cucumber/rails/rspec'
 require 'webrat/core/matchers'
 
-
 require File.dirname(__FILE__) + '/geocoder'
 Geocode.geocoder = Graticule::Geocoder::Canned.new
 
