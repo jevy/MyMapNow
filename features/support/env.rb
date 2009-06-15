@@ -13,7 +13,7 @@ Webrat.configure do |config|
   config.mode = :rails
 end
 
-require 'cucumber/rails/rspec'
+# require 'cucumber/rails/rspec'
 require 'webrat/core/matchers'
 
 require File.dirname(__FILE__) + '/geocoder'
@@ -25,8 +25,8 @@ LOCATIONS = {
     :region => "ON",
     :country => "Canada",
     :precision => :locality,
-    :latitude => 45.420833
-    :longitude => -75.69,
+    :latitude => 45.420833,
+    :longitude => -75.69
   )
 }
 Geocode.geocoder.default = LOCATIONS['Ottawa']

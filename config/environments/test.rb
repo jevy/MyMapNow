@@ -30,6 +30,7 @@ config.gem 'fakeweb'
 config.gem 'cucumber', :version => '0.3.9',  :lib => false
 config.gem 'webrat',   :version => '0.4.4',  :lib => false
 config.gem 'Selenium', :lib => 'selenium'
+config.gem 'selenium-client', :lib => false
 
 config.with_options :source => 'http://gems.github.com' do |github|
   github.gem 'thoughtbot-shoulda',      :version => '2.10.1', :lib => 'shoulda'
