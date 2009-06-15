@@ -37,3 +37,6 @@
 [submodule "vendor/plugins/html5"]
 	path = vendor/plugins/html5
 	url = git://github.com/collectiveidea/html5.git
+[submodule "vendor/plugins/mongomapper"]
+	path = vendor/plugins/mongomapper
+	url = git@github.com:jnunemaker/mongomapper.git
