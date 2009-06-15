@@ -15,3 +15,22 @@ end
 
 require 'cucumber/rails/rspec'
 require 'webrat/core/matchers'
+
+
+require File.dirname(__FILE__) + '/geocoder'
+Geocode.geocoder = Graticule::Geocoder::Canned.new
+
+LOCATIONS = {
+  'Ottawa' => Graticule::Location.new(
+    :locality => "Ottawa",
+    :region => "ON",
+    :country => "Canada",
+    :precision => :locality,
+    :latitude => 45.420833
+    :longitude => -75.69,
+  )
+}
+Geocode.geocoder.default = LOCATIONS['Ottawa']
+
+# Add canned responses using:
+# Geocode.geocoder.responses << LOCATIONS['Ottawa']
