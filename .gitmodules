@@ -22,3 +22,9 @@
 [submodule "vendor/plugins/mongomapper"]
 	path = vendor/plugins/mongomapper
 	url = git@github.com:jnunemaker/mongomapper.git
+[submodule "vendor/plugins/graticule"]
+	path = vendor/plugins/graticule
+	url = git://github.com/collectiveidea/graticule.git
+[submodule "vendor/plugins/acts_as_geocodable"]
+	path = vendor/plugins/acts_as_geocodable
+	url = git://github.com/collectiveidea/acts_as_geocodable.git
