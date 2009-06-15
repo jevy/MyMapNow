@@ -2,6 +2,7 @@ Webrat.configure do |config|
   config.mode = :selenium
   # Selenium defaults to using the selenium environment. Use the following to override this.
   # config.application_environment = :test
+  # config.selenium_javascript_framework = :jquery
 end
 
 # this is necessary to have webrat "wait_for" the response body to be available
