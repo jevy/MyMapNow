@@ -2,6 +2,8 @@ class Item
   include MongoMapper::Document
   
   key :title, String
+  key :description, String
+  key :address, String
   key :latitude, Float
   key :longitude, Float
 
