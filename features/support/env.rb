@@ -26,6 +26,15 @@ LOCATIONS = {
     :precision => :locality,
     :latitude => 45.420833,
     :longitude => -75.69
+  ), 
+  
+  'Detroit' => Graticule::Location.new(
+    :locality => "Detroit",
+    :region => "MI",
+    :country => "USA",
+    :precision => :locality,
+    :latitude => 42.3316,
+    :longitude => -83.0475
   )
 }
 Geocode.geocoder.default = LOCATIONS['Ottawa']

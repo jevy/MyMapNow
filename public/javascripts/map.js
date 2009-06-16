@@ -1,22 +1,25 @@
 var items;
 var Map = {
   initialize: function() {
-    this.map = new google.maps.Map($('#map')[0], {
+    Map.map = new google.maps.Map($('#map')[0], {
       zoom: 13,
       center: new google.maps.LatLng(45.420833, -75.69),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
     
-    var bounds = this.map.get_bounds();
-    // {
-    //   southwest: [bounds.getSouthWest().lat(), bounds.getSouthWest().lng()],
-    //   northeast: [bounds.getNorthEast().lat(), bounds.getNorthEast().lng()]
-    //   }
-    $.getJSON('/items.js', function(data) {
-      // console.log(data);
-      items = data;
-      $.each(data, function() {
-        $('<li class="type-1"><h2>' + this.title + '</h2></li>').appendTo('aside ol');
+    google.maps.event.addListener(Map.map, 'bounds_changed', function() {
+      var bounds = Map.map.get_bounds();
+    
+      $.getJSON('/items.js', {
+          southwest: ''+bounds.getSouthWest().lat()+','+
+            bounds.getSouthWest().lng(),
+          northeast: ''+bounds.getNorthEast().lat()+','+ 
+            bounds.getNorthEast().lng()
+          }, function(data) {
+        items = data;
+        $.each(data, function() {
+          $('<li class="type-1"><h2>' + this.title + '</h2></li>').appendTo('aside ol');
+        });
       });
     });
   }
