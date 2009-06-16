@@ -18,6 +18,13 @@ var Map = {
           }, function(data) {
         items = data;
         $.each(data, function() {
+          var point = new google.maps.LatLng(this.latitude, this.longitude);
+          new google.maps.Marker({
+              position: point, 
+              map: Map.map, 
+              title: this.title
+          });
+          
           $('<li class="type-1"><h2>' + this.title + '</h2></li>').appendTo('aside ol');
         });
       });
