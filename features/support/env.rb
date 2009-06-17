@@ -41,3 +41,9 @@ Geocode.geocoder.default = LOCATIONS['Ottawa']
 
 # Add canned responses using:
 # Geocode.geocoder.responses << LOCATIONS['Ottawa']
+
+Before do
+  MongoMapper.database.collection_names.each do |name|
+    MongoMapper.database.collection(name.split('.').last).clear
+  end
+end
