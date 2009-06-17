@@ -4,10 +4,10 @@ class ItemTest < ActiveSupport::TestCase
   
   context "find_in_bounds" do
     setup do
-      @ottawa = Item.create :latitude => 45.420833,
+      @ottawa = Item.create :title => 'Ottawa', :latitude => 45.420833,
         :longitude => -75.69
 
-      @detroit = Item.create :latitude => 42.3316,
+      @detroit = Item.create :title => 'Detroit', :latitude => 42.3316,
         :longitude => -83.0475
     end
     

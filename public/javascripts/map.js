@@ -9,12 +9,10 @@ $('aside li').live('click', function(event) {
 
   $('aside li').removeClass('active');
   $this.addClass('active');
-  Map.activeInfoWindow.open(Map.map, Map.markers[$this.attr('data-item-id')]);
+  Map.activeInfoWindow.open(Map.map, $this.data('marker'));
 });
 
 var Map = {
-  markers: {},
-  
   initialize: function() {
     Map.map = new google.maps.Map($('#map')[0], {
       zoom: 13,
@@ -35,7 +33,10 @@ var Map = {
         $.each(data, function() {
           var id = this._id;
           var point = new google.maps.LatLng(this.latitude, this.longitude);
-          Map.markers[id] = new google.maps.Marker({
+          
+          var $li = $('<li class="type-1" data-item-id="'+this._id+'"><div></div><h2>' + this.title + '</h2><p class="address">'+this.address+'<p class="description">'+this.description+'</p></li>').appendTo('aside ol');
+          
+          $li.data('marker', new google.maps.Marker({
               position: point, 
               map: Map.map, 
               title: this.title, 
@@ -43,13 +44,12 @@ var Map = {
                 new google.maps.Size(23, 25),
                 new google.maps.Point(0,0),
                 new google.maps.Point(11,20))
-          });
+          }));
           
-          google.maps.event.addListener(Map.markers[id], 'click', function() {
+          google.maps.event.addListener($li.data('marker'), 'click', function() {
             $('aside li[data-item-id="'+id+'"]:first').click();
           });
           
-          $('<li class="type-1" data-item-id="'+this._id+'"><div></div><h2>' + this.title + '</h2><p class="address">'+this.address+'<p class="description">'+this.description+'</p></li>').appendTo('aside ol');
         });
       });
     });
