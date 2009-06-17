@@ -32,23 +32,26 @@ var Map = {
 
         $.each(data, function() {
           var id = this._id;
-          var point = new google.maps.LatLng(this.latitude, this.longitude);
           
-          var $li = $('<li class="type-1" data-item-id="'+this._id+'"><div></div><h2>' + this.title + '</h2><p class="address">'+this.address+'<p class="description">'+this.description+'</p></li>').appendTo('aside ol');
+          if(!$('aside li[data-item-id=' + id + ']')[0]) {
+            var point = new google.maps.LatLng(this.latitude, this.longitude);
           
-          $li.data('marker', new google.maps.Marker({
-              position: point, 
-              map: Map.map, 
-              title: this.title, 
-              icon: new google.maps.MarkerImage("/stylesheets/images/pointer-blue.png",
-                new google.maps.Size(23, 25),
-                new google.maps.Point(0,0),
-                new google.maps.Point(11,20))
-          }));
+            var $li = $('<li class="type-1" data-item-id="'+this._id+'"><div></div><h2>' + this.title + '</h2><p class="address">'+this.address+'<p class="description">'+this.description+'</p></li>').appendTo('aside ol');
           
-          google.maps.event.addListener($li.data('marker'), 'click', function() {
-            $('aside li[data-item-id="'+id+'"]:first').click();
-          });
+            $li.data('marker', new google.maps.Marker({
+                position: point, 
+                map: Map.map, 
+                title: this.title, 
+                icon: new google.maps.MarkerImage("/stylesheets/images/pointer-blue.png",
+                  new google.maps.Size(23, 25),
+                  new google.maps.Point(0,0),
+                  new google.maps.Point(11,20))
+            }));
+          
+            google.maps.event.addListener($li.data('marker'), 'click', function() {
+              $('aside li[data-item-id="'+id+'"]:first').click();
+            });
+          }
           
         });
       });

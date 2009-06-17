@@ -14,11 +14,26 @@ When 'I click on the news story titled "$title" in the list' do |title|
   selenium.js_eval "window.$('aside li h2:contains(#{title})').click()"
 end
 
+When 'I zoom out' do
+  selenium.js_eval "window.Map.map.set_zoom(window.Map.map.get_zoom()-1);"
+end
+
+When 'I zoom in' do
+  selenium.js_eval "window.Map.map.set_zoom(window.Map.map.get_zoom()+1);"
+end
+
 Then 'I see the news story titled "$title"' do |title|
   selenium.wait_for_ajax :javascript_framework => :jquery
   assert_have_selector("aside h2:contains(#{title})")
   assert_have_selector("#map *[title='#{title}']")
 end
+
+Then 'I see the news story titled "$title" once' do |title|
+  selenium.wait_for_ajax :javascript_framework => :jquery
+  assert_have_selector("aside h2:contains(#{title}):only-of-type")
+  assert_have_selector("#map *[title='#{title}']:only-of-type")
+end
+
 
 Then 'I do not see the news story titled "$title"' do |title|
   selenium.wait_for_ajax :javascript_framework => :jquery
