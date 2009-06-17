@@ -1,5 +1,20 @@
-var items;
+$('aside li').live('click', function(event) {
+  var $this = $(this);
+  if (Map.activeInfoWindow) Map.activeInfoWindow.close();
+  
+  Map.activeInfoWindow = new google.maps.InfoWindow({
+    content: $this.html(),
+    size: new google.maps.Size(250,50)
+  });
+
+  $('aside li').removeClass('active');
+  $this.addClass('active');
+  Map.activeInfoWindow.open(Map.map, Map.markers[$this.attr('data-item-id')]);
+});
+
 var Map = {
+  markers: {},
+  
   initialize: function() {
     Map.map = new google.maps.Map($('#map')[0], {
       zoom: 13,
@@ -16,10 +31,11 @@ var Map = {
           northeast: ''+bounds.getNorthEast().lat()+','+ 
             bounds.getNorthEast().lng()
           }, function(data) {
-        items = data;
+
         $.each(data, function() {
+          var id = this._id;
           var point = new google.maps.LatLng(this.latitude, this.longitude);
-          new google.maps.Marker({
+          Map.markers[id] = new google.maps.Marker({
               position: point, 
               map: Map.map, 
               title: this.title, 
@@ -29,7 +45,11 @@ var Map = {
                 new google.maps.Point(11,20))
           });
           
-          $('<li class="type-1"><div></div><h2>' + this.title + '</h2><p class="address">'+this.address+'<p class="description">'+this.description+'</p></li>').appendTo('aside ol');
+          google.maps.event.addListener(Map.markers[id], 'click', function() {
+            $('aside li[data-item-id="'+id+'"]:first').click();
+          });
+          
+          $('<li class="type-1" data-item-id="'+this._id+'"><div></div><h2>' + this.title + '</h2><p class="address">'+this.address+'<p class="description">'+this.description+'</p></li>').appendTo('aside ol');
         });
       });
     });
