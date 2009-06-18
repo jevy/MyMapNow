@@ -1,0 +1,23 @@
+<p>
+  <b>Title:</b>
+  <%=h @item.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @item.description %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%=h @item.date %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @item.url %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
