@@ -18,6 +18,11 @@ class Item
     }
   end
   
+  def body
+    length = 100
+    description.length > length ? description[0..length] + '…' : description
+  end
+  
   def attach_geocode
     unless address.blank?
       location = Geocode.geocoder.locate(address)

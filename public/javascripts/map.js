@@ -7,7 +7,7 @@ $('aside li').live('click', function(event) {
   if(!$this.data('info')) {
     $this.data('info', new google.maps.InfoWindow({
       content: $this.html(),
-      size: new google.maps.Size(250,50)
+      size: new google.maps.Size(250,150)
     }));
   }
 
@@ -51,7 +51,7 @@ var Map = {
           if(!$('aside li[data-item-id=' + id + ']')[0]) {
             var point = new google.maps.LatLng(this.latitude, this.longitude);
           
-            var $li = $('<li class="type-1" data-item-id="'+this._id+'"><div></div><h2>' + this.title + '</h2><p class="address">'+this.address+'<p class="description">'+this.description+'</p></li>').appendTo('aside ol');
+            var $li = $('<li class="type-1" data-item-id="'+this._id+'"><div></div><h2>' + this.title + '</h2><p class="address">'+this.address+'<p class="description">'+this.body+'</p></li>').appendTo('aside ol');
           
             $li.data('marker', new google.maps.Marker({
                 position: point, 
