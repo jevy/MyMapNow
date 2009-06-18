@@ -1,15 +1,18 @@
 $('aside li').live('click', function(event) {
   var $this = $(this);
-  if (Map.activeInfoWindow) Map.activeInfoWindow.close();
+  $('aside li.active').each(function() {
+    $(this).data('info').close();
+  }).removeClass('active');
   
-  Map.activeInfoWindow = new google.maps.InfoWindow({
-    content: $this.html(),
-    size: new google.maps.Size(250,50)
-  });
+  if(!$this.data('info')) {
+    $this.data('info', new google.maps.InfoWindow({
+      content: $this.html(),
+      size: new google.maps.Size(250,50)
+    }));
+  }
 
-  $('aside li').removeClass('active');
   $this.addClass('active');
-  Map.activeInfoWindow.open(Map.map, $this.data('marker'));
+  $this.data('info').open(Map.map, $this.data('marker'))
 });
 
 var Map = {
@@ -57,6 +60,6 @@ var Map = {
       });
     });
   }
-}
+};
 
 $(Map.initialize);
