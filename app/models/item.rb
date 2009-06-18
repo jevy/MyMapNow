@@ -3,7 +3,7 @@ class Item
   
   key :title, String, :required => true
   key :description, String
-  key :date, Date
+  key :date, Time
   key :url, String
   key :address, String
   key :latitude, Float
