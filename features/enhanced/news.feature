@@ -35,3 +35,12 @@ Feature: News Stories
     And I see the news story titled "Big news out of parliament" highlighted in the list
     And I see the news story titled "Big news out of parliament" once
     
+  Scenario: Moving a story out of view
+    Given a news story in Ottawa titled "Big news out of parliament"
+    And a news story in Detroit titled "Auto Industry in Shambles"
+    When I view the map
+    And I center the map on Detroit
+    
+    Then I see the news story titled "Auto Industry in Shambles"
+    And I do not see the news story titled "Big news out of parliament"
+    

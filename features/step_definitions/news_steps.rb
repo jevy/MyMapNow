@@ -22,6 +22,11 @@ When 'I zoom in' do
   selenium.js_eval "window.Map.map.set_zoom(window.Map.map.get_zoom()+1);"
 end
 
+When 'I center the map on $location' do |location|
+  l = LOCATIONS[location]
+  selenium.js_eval "window.Map.map.set_center(new window.google.maps.LatLng(#{l.latitude}, #{l.longitude}));"
+end
+
 Then 'I see the news story titled "$title"' do |title|
   selenium.wait_for_ajax :javascript_framework => :jquery
   assert_have_selector("aside h2:contains(#{title})")

@@ -32,7 +32,17 @@ var Map = {
           northeast: ''+bounds.getNorthEast().lat()+','+ 
             bounds.getNorthEast().lng()
           }, function(data) {
-
+        
+        // Remove items out of view
+        var newIds = $.map(data, function(item) { return item._id });
+        $('aside li').each(function() {
+          if ($.inArray($(this).attr('data-item-id'), newIds) == -1) {
+            $(this).data('marker').set_map(null);
+            $(this).remove();
+          }
+        });
+        
+        // Add new items
         $.each(data, function() {
           var id = this._id;
           
