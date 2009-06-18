@@ -23,15 +23,15 @@ set :repository, "git@github.com:collectiveidea/#{application}.git"
 # be used to single out a specific subset of boxes in a particular role, like
 # :primary => true.
 
-role :web, "collectiveidea.com"
-role :app, "collectiveidea.com"
-role :db,  "collectiveidea.com", :primary => true
+role :web, "mymapnow.client.collectiveidea.com"
+role :app, "mymapnow.client.collectiveidea.com"
+role :db,  "mymapnow.client.collectiveidea.com", :primary => true
 
 # =============================================================================
 # OPTIONAL VARIABLES
 # =============================================================================
-set :deploy_to, "/home/collectiveidea/clients/mymapnow" # defaults to "/u/apps/#{application}"
-set :user, "collectiveidea"            # defaults to the currently logged in user
+set :deploy_to, "/home/voter/mymapnow.client.collectiveidea.com" # defaults to "/u/apps/#{application}"
+set :user, "voter"            # defaults to the currently logged in user
 set :use_sudo, false
 set :scm, :git
 set :branch, 'master'
@@ -72,4 +72,11 @@ namespace :deploy do
     run "mv #{release_path}/config/database.sample.yml #{release_path}/config/database.yml"
     run "ln -fs #{shared_path}/production.db #{release_path}/db/production.db"
   end
+end
+
+after 'deploy', 'seed'
+desc "seed. for seed-fu"
+task :seed, :roles => :db, :only => {:primary => true} do 
+  rails_env = fetch(:rails_env, "production")
+  run "cd #{current_path}; rake db:seed RAILS_ENV=#{rails_env}"
 end
