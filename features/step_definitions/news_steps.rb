@@ -29,9 +29,13 @@ Then 'I see the news story titled "$title"' do |title|
 end
 
 Then 'I see the news story titled "$title" once' do |title|
-  selenium.wait_for_ajax :javascript_framework => :jquery
-  assert_have_selector("aside h2:contains(#{title}):only-of-type")
-  assert_have_selector("#map *[title='#{title}']:only-of-type")
+  pending
+  Then %Q{I see the news story titled "#{title}"}
+  assert_have_selector("aside h2:contains(#{title}):lt(1)")
+  assert_have_selector("#map *[title='#{title}']:lt(1)")
+  
+  assert_have_no_selector("aside h2:contains(#{title}):gt(0)")
+  assert_have_no_selector("#map *[title='#{title}']:gt(0)")
 end
 
 

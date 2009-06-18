@@ -33,4 +33,5 @@ Feature: News Stories
     And I zoom in
     Then I see the news story titled "Big news out of parliament" highlighted on the map
     And I see the news story titled "Big news out of parliament" highlighted in the list
+    And I see the news story titled "Big news out of parliament" once
     
