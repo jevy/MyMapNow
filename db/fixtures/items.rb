@@ -1,17 +1,8 @@
 require 'item'
 
 class Item
-  
-  def self.column_names
-    keys.keys
-  end
-  
   def self.seed(*constraints, &block)
     SeedFu::Seeder.plant(self, *constraints, &block)
-  end
-  
-  def save!
-    save
   end
 end
 
