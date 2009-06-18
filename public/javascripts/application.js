@@ -1,10 +1,3 @@
-if ($.browser.msie) {
-	document.createElement('header');
-	document.createElement('section');
-	document.createElement('aside');
-	document.createElement('footer');
-}
-
 $(function() {
 	var date = new Date();
 	var start = Math.floor( date.getTime() / (1000 * 60 * 60 * 24) );
