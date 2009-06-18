@@ -36,9 +36,11 @@ var Map = {
         // Remove items out of view
         var newIds = $.map(data, function(item) { return item._id });
         $('aside li').each(function() {
-          if ($.inArray($(this).attr('data-item-id'), newIds) == -1) {
-            $(this).data('marker').set_map(null);
-            $(this).remove();
+          var $this = $(this);
+          if ($.inArray($this.attr('data-item-id'), newIds) == -1) {
+            if($this.data('info')) $this.data('info').close();
+            $this.data('marker').set_map(null);
+            $this.remove();
           }
         });
         

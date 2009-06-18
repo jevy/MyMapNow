@@ -44,3 +44,8 @@ Feature: News Stories
     Then I see the news story titled "Auto Industry in Shambles"
     And I do not see the news story titled "Big news out of parliament"
     
+    When I click on the news story titled "Auto Industry in Shambles" on the map
+    And I center the map on Ottawa
+    Then I see the news story titled "Auto Industry in Shambles" is not highlighted
+    
+    
