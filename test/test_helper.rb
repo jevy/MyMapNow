@@ -36,3 +36,30 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+require File.expand_path(RAILS_ROOT + '/features/support/geocoder')
+Geocode.geocoder = Graticule::Geocoder::Canned.new
+
+LOCATIONS = {
+  'Ottawa' => Graticule::Location.new(
+    :locality => "Ottawa",
+    :region => "ON",
+    :country => "Canada",
+    :precision => :locality,
+    :latitude => 45.420833,
+    :longitude => -75.69
+  ), 
+  
+  'Detroit' => Graticule::Location.new(
+    :locality => "Detroit",
+    :region => "MI",
+    :country => "USA",
+    :precision => :locality,
+    :latitude => 42.3316,
+    :longitude => -83.0475
+  )
+}
+Geocode.geocoder.default = LOCATIONS['Ottawa']
+
+# Add canned responses using:
+# Geocode.geocoder.responses << LOCATIONS['Ottawa']

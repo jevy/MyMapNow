@@ -27,4 +27,22 @@ class ItemTest < ActiveSupport::TestCase
     end
   end
   
+  context "attach_geocode" do
+    setup do
+      @ottawa = Item.new :title => 'Ottawa', :address => "Ottawa, ON, Canada"
+    end
+    
+    should "set the latitude and longitude before saving" do
+      @ottawa.save
+      assert_in_delta 45.420833, @ottawa.latitude, 0.001
+      assert_in_delta -75.69, @ottawa.longitude, 0.001
+    end
+    
+    should "set the latitude and longitude" do
+      @ottawa.attach_geocode
+      assert_in_delta 45.420833, @ottawa.latitude, 0.001
+      assert_in_delta -75.69, @ottawa.longitude, 0.001
+    end
+  end
+  
 end

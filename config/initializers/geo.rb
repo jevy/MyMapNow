@@ -1,0 +1,3 @@
+GOOGLE_MAPS_API_KEY = 'ABQIAAAAKU0JUXXK40nehgHiZGe2JRRi_QCTkdRWobLL_A5W6S7qSSFeQRSZa6PooGBCOs5J_rpJssFGd767_Q'
+
+Geocode.geocoder = Graticule.service(:google).new GOOGLE_MAPS_API_KEY

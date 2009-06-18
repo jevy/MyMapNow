@@ -9,6 +9,8 @@ class Item
   key :latitude, Float
   key :longitude, Float
   
+  before_save :attach_geocode
+  
   def self.find_in_bounds(southwest, northeast)
     find :all, :conditions => {
       :latitude =>  {'$gte' => southwest[0].to_f, '$lte' => northeast[0].to_f},
@@ -21,7 +23,14 @@ class Item
   end
   
   def new_record?
-    id.blank?
+    new?
   end
-
+  
+  def attach_geocode
+    unless address.blank?
+      location = Geocode.geocoder.locate(address)
+      self.latitude = location.latitude
+      self.longitude = location.longitude
+    end
+  end
 end
