@@ -44,6 +44,36 @@ Item.seed(:title) do |i|
   i.date = Date.parse('2009-06-18')
 end
 
+Item.seed(:title) do |i|
+  i.title = "'Water works' at Chez Henri site"
+  i.description = %Q{OTTAWA — ottawacitizen.com reader Christopher Busby snapped this photo Thursday afternoon after a construction shovel apparently struck a water main at the Chez Henri demolition site in Gatineau.
+
+  Busby said city officials located the shut-off valve under interlocking brick on Promenade du Portage in front of the heritage building.
+
+  The water was shut off at 3:40 p.m.
+
+  © Copyright (c) The Ottawa Citizen}
+  i.address = "179, Promenade du Portage, Gatineau, QC"
+  i.url = 'http://www.ottawacitizen.com/news/ottawa/Water+works+Chez+Henri+site/1710150/story.html'
+  i.date = Date.parse('2009-06-18')
+end
+
+Item.seed(:title) do |i|
+  i.title = "Thirteen-year-old charged with robbery after mugging attempt"
+  i.description = %Q{OTTAWA — A 13-year-old youth has been arrested after an early morning robbery on Rideau Street on Thursday.
+
+  Police said that around 5 a.m., a 21-year-old male was walking down Rideau Street near King Edward Avenue when he was approached by a male — armed with a knife — who demanded his wallet. The 21-year-old ran away unharmed without giving up his wallet and called police.
+
+  A suspect matching the description given by the victim was found by patrol officers not far from the intersection.
+
+  A 13-year-old youth has been charged with one count of robbery. He will appear in court on June 23.
+
+  © Copyright (c) The Ottawa Citizen}
+  i.address = "Rideau Street and King Edward Avenue, Ottawa, ON"
+  i.url = 'http://www.ottawacitizen.com/news/ottawa/Thirteen+year+charged+with+robbery+after+mugging+attempt/1710173/story.html'
+  i.date = Date.parse('2009-06-18')
+end
+
 # Item.seed(:title) do |i|
 #   i.title = ""
 #   i.description = %Q{}
