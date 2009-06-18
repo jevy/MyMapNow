@@ -18,14 +18,6 @@ class Item
     }
   end
   
-  def to_param
-    id
-  end
-  
-  def new_record?
-    new?
-  end
-  
   def attach_geocode
     unless address.blank?
       location = Geocode.geocoder.locate(address)
