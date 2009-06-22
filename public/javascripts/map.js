@@ -66,12 +66,12 @@ var Map = {
           var point = new google.maps.LatLng(this.latitude, this.longitude);
         
           var $li = $('<li class="'+this.kind+'" data-item-id="'+this._id+'"><div></div><h2>' + this.title + '</h2><p class="address">'+this.address+'<p class="description">'+this.body+'</p></li>').appendTo('aside ol');
-        
+        console.log($li.select('div').css('background-image').match(/\((.*)\)/))
           $li.data('marker', new google.maps.Marker({
               position: point, 
               map: Map.map, 
               title: this.title, 
-              icon: new google.maps.MarkerImage("/stylesheets/images/pointer-blue.png",
+              icon: new google.maps.MarkerImage($li.find('div').css('background-image').match(/\((.*)\)/)[1],
                 new google.maps.Size(23, 25),
                 new google.maps.Point(0,0),
                 new google.maps.Point(11,20))
