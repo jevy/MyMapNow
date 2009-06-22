@@ -22,53 +22,63 @@ var Map = {
       center: new google.maps.LatLng(45.420833, -75.69),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-    
+
+    $('#map').bind('map:timeframechange', function() {
+      Map.fetch();
+    });
+    $("#date-range").change();
     google.maps.event.addListener(Map.map, 'bounds_changed', function() {
-      var bounds = Map.map.get_bounds();
-    
-      $.getJSON('/items.js', {
-          southwest: ''+bounds.getSouthWest().lat()+','+
-            bounds.getSouthWest().lng(),
-          northeast: ''+bounds.getNorthEast().lat()+','+ 
-            bounds.getNorthEast().lng()
-          }, function(data) {
+      Map.fetch();
+    });
+  },
+  
+  fetch: function() {
+    var bounds = Map.map.get_bounds();
+  
+    $.getJSON('/items.js', {
+        southwest: ''+bounds.getSouthWest().lat()+','+
+          bounds.getSouthWest().lng(),
+        northeast: ''+bounds.getNorthEast().lat()+','+ 
+          bounds.getNorthEast().lng(),
+        start: $('#date-range').data('start'),
+        end: $('#date-range').data('end')
+        }, function(data) {
+      
+      // Remove items out of view
+      var newIds = $.map(data, function(item) { return item._id });
+      $('aside li').each(function() {
+        var $this = $(this);
+        if ($.inArray($this.attr('data-item-id'), newIds) == -1) {
+          if($this.data('info')) $this.data('info').close();
+          $this.data('marker').set_map(null);
+          $this.remove();
+        }
+      });
+      
+      // Add new items
+      $.each(data, function() {
+        var id = this._id;
         
-        // Remove items out of view
-        var newIds = $.map(data, function(item) { return item._id });
-        $('aside li').each(function() {
-          var $this = $(this);
-          if ($.inArray($this.attr('data-item-id'), newIds) == -1) {
-            if($this.data('info')) $this.data('info').close();
-            $this.data('marker').set_map(null);
-            $this.remove();
-          }
-        });
+        if(!$('aside li[data-item-id=' + id + ']')[0]) {
+          var point = new google.maps.LatLng(this.latitude, this.longitude);
         
-        // Add new items
-        $.each(data, function() {
-          var id = this._id;
-          
-          if(!$('aside li[data-item-id=' + id + ']')[0]) {
-            var point = new google.maps.LatLng(this.latitude, this.longitude);
-          
-            var $li = $('<li class="type-1" data-item-id="'+this._id+'"><div></div><h2>' + this.title + '</h2><p class="address">'+this.address+'<p class="description">'+this.body+'</p></li>').appendTo('aside ol');
-          
-            $li.data('marker', new google.maps.Marker({
-                position: point, 
-                map: Map.map, 
-                title: this.title, 
-                icon: new google.maps.MarkerImage("/stylesheets/images/pointer-blue.png",
-                  new google.maps.Size(23, 25),
-                  new google.maps.Point(0,0),
-                  new google.maps.Point(11,20))
-            }));
-          
-            google.maps.event.addListener($li.data('marker'), 'click', function() {
-              $('aside li[data-item-id="'+id+'"]:first').click();
-            });
-          }
-          
-        });
+          var $li = $('<li class="'+this.kind+'" data-item-id="'+this._id+'"><div></div><h2>' + this.title + '</h2><p class="address">'+this.address+'<p class="description">'+this.body+'</p></li>').appendTo('aside ol');
+        
+          $li.data('marker', new google.maps.Marker({
+              position: point, 
+              map: Map.map, 
+              title: this.title, 
+              icon: new google.maps.MarkerImage("/stylesheets/images/pointer-blue.png",
+                new google.maps.Size(23, 25),
+                new google.maps.Point(0,0),
+                new google.maps.Point(11,20))
+          }));
+        
+          google.maps.event.addListener($li.data('marker'), 'click', function() {
+            $('aside li[data-item-id="'+id+'"]:first').click();
+          });
+        }
+        
       });
     });
   }

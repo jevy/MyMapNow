@@ -19,7 +19,7 @@ Item.seed(:title) do |i|
   © Copyright (c) The Ottawa Citizen"
   i.address = "Chaudière Bridge, Ottawa, ON"
   i.url = 'http://www.ottawacitizen.com/Health/Firefighters+rescue+canoeist+from+Ottawa+River/1709594/story.html'
-  i.date = Date.parse('2009-06-18')
+  i.begin_at = Date.parse('2009-06-18')
 end
 
 Item.seed(:title) do |i|
@@ -41,7 +41,7 @@ Item.seed(:title) do |i|
   “In other cities, if you put a foot off the curb, drivers stop,” he said. “Even if a pedestrian walks where they aren’t supposed to be, it still should be a driver's responsibility not to hit them.”}
   i.address = "Laurier Bridge, Ottawa, ON"
   i.url = 'http://www.ottawacitizen.com/news/ottawa/Watch+where+walk+City+Ottawa+warns+pedestrians/1709551/story.html'
-  i.date = Date.parse('2009-06-18')
+  i.begin_at = Date.parse('2009-06-18')
 end
 
 Item.seed(:title) do |i|
@@ -55,7 +55,7 @@ Item.seed(:title) do |i|
   © Copyright (c) The Ottawa Citizen}
   i.address = "179, Promenade du Portage, Gatineau, QC"
   i.url = 'http://www.ottawacitizen.com/news/ottawa/Water+works+Chez+Henri+site/1710150/story.html'
-  i.date = Date.parse('2009-06-18')
+  i.begin_at = Date.parse('2009-06-18')
 end
 
 Item.seed(:title) do |i|
@@ -71,7 +71,7 @@ Item.seed(:title) do |i|
   © Copyright (c) The Ottawa Citizen}
   i.address = "Rideau Street and King Edward Avenue, Ottawa, ON"
   i.url = 'http://www.ottawacitizen.com/news/ottawa/Thirteen+year+charged+with+robbery+after+mugging+attempt/1710173/story.html'
-  i.date = Date.parse('2009-06-18')
+  i.begin_at = Date.parse('2009-06-18')
 end
 
 # Item.seed(:title) do |i|
@@ -79,5 +79,5 @@ end
 #   i.description = %Q{}
 #   i.address = ""
 #   i.url = ''
-#   i.date = Date.parse('2009-06-18')
+#   i.begin_at = Date.parse('2009-06-18')
 # end

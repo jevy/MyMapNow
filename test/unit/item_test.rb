@@ -5,10 +5,13 @@ class ItemTest < ActiveSupport::TestCase
   context "find_in_bounds" do
     setup do
       @ottawa = Item.create :title => 'Ottawa', :latitude => 45.420833,
-        :longitude => -75.69
-
+        :longitude => -75.69, :begin_at => 3.hours.from_now
+      
+      @ottawa_old = Item.create :title => 'Ottawa Old', :latitude => 45.420833,
+        :longitude => -75.69, :begin_at => 10.months.ago
+        
       @detroit = Item.create :title => 'Detroit', :latitude => 42.3316,
-        :longitude => -83.0475
+        :longitude => -83.0475, :begin_at => 4.hours.from_now
     end
     
     should "include items within the bounds" do
@@ -24,6 +27,10 @@ class ItemTest < ActiveSupport::TestCase
     should "include items within the bounds when bounds are strings" do
       @items = Item.find_in_bounds(['45.40218646','-75.7562255'],['45.439658','-75.623703'])
       @items.should include(@ottawa)
+    end
+    
+    should "limit the dates to a provided range" do
+      
     end
   end
   
@@ -45,4 +52,9 @@ class ItemTest < ActiveSupport::TestCase
     end
   end
   
+  context "body" do
+    should "be empty if the description is blank" do
+      Item.new.body.should be_blank
+    end
+  end
 end

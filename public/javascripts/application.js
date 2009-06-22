@@ -5,18 +5,22 @@ $(function() {
 	
 	var months = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
 	
-	$("#date-range").slider({
+	var sliderElement = $('#date-range');
+	
+	sliderElement.data('start', start + 3).data('end', end - 3).slider({
 		range: true,
 		min: start,
 		max: end,
-		values: [start + 3, end - 3],
+		values: [sliderElement.data('start'), sliderElement.data('end')],
 		slide: function(event, ui) {
+		  console.log('triggering slide')
 			updateLabels(ui.values[0], ui.values[1]);
 		},
 		change: function(event, ui) {
-			var start = ui.values[0] * 24 * 60 * 60; // This is the epoch time of the first date
-			var end 	= ui.values[1] * 24 * 60 * 60; // This is the epoch time of the second date
-			// Do your map changing stuff here.
+		  console.log(this)
+			$(this).data('start', ui.values[0]); // This is the epoch time of the first date
+			$(this).data('end', ui.values[1]);   // This is the epoch time of the second date
+			$('#map').trigger('map:timeframechange');
 		}
 	});
 	

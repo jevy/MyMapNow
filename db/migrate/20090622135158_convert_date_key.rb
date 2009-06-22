@@ -5,6 +5,13 @@ class ConvertDateKey < ActiveRecord::Migration
 
     key :date, Time
     key :begin_at, Time
+
+    key :title, String, :required => true
+    key :description, String
+    key :url, String
+    key :address, String
+    key :latitude, Float
+    key :longitude, Float
   end
   
   def self.up
