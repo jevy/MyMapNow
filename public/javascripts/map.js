@@ -66,15 +66,12 @@ var Map = {
           var point = new google.maps.LatLng(this.latitude, this.longitude);
         
           var $li = $('<li class="'+this.kind+'" data-item-id="'+this._id+'"><div></div><h2>' + this.title + '</h2><p class="address">'+this.address+'<p class="description">'+this.body+'</p></li>').appendTo('aside ol');
-        console.log($li.select('div').css('background-image').match(/\((.*)\)/))
+
           $li.data('marker', new google.maps.Marker({
               position: point, 
               map: Map.map, 
               title: this.title, 
-              icon: new google.maps.MarkerImage($li.find('div').css('background-image').match(/\((.*)\)/)[1],
-                new google.maps.Size(23, 25),
-                new google.maps.Point(0,0),
-                new google.maps.Point(11,20))
+              icon: Map.markerImages($li.find('div').css('background-image').match(/\((.*)\)/)[1])
           }));
         
           google.maps.event.addListener($li.data('marker'), 'click', function() {
@@ -84,6 +81,17 @@ var Map = {
         
       });
     });
+  }, 
+  
+  _markerImages: {},
+  markerImages: function(url) {
+    if (!Map._markerImages[url]) {
+      Map._markerImages[url] = new google.maps.MarkerImage(url,
+        new google.maps.Size(23, 25),
+        new google.maps.Point(0,0),
+        new google.maps.Point(11,20));
+    }
+    return Map._markerImages[url];
   }
 };
 
