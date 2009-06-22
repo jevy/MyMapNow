@@ -34,14 +34,17 @@ var Map = {
   
   fetch: function() {
     var bounds = Map.map.get_bounds();
+    
+    var start = new Date($('#date-range').data('start') * 1000 * 24 * 60 * 60)
+    var end = new Date($('#date-range').data('end') * 1000 * 24 * 60 * 60)
   
     $.getJSON('/items.js', {
         southwest: ''+bounds.getSouthWest().lat()+','+
           bounds.getSouthWest().lng(),
         northeast: ''+bounds.getNorthEast().lat()+','+ 
           bounds.getNorthEast().lng(),
-        start: $('#date-range').data('start'),
-        end: $('#date-range').data('end')
+        start: ''+start.getFullYear()+'-'+(start.getMonth()+1)+'-'+start.getDate(),
+        end: ''+end.getFullYear()+'-'+(end.getMonth()+1)+'-'+end.getDate()
         }, function(data) {
       
       // Remove items out of view

@@ -14,12 +14,10 @@ class Item
   before_save :attach_geocode
   
   def self.find_in_bounds(southwest, northeast, begin_at, end_at)
-    begin_at = Time.at(begin_at.to_i * 24 * 60 * 60)
-    end_at = Time.at(end_at.to_i * 24 * 60 * 60)
     find :all, :conditions => {
       :latitude =>  {'$gte' => southwest[0].to_f, '$lte' => northeast[0].to_f},
       :longitude => {'$gte' => southwest[1].to_f, '$lte' => northeast[1].to_f},
-      :begin_at => {'$gte' => begin_at, '$lte' => end_at}
+      :begin_at => {'$gte' => begin_at.beginning_of_day, '$lte' => end_at.end_of_day}
     }
   end
   

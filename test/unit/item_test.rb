@@ -15,22 +15,26 @@ class ItemTest < ActiveSupport::TestCase
     end
     
     should "include items within the bounds" do
-      @items = Item.find_in_bounds([45.40218646,-75.7562255],[45.439658,-75.623703])
+      @items = Item.find_in_bounds([45.40218646,-75.7562255],[45.439658,-75.623703], 5.days.ago, 5.days.from_now)
       @items.should include(@ottawa)
     end
     
     should "not include items outside of the bounds" do
-      @items = Item.find_in_bounds([45.40218646,-75.7562255],[45.439658,-75.623703])
+      @items = Item.find_in_bounds([45.40218646,-75.7562255],[45.439658,-75.623703], 5.days.ago, 5.days.from_now)
       @items.should_not include(@detroit)
     end
     
     should "include items within the bounds when bounds are strings" do
-      @items = Item.find_in_bounds(['45.40218646','-75.7562255'],['45.439658','-75.623703'])
+      @items = Item.find_in_bounds(['45.40218646','-75.7562255'],['45.439658','-75.623703'], 5.days.ago, 5.days.from_now)
       @items.should include(@ottawa)
     end
     
     should "limit the dates to a provided range" do
+      items = Item.find_in_bounds([45.40218646,-75.7562255],[45.439658,-75.623703], 5.days.ago, 5.days.from_now)
+      items.should_not include(@ottawa_old)
       
+      old_items = Item.find_in_bounds([45.40218646,-75.7562255],[45.439658,-75.623703], 11.months.ago, 9.months.ago)
+      old_items.should include(@ottawa_old)
     end
   end
   

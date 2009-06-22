@@ -42,7 +42,7 @@ aside h2						{font-size:15px; font-family:"Helvetica Neue", Helvetica, Arial, T
 aside .address			{color:#999;}
 aside .description	{color:#555;}
 
-aside .news div		{background:url(images/pointer-blue.png) no-repeat;}
+aside .news div		  {background:url(images/pointer-blue.png) no-repeat;}
 aside .event div		{background:url(images/pointer-red.png) no-repeat;}
 aside .type-3 div		{background:url(images/pointer-orange.png) no-repeat;}
 aside .type-4 div		{background:url(images/pointer-purple.png) no-repeat;}

@@ -13,11 +13,9 @@ $(function() {
 		max: end,
 		values: [sliderElement.data('start'), sliderElement.data('end')],
 		slide: function(event, ui) {
-		  console.log('triggering slide')
 			updateLabels(ui.values[0], ui.values[1]);
 		},
 		change: function(event, ui) {
-		  console.log(this)
 			$(this).data('start', ui.values[0]); // This is the epoch time of the first date
 			$(this).data('end', ui.values[1]);   // This is the epoch time of the second date
 			$('#map').trigger('map:timeframechange');
