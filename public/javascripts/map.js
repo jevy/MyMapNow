@@ -86,8 +86,8 @@ var Map = {
   _markerImages: {},
   markerImages: function(kind, item) {
     if (!Map._markerImages[kind]) {
-      var url = item.find('div').css('background-image').match(/\((.*)\)/)[1]
-      var y = item.find('div').css('background-position-y').match(/\d+/)[0]
+      var url = item.find('div').css('background-image').match(/\((.*)\)/)[1];
+      var y = item.find('div').css('background-position').match(/-(\d+)/)[1];
       Map._markerImages[kind] =  new google.maps.MarkerImage(url,
         new google.maps.Size(23, 25),
         new google.maps.Point(0, y),
