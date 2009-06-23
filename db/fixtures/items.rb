@@ -7,6 +7,7 @@ class Item
 end
 
 Item.seed(:title) do |i|
+  i.kind = 'news'
   i.title = "Firefighters rescue canoeist from Ottawa River"
   i.description = "OTTAWA – The Ottawa Fire Department pulled two men in their 60s from the Ottawa River on Thursday morning after their canoe flipped in the rapids between Lemieux Island and the Chaudière Bridge.
 
@@ -19,10 +20,11 @@ Item.seed(:title) do |i|
   © Copyright (c) The Ottawa Citizen"
   i.address = "Chaudière Bridge, Ottawa, ON"
   i.url = 'http://www.ottawacitizen.com/Health/Firefighters+rescue+canoeist+from+Ottawa+River/1709594/story.html'
-  i.begin_at = Date.parse('2009-06-18')
+  i.begin_at = 4.days.from_now #Date.parse('2009-06-18')
 end
 
 Item.seed(:title) do |i|
+  i.kind = 'news'
   i.title = "Watch where you walk, City of Ottawa warns pedestrians"
   i.description = %Q{OTTAWA — The city kicked off a campaign Thursday aimed at reducing the number of injuries and deaths from cars hitting pedestrians, and part of it will involve trying to get walkers to take more responsibility for their actions.
 
@@ -41,10 +43,11 @@ Item.seed(:title) do |i|
   “In other cities, if you put a foot off the curb, drivers stop,” he said. “Even if a pedestrian walks where they aren’t supposed to be, it still should be a driver's responsibility not to hit them.”}
   i.address = "Laurier Bridge, Ottawa, ON"
   i.url = 'http://www.ottawacitizen.com/news/ottawa/Watch+where+walk+City+Ottawa+warns+pedestrians/1709551/story.html'
-  i.begin_at = Date.parse('2009-06-18')
+  i.begin_at = 5.days.from_now #Date.parse('2009-06-18')
 end
 
 Item.seed(:title) do |i|
+  i.kind = 'news'
   i.title = "'Water works' at Chez Henri site"
   i.description = %Q{OTTAWA — ottawacitizen.com reader Christopher Busby snapped this photo Thursday afternoon after a construction shovel apparently struck a water main at the Chez Henri demolition site in Gatineau.
 
@@ -55,10 +58,11 @@ Item.seed(:title) do |i|
   © Copyright (c) The Ottawa Citizen}
   i.address = "179, Promenade du Portage, Gatineau, QC"
   i.url = 'http://www.ottawacitizen.com/news/ottawa/Water+works+Chez+Henri+site/1710150/story.html'
-  i.begin_at = Date.parse('2009-06-18')
+  i.begin_at = 3.days.from_now #Date.parse('2009-06-18')
 end
 
 Item.seed(:title) do |i|
+  i.kind = 'news'
   i.title = "Thirteen-year-old charged with robbery after mugging attempt"
   i.description = %Q{OTTAWA — A 13-year-old youth has been arrested after an early morning robbery on Rideau Street on Thursday.
 
@@ -71,10 +75,34 @@ Item.seed(:title) do |i|
   © Copyright (c) The Ottawa Citizen}
   i.address = "Rideau Street and King Edward Avenue, Ottawa, ON"
   i.url = 'http://www.ottawacitizen.com/news/ottawa/Thirteen+year+charged+with+robbery+after+mugging+attempt/1710173/story.html'
-  i.begin_at = Date.parse('2009-06-18')
+  i.begin_at = 6.days.from_now #Date.parse('2009-06-18')
+end
+
+Item.seed(:title) do |i|
+  i.kind = "event"
+  i.title = "Ottawa Fringe Festival"
+  i.description = %Q{A Fringe Festival is a forum that unites artists and audiences in a fun, exploratory environment. The guiding principles of the Fringe include unrestricted artistic expression, accessibility and community development.
+
+  The Fringe encourages artists to explore and test boundaries and make bold choices in the creation of art.}
+  i.address = "2 Daly Ave, Ottawa, ON"
+  i.url = 'http://www.ottawafringe.com'
+  i.begin_at = Date.parse('2009-06-28')
+  i.end_at = Date.parse('2009-06-28')
+end
+
+Item.seed(:title) do |i|
+  i.kind = "event"
+  i.title = "TD Canada Trust Ottawa International Jazz Festival "
+  i.description = %Q{The TD Canada Trust Ottawa International Jazz Festival is one of the National Capital Region's premiere music events. It features the finest jazz musicians from Canada and around the world performing in open air venues and intimate studio spaces where thousands can enjoy world class music. 
+  }
+  i.address = "40 Elgin St, Ottawa, ON"
+  i.url = 'http://www.ottawajazzfestival.com '
+  i.begin_at = Date.parse('2009-06-25')
+  i.end_at = Date.parse('2009-07-05')
 end
 
 # Item.seed(:title) do |i|
+#   i.kind = ""
 #   i.title = ""
 #   i.description = %Q{}
 #   i.address = ""
