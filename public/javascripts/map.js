@@ -71,7 +71,7 @@ var Map = {
               position: point, 
               map: Map.map, 
               title: this.title, 
-              icon: Map.markerImages($li.find('div').css('background-image').match(/\((.*)\)/)[1])
+              icon: Map.markerImages(this.kind, $li)
           }));
         
           google.maps.event.addListener($li.data('marker'), 'click', function() {
@@ -84,14 +84,16 @@ var Map = {
   }, 
   
   _markerImages: {},
-  markerImages: function(url) {
-    if (!Map._markerImages[url]) {
-      Map._markerImages[url] = new google.maps.MarkerImage(url,
+  markerImages: function(kind, item) {
+    if (!Map._markerImages[kind]) {
+      var url = item.find('div').css('background-image').match(/\((.*)\)/)[1]
+      var y = item.find('div').css('background-position-y').match(/\d+/)[0]
+      Map._markerImages[kind] =  new google.maps.MarkerImage(url,
         new google.maps.Size(23, 25),
-        new google.maps.Point(0,0),
+        new google.maps.Point(0, y),
         new google.maps.Point(11,20));
     }
-    return Map._markerImages[url];
+    return Map._markerImages[kind];
   }
 };
 
