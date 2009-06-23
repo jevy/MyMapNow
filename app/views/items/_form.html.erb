@@ -2,6 +2,11 @@
   <%= f.error_messages %>
 
   <p>
+    <%= f.label :kind %><br />
+    <%= f.select :kind, Item::KINDS.map{|k| [k.humanize, k]} %>
+  </p>
+
+  <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </p>

@@ -13,6 +13,8 @@ class Item
   
   before_save :attach_geocode
   
+  KINDS = %w(news event)
+  
   def self.find_in_bounds(southwest, northeast, begin_at, end_at)
     find :all, :conditions => {
       :latitude =>  {'$gte' => southwest[0].to_f, '$lte' => northeast[0].to_f},
