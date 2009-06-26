@@ -43,4 +43,4 @@ $(function() {
 		$(document.body).toggleClass('hide-aside');
 		return false;
 	})
-})
+});
