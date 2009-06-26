@@ -42,5 +42,15 @@ $(function() {
 	$('#toggle-aside').click(function() {
 		$(document.body).toggleClass('hide-aside');
 		return false;
-	})
+	});
+	
+	var form = $('#new_item');
+	form.dialog({autoOpen: false, buttons: {
+	  Cancel: function() { $(this).dialog('close') },
+	  Save: function() { $(this).submit() }
+	}});
+	$('#add_new_item').click(function(e) {
+	  e.preventDefault();
+	  $('#new_item').dialog(form.dialog('isOpen') ? 'close' : 'open');
+	});
 });

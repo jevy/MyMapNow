@@ -3,7 +3,7 @@ When 'I click to submit a new item' do
 end
 
 When 'I save the item' do
-  click_button 'Save'
+  selenium.js_eval "window.$('button:content(Save)').click()"
   selenium.wait_for_page
 end
 
