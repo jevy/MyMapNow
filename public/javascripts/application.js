@@ -45,10 +45,15 @@ $(function() {
 	});
 	
 	var form = $('#new_item');
-	form.dialog({autoOpen: false, buttons: {
-	  Cancel: function() { $(this).dialog('close') },
-	  Save: function() { $(this).submit() }
-	}}).parents('.ui-dialog:first').wrap('<div id="dialog"></div>');
+	form.dialog({autoOpen: false,
+	  buttons: {
+  	  Cancel: function() { $(this).dialog('close') },
+  	  Save: function() { $(this).submit() }
+  	},
+  	open: function() { 
+       $("#ui-datepicker-div").css("z-index", $(this).parents(".ui-dialog").css("z-index")+1); 
+    }
+	}).parents('.ui-dialog:first').wrap('<div class="dialog"></div>');
 	// Wrap form with div to namespace themeroller
 	//  http://www.filamentgroup.com/lab/using_multiple_jquery_ui_themes_on_a_single_page/#commentNumber4
 	
