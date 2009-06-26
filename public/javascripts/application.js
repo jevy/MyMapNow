@@ -18,7 +18,7 @@ $(function() {
 		change: function(event, ui) {
 			$(this).data('start', ui.values[0]); // This is the epoch time of the first date
 			$(this).data('end', ui.values[1]);   // This is the epoch time of the second date
-			$('#map').trigger('map:timeframechange');
+			Map.fetch();
 		}
 	});
 	
@@ -57,6 +57,9 @@ $(function() {
 	// Wrap form with div to namespace themeroller
 	//  http://www.filamentgroup.com/lab/using_multiple_jquery_ui_themes_on_a_single_page/#commentNumber4
 	
+  $(".datepicker").datepicker();
+  $('#ui-datepicker-div').wrap('<div class="dialog"></div>');
+
 	$('#add_new_item').click(function(e) {
 	  e.preventDefault();
 	  $('#new_item').dialog(form.dialog('isOpen') ? 'close' : 'open');

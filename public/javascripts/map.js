@@ -12,7 +12,7 @@ $('aside li').live('click', function(event) {
   }
 
   $this.addClass('active');
-  $this.data('info').open(Map.map, $this.data('marker'))
+  $this.data('info').open(Map.map, $this.data('marker'));
 });
 
 var Map = {
@@ -23,9 +23,6 @@ var Map = {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
-    $('#map').bind('map:timeframechange', function() {
-      Map.fetch();
-    });
     $("#date-range").change();
     google.maps.event.addListener(Map.map, 'bounds_changed', function() {
       Map.fetch();
@@ -34,35 +31,11 @@ var Map = {
   
   fetch: function() {
     var bounds = Map.map.get_bounds();
-    
-    var start = new Date($('#date-range').data('start') * 1000 * 24 * 60 * 60)
-    var end = new Date($('#date-range').data('end') * 1000 * 24 * 60 * 60)
-  
-    $.getJSON('/items.js', {
-        southwest: ''+bounds.getSouthWest().lat()+','+
-          bounds.getSouthWest().lng(),
-        northeast: ''+bounds.getNorthEast().lat()+','+ 
-          bounds.getNorthEast().lng(),
-        start: ''+start.getFullYear()+'-'+(start.getMonth()+1)+'-'+start.getDate(),
-        end: ''+end.getFullYear()+'-'+(end.getMonth()+1)+'-'+end.getDate()
-        }, function(data) {
-      
-      // Remove items out of view
-      var newIds = $.map(data, function(item) { return item._id });
-      $('aside li').each(function() {
-        var $this = $(this);
-        if ($.inArray($this.attr('data-item-id'), newIds) == -1) {
-          if($this.data('info')) $this.data('info').close();
-          $this.data('marker').set_map(null);
-          $this.remove();
-        }
-      });
-      
-      // Add new items
-      $.each(data, function() {
-        Map.addItem(this);
-      });
-    });
+    var timeframe = {
+      start: new Date($('#date-range').data('start') * 1000 * 24 * 60 * 60),
+      end: new Date($('#date-range').data('end') * 1000 * 24 * 60 * 60)
+    };
+    $(document).trigger('map:change', [bounds, timeframe]);
   },
   
   addItem: function(item) {
@@ -71,7 +44,7 @@ var Map = {
     if(!$('aside li[data-item-id=' + id + ']')[0]) {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
     
-      var $li = $('<li class="'+item.kind+'" data-item-id="'+item._id+'"><div></div><h2>' + item.title + '</h2><p class="address">'+item.address+'<p class="description">'+item.body+'</p></li>').appendTo('aside ol');
+      var $li = $('<li class="'+item.kind+'" data-item-id="'+item._id+'"><div></div><h2>' + item.title + '</h2><p class="address">'+ (item.address || '') +'<p class="description">'+item.body+'</p></li>').appendTo('aside ol');
 
       $li.data('marker', new google.maps.Marker({
           position: point, 
@@ -97,6 +70,18 @@ var Map = {
     Map.showInfoWindow(item._id);
   },
   
+  cleanup: function() {
+    // Remove items out of view
+    $('aside li').each(function() {
+      var $this = $(this);
+      if(!Map.map.get_bounds().contains($this.data('marker').get_position())) {
+          if($this.data('info')) $this.data('info').close();
+          $this.data('marker').set_map(null);
+          $this.remove();
+      }
+    });
+  },
+  
   _markerImages: {},
   markerImages: function(kind, item) {
     if (!Map._markerImages[kind]) {
@@ -110,5 +95,7 @@ var Map = {
     return Map._markerImages[kind];
   }
 };
+
+$(document).bind('map:change', Map.cleanup);
 
 $(Map.initialize);

@@ -39,6 +39,7 @@ aside ol						{position:absolute; list-style-type:none; top:29px; left:0; right:
 aside li						{position:relative; padding:8px 10px 8px 43px; background:url(images/detail.png) repeat-x 0 100%; border-bottom:1px solid #999;}
 aside div						{position:absolute; left:10px; top:8px; width:23px; height:25px; line-height:20px; color:#fff; text-align:center;}
 aside h2						{font-size:15px; font-family:"Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;}
+aside img           {width: 160px;}
 aside .address			{color:#999;}
 aside .description	{color:#555;}
 
@@ -47,7 +48,7 @@ aside .black  div   { background-position: 0 -30px; }
 aside .news   div   { background-position: 0 -85px; } 
 aside .green  div   { background-position: 0 -140px; } 
 aside .orange div   { background-position: 0 -195px; } 
-aside .purple div   { background-position: 0 -250px; } 
+aside .photo  div   { background-position: 0 -250px; } 
 aside .event  div   { background-position: 0 -305px; }
 
 #map                {height:100%;}
