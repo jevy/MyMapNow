@@ -60,28 +60,42 @@ var Map = {
       
       // Add new items
       $.each(data, function() {
-        var id = this._id;
-        
-        if(!$('aside li[data-item-id=' + id + ']')[0]) {
-          var point = new google.maps.LatLng(this.latitude, this.longitude);
-        
-          var $li = $('<li class="'+this.kind+'" data-item-id="'+this._id+'"><div></div><h2>' + this.title + '</h2><p class="address">'+this.address+'<p class="description">'+this.body+'</p></li>').appendTo('aside ol');
-
-          $li.data('marker', new google.maps.Marker({
-              position: point, 
-              map: Map.map, 
-              title: this.title, 
-              icon: Map.markerImages(this.kind, $li)
-          }));
-        
-          google.maps.event.addListener($li.data('marker'), 'click', function() {
-            $('aside li[data-item-id="'+id+'"]:first').click();
-          });
-        }
-        
+        Map.addItem(this);
       });
     });
-  }, 
+  },
+  
+  addItem: function(item) {
+    var id = item._id;
+    
+    if(!$('aside li[data-item-id=' + id + ']')[0]) {
+      var point = new google.maps.LatLng(item.latitude, item.longitude);
+    
+      var $li = $('<li class="'+item.kind+'" data-item-id="'+item._id+'"><div></div><h2>' + item.title + '</h2><p class="address">'+item.address+'<p class="description">'+item.body+'</p></li>').appendTo('aside ol');
+
+      $li.data('marker', new google.maps.Marker({
+          position: point, 
+          map: Map.map, 
+          title: item.title, 
+          icon: Map.markerImages(item.kind, $li)
+      }));
+    
+      google.maps.event.addListener($li.data('marker'), 'click', function() {
+        Map.showInfoWindow(id);
+      });
+    }
+    
+  },
+  
+  showInfoWindow: function(id) {
+    $('aside li[data-item-id="'+id+'"]:first').click();
+  },
+  
+  highlight: function(item) {
+    Map.map.set_center(new google.maps.LatLng(item.latitude, item.longitude));
+    Map.addItem(item);
+    Map.showInfoWindow(item._id);
+  },
   
   _markerImages: {},
   markerImages: function(kind, item) {

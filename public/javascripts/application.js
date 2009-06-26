@@ -48,9 +48,20 @@ $(function() {
 	form.dialog({autoOpen: false, buttons: {
 	  Cancel: function() { $(this).dialog('close') },
 	  Save: function() { $(this).submit() }
-	}});
+	}}).parents('.ui-dialog:first').wrap('<div id="dialog"></div>');
+	// Wrap form with div to namespace themeroller
+	//  http://www.filamentgroup.com/lab/using_multiple_jquery_ui_themes_on_a_single_page/#commentNumber4
+	
 	$('#add_new_item').click(function(e) {
 	  e.preventDefault();
 	  $('#new_item').dialog(form.dialog('isOpen') ? 'close' : 'open');
 	});
+	
+	form.ajaxForm({dataType: 'json',
+	  resetForm: true,
+	  success: function(item) {
+      form.dialog('close');
+	    Map.highlight(item);
+    }
+  });
 });

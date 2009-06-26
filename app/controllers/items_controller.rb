@@ -41,12 +41,12 @@ class ItemsController < ApplicationController
   # POST /items.xml
   def create
     @item = Item.new(params[:item])
-
     respond_to do |format|
       if @item.save
         flash[:notice] = 'Item was successfully created.'
         format.html { redirect_to root_path }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
+        format.json { render :json => @item }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }

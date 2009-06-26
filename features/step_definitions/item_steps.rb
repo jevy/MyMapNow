@@ -4,7 +4,6 @@ end
 
 When 'I save the item' do
   selenium.js_eval "window.$('button:content(Save)').click()"
-  selenium.wait_for_page
 end
 
 Then 'I see the new item form' do
