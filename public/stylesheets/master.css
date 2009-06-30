@@ -46,7 +46,7 @@ aside .description	{color:#555;}
 aside li div        { background: url(images/pointers.png) no-repeat top left; }
 aside .black  div   { background-position: 0 -30px; } 
 aside .news   div   { background-position: 0 -85px; } 
-aside .green  div   { background-position: 0 -140px; } 
+aside .review  div   { background-position: 0 -140px; } 
 aside .orange div   { background-position: 0 -195px; } 
 aside .photo  div   { background-position: 0 -250px; } 
 aside .event  div   { background-position: 0 -305px; }

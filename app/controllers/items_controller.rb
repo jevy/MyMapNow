@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
         flash[:notice] = 'Item was successfully created.'
         format.html { redirect_to root_path }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
-        format.json { render :json => @item }
+        format.json { render :json => @item.to_json(:methods => :body, :except => :description) }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }

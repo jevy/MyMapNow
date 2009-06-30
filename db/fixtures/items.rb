@@ -86,8 +86,8 @@ Item.seed(:title) do |i|
   The Fringe encourages artists to explore and test boundaries and make bold choices in the creation of art.}
   i.address = "2 Daly Ave, Ottawa, ON"
   i.url = 'http://www.ottawafringe.com'
-  i.begin_at = Date.parse('2009-06-28')
-  i.end_at = Date.parse('2009-06-28')
+  i.begin_at = 4.days.from_now
+  i.end_at = 4.days.from_now
 end
 
 Item.seed(:title) do |i|
@@ -97,8 +97,47 @@ Item.seed(:title) do |i|
   }
   i.address = "40 Elgin St, Ottawa, ON"
   i.url = 'http://www.ottawajazzfestival.com '
-  i.begin_at = Date.parse('2009-06-25')
-  i.end_at = Date.parse('2009-07-05')
+  i.begin_at = 5.days.from_now
+  i.end_at = 5.days.from_now
+end
+
+Item.seed(:title) do |i|
+  i.kind = "review"
+  i.title = "Sir John A Pub"
+  i.description = %Q{We crawled Elgin St looking for a pub that wasn't full to a fire hazard to watch the Stanley Cup finals. We managed to grab one of the few remaining free tables way in the back. For drinks, my gf got a Long Island and I kept it simple with a gingerale (or was it lemonade?). We also got a nacho platter that we weren't able to finish, given the generous amounts of salt that went into whatever cheese they used. It would also have helped for the cheese to not come off in basically one large chunk, leaving a whole layer of chips beneath it. That being said, it was the Stanley Cup Finals and the wait staff were clearly on the edge and scrambling to make sure everybody was being looked after. The manager came over to us a few times just to double-check, which was very much appreciated.}
+  i.address = "284 Elgin Street, Ottawa, ON"
+  i.url = ''
+  i.begin_at = 4.days.from_now
+end
+
+Item.seed(:title) do |i|
+  i.kind = "review"
+  i.title = "Pookie's Thai Restaurant"
+  i.description = %Q{The gf and I are continuing our noble quest to have pad thai at every Thai restaurant in the city (fast food outlets not included) and Pookie's has earned a spot on our podium.
+
+  The décor is pleasant, the music varied and non-intrusive, the table set-up cute and the wall decorations a nice touch. The gf's only concern was the lighting, which was a bit on the strong side.
+
+  We started with what were called pork spring rolls. I say this because, while the ingredients were all of what is expected, the presentation was a plus as it came to us in what looked like hobbit gold bags from LoTR. The lemongrass tea, another standard in our comparative exercise, was potent though perhaps a bit too strong.
+
+  Our mains were a curry chicken dish (stew?) and of course, the requisite pad thai with a side of sticky rice. Put together, the curry and rice helped find an appropriate level of spiciness. The chicken itself was a little dry, but otherwise enjoyable.
+
+  The pad thai came with scallops and shrimp. The peanut sauce was done just right. The salt, tang and sweet flavours with the tamarind backdrop all blended together in a well-thought out balance, the taste itself fleeting quickly away. The only thing missing was a lime.
+
+  After the meal, we took a minute to read the Citizen's review and chatted it up with the manager, who was very interested in what we had to say. (The family behind us made no secret of listening in on the conversation. Meh.) She asked us to compare her dishes against that of other Thai restaurants, so we started listing off a few, as well as talking about our "quest". She was quick to point out how many Thai restaurants are already open and running, which restaurants have Thai in the name but shouldn't be considered as such (no names here, obviously) and where potential sites are for more opening restaurants. She clearly knew her stuff.
+
+  All in all, good food, good service, but the one factor that's really killing this restaurant is the location. If you're traveling west on Carling, you can barely make out the signs and even if you do, you have a-ways to go before you can switch lanes/U-turn because the lanes are divided. If you're headed east, you had better have your eyes peeled. It's well worth the find.}
+  i.address = "2280 Unit 7 Carling Ave, Ottawa, ON"
+  i.url = ''
+  i.begin_at = 7.days.from_now
+end
+
+Item.seed(:title) do |i|
+  i.kind = "review"
+  i.title = "Divino Wine Studio"
+  i.description = %Q{I hav been to divio before and thought it was fantastic. But this time around was terrible. We were ther maybe 2 weeks ago. I was wondering if the chef was on vacation or something because it was a different person. The menu got smaller which was fine but some of my favs were not on there any more.The food that was on the menu was a bit boring. I had the scallop dish and my friend had the pasta with the meat sauce. My scallops were very overcooked and her pasta was bland and over done. The chef's specials were not overly exciting. But on a good note, the service was great. We felt very pampered and well looked after. I think we will wait a couple of weeks and then try again. Maybe the chef will be back by then.}
+  i.address = "225 Preston St, Ottawa, ON"
+  i.url = ''
+  i.begin_at = 4.days.from_now
 end
 
 # Item.seed(:title) do |i|
