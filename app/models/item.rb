@@ -13,7 +13,7 @@ class Item
   
   before_save :attach_geocode
   
-  KINDS = %w(news event)
+  KINDS = %w(news event review)
   
   def self.find_in_bounds(southwest, northeast, begin_at, end_at)
     find :all, :conditions => {
