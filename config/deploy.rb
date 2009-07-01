@@ -23,15 +23,15 @@ set :repository, "git@github.com:collectiveidea/#{application}.git"
 # be used to single out a specific subset of boxes in a particular role, like
 # :primary => true.
 
-role :web, "mymapnow.client.collectiveidea.com"
-role :app, "mymapnow.client.collectiveidea.com"
-role :db,  "mymapnow.client.collectiveidea.com", :primary => true
+role :web, "bluebin.org"
+role :app, "bluebin.org"
+role :db,  "bluebin.org", :primary => true
 
 # =============================================================================
 # OPTIONAL VARIABLES
 # =============================================================================
-set :deploy_to, "/home/voter/mymapnow.client.collectiveidea.com" # defaults to "/u/apps/#{application}"
-set :user, "voter"            # defaults to the currently logged in user
+set :deploy_to, "/var/www/apps/mymapnow" # defaults to "/u/apps/#{application}"
+set :user, "deploy"            # defaults to the currently logged in user
 set :use_sudo, false
 set :scm, :git
 set :branch, 'master'
