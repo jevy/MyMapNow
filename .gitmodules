@@ -25,9 +25,6 @@
 [submodule "vendor/plugins/graticule"]
 	path = vendor/plugins/graticule
 	url = git://github.com/collectiveidea/graticule.git
-[submodule "vendor/plugins/acts_as_geocodable"]
-	path = vendor/plugins/acts_as_geocodable
-	url = git://github.com/collectiveidea/acts_as_geocodable.git
 [submodule "vendor/plugins/seed-fu"]
 	path = vendor/plugins/seed-fu
 	url = git://github.com/mbleigh/seed-fu.git
