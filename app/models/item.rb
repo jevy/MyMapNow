@@ -1,4 +1,3 @@
-require 'mongomapper'
 class Item
   include MongoMapper::Document
   
@@ -31,7 +30,7 @@ class Item
   
   def attach_geocode
     unless address.blank?
-      location = Geocode.geocoder.locate(address)
+      location = Geocoder.locate(address)
       self.latitude = location.latitude
       self.longitude = location.longitude
     end

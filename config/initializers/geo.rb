@@ -1,7 +1,7 @@
 GOOGLE_MAPS_API_KEY = 'ABQIAAAAKU0JUXXK40nehgHiZGe2JRRi_QCTkdRWobLL_A5W6S7qSSFeQRSZa6PooGBCOs5J_rpJssFGd767_Q'
 YAHOO_API_KEY = 'yaIc6sLV34FGZzfp8T.hGx5XniS5SOSyFYl5MlkDWsO1C.A9wXBw2dIV8NsqPQ--'
 
-Geocode.geocoder = Graticule.service(:google).new GOOGLE_MAPS_API_KEY
+Geocoder = Graticule.service(:google).new GOOGLE_MAPS_API_KEY
 
 FLICKER_API_KEY = 'f44ef3af5a0463b8ab31ce8c9dc38427'
 FLICKER_API_SECRET = '3dd0a292c9bdb8f7'
