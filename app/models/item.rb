@@ -1,3 +1,4 @@
+require 'mongomapper'
 class Item
   include MongoMapper::Document
   
