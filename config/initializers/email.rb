@@ -10,5 +10,5 @@ ActionMailer::Base.smtp_settings = {
 }
 
 ExceptionNotifier.exception_recipients = %w(code@collectiveidea.com)
-ExceptionNotifier.email_prefix = "[:PROJECT:] "
+ExceptionNotifier.email_prefix = "[mymapnow.com] "
 ExceptionNotifier.sender_address = %("Application Error" <app@collectiveidea.com>)

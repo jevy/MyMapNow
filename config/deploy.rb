@@ -66,11 +66,18 @@ desc "mod_rails restart"
 end
 
 after 'deploy:update_code', 'deploy:symlink_configs'
+after 'deploy:update_code', 'deploy:install_gems'
 namespace :deploy do
   desc "we need a database.  this helps with that."
   task :symlink_configs do
     run "mv #{release_path}/config/database.sample.yml #{release_path}/config/database.yml"
     run "ln -fs #{shared_path}/production.db #{release_path}/db/production.db"
+  end
+
+  desc "install any gem dependencies"
+  task :install_gems do 
+    rails_env = fetch(:rails_env, "production")
+    run "cd #{release_path}; rake gems:install RAILS_ENV=#{rails_env}"
   end
 end
 
