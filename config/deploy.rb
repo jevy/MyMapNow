@@ -70,7 +70,7 @@ after 'deploy:update_code', 'deploy:install_gems'
 namespace :deploy do
   desc "we need a database.  this helps with that."
   task :symlink_configs do
-    run "mv #{deploy_to}/../bluebin/current/config/database.yml #{release_path}/config/database.yml"
+    run "cp #{deploy_to}/../bluebin/current/config/database.yml #{release_path}/config/database.yml"
   end
 
   desc "install any gem dependencies"
