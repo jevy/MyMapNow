@@ -16,7 +16,7 @@ end
 require 'webrat/core/matchers'
 
 require File.dirname(__FILE__) + '/geocoder'
-Geocode.geocoder = Graticule::Geocoder::Canned.new
+Geocoder = Graticule::Geocoder::Canned.new
 
 LOCATIONS = {
   'Ottawa' => Graticule::Location.new(
@@ -37,7 +37,7 @@ LOCATIONS = {
     :longitude => -83.0475
   )
 }
-Geocode.geocoder.default = LOCATIONS['Ottawa']
+Geocoder.default = LOCATIONS['Ottawa']
 
 # Add canned responses using:
 # Geocode.geocoder.responses << LOCATIONS['Ottawa']
