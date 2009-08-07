@@ -1,6 +1,6 @@
 $(function() {
 	var date = new Date();
-	var startDate = Math.floor( date.getTime() / (1000 * 60 * 60 * 24) );
+	var startDate = Math.floor( date.getTime() / (1000 * 60 * 60 * 24) )-15;
 	var start = 0;
 	var end = (start + 30) * 3;
 	
@@ -9,11 +9,11 @@ $(function() {
 	
 	var sliderElement = $('#date-range');
 	
-	sliderElement.data('start', start + 9).data('end', (end - 9)).slider({
+	sliderElement.data('start', Math.floor(.25*(end-start))+startDate).data('end', Math.floor(.75*(end-start))+startDate).slider({
 		range: true,
 		min: start,
 		max: end,
-		values: [sliderElement.data('start'), sliderElement.data('end')],
+		values: [sliderElement.data('start')-startDate, sliderElement.data('end')-startDate],
 		slide: function(event, ui) {
 			updateLabels(ui.values[0], ui.values[1]);
 		},
