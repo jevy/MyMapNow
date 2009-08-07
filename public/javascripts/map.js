@@ -35,6 +35,8 @@ var Map = {
       start: new Date($('#date-range').data('start') * 1000 * 24 * 60 * 60),
       end: new Date($('#date-range').data('end') * 1000 * 24 * 60 * 60)
     };
+    timeframe.start.setHours($('#date-range').data('startIncrement'))
+    timeframe.end.setHours($('#date-range').data('endIncrement'))
     $(document).trigger('map:change', [bounds, timeframe]);
   },
   

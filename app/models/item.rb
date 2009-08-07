@@ -19,7 +19,7 @@ class Item
     find :all, :conditions => {
       :latitude =>  {'$gte' => southwest[0].to_f, '$lte' => northeast[0].to_f},
       :longitude => {'$gte' => southwest[1].to_f, '$lte' => northeast[1].to_f},
-      :begin_at => {'$gte' => begin_at.beginning_of_day, '$lte' => end_at.end_of_day}
+      :begin_at => {'$gte' => begin_at, '$lte' => end_at}
     }
   end
   
