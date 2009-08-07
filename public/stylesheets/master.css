@@ -52,3 +52,10 @@ aside .photo  div   { background-position: 0 -250px; }
 aside .event  div   { background-position: 0 -305px; }
 
 #map                {height:100%;}
+
+aside .thumbs { display: none;}
+#map .thumbs a { width: 16px; height: 16px; display: block; float: left;}
+#map .thumbs a.up { background: url(images/thumb-up-disable.png) no-repeat top left;}
+#map .thumbs a.up:hover { background: url(images/thumb-up.png) no-repeat top left;}
+#map .thumbs a.down { background: url(images/thumb-down-disable.png) no-repeat top left;}
+#map .thumbs a.down:hover { background: url(images/thumb-down.png) no-repeat top left;}
