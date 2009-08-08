@@ -9,7 +9,7 @@ $(function() {
 	
 	var sliderElement = $('#date-range');
 	
-	sliderElement.data('start', Math.floor(.25*(end-start))+startDate).data('end', Math.floor(.75*(end-start))+startDate).slider({
+	sliderElement.data('start', Math.floor(.25*(end-start))+startDate).data('end', Math.floor(.75*(end-start))+startDate).data('startIncrement', increments[sliderElement.data('start')%3][1]).data('endIncrement', increments[sliderElement.data('end')%3][1]).slider({
 		range: true,
 		min: start,
 		max: end,
@@ -40,9 +40,7 @@ $(function() {
 		return months[d.getMonth()] + ' ' + d.getDate() + ' '+ increments[n%3][0];
 	}
 	
-});
 
-$(function() {
 	$('#toggle-aside').click(function() {
 		$(document.body).toggleClass('hide-aside');
 		return false;
