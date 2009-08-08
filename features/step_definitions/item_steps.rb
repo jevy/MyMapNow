@@ -1,3 +1,9 @@
+Given '"Big news out of parliament" is unapproved' do |title|
+  item = Item.find(:first, :conditions => {:title => title})
+  item.approved_at = nil
+  item.save
+end
+
 When 'I click to submit a new item' do
   click_link 'Submit News'
 end

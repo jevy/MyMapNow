@@ -76,4 +76,28 @@ $(function() {
 	    Map.highlight(item);
     }
   });
+  
+  $.ajaxSettings.accepts.html = $.ajaxSettings.accepts.script;
+  
+  $.authenticityToken = function() {
+    return $('#authenticity-token').attr('content');
+  };
+  
+  $('a.approve').live('click', function(event) {
+    var link = $(this);
+    event.preventDefault();
+    var form = $('<form method="POST"></form>')
+      .css({display:'none'})
+      .attr('action', this.href)
+      .append('<input type="hidden" name="_method" value="put"/>')
+      .append('<input type="hidden" name="authenticity_token" value="' +
+        $.authenticityToken() + '"/>')
+      .insertAfter(this.parentNode);
+    form.ajaxSubmit({
+      success: function() {
+        link.hide();
+      },
+      error: function() {link.replace('Cannot be approved at this time.')}
+    });
+  });
 });

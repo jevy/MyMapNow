@@ -10,6 +10,8 @@ class Item
   key :latitude, Float
   key :longitude, Float
   key :kind, String
+  key :created_by, String
+  key :approved_by, String
   
   before_save :attach_geocode
   
@@ -26,6 +28,10 @@ class Item
   def body
     length = 100
     description.blank? || description.length <= length ? description : description[0..length] + '…'
+  end
+  
+  def approved
+    !approved_by.blank?
   end
   
   def attach_geocode

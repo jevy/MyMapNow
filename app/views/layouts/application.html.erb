@@ -3,6 +3,9 @@
   <head>
     <title>MyMapNow.com</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <%- if protect_against_forgery? -%>
+      <meta name="authenticity-token" id="authenticity-token" content="<%= form_authenticity_token %>">
+    <%- end -%>
     <%= stylesheet_link_tag 'dialog/jquery-ui-1.7.2.custom.css', 'master', :cache => true %>
     <!--[if IE]>
       <%= javascript_include_tag 'html5' %>
