@@ -28,12 +28,6 @@ When 'I center the map on $location' do |location|
   selenium.js_eval "window.Map.map.set_center(new window.google.maps.LatLng(#{l.latitude}, #{l.longitude}));"
 end
 
-Then 'I see the news story titled "$title"' do |title|
-  selenium.wait_for_ajax :javascript_framework => :jquery
-  assert_have_selector("aside li.news h2:contains(#{title})")
-  assert_have_selector("#map *[title='#{title}']")
-end
-
 Then 'I see the news story titled "$title" once' do |title|
   pending
   Then %Q{I see the news story titled "#{title}"}
@@ -42,13 +36,6 @@ Then 'I see the news story titled "$title" once' do |title|
   
   assert_have_no_selector("aside li.news h2:contains(#{title}):gt(0)")
   assert_have_no_selector("#map *[title='#{title}']:gt(0)")
-end
-
-
-Then 'I do not see the news story titled "$title"' do |title|
-  selenium.wait_for_ajax :javascript_framework => :jquery
-  assert_have_no_selector("aside li.news h2:contains(#{title})")
-  assert_have_no_selector("#map *[title='#{title}']")
 end
 
 Then 'I see the news story titled "$title" highlighted on the map' do |title|

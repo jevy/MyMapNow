@@ -7,7 +7,7 @@ Feature: News Stories
     Given a news story in Ottawa titled "Big news out of parliament"
     And a news story in Ottawa titled "Prime Minister speaks out"
     When I view the map
-    Then I see the news story titled "Big news out of parliament"
+    Then I see the news titled "Big news out of parliament"
     
     When I click on the news story titled "Big news out of parliament" in the list
     Then I see the news story titled "Big news out of parliament" highlighted on the map
@@ -21,7 +21,7 @@ Feature: News Stories
   Scenario: A news story outside the current view
     Given a news story in Detroit titled "Auto Industry in Shambles"
     When I view the map
-    Then I do not see the news story titled "Auto Industry in Shambles"
+    Then I do not see the news titled "Auto Industry in Shambles"
     
   Scenario: Moving the map
     Given a news story in Ottawa titled "Big news out of parliament"
@@ -41,8 +41,8 @@ Feature: News Stories
     When I view the map
     And I center the map on Detroit
     
-    Then I see the news story titled "Auto Industry in Shambles"
-    And I do not see the news story titled "Big news out of parliament"
+    Then I see the news titled "Auto Industry in Shambles"
+    And I do not see the news titled "Big news out of parliament"
     
     When I click on the news story titled "Auto Industry in Shambles" on the map
     And I center the map on Ottawa
