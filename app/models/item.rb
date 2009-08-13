@@ -13,9 +13,11 @@ class Item
   key :created_by, String
   key :approved_by, String
   
+  many :conversations
+  
   before_save :attach_geocode
   
-  KINDS = %w(news event review)
+  KINDS = %w(news event review discussion)
   
   def self.find_in_bounds(southwest, northeast, begin_at, end_at)
     find :all, :conditions => {

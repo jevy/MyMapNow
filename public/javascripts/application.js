@@ -8,12 +8,16 @@ $(function() {
 	var increments = [['Morning', 0], ['Afternoon', 12], ['Evening', 17]];
 	
 	var sliderElement = $('#date-range');
-	
-	sliderElement.data('start', Math.floor(.25*(end-start))+startDate).data('end', Math.floor(.75*(end-start))+startDate).data('startIncrement', increments[sliderElement.data('start')%3][1]).data('endIncrement', increments[sliderElement.data('end')%3][1]).slider({
+
+	sliderElement.data('start', Math.floor(.25*(end-start)/3)+startDate)
+  .data('end', Math.floor(.75*(end-start)/3)+startDate)
+  .data('startIncrement', increments[sliderElement.data('start')%3][1])
+  .data('endIncrement', increments[sliderElement.data('end')%3][1])
+  .slider({
 		range: true,
 		min: start,
 		max: end,
-		values: [sliderElement.data('start')-startDate, sliderElement.data('end')-startDate],
+		values: [Math.floor(.25*(end-start)), Math.floor(.75*(end-start))],
 		slide: function(event, ui) {
 			updateLabels(ui.values[0], ui.values[1]);
 		},
