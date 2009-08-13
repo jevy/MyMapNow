@@ -24,7 +24,8 @@ $(document).bind('map:change', function(event, bounds, timeline) {
           title: this.title,
           body: '<img src="http://farm' + this.farm + '.static.flickr.com/' + this.server + '/' + this.id + '_' + this.secret + '_m.jpg">',
           latitude: this.latitude,
-          longitude: this.longitude
+          longitude: this.longitude,
+          approved: true
         });
       });
     },
