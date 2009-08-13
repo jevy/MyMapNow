@@ -140,6 +140,19 @@ Item.seed(:title) do |i|
   i.begin_at = 4.days.from_now
 end
 
+discussion = Item.seed(:title) do |i|
+  i.kind = "discussion"
+  i.title = "Traffic sucks!"
+  i.description = %Q{}
+  i.address = "400 lees ave, Ottawa, ON"
+  i.url = ''
+  i.begin_at = 10.minutes.ago
+end
+discussion.conversations << Conversation.new(:message => "No idea what's happening, I just want to get home!", :author => 'Sam Body', :email => 'sam@example.com', :posted_at => 10.minutes.ago)
+discussion.conversations << Conversation.new(:message => "Yeah, I think there's a crash somewhere.", :author => 'Anne Onamus', :email => 'info@collectiveidea.com', :posted_at => 7.minutes.ago)
+discussion.conversations << Conversation.new(:message => "Maybe, but I don't see it.", :author => 'Sam Body', :email => 'sam@example.com', :posted_at => 2.minutes.ago)
+discussion.save
+
 # Item.seed(:title) do |i|
 #   i.kind = ""
 #   i.title = ""

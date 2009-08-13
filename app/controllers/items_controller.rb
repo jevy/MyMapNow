@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html { render :layout => 'application' }
       format.js do
-        render :json => Item.find_in_bounds(params[:southwest].split(','), params[:northeast].split(','), Time.parse(params[:start]), Time.parse(params[:end])).to_json(:methods => [:body, :approved], :except => [:description, :created_by, :approved_by])
+        render :json => Item.find_in_bounds(params[:southwest].split(','), params[:northeast].split(','), Time.parse(params[:start]), Time.parse(params[:end])).to_json(:methods => [:body, :approved, :conversations], :except => [:description, :created_by, :approved_by])
       end
     end
   end
