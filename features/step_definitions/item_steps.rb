@@ -27,3 +27,9 @@ Then 'I do not see the $kind titled "$title"' do |kind, title|
   assert_have_no_selector("aside li.#{kind} h2:contains(#{title})")
   assert_have_no_selector("#map *[title='#{title}']")
 end
+
+Then '"$title" has been approved' do |title|
+  selenium.wait_for_ajax :javascript_framework => :jquery
+  item = Item.find(:first, :conditions => {:title => title})
+  assert_not_nil item.approved_by
+end

@@ -27,7 +27,7 @@ Feature: News Stories
     Given a news story in Ottawa titled "Big news out of parliament"
     When I view the map
     And I zoom out
-    Then I see the news story titled "Big news out of parliament" once
+    # Then I see the news story titled "Big news out of parliament" once
     
     When I click on the news story titled "Big news out of parliament" in the list
     And I zoom in
