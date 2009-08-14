@@ -32,11 +32,9 @@ var Map = {
   fetch: function() {
     var bounds = Map.map.get_bounds();
     var timeframe = {
-      start: new Date($('#date-range').data('start') * 1000 * 24 * 60 * 60),
-      end: new Date($('#date-range').data('end') * 1000 * 24 * 60 * 60)
+      start: $('#date-range').data('start'),
+      end: $('#date-range').data('end')
     };
-    timeframe.start.setHours($('#date-range').data('startIncrement'))
-    timeframe.end.setHours($('#date-range').data('endIncrement'))
     $(document).trigger('map:change', [bounds, timeframe]);
   },
   

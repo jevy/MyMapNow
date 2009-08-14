@@ -1,18 +1,15 @@
 $(function() {
 	var date = new Date();
-	var startDate = Math.floor( date.getTime() / (1000 * 60 * 60 * 24) )-15;
+	var startDate = new Date((Math.floor(date.getTime()/(1000 * 60 * 60 * 24))-15)* 1000 * 60 * 60 * 24);
 	var start = 0;
 	var end = (start + 30) * 3;
 	
-	var months = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
 	var increments = [['Morning', 0], ['Afternoon', 12], ['Evening', 17]];
 	
 	var sliderElement = $('#date-range');
 
-	sliderElement.data('start', Math.floor(.25*(end-start)/3)+startDate)
-  .data('end', Math.floor(.75*(end-start)/3)+startDate)
-  .data('startIncrement', increments[sliderElement.data('start')%3][1])
-  .data('endIncrement', increments[sliderElement.data('end')%3][1])
+	sliderElement.data('start', dateForValue(.25*(end-start)))
+  .data('end', dateForValue(.75*(end-start)))
   .slider({
 		range: true,
 		min: start,
@@ -20,12 +17,10 @@ $(function() {
 		values: [Math.floor(.25*(end-start)), Math.floor(.75*(end-start))],
 		slide: function(event, ui) {
 			updateLabels(ui.values[0], ui.values[1]);
-		},
+		},  
 		change: function(event, ui) {
-			$(this).data('start', Math.floor(ui.values[0]/3+startDate)); // This is the epoch time of the first date
-			$(this).data('startIncrement', increments[ui.values[0]%3][1]);
-			$(this).data('end', Math.floor(ui.values[1]/3+startDate));   // This is the epoch time of the second date
-			$(this).data('endIncrement', increments[ui.values[1]%3][1]);
+			$(this).data('start', dateForValue(ui.values[0]));
+			$(this).data('end', dateForValue(ui.values[1]));
 			Map.fetch();
 		}
 	});
@@ -39,11 +34,16 @@ $(function() {
 		setTimeout( function() { $('header #label-right').css('left', $('#date-range a:last').css('left')); }, 10);
 	}
 	
-	function dateText(n) {
-		var d = new Date(Math.floor(n/3+startDate) * 24 * 60 * 60 * 1000);
-		return months[d.getMonth()] + ' ' + d.getDate() + ' '+ increments[n%3][0];
+	function dateForValue(value) {
+	  var d = new Date(Math.floor(value/3+(startDate.getTime() / (24 * 60 * 60 * 1000))) * 24 * 60 * 60 * 1000);
+	  d.setHours(increments[Math.floor(value%3)][1]);
+	  return d;
 	}
 	
+	function dateText(n) {
+		return $.fn.strftime(dateForValue(n), '%B %D '+increments[n%3][0]);
+	}
+		
 
 	$('#toggle-aside').click(function() {
 		$(document.body).toggleClass('hide-aside');
