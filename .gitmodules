@@ -31,3 +31,6 @@
 [submodule "vendor/plugins/webrat"]
 	path = vendor/plugins/webrat
 	url = git://github.com/brynary/webrat.git
+[submodule "public/javascripts/perfecttime"]
+	path = public/javascripts/perfecttime
+	url = git://github.com/collectiveidea/perfecttime.git
