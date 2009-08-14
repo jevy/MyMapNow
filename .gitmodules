@@ -21,7 +21,7 @@
 	url = git://github.com/collectiveidea/html5.git
 [submodule "vendor/plugins/mongomapper"]
 	path = vendor/plugins/mongomapper
-	url = git@github.com:jnunemaker/mongomapper.git
+	url = git://github.com/jnunemaker/mongomapper.git
 [submodule "vendor/plugins/graticule"]
 	path = vendor/plugins/graticule
 	url = git://github.com/collectiveidea/graticule.git
