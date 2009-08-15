@@ -39,12 +39,12 @@ var Map = {
   },
   
   addItem: function(item) {
-    var id = item._id;
+    var id = item.id;
     
     if(!$('aside li[data-item-id=' + id + ']')[0]) {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
     
-      var $li = $('<li class="'+item.kind+'" data-item-id="'+item._id+'"><div></div><h2>' + item.title + '</h2><p class="address">'+ (item.address || '') +'<p class="description">'+item.body+'</p><p class="thumbs"><a href="#" class="up"></a><a href="#" class="down"></a></p></li>').appendTo('aside ol');
+      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div><h2>' + item.title + '</h2><p class="address">'+ (item.address || '') +'<p class="description">'+item.body+'</p><p class="thumbs"><a href="#" class="up"></a><a href="#" class="down"></a></p></li>').appendTo('aside ol');
       if (item.conversations && item.conversations.length > 0) {
         $li.append('<dl class="conversation">');
         $.each(item.conversations, function() {
@@ -54,7 +54,7 @@ var Map = {
         $li.append('</dl>');
       }
       if (!item.approved) {
-        $li.append('<a href="/items/'+item._id+'/approve" class="approve">Approve</a>');
+        $li.append('<a href="/items/'+item.id+'/approve" class="approve">Approve</a>');
       }
       
       $li.data('marker', new google.maps.Marker({
@@ -78,7 +78,7 @@ var Map = {
   highlight: function(item) {
     Map.map.set_center(new google.maps.LatLng(item.latitude, item.longitude));
     Map.addItem(item);
-    Map.showInfoWindow(item._id);
+    Map.showInfoWindow(item.id);
   },
   
   cleanup: function() {

@@ -1,11 +1,11 @@
-$(document).bind('map:change', function(event, bounds, timeline) {
+$(document).bind('map:change', function(event, bounds, timeframe) {
   var flickrParams = {
     format: 'json',
     method: 'flickr.photos.search',
     api_key: 'f44ef3af5a0463b8ab31ce8c9dc38427',
     bbox:''+bounds.getSouthWest().lng()+','+bounds.getSouthWest().lat()+','+bounds.getNorthEast().lng()+','+bounds.getNorthEast().lat(),
-    min_taken_date: $.fn.strftime(timeline.start, '%Y-%m-%d %H:%M'),
-    max_taken_date: $.fn.strftime(timeline.end, '%Y-%m-%d %H:%M'),
+    min_taken_date: $.fn.strftime(timeframe.start, '%Y-%m-%d %H:%M'),
+    max_taken_date: $.fn.strftime(timeframe.end, '%Y-%m-%d %H:%M'),
     per_page: 20,
     extras: 'geo',
     sort: 'date-taken-desc',

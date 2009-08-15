@@ -12,4 +12,8 @@ class Conversation
   def to_json(options)
     super options.merge(:methods => :gravatar_url, :except => :email)
   end
+  
+  def to_param
+    id
+  end
 end

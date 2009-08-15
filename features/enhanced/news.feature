@@ -9,14 +9,14 @@ Feature: News Stories
     When I view the map
     Then I see the news titled "Big news out of parliament"
     
-    When I click on the news story titled "Big news out of parliament" in the list
-    Then I see the news story titled "Big news out of parliament" highlighted on the map
-    And I see the news story titled "Big news out of parliament" highlighted in the list
+    When I click on the news titled "Big news out of parliament" in the list
+    Then I see the news titled "Big news out of parliament" highlighted on the map
+    And I see the news titled "Big news out of parliament" highlighted in the list
     
-    When I click on the news story titled "Prime Minister speaks out" on the map
-    Then I see the news story titled "Prime Minister speaks out" highlighted on the map
-    And I see the news story titled "Prime Minister speaks out" highlighted in the list
-    And I see the news story titled "Big news out of parliament" is not highlighted
+    When I click on the news titled "Prime Minister speaks out" on the map
+    Then I see the news titled "Prime Minister speaks out" highlighted on the map
+    And I see the news titled "Prime Minister speaks out" highlighted in the list
+    And I see the news titled "Big news out of parliament" is not highlighted
     
   Scenario: A news story outside the current view
     Given a news story in Detroit titled "Auto Industry in Shambles"
@@ -29,11 +29,11 @@ Feature: News Stories
     And I zoom out
     # Then I see the news story titled "Big news out of parliament" once
     
-    When I click on the news story titled "Big news out of parliament" in the list
+    When I click on the news titled "Big news out of parliament" in the list
     And I zoom in
-    Then I see the news story titled "Big news out of parliament" highlighted on the map
-    And I see the news story titled "Big news out of parliament" highlighted in the list
-    And I see the news story titled "Big news out of parliament" once
+    Then I see the news titled "Big news out of parliament" highlighted on the map
+    And I see the news titled "Big news out of parliament" highlighted in the list
+    And I see the news titled "Big news out of parliament" once
     
   Scenario: Moving a story out of view
     Given a news story in Ottawa titled "Big news out of parliament"
@@ -44,8 +44,7 @@ Feature: News Stories
     Then I see the news titled "Auto Industry in Shambles"
     And I do not see the news titled "Big news out of parliament"
     
-    When I click on the news story titled "Auto Industry in Shambles" on the map
+    When I click on the news titled "Auto Industry in Shambles" on the map
     And I center the map on Ottawa
-    Then I see the news story titled "Auto Industry in Shambles" is not highlighted
-    
+    Then I see the news titled "Auto Industry in Shambles" is not highlighted
     
