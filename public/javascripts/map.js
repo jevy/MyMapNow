@@ -53,10 +53,12 @@ var Map = {
         });
         $li.append('</dl>');
       }
+      if (item.url != "") {
+        $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
+      }
       if (!item.approved) {
         $li.append('<a href="/items/'+item.id+'/approve" class="approve">Approve</a>');
       }
-      
       $li.data('marker', new google.maps.Marker({
           position: point, 
           map: Map.map, 
