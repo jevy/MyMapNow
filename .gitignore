@@ -1,4 +1,3 @@
-config/database.yml
 tmp/*
 log/*.log
 db/*.sqlite3
@@ -6,3 +5,5 @@ db/*.sqlite3
 .rake_tasks
 backups
 coverage
+*~
+
