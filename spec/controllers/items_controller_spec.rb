@@ -1,6 +1,14 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe ItemsController do
+  before(:each) do
+    @valid_attributes = {
+      :title => "Prime Minister's Residence",
+      :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
+      :latitude => 45.444363,
+      :longitude => -75.693811
+    }
+  end
 
   def mock_item(stubs={})
     @mock_item ||= mock_model(Item, stubs)
@@ -49,7 +57,7 @@ describe ItemsController do
 
       it "redirects to the created item" do
         Item.stub!(:new).and_return(mock_item(:save => true))
-        post :create, :item => {}
+        post :create, :item => @valid_attributes # FIXME: this feels like a hack; was {}
         response.should redirect_to(item_url(mock_item))
       end
     end
@@ -63,7 +71,7 @@ describe ItemsController do
 
       it "re-renders the 'new' template" do
         Item.stub!(:new).and_return(mock_item(:save => false))
-        post :create, :item => {}
+        post :create, :item => @valid_attributes # FIXME: this feels like a hack; was {}
         response.should render_template('new')
       end
     end
