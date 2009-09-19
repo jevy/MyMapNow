@@ -19,7 +19,6 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'jnunemaker-validatable', :version => '1.7.2', :lib => 'validatable', :source => 'http://gems.github.com'
   config.gem 'gravtastic', :version => '>= 2.1.0'
   
   # Only load the plugins named here, in the order given (default is alphabetical).

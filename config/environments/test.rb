@@ -25,16 +25,3 @@ config.action_mailer.delivery_method = :test
 # This is necessary if your schema can't be completely dumped by the schema dumper,
 # like if you have constraints or database-specific column types
 # config.active_record.schema_format = :sql
-
-config.gem 'fakeweb'
-config.gem 'cucumber', :version => '0.3.9',  :lib => false
-config.gem 'webrat',   :version => '0.4.4',  :lib => false
-config.gem 'Selenium', :lib => 'selenium'
-config.gem 'selenium-client', :lib => false
-
-config.with_options :source => 'http://gems.github.com' do |github|
-  github.gem 'thoughtbot-shoulda',      :version => '2.10.1', :lib => 'shoulda'
-  github.gem 'jnunemaker-matchy',       :version => '0.4.0',  :lib => 'matchy'
-  github.gem 'thoughtbot-factory_girl', :version => '1.2.1',  :lib => 'factory_girl'
-  github.gem 'bmabey-database_cleaner', :version => '0.2.2',  :lib => 'database_cleaner'
-end
