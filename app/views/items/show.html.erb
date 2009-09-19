@@ -1,0 +1,58 @@
+<p>
+  <b>Title:</b>
+  <%=h @item.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @item.description %>
+</p>
+
+<p>
+  <b>Begin at:</b>
+  <%=h @item.begin_at %>
+</p>
+
+<p>
+  <b>End at:</b>
+  <%=h @item.end_at %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @item.url %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @item.address %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%=h @item.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%=h @item.longitude %>
+</p>
+
+<p>
+  <b>Kind:</b>
+  <%=h @item.kind %>
+</p>
+
+<p>
+  <b>Created by:</b>
+  <%=h @item.created_by_id %>
+</p>
+
+<p>
+  <b>Approved by:</b>
+  <%=h @item.approved_by_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

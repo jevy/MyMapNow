@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  begin_at: 2009-09-19 17:10:16
+  end_at: 2009-09-19 17:10:16
+  url: MyString
+  address: MyString
+  latitude: 1.5
+  longitude: 1.5
+  kind: MyString
+  created_by_id: 1
+  approved_by_id: 1
+
+two:
+  title: MyString
+  description: MyText
+  begin_at: 2009-09-19 17:10:16
+  end_at: 2009-09-19 17:10:16
+  url: MyString
+  address: MyString
+  latitude: 1.5
+  longitude: 1.5
+  kind: MyString
+  created_by_id: 1
+  approved_by_id: 1
