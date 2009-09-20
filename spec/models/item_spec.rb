@@ -46,6 +46,26 @@ describe Item do
     item = Item.create(@valid_attributes.merge(:address => nil))
     item.should be_valid
   end
+
+  it "should require end time to be after the beginning time"
+end
+
+describe "Bounded item finding" do
+  before(:each) do
+    @ottawa = Item.create(:title => 'Ottawa', :latitude => 45.420833,
+                          :longitude => -75.69, :begin_at => 3.hours.from_now)
+    
+    @ottawa_old = Item.create(:title => 'Ottawa Old', :latitude => 45.420833,
+                              :longitude => -75.69, :begin_at => 10.months.ago)
+    
+    @detroit = Item.create(:title => 'Detroit', :latitude => 42.3316,
+                           :longitude => -83.0475, :begin_at => 4.hours.from_now)
+  end
+
+  it "should find ottawa in the given bounds" do
+    items = Item.find_in_bounds([45.40218646,-75.7562255],[45.439658,-75.623703], 5.days.ago, 5.days.from_now)
+    items.should include(@ottawa)
+  end
 end
 
 describe "Item Geocoding" do

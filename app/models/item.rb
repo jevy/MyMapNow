@@ -9,6 +9,10 @@ class Item < ActiveRecord::Base
 
   after_create :geocode_address
 
+  def self.find_in_bounds(southwest, northeast, begin_at, end_at)
+    find(:all, :conditions => ["latitude >= ? AND longitude >= ? AND latitude <= ? AND longitude <= ?", southwest[0], southwest[1], northeast[0], northeast[1]])
+  end
+
   def geocode_address
     return unless latitude.nil? or longitude.nil?
     location = Geocoder.locate(address)
