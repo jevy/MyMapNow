@@ -66,6 +66,15 @@ describe "Bounded item finding" do
     items = Item.find_in_bounds([45.40218646,-75.7562255],[45.439658,-75.623703], 5.days.ago, 5.days.from_now)
     items.should include(@ottawa)
   end
+
+  it "should not find detroit in the same bounds" do
+    items = Item.find_in_bounds([45.40218646,-75.7562255],[45.439658,-75.623703], 5.days.ago, 5.days.from_now)
+    items.should_not include(@detroit)
+  end
+
+  it "should not find items that are already ended"
+  it "should find items that started before the bounds, but end inside the time bounds"
+  it "should find items that both start and end outside the bounds"
 end
 
 describe "Item Geocoding" do
