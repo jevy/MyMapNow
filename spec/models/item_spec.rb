@@ -47,7 +47,11 @@ describe Item do
     item.should be_valid
   end
 
-  it "should require end time to be after the beginning time"
+  it "should require end time to be after the beginning time" do
+    item = Item.create(@valid_attributes.merge(:begin_at => 5.months.ago, :end_at => 10.months.ago))
+    item.should_not be_valid
+    item.should have(1).error_on(:end_at)
+  end
 end
 
 describe "Bounded item finding" do
