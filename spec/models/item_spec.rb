@@ -54,6 +54,43 @@ describe Item do
   end
 end
 
+describe "tagging" do
+  before(:each) do
+    @valid_attributes = {
+      :title => "Prime Minister's Residence",
+      :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
+      :latitude => 45.444363,
+      :longitude => -75.693811,
+      :address => '24 Sussex Dr., Ottawa, ON, Canada'
+    }
+
+    @item1 = Item.create(@valid_attributes)
+    @item1.tag_list = "foo, bar"
+    @item1.save
+
+    @item2 = Item.create(@valid_attributes)
+    @item2.tag_list = "bar, baz"
+    @item2.save
+  end
+
+  it "should find multiple items with a tag" do
+    Item.tagged_with('bar', :on => :tags).length.should == 2
+    Item.tagged_with('bar', :on => :tags).should include(@item1)
+    Item.tagged_with('bar', :on => :tags).should include(@item2)
+  end
+
+  it "should find one item, but not the other using tags" do
+    Item.tagged_with('foo', :on => :tags).should include(@item1)
+    Item.tagged_with('foo', :on => :tags).should_not include(@item2)
+  end
+
+  it "should find all items with intersecting tags" do
+    Item.tagged_with('foo, baz', :on => :tags).length.should == 2
+    Item.tagged_with('foo, baz', :on => :tags).should include(@item1)
+    Item.tagged_with('foo, baz', :on => :tags).should include(@item2)
+  end
+end
+
 describe "Bounded item finding" do
   before(:each) do
     @ottawa = Item.create(:title => 'Ottawa', :latitude => 45.420833,
