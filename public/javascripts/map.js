@@ -16,9 +16,9 @@ $('aside li').live('click', function(event) {
 });
 
 var Map = {
-  initialize: function(lat, lng) {
-    var lat = (lat == null) ? 45.420833 : lat;
-    var lng = (lng == null) ? -75.69 : lng;
+  initialize: function() {
+    var lat = geoip_latitude();
+    var lng = geoip_longitude();
     Map.map = new google.maps.Map($('#map')[0], {
       zoom: 13,
       center: new google.maps.LatLng(lat, lng),
