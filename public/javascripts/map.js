@@ -16,10 +16,12 @@ $('aside li').live('click', function(event) {
 });
 
 var Map = {
-  initialize: function() {
+  initialize: function(lat, lng) {
+    var lat = (lat == null) ? 45.420833 : lat;
+    var lng = (lng == null) ? -75.69 : lng;
     Map.map = new google.maps.Map($('#map')[0], {
       zoom: 13,
-      center: new google.maps.LatLng(45.420833, -75.69),
+      center: new google.maps.LatLng(lat, lng),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
