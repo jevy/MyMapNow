@@ -101,6 +101,45 @@ describe "Bounded item finding" do
     
     @detroit = Item.create(:title => 'Detroit', :latitude => 42.3316,
                            :longitude => -83.0475, :begin_at => 4.hours.from_now)
+    
+    @event1 = Item.create(:title => 'Eastern Ottawa Economic Showcase', :latitude => 45.397936,
+                          :longitude => -75.685518, :begin_at => Date.new(2009, 10, 12))
+
+    @event2 = Item.create(:title => 'Schmoozefest', :latitude => 45.395674,
+                          :longitude => -75.70637, :begin_at => Date.new(2009, 10, 19))                       
+
+    @event3 = Item.create(:title => 'Old Hollywood Charity Gala', :latitude => 45.430312,
+                          :longitude => -75.698386, :begin_at => Date.new(2009, 10, 16))
+
+    @event4 = Item.create(:title => 'Beatles Tribute 1964', :latitude => 42.3316,
+                          :longitude => -83.0475, :begin_at => Date.new(2009, 10, 15))
+
+    @event5 = Item.create(:title => 'Oktoberfest', :latitude => 45.342283,
+                          :longitude => -75.709856, :begin_at => Date.new(2009, 10, 17))
+
+    @event6 = Item.create(:title => 'Big Art in the City', :latitude => 45.418365,
+                          :longitude => -75.704319, :begin_at => Date.new(2009, 10, 18))                       
+
+    @event7 = Item.create(:title => 'A Chorus Line - Broadway Musical', :latitude => 45.423422,
+                          :longitude => -75.694797, :begin_at => Date.new(2009, 10, 19))
+
+    @event8 = Item.create(:title => 'Hike the Mackenzie King Estate', :latitude => 45.487354,
+                          :longitude => -75.842725, :begin_at => Date.new(2009, 10, 10))
+
+    @event9 = Item.create(:title => 'The Great Ottawa Halloween Party', :latitude => 45.423422,
+                          :longitude => -75.694797, :begin_at => Date.new(2009, 10, 30))
+
+    @event10 = Item.create(:title => 'Cultural Showcase', :latitude => 45.380063,
+                           :longitude => -75.693435, :begin_at => Date.new(2009, 10, 16), :end_at => Date.new(2009, 10, 17))                       
+
+    @event11 = Item.create(:title => 'Ottawa International Animation Festival', :latitude => 45.429355,
+                           :longitude => -75.684632, :begin_at => Date.new(2009, 10, 12), :end_at => Date.new(2009, 10, 16))
+
+    @event12 = Item.create(:title => 'Ottawa Blues Festival', :latitude => 45.430312,
+                           :longitude => -75.698386, :begin_at => Date.new(2009, 10, 29), :end_at => Date.new(2009, 11, 1))
+
+    @event13 = Item.create(:title => 'CKCU Ottawa Folk Festival', :latitude => 45.399761,
+                           :longitude => -75.731893, :begin_at => Date.new(2009, 10, 16), :end_at => Date.new(2009, 10, 17))
   end
 
   it "should find ottawa in the given bounds" do
