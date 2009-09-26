@@ -111,8 +111,8 @@ describe "Bounded item finding" do
     @event3 = Item.create(:title => 'Old Hollywood Charity Gala', :latitude => 45.430312,
                           :longitude => -75.698386, :begin_at => Date.new(2009, 10, 16))
 
-    @event4 = Item.create(:title => 'Beatles Tribute 1964', :latitude => 42.3316,
-                          :longitude => -83.0475, :begin_at => Date.new(2009, 10, 15))
+    @event4 = Item.create(:title => 'Beatles Tribute 1964', :latitude => 45.423494,
+                          :longitude => -75.697933, :begin_at => Date.new(2009, 10, 15))
 
     @event5 = Item.create(:title => 'Oktoberfest', :latitude => 45.342283,
                           :longitude => -75.709856, :begin_at => Date.new(2009, 10, 17))
