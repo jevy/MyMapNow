@@ -93,6 +93,3 @@ class Flixster
     string.strip
   end
 end
-
-if $0 == __FILE__
-end
