@@ -47,14 +47,6 @@ var Map = {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
     
       var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div><h2>' + item.title + '</h2><p class="address">'+ (item.address || '') +'<p class="description">'+item.body+'</p><p class="thumbs"><a href="#" class="up"></a><a href="#" class="down"></a></p></li>').appendTo('aside ol');
-      if (item.conversations && item.conversations.length > 0) {
-        $li.append('<dl class="conversation">');
-        $.each(item.conversations, function() {
-          $li.append('<dt><img src="'+this.gravatar_url+'" class="gravatar">'+this.author+'</dt>');
-          $li.append('<dd>'+this.message+'</dd>');
-        });
-        $li.append('</dl>');
-      }
       if (item.url != "") {
         $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
       }
