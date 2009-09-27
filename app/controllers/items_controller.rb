@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @items }
+      format.js   { render :json => Item.find_in_bounds(params[:southwest].split(',').map { |l| l.to_f }, params[:northeast].split(',').map { |l| l.to_f }, Time.parse(params[:start]), Time.parse(params[:end])).to_json }
     end
   end
 
