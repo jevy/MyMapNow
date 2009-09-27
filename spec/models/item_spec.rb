@@ -93,68 +93,94 @@ end
 
 describe "Bounded item finding" do
   before(:each) do
-    @ottawa = Item.create(:title => 'Ottawa', :latitude => 45.420833,
-                          :longitude => -75.69, :begin_at => 3.hours.from_now)
-    
-    @ottawa_old = Item.create(:title => 'Ottawa Old', :latitude => 45.420833,
-                              :longitude => -75.69, :begin_at => 10.months.ago)
-    
-    @detroit = Item.create(:title => 'Detroit', :latitude => 42.3316,
-                           :longitude => -83.0475, :begin_at => 4.hours.from_now)
-    
-    @event1 = Item.create(:title => 'Eastern Ottawa Economic Showcase', :latitude => 45.397936,
-                          :longitude => -75.685518, :begin_at => Date.new(2009, 10, 12))
+    @detroit = Item.create(:title => 'Detroit',
+                           :latitude => 42.3316, :longitude => -83.0475,
+                           :begin_at => Time.mktime(2009, 10, 15))
 
-    @event2 = Item.create(:title => 'Schmoozefest', :latitude => 45.395674,
-                          :longitude => -75.70637, :begin_at => Date.new(2009, 10, 19))                       
-
-    @event3 = Item.create(:title => 'Old Hollywood Charity Gala', :latitude => 45.430312,
-                          :longitude => -75.698386, :begin_at => Date.new(2009, 10, 16))
-
-    @event4 = Item.create(:title => 'Beatles Tribute 1964', :latitude => 45.423494,
-                          :longitude => -75.697933, :begin_at => Date.new(2009, 10, 15))
-
-    @event5 = Item.create(:title => 'Oktoberfest', :latitude => 45.342283,
-                          :longitude => -75.709856, :begin_at => Date.new(2009, 10, 17))
-
-    @event6 = Item.create(:title => 'Big Art in the City', :latitude => 45.418365,
-                          :longitude => -75.704319, :begin_at => Date.new(2009, 10, 18))                       
-
-    @event7 = Item.create(:title => 'A Chorus Line - Broadway Musical', :latitude => 45.423422,
-                          :longitude => -75.694797, :begin_at => Date.new(2009, 10, 19))
-
-    @event8 = Item.create(:title => 'Hike the Mackenzie King Estate', :latitude => 45.487354,
-                          :longitude => -75.842725, :begin_at => Date.new(2009, 10, 10))
-
-    @event9 = Item.create(:title => 'The Great Ottawa Halloween Party', :latitude => 45.423422,
-                          :longitude => -75.694797, :begin_at => Date.new(2009, 10, 30))
-
-    @event10 = Item.create(:title => 'Cultural Showcase', :latitude => 45.380063,
-                           :longitude => -75.693435, :begin_at => Date.new(2009, 10, 16), :end_at => Date.new(2009, 10, 17))                       
-
-    @event11 = Item.create(:title => 'Ottawa International Animation Festival', :latitude => 45.429355,
-                           :longitude => -75.684632, :begin_at => Date.new(2009, 10, 12), :end_at => Date.new(2009, 10, 16))
-
-    @event12 = Item.create(:title => 'Ottawa Blues Festival', :latitude => 45.430312,
-                           :longitude => -75.698386, :begin_at => Date.new(2009, 10, 29), :end_at => Date.new(2009, 11, 1))
-
-    @event13 = Item.create(:title => 'CKCU Ottawa Folk Festival', :latitude => 45.399761,
-                           :longitude => -75.731893, :begin_at => Date.new(2009, 10, 16), :end_at => Date.new(2009, 10, 17))
+    @ottawa_events = {
+      'economic_showcase' => Item.create(:title => 'Eastern Ottawa Economic Showcase',
+                                         :latitude => 45.397936, :longitude => -75.685518,
+                                         :begin_at => Date.new(2009, 10, 12)),
+      'schmoozefest' => Item.create(:title => 'Schmoozefest',
+                                    :latitude => 45.395674, :longitude => -75.70637,
+                                    :begin_at => Date.new(2009, 10, 19)),                       
+      'charity_gala' => Item.create(:title => 'Old Hollywood Charity Gala',
+                                    :latitude => 45.430312, :longitude => -75.698386,
+                                    :begin_at => Date.new(2009, 10, 16)),
+      'beatles_tribute' => Item.create(:title => 'Beatles Tribute 1964',
+                                       :latitude => 45.423494, :longitude => -75.697933,
+                                       :begin_at => Date.new(2009, 10, 15)),
+      'oktoberfest' => Item.create(:title => 'Oktoberfest',
+                                   :latitude => 45.342283, :longitude => -75.709856,
+                                   :begin_at => Date.new(2009, 10, 17)),
+      'big_art' => Item.create(:title => 'Big Art in the City',
+                               :latitude => 45.418365, :longitude => -75.704319,
+                               :begin_at => Date.new(2009, 10, 18)),                       
+      'chorus_line' => Item.create(:title => 'A Chorus Line - Broadway Musical',
+                                   :latitude => 45.423422, :longitude => -75.694797,
+                                   :begin_at => Date.new(2009, 10, 19)),
+      'mackenzie_king' => Item.create(:title => 'Hike the Mackenzie King Estate',
+                                      :latitude => 45.487354, :longitude => -75.842725,
+                                      :begin_at => Date.new(2009, 10, 10)),
+      'halloween_party' => Item.create(:title => 'The Great Ottawa Halloween Party',
+                                       :latitude => 45.423422, :longitude => -75.694797,
+                                       :begin_at => Date.new(2009, 10, 30)),
+      'cultural_showcase' => Item.create(:title => 'Cultural Showcase',
+                                         :latitude => 45.380063, :longitude => -75.693435,
+                                         :begin_at => Date.new(2009, 10, 16),
+                                         :end_at => Date.new(2009, 10, 17)),
+      'animation_fest' => Item.create(:title => 'Ottawa International Animation Festival',
+                                      :latitude => 45.429355, :longitude => -75.684632,
+                                      :begin_at => Date.new(2009, 10, 12),
+                                      :end_at => Date.new(2009, 10, 16)),
+      'blues_fest' => Item.create(:title => 'Ottawa Blues Festival',
+                                  :latitude => 45.430312, :longitude => -75.698386,
+                                  :begin_at => Date.new(2009, 10, 29),
+                                  :end_at => Date.new(2009, 11, 1)),
+      'folk_fest' => Item.create(:title => 'CKCU Ottawa Folk Festival',
+                                 :latitude => 45.399761, :longitude => -75.731893,
+                                 :begin_at => Date.new(2009, 10, 16),
+                                 :end_at => Date.new(2009, 10, 17))
+    }
   end
 
-  it "should find ottawa in the given bounds" do
-    items = Item.find_in_bounds([45.40218646,-75.7562255],[45.439658,-75.623703], 5.days.ago, 5.days.from_now)
-    items.should include(@ottawa)
+  it "should find every event in ottawa when searching all of October" do
+    items = Item.find_in_bounds([45.18458891027006,-76.02838289184575],
+                                [45.52139421172966,-75.437867755127],
+                                Time.mktime(2009, 10, 1), Time.mktime(2009, 11, 1))
+    items.count.should == @ottawa_events.size
+  end
+
+  it "should not find anything between the 20th and 28th" do
+    items = Item.find_in_bounds([45.18458891027006,-76.02838289184575],
+                                [45.52139421172966,-75.437867755127],
+                                Time.mktime(2009, 10, 20), Time.mktime(2009, 10, 28))
+    items.count.should == 0
+  end
+
+  it "should find items that started before the bounds, but end inside the time bounds" do
+    items = Item.find_in_bounds([45.18458891027006,-76.02838289184575],
+                                [45.52139421172966,-75.437867755127],
+                                Time.mktime(2009, 10, 17), Time.mktime(2009, 11, 1))
+    items.should include(@ottawa_events['cultural_showcase'])
+    items.should include(@ottawa_events['folk_fest'])
+  end
+
+  it "should find items that both start and end outside the bounds" do
+    items = Item.find_in_bounds([45.18458891027006,-76.02838289184575],
+                                [45.52139421172966,-75.437867755127],
+                                Time.mktime(2009, 10, 13), Time.mktime(2009, 10, 14))
+    items.should include(@ottawa_events['animation_fest'])
+    items.should_not include(@ottawa_events['economic_showcase'])
+    items.should_not include(@ottawa_events['beatles_tribute'])
   end
 
   it "should not find detroit in the same bounds" do
-    items = Item.find_in_bounds([45.40218646,-75.7562255],[45.439658,-75.623703], 5.days.ago, 5.days.from_now)
+    items = Item.find_in_bounds([45.18458891027006,-76.02838289184575],
+                                [45.52139421172966,-75.437867755127],
+                                Time.mktime(2009, 10, 1), Time.mktime(2009, 11, 1))
     items.should_not include(@detroit)
   end
-
-  it "should not find items that are already ended"
-  it "should find items that started before the bounds, but end inside the time bounds"
-  it "should find items that both start and end outside the bounds"
 end
 
 describe "Item Geocoding" do
