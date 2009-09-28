@@ -2,18 +2,16 @@ require 'hpricot'
 require 'open-uri'
 
 class Flixster
-  def initialize(g)
-    @geocoder = g
-  end
-
   def scrapeFromAllTheatreAtStateURL(url)
     doc = Hpricot(open(url))
-    pageLinks = getPageLinks (doc, url)
+    pageLinks = getPageLinks(doc, url)
 
     if pageLinks.nil?
+      puts url
       scrapeTheatreListingPage(url)
     else
       pageLinks.each do |pageLink|
+        puts pageLink
         scrapeTheatreListingPage(pageLink)
       end
     end
@@ -22,23 +20,22 @@ class Flixster
 
   def scrapeTheatreListingPage(url)
     doc = Hpricot(open(url))
-    theaterLinks = getTheaterLinks (doc, url)
+    theaterLinks = getTheaterLinks(doc, url)
 
     theaterLinks.each { |url| scrapeTheatre(url, Time.now) }
   end
 
   # Designed for a single theatre's page
-  def scrapeTheatre(theatreUrl,date)
+  def scrapeTheatrePage(theatreUrl, date)
 
-    doc = open(generateURL(theatreUrl, date)) { |f| Hpricot(f) }
+    #doc = open(generateURL(theatreUrl, date)) { |f| Hpricot(f) }
+    doc = Hpricot open theatreUrl
     name = doc.at("//input[@name='name']")['value']
     print "Theatre #{name}:"
     address = doc.at("//input[@name='address']")['value']
     city = doc.at("//input[@name='city']")['value']
     region = doc.at("//input[@name='state']")['value']
     fullAddress = address + ", " + city + ", " + region
-
-    location = @geocoder.locate fullAddress
 
     # The movies and times alternate between two seperate, but sequential divs
     # Create two arrays, then match them up
@@ -56,8 +53,6 @@ class Flixster
         movie.description = "Insert movie description here"
         movie.begin_at = convertTimeStringToDate(date, time).to_s
         movie.address = fullAddress
-        movie.latitude = location.latitude
-        movie.longitude = location.longitude
         movie.kind = 'event'
         movie.save
       end
