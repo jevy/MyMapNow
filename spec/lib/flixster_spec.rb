@@ -22,6 +22,7 @@ describe Flixster do
   it "should parse a big movie theatre page and extract movies" do
     #page = `cat spec/lib/testData/amc-kanata-24-html`
     #FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/amc-kanata-24", :response => page)
+    item = mock_model(Item)
     Item.should_receive(:save).with(:title       => @movie_at_amc_kanata[:title],
                                       :begin_at    => @movie_at_amc_kanata[:begin_at],
                                       :description => @movie_at_amc_kanata[:description],
