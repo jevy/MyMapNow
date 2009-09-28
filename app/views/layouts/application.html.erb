@@ -6,38 +6,17 @@
     <%- if protect_against_forgery? -%>
       <meta name="authenticity-token" id="authenticity-token" content="<%= form_authenticity_token %>">
     <%- end -%>
-    <%= stylesheet_link_tag 'dialog/jquery-ui-1.7.2.custom.css', 'master', :cache => true %>
     <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script src="http://j.maxmind.com/app/geoip.js"></script>
-    <%= javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min', 'perfecttime/PerfectTime', 'application', 'items', 'map', 'flickr', 'jquery.form', :cache => true %>
+    <%= stylesheet_link_tag 'dialog/jquery-ui-1.7.2.custom.css', :cache => true %>
+    <%= javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min', 'perfecttime/PerfectTime', 'items', 'map', 'jquery.form', :cache => true %>
   </head>
   <body>
-    <header>
-      <h1>MyMapNow</h1>
-      <p><input type="text" id="q" name="q" value=""></p>
-      <h5>during</h5>
-      <div id="date-range">
-        <div id="label-left"><span></span></div>
-        <div id="label-right"><span></span></div>
-      </div>
-      <p><button id="search">Search</button></p>
-    </header>
-    <section>
-      <%= yield %>
-    </section>
-    <div id="toggle-aside"></div>
-    <aside>
-      <h1>Event Details</h1>
-      <ol>
-      </ol>
-    </aside>
-    <footer>
-      <p class="copyright">Copyright © 2009 MyMapNow - All Rights Reserved</p>
-      <p class="links"><%= link_to 'Submit News/Events', new_item_path, :id => 'add_new_item' %>   <a href="#">About MyMapNow</a>    <a href="#">Privacy Policy</a>   <a href="#">Terms and Conditions</a></p>
-    </footer>
+	<input id="location-search" value="" />
+	<div id="map" class="map" style="width: 1000px; height: 800px;"></div>
   </body>
 </html>
 
 <script>
-  $("#q").val(geoip_city() + ", " + geoip_region());
+  $("#location-search").val(geoip_city() + ", " + geoip_region());
 </script>
