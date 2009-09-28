@@ -1,0 +1,729 @@
+HTTP/1.0 200 OK
+Date: Mon, 28 Sep 2009 21:32:54 GMT
+Server: Apache
+Expires: Sat, 6 May 1995 12:00:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Set-Cookie: ServerID=1169; Path=/
+Set-Cookie: JSESSIONID=93CF66276E2F38D1FE5759E8A588F533.localhost; Path=/
+Content-Language: en
+Vary: User-Agent,Accept-Encoding
+Connection: close
+Content-Type: text/html;charset=ISO-8859-1
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+  <head>
+    
+      
+      
+      
+      
+        
+      
+      
+      
+    
+
+
+
+
+<title>Browse Theaters Index</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+
+
+
+
+
+
+<meta name="robots" content="noarchive,noindex,follow" />
+
+
+
+
+
+<meta name="description" content="The central location for all movie theaters"/>
+
+
+
+
+
+
+
+
+	<script>
+		if(window.location.hash.indexOf("em.log") != -1) { window.location = "/account/auto-login?" + window.location.hash.replace("#","").replace(/!/g,"&").replace(/:/g,"=") + "&redirectUrl=" + window.location.pathname; }
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+			
+			<link href="http://static.flixstercdn.com/static/styles/global.css?version=20090925c" type="text/css" rel="stylesheet"/>
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+			
+			<link href="http://static.flixstercdn.com/static/styles/pages.sitemap.css?version=20090925c" type="text/css" rel="stylesheet"/>
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+		<script type="text/javascript" src="http://static.flixstercdn.com/assets/v/20090925c/scripts?f=prototype.6.js&f=scriptaculous.8.js&f=firebugx.js&f=global.js&f=apis.js&f=balloon.js&f=talk.js&f=search.js&f=widgets.captcha.js&f=tracking.flixster.js" charset="utf-8"></script>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+	
+
+    
+  </head>
+  <body>
+    
+
+<div id="pageHeader">
+
+	<div class="brand">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+<a href="http://www.flixster.com"  rel="nofollow">
+	Flixster
+</a></div>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form name="searchForm" class="search" id="searchForm" component="SearchForm" mainView="MultiSearchView" action="/search" method="get">
+	<div class="clearfix">
+		<input id="globalSearchField" class="text" style="margin: 6px -7px 0 14px;border:1px solid #2b84cc;padding:4px;-moz-border-radius-bottomleft:4px;-moz-border-radius-bottomright:4px;-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;" type="text" id="q" name="q"  autocomplete=off value="Movies, Actors, Directors..." default="Movies, Actors, Directors..." component="SearchField" />
+		<input type="submit" onclick="if($('globalSearchField').value == 'Movies, Actors, Directors...') { $('searchField').focus(); return false; }"  class="button" value="" title="Search" />
+	</div>
+</form>
+	
+</div>
+
+
+	
+
+
+
+<!--[if lt IE 7]> 
+<style type="text/css">
+#pageNavTabs li.hover .menuBridge { display:none; }
+#pageFooter .boxtail { background:none; }
+#pageNavTabs li li, #pageNavTabs li.selected li { height:1em; }
+#pageNavTabs li li a, #pageNavTabs li.selected li a { display: inline-block; width:100%; } /*fixes ie white-space list bug*/
+</style>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="pageTop"><p></p></div>
+
+
+
+    
+	
+    
+    <div id="pageBody">
+    	<div id="theaterList">
+    	  <h2>Theaters in Nova Scotia, CA</h2>
+    	  
+    	  
+    	  
+		  
+		  
+		  <div class="pagination" >
+		  
+		  </div>
+    	  
+	  	  <ol>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-paramount-cinemas" >Empire Theatres - Paramount Cinemas</a></h3>
+						<div class="address"><i>47 Church Street<br/> Amherst NS B4H 3Z5<br/>(902)667-7791</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-antigonish" >Empire Theatres - Antigonish</a></h3>
+						<div class="address"><i>291 Main Street<br/> Antigonish NS B2G 2C3<br/>(902)863-4646</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/322227735" >Empire Theatres - Bedford</a></h3>
+						<div class="address"><i>961 Bedford Highway<br/> Bedford NS B4A 1A9<br/>(902)835-9500</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-studio-7-bridgewater" >Empire Studio 7 - Bridgewater</a></h3>
+						<div class="address"><i>349 Lahave Street<br/> Bridgewater NS B4V 2T6<br/>(902)527-4020</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-dartmouth" >Empire Theatres - Dartmouth</a></h3>
+						<div class="address"><i>650 Portland Street<br/> Dartmouth NS B2W 6A3<br/>(902)434-4200</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/322227737" >Empire Theatres - Empire 5, Penhorn Mall</a></h3>
+						<div class="address"><i>535 Portland Street<br/> Dartmouth NS B2Y 4B1<br/>(902)463-2598</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-dartmouth-crossing" >Empire Theatres - Dartmouth Crossing</a></h3>
+						<div class="address"><i>145 Shubie Drive<br/> Dartmouth NS B3B 0C3<br/>(902)422-2022</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-bayers-lake" >Empire Theatres - Bayers Lake</a></h3>
+						<div class="address"><i>190 Chain Lake Drive<br/> Halifax NS B3S 1C5<br/>(902)876-4800</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-empire-8-park-lane" >Empire Theatres - Empire 8, Park Lane</a></h3>
+						<div class="address"><i>5657 Spring Garden Road<br/> Halifax NS B3J 3R4<br/>(902)423-4860</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-imax" >Empire Theatres - IMAX</a></h3>
+						<div class="address"><i>190 Chain Lake Drive<br/> Halifax NS B3S 1C5<br/>(902)876-4800</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-oxford-theatre" >Empire Theatres - Oxford Theatre</a></h3>
+						<div class="address"><i>6408 Quinpool Road<br/> Halifax NS B3L 1A8<br/>(902)423-7488</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-studio-7-lower-sackville" >Empire Studio 7 - Lower Sackville</a></h3>
+						<div class="address"><i>760 Sackville Drive<br/> Lower Sackville NS B4E 1R7<br/>(902)869-2022</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-drive-in---new-glasgow" >Empire Drive-In - New Glasgow</a></h3>
+						<div class="address"><i>Westville Highway<br/> New Glasgow NS B2H 3S2<br/>(902)396-5175</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-studio-7" >Empire Studio 7</a></h3>
+						<div class="address"><i>610 East River Road<br/> New Glasgow NS B2H 3S2<br/>(902)928-0550</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-studio-7-cinemas" >Empire Theatres - Studio 7 Cinemas</a></h3>
+						<div class="address"><i>610 East River Road<br/> New Glasgow NS B2H 3S2<br/>(902)928-3456</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-new-minas" >Empire Theatres - New Minas</a></h3>
+						<div class="address"><i>8944 Commercial Street<br/> New Minas NS B4N 3C9<br/>(902)681-8080</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-sydney" >Empire Theatres - Sydney</a></h3>
+						<div class="address"><i>Prince Street Plaza<br/> Sydney NS B1P 5K6<br/>(902)539-9050</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/cape-brenton-drivein-theatre" >Cape Brenton Drive-In Theatre</a></h3>
+						<div class="address"><i>Grand Lake Road<br/> Sydney NS B1P 6R1<br/>(902)539-9922</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres---studio-7" >Empire Theatres - Studio 7</a></h3>
+						<div class="address"><i>20 Treaty Trail<br/> Truro NS B2N 1G2<br/>(902)895-8020</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/acadia-cinema-cooperative" >Acadia Cinema Cooperative</a></h3>
+						<div class="address"><i>450 Main St<br/> Wolfville NS B4P 1E2<br/>(902)542-3344</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-yarmouth" >Empire Theatres - Yarmouth</a></h3>
+						<div class="address"><i>136 Starrs Road<br/> Yarmouth NS B5A 4E5<br/>(902)742-7819</i></div>				
+					</div>
+		        </li>
+			  
+		  </ol>
+		  
+		  <div class="pagination" >
+		  
+		  </div>
+		  
+      </div> 
+    </div>
+    
+    
+
+    
+      
+    
+
+
+
+<div id="pageFooter">
+	<p class="pageCopyright">Copyright &copy; 2009 Flixster, All Rights Reserved</p>
+	<div class="boxtail"></div>
+	<div id="server" style="color:#fff;text-align:center;">web69.flixster.com</div>
+</div>
+
+
+
+<script type="text/javascript">
+new Component.Binder( document );
+</script>
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+	
+	Tracker.trackSegment("Anonymous");
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		
+		
+		
+	
+		
+
+		
+
+		
+			
+		
+		
+		Tracker.tag('SitemapAnon');
+
+	
+	
+	
+
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,1811 @@
+HTTP/1.0 200 OK
+Date: Mon, 28 Sep 2009 21:10:05 GMT
+Server: Apache
+Expires: Sat, 6 May 1995 12:00:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Set-Cookie: ServerID=1192; Path=/
+Set-Cookie: JSESSIONID=BAFA82A466CBAA8F87242F9C6FD2AF80.localhost; Path=/
+Content-Language: en
+Vary: User-Agent,Accept-Encoding
+Connection: close
+Content-Type: text/html;charset=ISO-8859-1
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+  <head>
+    
+      
+      
+      
+      
+        
+      
+      
+      
+    
+
+
+
+
+<title>Browse Theaters Index</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+
+
+
+
+
+
+<meta name="robots" content="noarchive,noindex,follow" />
+
+
+
+
+
+<meta name="description" content="The central location for all movie theaters"/>
+
+
+
+
+
+
+
+
+	<script>
+		if(window.location.hash.indexOf("em.log") != -1) { window.location = "/account/auto-login?" + window.location.hash.replace("#","").replace(/!/g,"&").replace(/:/g,"=") + "&redirectUrl=" + window.location.pathname; }
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+			
+			<link href="http://static.flixstercdn.com/static/styles/global.css?version=20090925c" type="text/css" rel="stylesheet"/>
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+			
+			<link href="http://static.flixstercdn.com/static/styles/pages.sitemap.css?version=20090925c" type="text/css" rel="stylesheet"/>
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+		<script type="text/javascript" src="http://static.flixstercdn.com/assets/v/20090925c/scripts?f=prototype.6.js&f=scriptaculous.8.js&f=firebugx.js&f=global.js&f=apis.js&f=balloon.js&f=talk.js&f=search.js&f=widgets.captcha.js&f=tracking.flixster.js" charset="utf-8"></script>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+	
+
+    
+  </head>
+  <body>
+    
+
+<div id="pageHeader">
+
+	<div class="brand">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+<a href="http://www.flixster.com"  rel="nofollow">
+	Flixster
+</a></div>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form name="searchForm" class="search" id="searchForm" component="SearchForm" mainView="MultiSearchView" action="/search" method="get">
+	<div class="clearfix">
+		<input id="globalSearchField" class="text" style="margin: 6px -7px 0 14px;border:1px solid #2b84cc;padding:4px;-moz-border-radius-bottomleft:4px;-moz-border-radius-bottomright:4px;-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;" type="text" id="q" name="q"  autocomplete=off value="Movies, Actors, Directors..." default="Movies, Actors, Directors..." component="SearchField" />
+		<input type="submit" onclick="if($('globalSearchField').value == 'Movies, Actors, Directors...') { $('searchField').focus(); return false; }"  class="button" value="" title="Search" />
+	</div>
+</form>
+	
+</div>
+
+
+	
+
+
+
+<!--[if lt IE 7]> 
+<style type="text/css">
+#pageNavTabs li.hover .menuBridge { display:none; }
+#pageFooter .boxtail { background:none; }
+#pageNavTabs li li, #pageNavTabs li.selected li { height:1em; }
+#pageNavTabs li li a, #pageNavTabs li.selected li a { display: inline-block; width:100%; } /*fixes ie white-space list bug*/
+</style>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="pageTop"><p></p></div>
+
+
+
+    
+	
+    
+    <div id="pageBody">
+    	<div id="theaterList">
+    	  <h2>Theaters in Ontario, CA</h2>
+    	  
+    	  
+    	  
+		  
+		  
+		  <div class="pagination" >
+		  
+			
+			
+			
+				<a class="selected" href="/sitemap/theaters/CA/ON">1</a> |
+			
+				<a  href="/sitemap/theaters/CA/ON?page=2">2</a> |
+			
+				<a  href="/sitemap/theaters/CA/ON?page=3">3</a>
+			
+		  
+		  </div>
+    	  
+	  	  <ol>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/woodside-cinemas" >Woodside Cinemas</a></h3>
+						<div class="address"><i>1571 Sandhurst Circle<br/> Agincourt ON M1V 1V2<br/>(416)299-3456</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-ajax" >CO Ajax</a></h3>
+						<div class="address"><i>248 Kingston Rd. E<br/> Ajax ON L1S 4S7<br/>(905)426-7775</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/circle-theatre---alliston" >Circle Theatre - Alliston</a></h3>
+						<div class="address"><i>19 Victoria Street East<br/> Alliston ON L9R 1T3<br/>(705)435-7631</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/famous-players-silvercity-ancaster" >Famous Players SilverCity - Ancaster</a></h3>
+						<div class="address"><i>771 Golf Links Road<br/> Ancaster ON L9G 3K9<br/>(905)304-5888</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/obrien-theatre-arnprior" >O'Brien Theatre - Arnprior</a></h3>
+						<div class="address"><i>147 John St. N<br/> Arnprior ON K7S 2N8<br/>(613)623-4007</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-aurora-cinemas" >CO Aurora Cinemas</a></h3>
+						<div class="address"><i>15460 Bayview Avenue<br/> Aurora ON L4G 7J1<br/>(905)841-1789</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-barrhaven-cinemas-cineplex-odeon" >CO Barrhaven Cinemas Cineplex Odeon</a></h3>
+						<div class="address"><i>131 Riocan Drive<br/> Barrhaven ON K2J 5G5<br/>(613)825-2463</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/bayfield-7-cinemas" >Bayfield 7 Cinemas</a></h3>
+						<div class="address"><i>320 Bayfield Street<br/> Barrie ON L4M 3C1<br/>(705)726-3456</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/barrie-triple-drive-in" >Barrie Triple Drive In</a></h3>
+						<div class="address"><i>Highway 11 North<br/> Barrie ON L4M 3C1<br/>(705)487-2212</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/galaxy-cinemas-barrie" >Galaxy Cinemas @ Barrie</a></h3>
+						<div class="address"><i>72 Commerce Park Drive<br/> Barrie ON L4N 8W8<br/>(705)728-1171</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/322228477" >Stinson Imperial Cinema 8</a></h3>
+						<div class="address"><i>55 Dunlop Street West<br/> Barrie ON L4N 1A3<br/>(705)728-3440</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/famous-players-belleville-8" >Famous Players Belleville 8</a></h3>
+						<div class="address"><i>160 Bell Blvd<br/> Belleville ON K8P 3E1<br/>(613)969-7080</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/borden-community-terra-theatre" >Borden Community - Terra Theatre</a></h3>
+						<div class="address"><i>CFB Borden<br/> Borden ON L0M 1C0<br/>(705)424-5096 3801</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-clarington-place" >CO Clarington Place</a></h3>
+						<div class="address"><i>111 Clarington Blvd.<br/> Bowmanville ON L1C 4Z3<br/>(905)697-0611</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/norwood-cinema-3" >Norwood Cinema 3</a></h3>
+						<div class="address"><i>106 Manitoba Street<br/> Bracebridge ON P1L 1T5<br/>(705)645-2333</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-orion-gate-grande" >CO Orion Gate Grande</a></h3>
+						<div class="address"><i>20 Biscayne Cres.<br/> Brampton ON L6W 4S1<br/>(905)455-1778</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/322228401" >Famous Players Gateway 6 - Brampton</a></h3>
+						<div class="address"><i>5 Gateway Boulevard<br/> Brampton ON L6T 4X2<br/>(416)646-0444</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/famous-players-silvercity-brampton" >Famous Players SilverCity - Brampton</a></h3>
+						<div class="address"><i>Highway 410 at Bovaird Drive<br/> Brampton ON L6Z 2S8<br/>(905)789-6797</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/galaxy-brantford" >Galaxy Brantford</a></h3>
+						<div class="address"><i>300 King George Road<br/> Brantford ON N3R 5L7<br/>(519)759-7011</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/322228467" >Rainbow Cinemas Market Square- Brantford</a></h3>
+						<div class="address"><i>1 Market Street<br/> Brantford ON N3T 6C8<br/>(519)720-9711</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/galaxy-cinemas-brockville" >Galaxy Cinemas @ Brockville</a></h3>
+						<div class="address"><i>2399 Parkedale Avenue<br/> Brockville ON K6V 5T7<br/>(613)342-1400</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/322228389" >Empire Theatres - Showcase 6</a></h3>
+						<div class="address"><i>3325 Harvester Road<br/> Burlington ON L7N 3N2<br/>(905)637-5678</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/encore-upper-canada-place" >Encore Upper Canada Place</a></h3>
+						<div class="address"><i>460 Brant Street<br/> Burlington ON L7R 4B6<br/>(905)681-FILM</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/famous-players-silvercity-burlington" >Famous Players SilverCity - Burlington</a></h3>
+						<div class="address"><i>1250 Brant Street<br/> Burlington ON L7R 1G6<br/>(905)319-8677</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-empire-7-bolton" >Empire Theatres - Empire 7 Bolton</a></h3>
+						<div class="address"><i>194 McEwan Drive East<br/> Caledon ON L7E 2Z7<br/>(905)857-2646</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/galaxy-cinemas-cambridge-centre" >Galaxy Cinemas @ Cambridge Centre</a></h3>
+						<div class="address"><i>355 Hespeler Road<br/> Cambridge ON N1R 6B3<br/>(519)740-3456</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/carleton-place-cinemas" >Carleton Place Cinemas</a></h3>
+						<div class="address"><i>17 Albert Street<br/> Carleton Place ON K7C 1P3<br/>(613)257-8715</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/stinson-chatham-cinema-6" >Stinson Chatham Cinema 6</a></h3>
+						<div class="address"><i>27 Adelaide Street South<br/> Chatham ON N7M 4K2<br/>(519)351-8221</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/otg-northumberland-mall-cinemas" >OTG - Northumberland Mall Cinemas</a></h3>
+						<div class="address"><i>1111 Elgin Street West<br/> Cobourg ON K9A 5H7<br/>(905)373-4218</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/322228455" >OTG - Northumberland Theatres</a></h3>
+						<div class="address"><i>111 Elgin Street West<br/> Cobourg ON K9A 5H7<br/>(905)373-4218</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/galaxy-cinemas-collingwood" >Galaxy Cinemas Collingwood</a></h3>
+						<div class="address"><i>6 Mountain Road<br/> Collingwood ON L9Y 4S8<br/>(705)443-8478</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/322228476" >Stinson Collingwood Cinema 4</a></h3>
+						<div class="address"><i>40 Huron Street<br/> Collingwood ON L9Y 4R3<br/>(705)444-5800</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/amc-interchange-30" >AMC Interchange 30</a></h3>
+						<div class="address"><i>30 Interchange Way<br/> Concord ON L4K 5C3<br/>(416)335-5323</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/galaxy-cinemas-cornwall" >Galaxy Cinemas @ Cornwall</a></h3>
+						<div class="address"><i>1325 Second St. E. Cornwall<br/> Cornwall ON K6H 2B6<br/>(613)933-7124</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/port-theatre" >Port Theatre</a></h3>
+						<div class="address"><i>132 Montreal Rd<br/> Cornwall ON K6H 1B3<br/>(613)933-4547</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/famous-players-silvercity-newmarket" >Famous Players SilverCity - Newmarket</a></h3>
+						<div class="address"><i>18151 Yonge Street<br/> East Gwillimbury ON L3Y 4V8<br/>(905)953-2792</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/354547746" >Lake Theatre - Elliot Lake</a></h3>
+						<div class="address"><i>16 Elizabeth Walk<br/> Elliot Lake ON P5A 1Z3<br/>(705)848-3003</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/elmvale-drive-in" >Elmvale Drive-In</a></h3>
+						<div class="address"><i>Simcoe Road 92<br/> Elmvale ON L0L 1P0<br/>(705)322-2890</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/gorge-cinema-elora" >Gorge Cinema Elora</a></h3>
+						<div class="address"><i>43 Mill St. West<br/> Elora ON N1G 2X6<br/>(519)846-0191</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/erin-cinema" >Erin Cinema</a></h3>
+						<div class="address"><i>14 Boland Drive<br/> Erin ON N0B 1T0<br/>(519)833-2114 31</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/albion-cinemas" >Albion Cinemas</a></h3>
+						<div class="address"><i>1530 Albion Road<br/> Etobicoke ON M9V 1B4<br/>(416)742-3456</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-queensway" >CO Queensway</a></h3>
+						<div class="address"><i>1025 The Queensway<br/> Etobicoke ON M9V 1B4<br/>(416)503-0424</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/canview-drive-in" >Can-View Drive In</a></h3>
+						<div class="address"><i>Highway 20 & Kottmeleier Road<br/> Fonthill ON L0S 1E0<br/>(905)892-9929</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/boulevard-cinema-gananoque" >Boulevard Cinema - Gananoque</a></h3>
+						<div class="address"><i>175 Saint Lawrence Street<br/> Gananoque ON K7R 3Z8<br/>(613)382-7266</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/326248928" >OTG - Georgetown Cinemas</a></h3>
+						<div class="address"><i>235 Guelph Street<br/> Georgetown ON L7G 4A8<br/>(905)873-1999</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/famous-players-silvercity-gloucester" >Famous Players SilverCity - Gloucester</a></h3>
+						<div class="address"><i>2385 City Park Drive<br/> Gloucester ON K1J 1G1<br/>(613)688-8800</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/park-theatre-goderich" >Park Theatre - Goderich</a></h3>
+						<div class="address"><i>30 The Square<br/> Goderich ON N7A 1M4<br/>(519)524-7811</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/starlite-drive-in-grand-bend" >Starlite Drive-In Grand Bend</a></h3>
+						<div class="address"><i>36752 Crediton Road<br/> Grand Bend ON N0M 1T0<br/>(519)238-8344</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/muskoka-drive-in" >Muskoka Drive-In</a></h3>
+						<div class="address"><i>1001 Theatre Road<br/> Gravenhurst ON P1P 1M2<br/>(705)644-5028</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/bookshelf" >Bookshelf</a></h3>
+						<div class="address"><i>41 Quebec St<br/> Guelph ON N1G 2X6<br/>(519)821-3311</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/galaxy-cinemas-guelph" >Galaxy Cinemas @ Guelph</a></h3>
+						<div class="address"><i>485 Woodlawn Road West<br/> Guelph ON N1K 1E9<br/>(519)763-3935</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/mustang-drivein-guelph" >Mustang Drive-In Guelph</a></h3>
+						<div class="address"><i>Jones Baseline Rd.<br/> Guelph ON N1G 2X6<br/>(519)824-5431</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/322228368" >CO Upper James Cinemas</a></h3>
+						<div class="address"><i>1405 Upper James Street<br/> Hamilton ON L9B 1K3<br/>(905)318-8191</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-jackson-square-6-cinemas" >Empire Theatres - Jackson Square 6 Cinemas</a></h3>
+						<div class="address"><i>2 King Street West<br/> Hamilton ON L8P 1A1<br/>(905)526-8131</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/movie-palace-the" >Movie Palace, The</a></h3>
+						<div class="address"><i>526 Concession Street<br/> Hamilton ON L8V 1A6<br/>(905)383-2641</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/otg-westdale-theatre" >OTG - Westdale Theatre</a></h3>
+						<div class="address"><i>1014 King Street West<br/> Hamilton ON L8S 1L4<br/>(905)522-7173</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/hanover-drivein" >Hanover Drive-In</a></h3>
+						<div class="address"><i>Grey County Road #28<br/> Hanover ON N4N 1P5<br/>(519)364-2066</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/paramount-theater" >Paramount Theater</a></h3>
+						<div class="address"><i>206 10th Street<br/> Hanover ON N4N 1P5<br/>(519)364-2066</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/capitol-theatre---huntsville" >Capitol Theatre - Huntsville</a></h3>
+						<div class="address"><i>8 Main Street West<br/> Huntsville ON P1H 2E1<br/>(705)789-2171</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/amc-kanata-24" >AMC Kanata 24</a></h3>
+						<div class="address"><i>801 Kanata Avenue<br/> Kanata ON K2T 1E7<br/>(613)599-1200</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/century-cinema-kenora" >Century Cinema - Kenora</a></h3>
+						<div class="address"><i>330 Second St S<br/> Kenora ON P9N 1G5<br/>(807)468-7900</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/gem-theatre-keswick" >Gem Theatre</a></h3>
+						<div class="address"><i>11 Church Street<br/> Keswick ON L4P 1J4<br/>(905)476-3456</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/aztec-theatre---kincardine" >Aztec Theatre - Kincardine</a></h3>
+						<div class="address"><i>877 Queen Street<br/> Kincardine ON N2Z 2Y2<br/>(519)396-3250</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/asus-movie-theatre" >ASUS Movie Theatre</a></h3>
+						<div class="address"><i>Queen's University<br/> Kingston ON K7L 3P4<br/>(613)533-6278</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/kingston-drive-in" >Kingston Family Fun Drive In</a></h3>
+						<div class="address"><i>1533 Mcadoos Ln.<br/> Kingston ON K7L 4V4<br/>(613)530-2707</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-gardiners-road" >CO Gardiners Road</a></h3>
+						<div class="address"><i>636 Gardiners Road<br/> Kingston ON K7M 3X9<br/>(613)634-4197</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-capitol-7-cinemas" >Empire Theatres - Capitol 7 Cinemas</a></h3>
+						<div class="address"><i>213-223 Princess Street<br/> Kingston ON K7L 1B3<br/>(613)546-5395</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/screening-room" >Screening Room</a></h3>
+						<div class="address"><i>120 Princess Street<br/> Kingston ON K7L 5M6<br/>(613)542-6080</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/highlands-cinemas" >Highlands Cinemas</a></h3>
+						<div class="address"><i>Hwy 121<br/> Kinmount ON K0M 2A0<br/>(705)488-2107</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/lasalle-theatre-kirkland-lake" >Lasalle Theatre - Kirkland Lake</a></h3>
+						<div class="address"><i>100 Government Way<br/> Kirkland Lake ON P2N 2E4<br/>(705)567-7333</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-fairway-centre-cinemas" >CO Fairway Centre Cinemas</a></h3>
+						<div class="address"><i>500 Fairway Road South<br/> Kitchener ON N2C 1X3<br/>(519)893-3456</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-empire-studio-12-gateway-park" >Empire Theatres - Empire Studio 12 Gateway Park</a></h3>
+						<div class="address"><i>135 Gateway Park Drive<br/> Kitchener ON N2P 2J4<br/>(519)650-0071</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/frederick-twin-cinemas" >Frederick Twin Cinemas</a></h3>
+						<div class="address"><i>385 Frederick Street<br/> Kitchener ON N2C 1X3<br/>(519)896-3500</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/lakeshore-cinemas" >Lakeshore Cinemas</a></h3>
+						<div class="address"><i>164 Lakeshore Drive<br/> Lakeshore ON N9K 1G5<br/>(519)979-2400</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/star-theatres-leamington" >Star Theatres Leamington</a></h3>
+						<div class="address"><i>84 Talbot Street East<br/> Leamington ON N8H 1L3<br/>(519)322-2200</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/lindsay-twin-drivein-theatre" >Lindsay Twin Drive-In Theatre</a></h3>
+						<div class="address"><i>229 Pigeon Road<br/> Lindsay ON K9V 4R7<br/>(705)340-6666</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/otg-century" >OTG - Century</a></h3>
+						<div class="address"><i>141 Kent Street<br/> Lindsay ON K9V 2Y5<br/>(705)324-5500</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/322228373" >Capitol Theater</a></h3>
+						<div class="address"><i>120 Wallace Avenue N.<br/> Listowel ON N4W 1K7<br/>(519)291-3070</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/322228361" >CO Huron Market Place</a></h3>
+						<div class="address"><i>1251 Huron Street<br/> London ON N5Y 4V1<br/>(519)453-4673</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-westmount-6-cinemas" >CO Westmount 6 Cinemas</a></h3>
+						<div class="address"><i>785 Wonderland Road<br/> London ON N6K 1M6<br/>(519)474-2257</i></div>				
+					</div>
+		        </li>
+			  
+		  </ol>
+		  
+		  <div class="pagination" >
+		  
+			
+			
+			
+				<a class="selected" href="/sitemap/theaters/CA/ON">1</a> |
+			
+				<a  href="/sitemap/theaters/CA/ON?page=2">2</a> |
+			
+				<a  href="/sitemap/theaters/CA/ON?page=3">3</a>
+			
+		  
+		  </div>
+		  
+      </div> 
+    </div>
+    
+    
+
+    
+      
+    
+
+
+
+<div id="pageFooter">
+	<p class="pageCopyright">Copyright &copy; 2009 Flixster, All Rights Reserved</p>
+	<div class="boxtail"></div>
+	<div id="server" style="color:#fff;text-align:center;">web92.flixster.com</div>
+</div>
+
+
+
+<script type="text/javascript">
+new Component.Binder( document );
+</script>
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+	
+	Tracker.trackSegment("Anonymous");
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		
+		
+		
+	
+		
+
+		
+
+		
+			
+		
+		
+		Tracker.tag('SitemapAnon');
+
+	
+	
+	
+
+</script>
+
+  </body>
+</html>

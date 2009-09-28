@@ -1,0 +1,4719 @@
+HTTP/1.0 200 OK
+Date: Mon, 28 Sep 2009 21:55:41 GMT
+Server: Apache
+Expires: Sat, 6 May 1995 12:00:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Set-Cookie: ServerID=1160; Path=/
+Set-Cookie: JSESSIONID=6E51FFEBBEC4A89BFDC5670475D13733.localhost; Path=/
+Content-Language: en
+Vary: User-Agent,Accept-Encoding
+Connection: close
+Content-Type: text/html;charset=ISO-8859-1
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html> 
+<head>
+
+	
+
+		
+		
+		
+		
+		
+		
+		
+
+		
+		
+		
+			
+		
+		
+			
+			
+		
+
+	
+
+
+
+
+<title>AMC Kanata 24 - Kanata - Movie Times &amp; Tickets</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Movies, showtimes, movie times, directions &amp; maps and tickets for AMC Kanata 24"/>
+
+
+
+
+
+<link rel="canonical" href="http://www.flixster.com/showtimes/amc-kanata-24"/>
+
+
+
+
+	<script>
+		if(window.location.hash.indexOf("em.log") != -1) { window.location = "/account/auto-login?" + window.location.hash.replace("#","").replace(/!/g,"&").replace(/:/g,"=") + "&redirectUrl=" + window.location.pathname; }
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+			
+			<link href="http://static.flixstercdn.com/static/styles/global.css?version=20090925c" type="text/css" rel="stylesheet"/>
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+			
+			<link href="http://static.flixstercdn.com/static/styles/pages.showtimes.css?version=20090925c" type="text/css" rel="stylesheet"/>
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+		<script type="text/javascript" src="http://static.flixstercdn.com/assets/v/20090925c/scripts?f=prototype.6.js&f=scriptaculous.8.js&f=firebugx.js&f=global.js&f=apis.js&f=balloon.js&f=talk.js&f=search.js&f=widgets.captcha.js&f=tracking.flixster.js" charset="utf-8"></script>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+		<script type="text/javascript" src="http://static.flixstercdn.com/assets/v/20090925c/scripts?f=pages.movies.js&f=rating.old.js" charset="utf-8"></script>
+	
+	
+
+
+	
+	<script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAmh60bCh6aRNYTTulPkdt_xQDeg5NCYrtubnm2qs0dCXcP5UNZRQMMYeECRhphsy1A-GrXRMr5mbuVg" type="text/javascript"></script>
+
+</head>
+<body>
+
+	
+		
+		
+		
+	
+
+ 
+
+
+
+
+
+
+		
+<script>var Meebo = {exec:function(){Meebo._.push(arguments)},_:[]};  </script>
+<div id="meebo" style="display:none"><iframe id="meebo-iframe" src="/meebo.html?network=flixster&t=20090915"></iframe></div> 
+
+
+
+
+
+<div id="pageHeader">
+	<div class="brand">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="http://www.flixster.com" >
+	Flixster Movies
+</a></div>
+	
+	
+	
+	
+		<div class="welcome">
+			
+
+
+
+
+
+
+
+
+
+
+
+<a href="/userAuth.do?displayRegister="  rel="nofollow">Sign Up</a> | 
+
+
+
+
+
+
+
+
+
+
+
+
+<a rel="nofollow" href="/userAuth.do?displayLogin="  rel="nofollow">
+	Login
+</a>
+		</div>
+	
+			
+	<div id="mailBox" style="display:none;">
+		<form id="mailForm" name="mailForm" method="post" action="/nothing.do" style="display:none;" onSubmit="return false;"></form>
+		<div  id="mailMessage" style="display:none;"><p>No recent messages.</p></div>
+		<div  id="mailLoading" style="display:none;"><p>
+
+
+
+
+
+
+
+
+<img src="http://static.flixstercdn.com/static/images/wait.gif"  alt="Loading..." /></p>Loading...</div>
+		<div  id="mailSending" style="display:none;"><p>
+
+
+
+
+
+
+
+
+<img src="http://static.flixstercdn.com/static/images/wait.gif"  alt="Sending..." /></p>Sending...</div>
+		<div  id="mailSent" style="display:none;"><p>Sent!</p></div>
+	</div>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form name="searchForm" class="search" id="searchForm" component="SearchForm" mainView="MultiSearchView" action="/search" method="get">
+	<div class="clearfix">
+		<input id="globalSearchField" class="text" style="margin: 6px -7px 0 14px;border:1px solid #2b84cc;padding:4px;-moz-border-radius-bottomleft:4px;-moz-border-radius-bottomright:4px;-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;" type="text" id="q" name="q"  autocomplete=off value="Movies, Actors, Directors..." default="Movies, Actors, Directors..." component="SearchField" />
+		<input type="submit" onclick="if($('globalSearchField').value == 'Movies, Actors, Directors...') { $('searchField').focus(); return false; }"  class="button" value="" title="Search" />
+	</div>
+</form>
+	
+
+	
+</div>
+
+
+	
+	
+	
+
+
+
+<!--[if lt IE 7]> 
+<style type="text/css">
+#pageNavTabs li.hover .menuBridge { display:none; }
+#pageFooter .boxtail { background:none; }
+#pageNavTabs li li, #pageNavTabs li.selected li { height:1em; }
+#pageNavTabs li li a, #pageNavTabs li.selected li a { display: inline-block; width:100%; } /*fixes ie white-space list bug*/
+</style>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+<ul id="pageNavTabs" class="tabs">
+
+
+
+  
+		
+		
+		
+	   		<li id="firstTab" class="" component="Hover">
+		
+	
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+<a href="http://www.flixster.com"  title="Flixster" style="background:none; padding-right:10px;">
+	Home
+</a>
+    </li>
+
+  
+    <li class="selected" component="Hover">
+		<div class="menuBridge"></div>
+      <a href="/movies-in-theaters" title="Movies">Movies</a>
+    <ul>
+      <li><a href="/movies-in-theaters" title="In Theaters" class="selected">In Theaters</a></li>
+      <li><a href="/upcoming-movies" title="Upcoming" class="">Upcoming</a></li>
+      <li><a href="/dvd/new-releases" title="On DVD" class="">On DVD</a></li>
+	  <li class="separator">&nbsp;</li>
+	  <li><a href="/trailers/featured-videos" title="Movie Trailers" class="">Trailers</a></li>
+	  <li>
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/actor/home" title="Actor Home"  class="" >Actors</a></li>
+	  <li><a href="/photos" title="Photos" class="">Photos</a></li>
+	  <li><a href="/news/top-stories" title="Movie News" class="">News</a></li>
+	  <li><a rel="nofollow" href="/recommendations" title="Movies I Might Like" class="">Movies I Might Like</a></li>	  
+      <li><a rel="nofollow" href="/rate-movies" title="Rate Movies" class="">Rate Movies</a></li>
+      <li class="separator">&nbsp;</li>
+      <li><a href="/showtimes" title="Showtimes and Tickets">Showtimes</a></li>
+    </ul>
+    </li>
+
+
+    <li class="" component="Hover">
+		<div class="menuBridge"></div>
+      
+      	
+      		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="http://www.flixster.com" >
+	Profile
+</a>
+      	
+      	
+      
+    <ul>
+      <li>
+        
+          
+            <a class="" rel="nofollow" href="/profile" title="My Profile">My Profile</a>
+          
+          
+        
+      </li>
+      <li>
+        
+          
+            <a class="" rel="nofollow"  href="/ratings" title="My Movie Ratings">My Ratings</a>
+          
+          
+        
+      </li>
+		
+	<li>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <a href="/movie-list/favorite" title="My Favorite Movies" rel="nofollow"  >My Movies</a>  
+  
+  
+
+
+      </li>
+	  
+      <li>
+        
+
+
+
+
+
+
+
+
+
+
+
+<a href="/actor-list/favorites" title="My Favorite Actors" rel="nofollow"  class="" >My Actors</a>
+      </li>
+      <li>
+        
+          
+            <a class="" rel="nofollow" href="/photos/my-favorites" title="My Photos">My Photos</a>
+          
+          
+        
+      </li>
+      <li>
+        
+          
+            <a class="" rel="nofollow" href="/videos/favorite-videos" title="My Videos">My Videos</a>
+          
+          
+        
+      </li>
+      <li>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <a href="/movie-list" title="Lists" rel="nofollow"  rel="nofollow" class="" >My Lists</a>
+  
+  
+
+
+      </li>	  
+	 
+	 
+	
+	 
+	 
+	  
+	
+	  <li><a href="/skins.do?viewSkinGallery=" title="Skins Gallery" class="">Skins Gallery</a></li>
+    </ul>
+    </li>
+
+
+  
+    <li class="" component="Hover">
+		<div class="menuBridge"></div>
+		
+		
+		
+			
+			
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <a href="/friends"  title="Friends" rel="nofollow">
+      Friends
+    </a>
+  
+  
+
+			
+		
+		
+		
+      <ul>
+      <li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <a href="/friends"  title="My Friends" rel="nofollow" class="">
+      My Friends
+    </a>
+  
+  
+</li>
+	  <li><a rel="nofollow" href="/friends/recent-reviews" title="My Friends' Reviews" class="">My Friends' Reviews</a></li>	 
+	  <li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/people/finduser""  class=""  rel="nofollow" title="Find User">Find a User</a></li>
+	  <li><a rel="nofollow" href="/invite/address-book" title="Add Friends" class="">Add Friends</a></li>
+	  <li class="separator">&nbsp;</li>
+      <li><a rel="nofollow" href="/conversations" title="My Conversations" class="">My Conversations</a></li>
+	  <li><a rel="nofollow" href="/movie-compatibility-test" title="Compatibility Test" class="">Compatibility Test</a></li>
+      <li><a rel="nofollow" href="/invite/do-you-know?from=nav" title="People I May Know" class="">People I May Know</a></li>	  
+      <li><a rel="nofollow" href="/friends/movie-night-planner" title="Plan Movie Night" class="">Plan Movie Night</a></li>
+	  
+    </ul>
+    </li>
+
+    
+    <li class="" component="Hover">
+		<div class="menuBridge"></div>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/people/meet"   class="" rel="nofollow" title="Meet Movie Fans">Meet People</a>
+        <ul>
+          <li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/people/meet"   class="" rel="nofollow" title="Meet Movie Fans">Meet People</a></li>
+          <li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/people/browse"   class="" rel="nofollow" title="Browse Movie Fans">Browse</a></li>
+		  <li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/people/topusers"  class=""  rel="nofollow" title="Top User Charts">Top User Charts</a></li>
+		  <li>
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/forums"  title="Movie Forums" class="">Forums</a></li>
+		  
+		  <li>
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/wiki"  title="Flixster Wiki" class="">Flixster Wiki</a></li>
+		  
+        </ul>
+    </li>
+
+  
+    <li class="" component="Hover">
+		<div class="menuBridge"></div>
+      		<a href="/quizzes" title="Fun &amp; Games">Fun &amp; Games</a>
+	      <ul>
+		  	  <li><a href="/quizzes" title="User Quizzes" class="">User Quizzes</a></li>
+		      <li><a href="/never-ending-quiz" title="Never Ending Movie Quiz" class="">Never-Ending Quiz</a></li>
+		      <li><a href="/personalities" title="Personality Tests" class="">Personality Tests</a></li>
+			  <li><a href="/movie-list" title="Movie Lists" class="">Lists</a></li>
+			  <li>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+<a href="/polls/home"  class="">Polls</a></li>
+	    </ul>
+    </li>
+
+	
+    <li class="" component="Hover">
+		<div class="menuBridge"></div>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a title="Watch Now" href="/watch-movies"  >Watch&nbsp;Now</a>
+		<ul>
+			
+
+			
+			
+			<li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+<a title="Videos" href="/videos/random-recent"  class="">Videos</a></li>
+		</ul>
+    </li>
+	
+	
+	
+	
+   		
+	
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+			
+				<div id="Flixster_728x90" component="Ad" class="ad ad_728x90" width=728 height="90" size="728x90" age="" gender="unknown" data="" >
+					<iframe  allowtransparency="true" id="Flixster_728x90_iframe" src="http://www.flixster.com/static/ads/ad.html?tag=Flixster_728x90&fg=unknown&y=&horror=0&comedy=0&action=0&animation=0&drama=0&romance=0&mystery=0&kids=0&scifi=0" width="728" height="90" marginwidth=0 marginheight=0 frameborder=0 scrolling=no></iframe>
+				</div>
+			
+		
+	
+	
+
+
+
+
+
+
+
+
+
+<div id="pageTop"><p></p></div>
+
+
+
+<!--[if lt IE 7]> 
+<style type="text/css">
+body { background:transparent url(http://static.flixstercdn.com/static/images/ie6bg.gif) 0px 0px repeat-x; }
+</style>
+<![endif]-->
+	
+	<div id="pageBody">
+
+	
+
+	<div id="showtimesByTheater" class="clearfix">
+
+		<div id="mainColumn">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="box b1 "   id="showtimes_box">
+
+<div class="boxHeader boxHeaderTitle">
+	
+    
+  	
+  	  <h1 class="clearfix">
+
+
+
+
+
+
+
+
+AMC Kanata 24 - Showtimes & Tickets</h1> 
+  	
+  	
+  	
+	
+</div>
+
+<div class="boxDivider">
+	<hr />
+</div>
+
+
+<div class="boxContent clearfix">
+			
+			
+			
+			
+						
+				<div class="showdates">
+					
+						
+						
+						
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/amc-kanata-24"  class="selected">Today</a>
+						
+						
+						
+						
+					
+						
+						
+						
+						<a rel="nofollow" href="?date=20090929" class="">Tuesday, 9/29</a>
+						
+						
+						
+					
+						
+						
+						
+						<a rel="nofollow" href="?date=20090930" class="">Wednesday, 9/30</a>
+						
+						
+						
+					
+						
+						
+						
+						<a rel="nofollow" href="?date=20091001" class="">Thursday, 10/1</a>
+						
+						
+						
+					
+				</div>
+				
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/9-2009"  title="9 (2009)" onmouseover="mB(event, 770768851);"  >
+	
+
+
+
+
+
+
+
+
+9
+</a>
+			    		<span>(PG-13 , 1 hr. 19 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									3:30 PM,
+								
+								
+							
+								
+								
+								
+									5:45 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=58637&perft=Mon Sep 28 17:15:41 PDT 2009&perfd=2009-09-28" >8:15 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=58637&perft=Mon Sep 28 19:20:41 PDT 2009&perfd=2009-09-28" >10:20 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/all-about-steve"  title="All About Steve" onmouseover="mB(event, 770680913);"  >
+	
+
+
+
+
+
+
+
+
+All About Steve
+</a>
+			    		<span>(PG-13 , 1 hr. 39 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									2:20 PM,
+								
+								
+							
+								
+								
+								
+									4:50 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=63539&perft=Mon Sep 28 16:20:41 PDT 2009&perfd=2009-09-28" >7:20 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=63539&perft=Mon Sep 28 18:45:41 PDT 2009&perfd=2009-09-28" >9:45 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/cloudy-with-a-chance-of-meatballs"  title="Cloudy With a Chance of Meatballs" onmouseover="mB(event, 770803219);"  >
+	
+
+
+
+
+
+
+
+
+Cloudy With a Chance of Meatballs
+</a>
+			    		<span>(PG , 1 hr. 21 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									2:45 PM,
+								
+								
+							
+								
+								
+								
+									3:25 PM,
+								
+								
+							
+								
+								
+								
+									5:15 PM,
+								
+								
+							
+								
+								
+								
+									5:50 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=57700&perft=Mon Sep 28 16:35:41 PDT 2009&perfd=2009-09-28" >7:35 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=57700&perft=Mon Sep 28 17:05:41 PDT 2009&perfd=2009-09-28" >8:05 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=57700&perft=Mon Sep 28 18:55:41 PDT 2009&perfd=2009-09-28" >9:55 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=57700&perft=Mon Sep 28 19:25:41 PDT 2009&perfd=2009-09-28" >10:25 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/cloudy-with-a-chance-of-meatballs"  title="Cloudy With a Chance of Meatballs" onmouseover="mB(event, 770803219);"  >
+	
+
+
+
+
+
+
+
+
+Cloudy With a Chance of Meatballs 3D
+</a>
+			    		<span>(PG , 1 hr. 21 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									2:10 PM,
+								
+								
+							
+								
+								
+								
+									4:45 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=76899&perft=Mon Sep 28 16:05:41 PDT 2009&perfd=2009-09-28" >7:05 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=76899&perft=Mon Sep 28 18:25:41 PDT 2009&perfd=2009-09-28" >9:25 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/district-9"  title="District 9" onmouseover="mB(event, 770805203);"  >
+	
+
+
+
+
+
+
+
+
+District 9
+</a>
+			    		<span>(R , 1 hr. 53 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									4:10 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=62191&perft=Mon Sep 28 16:10:41 PDT 2009&perfd=2009-09-28" >7:10 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=62191&perft=Mon Sep 28 18:45:41 PDT 2009&perfd=2009-09-28" >9:45 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/fame"  title="Fame" onmouseover="mB(event, 770805045);"  >
+	
+
+
+
+
+
+
+
+
+Fame
+</a>
+			    		<span>(PG , 1 hr. 47 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									2:00 PM,
+								
+								
+							
+								
+								
+								
+									4:05 PM,
+								
+								
+							
+								
+								
+								
+									4:35 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=60239&perft=Mon Sep 28 16:00:41 PDT 2009&perfd=2009-09-28" >7:00 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=60239&perft=Mon Sep 28 16:30:41 PDT 2009&perfd=2009-09-28" >7:30 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=60239&perft=Mon Sep 28 18:35:41 PDT 2009&perfd=2009-09-28" >9:35 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=60239&perft=Mon Sep 28 19:05:41 PDT 2009&perfd=2009-09-28" >10:05 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/gamer2009"  title="Gamer" onmouseover="mB(event, 770681197);"  >
+	
+
+
+
+
+
+
+
+
+Gamer
+</a>
+			    		<span>(R , 1 hr. 35 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									2:15 PM,
+								
+								
+							
+								
+								
+								
+									4:55 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=68754&perft=Mon Sep 28 16:30:41 PDT 2009&perfd=2009-09-28" >7:30 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=68754&perft=Mon Sep 28 18:50:41 PDT 2009&perfd=2009-09-28" >9:50 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/harry-potter-and-the-halfblood-prince"  title="Harry Potter and the Half-Blood Prince" onmouseover="mB(event, 770672988);"  >
+	
+
+
+
+
+
+
+
+
+Harry Potter and the Half-Blood Prince
+</a>
+			    		<span>(PG , 2 hrs. 33 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									2:55 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=55358&perft=Mon Sep 28 15:35:41 PDT 2009&perfd=2009-09-28" >6:35 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=55358&perft=Mon Sep 28 19:05:41 PDT 2009&perfd=2009-09-28" >10:05 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/inglorious-basterds"  title="Inglourious Basterds" onmouseover="mB(event, 770671947);"  >
+	
+
+
+
+
+
+
+
+
+Inglourious Basterds
+</a>
+			    		<span>(R , 2 hrs. 32 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									3:15 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=70649&perft=Mon Sep 28 16:00:41 PDT 2009&perfd=2009-09-28" >7:00 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=70649&perft=Mon Sep 28 19:15:41 PDT 2009&perfd=2009-09-28" >10:15 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/jennifers-body"  title="Jennifer&#039;s Body" onmouseover="mB(event, 770783548);"  >
+	
+
+
+
+
+
+
+
+
+Jennifer's Body
+</a>
+			    		<span>(R , 1 hr. 42 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									4:30 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=70535&perft=Mon Sep 28 16:25:41 PDT 2009&perfd=2009-09-28" >7:25 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=70535&perft=Mon Sep 28 18:50:41 PDT 2009&perfd=2009-09-28" >9:50 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/julie-julia"  title="Julie &amp; Julia" onmouseover="mB(event, 770802777);"  >
+	
+
+
+
+
+
+
+
+
+Julie & Julia
+</a>
+			    		<span>(PG-13 , 2 hrs. 3 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									2:15 PM,
+								
+								
+							
+								
+								
+								
+									5:20 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=66263&perft=Mon Sep 28 17:30:41 PDT 2009&perfd=2009-09-28" >8:30 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/love happens"  title="Love Happens" onmouseover="mB(event, 770804718);"  >
+	
+
+
+
+
+
+
+
+
+Love Happens
+</a>
+			    		<span>(PG-13 , 1 hr. 49 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									2:05 PM,
+								
+								
+							
+								
+								
+								
+									4:40 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=73782&perft=Mon Sep 28 16:15:41 PDT 2009&perfd=2009-09-28" >7:15 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=73782&perft=Mon Sep 28 19:10:41 PDT 2009&perfd=2009-09-28" >10:10 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/pandorum"  title="Pandorum" onmouseover="mB(event, 770799661);"  >
+	
+
+
+
+
+
+
+
+
+Pandorum
+</a>
+			    		<span>(R , 1 hr. 48 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									2:00 PM,
+								
+								
+							
+								
+								
+								
+									5:00 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=68063&perft=Mon Sep 28 16:45:41 PDT 2009&perfd=2009-09-28" >7:45 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=68063&perft=Mon Sep 28 19:30:41 PDT 2009&perfd=2009-09-28" >10:30 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/surrogates"  title="Surrogates" onmouseover="mB(event, 770801542);"  >
+	
+
+
+
+
+
+
+
+
+Surrogates
+</a>
+			    		<span>(PG-13 , 1 hr. 29 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									2:05 PM,
+								
+								
+							
+								
+								
+								
+									2:45 PM,
+								
+								
+							
+								
+								
+								
+									4:45 PM,
+								
+								
+							
+								
+								
+								
+									5:15 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=63484&perft=Mon Sep 28 16:15:41 PDT 2009&perfd=2009-09-28" >7:15 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=63484&perft=Mon Sep 28 17:00:41 PDT 2009&perfd=2009-09-28" >8:00 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=63484&perft=Mon Sep 28 18:35:41 PDT 2009&perfd=2009-09-28" >9:35 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=63484&perft=Mon Sep 28 19:20:41 PDT 2009&perfd=2009-09-28" >10:20 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/the-hangover"  title="The Hangover" onmouseover="mB(event, 770801897);"  >
+	
+
+
+
+
+
+
+
+
+The Hangover
+</a>
+			    		<span>(R , 1 hr. 36 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									4:15 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=66772&perft=Mon Sep 28 16:05:41 PDT 2009&perfd=2009-09-28" >7:05 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=66772&perft=Mon Sep 28 18:40:41 PDT 2009&perfd=2009-09-28" >9:40 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/the-informant"  title="The Informant!" onmouseover="mB(event, 770783635);"  >
+	
+
+
+
+
+
+
+
+
+The Informant!
+</a>
+			    		<span>(R , 1 hr. 48 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									2:20 PM,
+								
+								
+							
+								
+								
+								
+									2:50 PM,
+								
+								
+							
+								
+								
+								
+									4:50 PM,
+								
+								
+							
+								
+								
+								
+									5:25 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=53737&perft=Mon Sep 28 16:25:41 PDT 2009&perfd=2009-09-28" >7:25 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=53737&perft=Mon Sep 28 16:55:41 PDT 2009&perfd=2009-09-28" >7:55 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=53737&perft=Mon Sep 28 19:00:41 PDT 2009&perfd=2009-09-28" >10:00 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=53737&perft=Mon Sep 28 19:30:41 PDT 2009&perfd=2009-09-28" >10:30 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/the-proposal-2009"  title="The Proposal" onmouseover="mB(event, 770785598);"  >
+	
+
+
+
+
+
+
+
+
+The Proposal
+</a>
+			    		<span>(PG-13 , 1 hr. 48 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									2:25 PM,
+								
+								
+							
+								
+								
+								
+									5:10 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=59774&perft=Mon Sep 28 16:40:41 PDT 2009&perfd=2009-09-28" >7:40 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=59774&perft=Mon Sep 28 19:10:41 PDT 2009&perfd=2009-09-28" >10:10 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/the-time-travelers-wife"  title="The Time Traveler&#039;s Wife" onmouseover="mB(event, 770680255);"  >
+	
+
+
+
+
+
+
+
+
+The Time Traveler's Wife
+</a>
+			    		<span>(PG-13 , 1 hr. 48 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									2:30 PM,
+								
+								
+							
+								
+								
+								
+									5:05 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=61239&perft=Mon Sep 28 16:40:41 PDT 2009&perfd=2009-09-28" >7:40 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=61239&perft=Mon Sep 28 19:15:41 PDT 2009&perfd=2009-09-28" >10:15 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/the-ugly-truth"  title="The Ugly Truth" onmouseover="mB(event, 770789184);"  >
+	
+
+
+
+
+
+
+
+
+The Ugly Truth
+</a>
+			    		<span>(R , 1 hr. 36 min.)</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									3:20 PM,
+								
+								
+							
+								
+								
+								
+									5:45 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=64364&perft=Mon Sep 28 17:05:41 PDT 2009&perfd=2009-09-28" >8:05 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=64364&perft=Mon Sep 28 19:25:41 PDT 2009&perfd=2009-09-28" >10:25 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+				
+					<div class="mtitle">
+                    
+                    
+					    
+				    	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/movie/trailer-park-boys-countdown-to-liquor-day"  title="Trailer Park Boys: Countdown to Liquor Day" onmouseover="mB(event, 770701597);"  >
+	
+
+
+
+
+
+
+
+
+Trailer Park Boys: Countdown to Liquor Day
+</a>
+			    		<span>(Unrated )</span>
+		
+                    
+                    
+                    
+                    </div>
+
+					<div class="times">
+                        
+							
+								
+								
+								
+									4:20 PM,
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=80836&perft=Mon Sep 28 16:20:41 PDT 2009&perfd=2009-09-28" >7:20 PM</a>,
+								
+								
+								
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" href="https://www.movietickets.com/purchase.asp?afid=flxtr&house_id=6871&movie_id=80836&perft=Mon Sep 28 18:55:41 PDT 2009&perfd=2009-09-28" >9:55 PM</a>
+								
+								
+								
+							
+                        
+                        
+                    </div>
+                        
+				
+					
+			
+			
+			
+			<div class="links">
+
+				More <a href="/showtimes/k2t 1e7">movie times near K2T 1E7</a>
+
+			</div>
+	
+		</div>
+<div class="boxFooter"><div class="boxTail"></div></div>
+</div>
+		</div>
+		
+		<div id="sideColumn">	
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form component="ShowtimesMap" action="#" method="get" class="map">
+	<input type="hidden" name="latitude" value="45.3118" />
+	<input type="hidden" name="longitude" value="-75.9114" />
+	<input type="hidden" name="name" value="AMC Kanata 24" />
+	<input type="hidden" name="address" value="801 Kanata Avenue" />
+	<input type="hidden" name="city" value="Kanata" />
+	<input type="hidden" name="state" value="ON" />
+</form>
+			<div class="address vcard">
+				<div><a class="fn org" href="/showtimes/amc-kanata-24">AMC Kanata 24</a></div>
+				<div class="adr">
+					<span class="street-address">801 Kanata Avenue</span><br/>
+					<span class="locality">Kanata</span>, <span class="region">ON</span> <span class="postal-code">K2T 1E7</span><br/>
+					<span class="tel">(613)599-1200</span>
+				</div>
+			</div>
+			
+			
+			
+		</div>
+	
+	</div>
+	
+	</div>
+	
+	
+		
+	
+
+
+
+
+
+
+
+<div id="pageFooter">
+
+	
+		
+
+	<p>
+		<strong>Explore</strong> | 
+		<a href="/sitemap/movies">Movies</a> | 
+		<a href="/sitemap/actors">Actors</a> | 
+		<a href="/sitemap/theaters">Theaters</a> | 
+		<a href="/sitemap/news">News</a> | 
+		<a href="/sitemap/movie-lists">Lists</a> | 
+		<a href="/sitemap/quizzes">Quizzes</a> |
+		<a href="/blog">Blog</a>
+	</p>
+	
+	<p>
+		<strong>More Info</strong> | 
+		<a rel="nofollow" title="Flixster Copyrights, Privacy Policy, Terms of Service" href="/misc/copyrightprivacyterms">Copyright, Privacy Policy, Terms of Service</a> | 
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/misc/about"   title="About Flixster" rel="nofollow" >About Us</a> | 
+		<a rel="nofollow" title="Advertise on Flixster" href="/misc/advertise">Advertise</a> |
+        <a href="http://www.twitter.com/flixster">Follow Flixster on Twitter!</a> | 
+		<a rel="nofollow" title="Flixster SuperReviewers" href="/support/topic/superreviewers">Flixster SuperReviewers</a>
+		
+        
+	</p>
+	
+	<p>
+		<strong>Help</strong> | 
+		<a title="Sitemap" href="/sitemap">Sitemap</a> | 
+		<a rel="nofollow" title="Help" href="/support">Help</a>
+	</p>
+	
+	<p class="pageCopyright">Copyright &copy; 2009 Flixster, All Rights Reserved</p>
+	
+	<p><a title="iLike - discover music with friends" href="http://www.ilike.com">iLike - discover music with friends</a>&nbsp;|&nbsp;<a title="Get Skyfire  - Browse the PC web on your phone" href="http://get.skyfire.com/">Get Skyfire  - Browse the PC web on your phone</a></p>
+	
+	
+	<div class="boxtail"></div>
+	<div id="server" style="color:#fff;text-align:center;">web60.flixster.com</div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+new Component.Binder( document );
+</script>
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+	
+	Tracker.trackSegment("Anonymous");
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		
+		
+		
+	
+		
+
+		
+
+		
+			
+		
+		
+		Tracker.tag('ShowtimesByTheaterBAnon');
+
+	
+	
+	
+
+</script>
+
+
+
+	
+		
+		
+			
+
+
+	<script type="text/javascript">
+        setTimeout(function()
+             {
+               var url = "http" +
+                     (/https:/.test(document.location.href) ? "s" : "") +
+                     "://beacon.scorecardresearch.com/scripts/beacon.dll" +
+                     "?c1=2&c2=3002201&c3=3002201&c4=" +
+                     escape(document.location.href) + "&c5=&c6=&c7=" +
+                     escape(document.location.href) +
+                     "&c8=" + escape(document.title) +
+                     "&c9=" + escape(document.referrer) +
+                     "&c10=" + escape(screen.width+'x'+screen.height) +
+                     "&c15=" +
+                     "&rn=" + (new Date()).getTime();
+               var i = new Image();
+               i.src = url;
+             }, 1);
+  </script>
+  <noscript>
+        <img src="https://beacon.scorecardresearch.com/scripts/beacon.dll?
+        c1=2&c2=3002201&c3=3002201&c4=&c5=&c6=&c7=&c15=&x=NOJAVASCRIPT" alt="" />
+  </noscript>
+  <script type="text/javascript">
+        setTimeout(function()
+             {
+               var url = "http" +
+                     (/https:/.test(document.location.href) ? "s" : "") +
+                     "://beacon.scorecardresearch.com/scripts/beacon.dll" +
+                     "?c1=7&c2=3002201&c3=3002201&c4=" +
+                     escape(document.location.href) + "&c5=&c6=&c7=" +
+                     escape(document.location.href) +
+                     "&c8=" + escape(document.title) +
+                     "&c9=" + escape(document.referrer) +
+                     "&c10=" + escape(screen.width+'x'+screen.height) +
+                     "&c15=" +
+                     "&rn=" + (new Date()).getTime();
+               var i = new Image();
+               i.src = url;
+             }, 1);
+  </script>
+  <noscript>
+        <img src="https://beacon.scorecardresearch.com/scripts/beacon.dll?
+        c1=7&c2=3002201&c3=3002201&c4=&c5=&c6=&c7=&c15=&x=NOJAVASCRIPT" alt="" />
+  </noscript>
+  
+
+<script type="text/javascript">_qacct="p-0fuRlG_jy3lfA";</script>
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<noscript><a href="http://www.quantcast.com/p-0fuRlG_jy3lfA" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-0fuRlG_jy3lfA.gif" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a></noscript>
+
+
+	
+
+<img src='http://p.opt.fimserve.com/bht/?r=p&px=1161&v=1&rnd=1254174941371' style='visibility:hidden;width:0px;height:0px;' />
+
+
+<img height=1 width=1 src="http://tags.bluekai.com/site/991">
+
+
+
+		
+	
+
+
+
+<script>
+	var params = window.location.hash.replace("#", "");
+	if(params != "") {
+		params = params.replace(/!/g,"&").replace(/:/g, "=");
+		document.write("<img style='visibility:hidden;width:0px;height:0px;' src='/misc/service/lsrc-track?" + params + "' />");
+	}
+</script>
+
+
+
+	
+
+</body>
+</html>

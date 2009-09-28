@@ -1,0 +1,1091 @@
+HTTP/1.0 200 OK
+Date: Mon, 28 Sep 2009 21:10:24 GMT
+Server: Apache
+Expires: Sat, 6 May 1995 12:00:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Set-Cookie: ServerID=1114; Path=/
+Set-Cookie: JSESSIONID=AB9A7B897458A7F9EF2D1CF827E2F1BA.localhost; Path=/
+Content-Language: en
+Vary: User-Agent,Accept-Encoding
+Connection: close
+Content-Type: text/html;charset=ISO-8859-1
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+  <head>
+    
+      
+      
+      
+      
+        
+      
+      
+      
+    
+
+
+
+
+<title>Browse Theaters Index</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+
+
+
+
+
+
+<meta name="robots" content="noarchive,noindex,follow" />
+
+
+
+
+
+<meta name="description" content="The central location for all movie theaters"/>
+
+
+
+
+
+
+
+
+	<script>
+		if(window.location.hash.indexOf("em.log") != -1) { window.location = "/account/auto-login?" + window.location.hash.replace("#","").replace(/!/g,"&").replace(/:/g,"=") + "&redirectUrl=" + window.location.pathname; }
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+			
+			<link href="http://static.flixstercdn.com/static/styles/global.css?version=20090925c" type="text/css" rel="stylesheet"/>
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+			
+			<link href="http://static.flixstercdn.com/static/styles/pages.sitemap.css?version=20090925c" type="text/css" rel="stylesheet"/>
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+		<script type="text/javascript" src="http://static.flixstercdn.com/assets/v/20090925c/scripts?f=prototype.6.js&f=scriptaculous.8.js&f=firebugx.js&f=global.js&f=apis.js&f=balloon.js&f=talk.js&f=search.js&f=widgets.captcha.js&f=tracking.flixster.js" charset="utf-8"></script>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+	
+
+    
+  </head>
+  <body>
+    
+
+<div id="pageHeader">
+
+	<div class="brand">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+<a href="http://www.flixster.com"  rel="nofollow">
+	Flixster
+</a></div>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form name="searchForm" class="search" id="searchForm" component="SearchForm" mainView="MultiSearchView" action="/search" method="get">
+	<div class="clearfix">
+		<input id="globalSearchField" class="text" style="margin: 6px -7px 0 14px;border:1px solid #2b84cc;padding:4px;-moz-border-radius-bottomleft:4px;-moz-border-radius-bottomright:4px;-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;" type="text" id="q" name="q"  autocomplete=off value="Movies, Actors, Directors..." default="Movies, Actors, Directors..." component="SearchField" />
+		<input type="submit" onclick="if($('globalSearchField').value == 'Movies, Actors, Directors...') { $('searchField').focus(); return false; }"  class="button" value="" title="Search" />
+	</div>
+</form>
+	
+</div>
+
+
+	
+
+
+
+<!--[if lt IE 7]> 
+<style type="text/css">
+#pageNavTabs li.hover .menuBridge { display:none; }
+#pageFooter .boxtail { background:none; }
+#pageNavTabs li li, #pageNavTabs li.selected li { height:1em; }
+#pageNavTabs li li a, #pageNavTabs li.selected li a { display: inline-block; width:100%; } /*fixes ie white-space list bug*/
+</style>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="pageTop"><p></p></div>
+
+
+
+    
+	
+    
+    <div id="pageBody">
+    	<div id="theaterList">
+    	  <h2>Theaters in Ontario, CA</h2>
+    	  
+    	  
+    	  
+		  
+		  
+		  <div class="pagination" >
+		  
+			
+			
+			
+				<a  href="/sitemap/theaters/CA/ON">1</a> |
+			
+				<a class="selected" href="/sitemap/theaters/CA/ON?page=2">2</a> |
+			
+				<a  href="/sitemap/theaters/CA/ON?page=3">3</a>
+			
+		  
+		  </div>
+    	  
+	  	  <ol>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/empire-theatres-wellington-8-cinemas" >Empire Theatres - Wellington 8 Cinemas</a></h3>
+						<div class="address"><i>983 Wellington Road South<br/> London ON N6E 3A9<br/>(519)685-2529</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/famous-players-silvercity-london" >Famous Players SilverCity -  London</a></h3>
+						<div class="address"><i>1680 Richmond Street<br/> London ON N6G 3Y9<br/>(519)673-4125</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/hyland-cinema" >Hyland Cinema</a></h3>
+						<div class="address"><i>240 Wharncliffe Rd S<br/> London ON N6J 2L4<br/>(519)913-0313</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/western-film" >Western Film</a></h3>
+						<div class="address"><i>Western Road and Elgin Drive<br/> London ON N6A 5B8<br/>(519)661-3616</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/mustang-drivein-london" >Mustang Drive-In London</a></h3>
+						<div class="address"><i>2551 Wilton Grove Road<br/> London ON N6N 1M7<br/>(519)644-1160</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/rainbow-cinemas-galleria-london" >Rainbow Cinemas Galleria - London</a></h3>
+						<div class="address"><i>355 Wellington Street<br/> London ON N6A 3N7<br/>(519)434-2200</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/326248915" >Marathon Theatre</a></h3>
+						<div class="address"><i>16 Peninsula Rd<br/> Marathon ON P0T 2E0<br/>(807)229-1586</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/co-first-markham-place" >CO First Markham Place</a></h3>
+						<div class="address"><i>3275 Hwy 7 East<br/> Markham ON L3R 3P9<br/>(905)474-5101</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/galaxy-cinemas-midland" >Galaxy Cinemas @ Midland</a></h3>
+						<div class="address"><i>Highway 93, RR#2<br/> Midland ON L4R 4K4<br/>(705)527-5927</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/midland-drive-in" >Midland Drive-in</a></h3>
+						<div class="address"><i>1299 Angela Schmidt Foster Road<br/> Midland ON L4R 1A1<br/>(705)526-2411</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/galaxy-cinemas-milton" >Galaxy Cinemas @ Milton</a></h3>
+						<div class="address"><i>1175 Maple Avenue<br/> Milton ON L9T 0A5<br/>(905)864-1666</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/amc-courtney-park-16" >AMC Courtney Park 16</a></h3>
+						<div class="address"><i>110 Courtney Park Dr.<br/> Mississauga ON L5T 2Y3<br/>(416)335-5323</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/empire-theatres-empire-studio-10-at-square-one" >Empire Theatres - Empire Studio 10 at Square One</a></h3>
+						<div class="address"><i>100 City Centre Drive<br/> Mississauga ON L5T 2Y3<br/>(905)275-2640</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/cine-starz-mississauga" >Cine Starz - Mississauga</a></h3>
+						<div class="address"><i>377 Burnhamthorpe Road East<br/> Mississauga ON L5A 3Y1<br/>(905)290-2401</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/famous-players-coliseum-mississauga" >Famous Players Coliseum - Mississauga</a></h3>
+						<div class="address"><i>309 Rathburn Road West<br/> Mississauga ON L5B 4C1<br/>(905)275-3456</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/famous-players-silvercity-mississauga" >Famous Players SilverCity - Mississauga</a></h3>
+						<div class="address"><i>3055 Vega Boulevard<br/> Mississauga ON L5L 5B5<br/>(905)569-3373</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/boulevard-cinema" >Boulevard Cinema</a></h3>
+						<div class="address"><i>113 Richmond Blvd<br/> Napanee ON K7R 3Z8<br/>(613)354-2597</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/empire-theatre-new-liskeard" >Empire Theatre - New Liskeard</a></h3>
+						<div class="address"><i>35 Armstrong Street North<br/> New Liskeard ON P0J 1P0<br/>(705)647-5363</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/co-niagara-square" >CO Niagara Square</a></h3>
+						<div class="address"><i>7555 Montrose Road<br/> Niagara Falls ON L2H 2E9<br/>(905)357-7275</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/imax-niagara-falls" >IMAX - Niagara Falls</a></h3>
+						<div class="address"><i>6170 Fallsview Blvd.<br/> Niagara Falls ON L2G 7T8<br/>(866)405-4629</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/capitol-centre" >Capitol Centre</a></h3>
+						<div class="address"><i>150 Main Street East<br/> North Bay ON P1B 1A8<br/>(705)474-4747</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/galaxy-cinemas-north-bay" >Galaxy Cinemas @ North Bay</a></h3>
+						<div class="address"><i>300 Lakeshore Dr.<br/> North Bay ON P1A 3V2<br/>(705)476-6151</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/amc-winston-churchill-24" >AMC Winston Churchill 24</a></h3>
+						<div class="address"><i>2081 Winston Park Dr.<br/> Oakville ON L6H 6P5<br/>(416)335-5323</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/famous-players-silvercity-oakville" >Famous Players SilverCity - Oakville</a></h3>
+						<div class="address"><i>3531 Wyecroft Road<br/> Oakville ON L6L 0B7<br/>(905)827-7173</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/encore-oakville-mews-cinemas" >Encore Oakville Mews Cinemas</a></h3>
+						<div class="address"><i>171 Speers Road<br/> Oakville ON L6K 2E8<br/>(905)338-6397</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/5-drivein" >5 Drive-In</a></h3>
+						<div class="address"><i>2332 Ninth Line<br/> Oakville ON L6H 7G9<br/>(905)257-8272</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/galaxy-cinemas-orangeville" >Galaxy Cinemas @ Orangeville</a></h3>
+						<div class="address"><i>85 Fifth Ave.<br/> Orangeville ON L9W 5B7<br/>(519)941-2333</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/galaxy-cinemas-orillia" >Galaxy Cinemas @ Orillia</a></h3>
+						<div class="address"><i>865 West Ridge Boulevard<br/> Orillia ON L3V 8B3<br/>(705)330-3456</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/empire-theatres-orleans-town-centre-6" >Empire Theatres - Orleans Town Centre 6</a></h3>
+						<div class="address"><i>250 Centrum Boulevard<br/> Orleans ON K1E 3V7<br/>(613)834-0666</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/322228404" >Famous Players Oshawa Centre 8</a></h3>
+						<div class="address"><i>Stevenson Rd S<br/> Oshawa ON L1J 2K5<br/>(905)433-3843</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/co-oshawa-cinemas" >CO Oshawa Cinemas</a></h3>
+						<div class="address"><i>1351 Grandview Street N<br/> Oshawa ON L1K 0G1<br/>(905)432-3486</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/empire-rideau-centre" >Empire Rideau Centre</a></h3>
+						<div class="address"><i>50 Rideau Street<br/> Ottawa ON K1N 9J7<br/>(613)688-0198</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/bytowne" >ByTowne</a></h3>
+						<div class="address"><i>325 Rideau Street<br/> Ottawa ON K1N 5Y4<br/>(613)789-3456</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/co-south-keys" >CO South Keys</a></h3>
+						<div class="address"><i>2214 Bank Street<br/> Ottawa ON K1V 1J6<br/>(613)736-6740</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/westend-family-cinema" >Ottawa Family Cinema</a></h3>
+						<div class="address"><i>710 Broadview Avenue<br/> Ottawa ON K2A 2M2<br/>(613)722-8218</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/empire-7-ottawa" >Empire 7 Ottawa</a></h3>
+						<div class="address"><i>111 Albert Street<br/> Ottawa ON K1P 1A5<br/>(613)688-0198</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/322228388" >Empire Theatres - Rideau Centre Cinemas</a></h3>
+						<div class="address"><i>50 Rideau Street<br/> Ottawa ON K1N 9J7<br/>(613)234-3712</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/famous-players-coliseum-ottawa" >Famous Players Coliseum - Ottawa</a></h3>
+						<div class="address"><i>3090 Carling Avenue<br/> Ottawa ON K2B 7K2<br/>(613)596-9475</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/mayfair-theatre" >Mayfair Theatre</a></h3>
+						<div class="address"><i>1074 Bank Street<br/> Ottawa ON K1S 3X3<br/>(613)730-3403</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/rainbow-st-laurent-centre" >Rainbow St. Laurent Centre</a></h3>
+						<div class="address"><i>1200 St. Laurent Boulevard<br/> Ottawa ON K1K 3B8<br/>(613)688-0850</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/stinson-owen-sound-twin-drive-in" >Stinson Owen Sound Twin Drive-In</a></h3>
+						<div class="address"><i>Highway 70 at Springmount<br/> Owen Sound ON N4K 5N9<br/>(519)376-2190</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/galaxy-cinemas-owen-sound" >Galaxy Cinemas @ Owen Sound</a></h3>
+						<div class="address"><i>1020 10th Street West<br/> Owen Sound ON N4K 5S1<br/>(519)371-5222</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/strand-twin-theatre-parry-sound" >Strand Twin Theatre - Parry Sound</a></h3>
+						<div class="address"><i>61 James St.<br/> Parry Sound ON P2A 1T6<br/>(705)746-5321</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/algonquin-cinemas" >Algonquin Cinemas</a></h3>
+						<div class="address"><i>1100 Pembroke East Pembroke Mall<br/> Pembroke ON K8A 6Y7<br/>(613)735-8318</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/skylight-drive-in" >Skylight Drive-In</a></h3>
+						<div class="address"><i>199 Forest Lea Road<br/> Pembroke ON K8A 6W6<br/>(613)732-2136</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/troyes-cinema" >Troyes Cinema</a></h3>
+						<div class="address"><i>51 Festubert Blvd<br/> Petawawa ON K8H 2X3<br/>(613)687-5826</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/mustang-drive-in-peterborough" >Mustang Drive in - Peterborough</a></h3>
+						<div class="address"><i>2134 Preston Road<br/> Peterborough ON K9J 6X4<br/>(705)745-0241</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/galaxy-cinemas-peterborough-square" >Galaxy Cinemas @ Peterborough Square</a></h3>
+						<div class="address"><i>320 Water Street<br/> Peterborough ON K9H 7N9<br/>(705)749-2000</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/famous-players-pickering-8" >Famous Players Pickering 8</a></h3>
+						<div class="address"><i>1355 Kingston Road<br/> Pickering ON L1V 1B8<br/>(416)646-0444</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/regent-theatre-picton" >Regent Theatre Picton</a></h3>
+						<div class="address"><i>224 Main Street<br/> Picton ON K0K 2T0<br/>(613)476-8416</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/port-elgin-cinemas" >Port Elgin Cinemas</a></h3>
+						<div class="address"><i>774 Goderich Street<br/> Port Elgin ON N0H 2C0<br/>(519)832-5822</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/port-elmsley-drivein" >Port Elmsley Drive-In</a></h3>
+						<div class="address"><i>333 Port Elmsley Road<br/> Port Elmsley ON K7H 3C7<br/>(613)267-7772</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/port-hope-drivein" >Port Hope Drive-In</a></h3>
+						<div class="address"><i>Theatre Road<br/> Port Hope ON K9A 4J7<br/>(905)434-8233</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/obrien-theatre-renfrew" >O'Brien Theatre - Renfrew</a></h3>
+						<div class="address"><i>334 Raglan St S<br/> Renfrew ON K7V 1R5<br/>(613)432-0866</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/empire-theatres-elgin-mills-10" >Empire Theatres - Elgin Mills 10</a></h3>
+						<div class="address"><i>10909 Yonge Street<br/> Richmond Hill ON L4C 3E3<br/>(905)770-3047</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/famous-players-silvercity-richmond-hill" >Famous Players SilverCity - Richmond Hill</a></h3>
+						<div class="address"><i>8771 Yonge Street<br/> Richmond Hill ON L4C 6Z1<br/>(416)646-0444</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/famous-players-lambton-9" >Famous Players Lambton 9</a></h3>
+						<div class="address"><i>1450 London Road<br/> Sarnia ON N7S 1P7<br/>(519)542-5539</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/galaxy-cinemas-station-mall" >Galaxy Cinemas @ Sault Ste Marie</a></h3>
+						<div class="address"><i>293 Bay Street<br/> Sault Ste. Marie ON P6A 1X3<br/>(705)949-7949</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/amc-kennedy-commons-20" >AMC Kennedy Commons 20</a></h3>
+						<div class="address"><i>33 William Kitchen Rd.<br/> Scarborough ON M1P 5B7<br/>(416)335-5323</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/co-401-morningside" >CO 401 & Morningside</a></h3>
+						<div class="address"><i>785 Milner Avenue<br/> Scarborough ON M1B 3C3<br/>(416)281-1444</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/co-eglinton-town-centre" >CO Eglinton Town Centre</a></h3>
+						<div class="address"><i>22 Lebovic Ave.<br/> Scarborough ON M1V 4V9<br/>(416)752-4494</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/famous-players-coliseum-scarborough" >Famous Players Coliseum - Scarborough</a></h3>
+						<div class="address"><i>300 Borough Drive<br/> Scarborough ON M1P 4P5<br/>(416)290-5217</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/north-york-drivein" >North York Drive-In</a></h3>
+						<div class="address"><i>893 Mount Albert Rd.<br/> Sharon ON L0G 1V0<br/>(905)836-4444</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/strand-theatre-simcoe" >Strand Theatre Simcoe</a></h3>
+						<div class="address"><i>55 Robinson Street<br/> Simcoe ON N3Y 1W5<br/>(519)426-2736</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/mayfair-theatre-sioux-lookout" >Mayfair Theatre - Sioux Lookout</a></h3>
+						<div class="address"><i>58 Front Street<br/> Sioux Lookout ON P8T 1A5<br/>(807)737-3060</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/premier" >Premier</a></h3>
+						<div class="address"><i>15 Main St<br/> Smiths Falls ON K7A 1M4<br/>(613)283-1278</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/cineplex-odeon-westmount-and-vip-cinemas" >Cineplex Odeon Westmount and VIP Cinemas</a></h3>
+						<div class="address"><i>755 Wonderland Road<br/> South London ON N6K 1M6<br/></i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/322228356" >CO Fairview Mall</a></h3>
+						<div class="address"><i>285 Geneva Street<br/> St. Catharines ON L2N 2G3<br/>(905)646-9258</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/empire-theatres-studio-8-at-penn-centre" >Empire Theatres - Studio 8 at Penn Centre</a></h3>
+						<div class="address"><i>221 Glendale Avenue<br/> St. Catharines ON L2T 2K9<br/>(905)682-9110</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/galaxy-cinemas-elgin-mall" >Galaxy Cinemas St. Thomas</a></h3>
+						<div class="address"><i>417 Wellington Street<br/> St. Thomas ON N5R 5J5<br/>(519)631-2261</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/silvercity-hamilton-mountain" >SilverCity Hamilton Mountain</a></h3>
+						<div class="address"><i>795 Paramount Drive<br/> Stoney Creek ON L8J 0B4<br/>(905)560-0239</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/starlite-drivein-theatre-stoney-creek" >Starlite Drive-In Theatre</a></h3>
+						<div class="address"><i>59 Green Mountain Road East<br/> Stoney Creek ON L8V 4J6<br/>(905)664-3800</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/stratford-cinemas" >Stratford Cinemas</a></h3>
+						<div class="address"><i>551 Huron Street<br/> Stratford ON N5A 5T8<br/>(519)273-6780</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/famous-players-silvercity-sudbury" >Famous Players SilverCity - Sudbury</a></h3>
+						<div class="address"><i>355 Barrydowne Road<br/> Sudbury ON P3B 4K4<br/>(705)521-0069</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/imax-science-north" >IMAX - Science North</a></h3>
+						<div class="address"><i>100 Ramsey Lake Road<br/> Sudbury ON P3E 5S9<br/>(705)522-3701</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/rainbow-cinemas-rainbow-centre" >Rainbow Cinemas - Rainbow Centre</a></h3>
+						<div class="address"><i>40 Elm Street<br/> Sudbury ON P3C 1S8<br/>(705)670-8887</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/rainbow-cinemas-promenade-mall" >Rainbow Cinemas Promenade Mall</a></h3>
+						<div class="address"><i>1 Promenade Circle<br/> Thornhill ON L4J 4P8<br/>(416)494-9371</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/cumberland-cinemas" >Cumberland Cinemas</a></h3>
+						<div class="address"><i>115 North Cumberland Street<br/> Thunder Bay ON P7A 4M3<br/>(807)344-3451</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/famous-players-silvercity-thunder-bay" >Famous Players SilverCity - Thunder Bay</a></h3>
+						<div class="address"><i>850 North May Street<br/> Thunder Bay ON P7C 6A5<br/>(807)628-8445</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+<a href="/showtimes/broadway-cinemas" >Broadway Cinemas</a></h3>
+						<div class="address"><i>518 Broadway North<br/> Tillsonburg ON N4S 3S7<br/>(519)688-2362</i></div>				
+					</div>
+		        </li>
+			  
+		  </ol>
+		  
+		  <div class="pagination" >
+		  
+			
+			
+			
+				<a  href="/sitemap/theaters/CA/ON">1</a> |
+			
+				<a class="selected" href="/sitemap/theaters/CA/ON?page=2">2</a> |
+			
+				<a  href="/sitemap/theaters/CA/ON?page=3">3</a>
+			
+		  
+		  </div>
+		  
+      </div> 
+    </div>
+    
+    
+
+    
+      
+    
+
+
+
+<div id="pageFooter">
+	<p class="pageCopyright">Copyright &copy; 2009 Flixster, All Rights Reserved</p>
+	<div class="boxtail"></div>
+	<div id="server" style="color:#fff;text-align:center;">web14.flixster.com</div>
+</div>
+
+
+
+<script type="text/javascript">
+new Component.Binder( document );
+</script>
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+	
+	Tracker.trackSegment("Anonymous");
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		
+		
+		
+	
+		
+
+		
+
+		
+			
+		
+		
+		Tracker.tag('SitemapAnon');
+
+	
+	
+	
+
+</script>
+
+  </body>
+</html>

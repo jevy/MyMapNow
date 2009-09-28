@@ -1,0 +1,1289 @@
+HTTP/1.0 200 OK
+Date: Mon, 28 Sep 2009 21:10:28 GMT
+Server: Apache
+Expires: Sat, 6 May 1995 12:00:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Set-Cookie: ServerID=1170; Path=/
+Set-Cookie: JSESSIONID=F8B4BF774C35AFD7372E073DCF81070E.localhost; Path=/
+Content-Language: en
+Vary: User-Agent,Accept-Encoding
+Connection: close
+Content-Type: text/html;charset=ISO-8859-1
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+  <head>
+    
+      
+      
+      
+      
+        
+      
+      
+      
+    
+
+
+
+
+<title>Browse Theaters Index</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+
+
+
+
+
+
+<meta name="robots" content="noarchive,noindex,follow" />
+
+
+
+
+
+<meta name="description" content="The central location for all movie theaters"/>
+
+
+
+
+
+
+
+
+	<script>
+		if(window.location.hash.indexOf("em.log") != -1) { window.location = "/account/auto-login?" + window.location.hash.replace("#","").replace(/!/g,"&").replace(/:/g,"=") + "&redirectUrl=" + window.location.pathname; }
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+			
+			<link href="http://static.flixstercdn.com/static/styles/global.css?version=20090925c" type="text/css" rel="stylesheet"/>
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+			
+			<link href="http://static.flixstercdn.com/static/styles/pages.sitemap.css?version=20090925c" type="text/css" rel="stylesheet"/>
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+		<script type="text/javascript" src="http://static.flixstercdn.com/assets/v/20090925c/scripts?f=prototype.6.js&f=scriptaculous.8.js&f=firebugx.js&f=global.js&f=apis.js&f=balloon.js&f=talk.js&f=search.js&f=widgets.captcha.js&f=tracking.flixster.js" charset="utf-8"></script>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+	
+	
+	
+		
+	
+
+    
+  </head>
+  <body>
+    
+
+<div id="pageHeader">
+
+	<div class="brand">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+<a href="http://www.flixster.com"  rel="nofollow">
+	Flixster
+</a></div>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form name="searchForm" class="search" id="searchForm" component="SearchForm" mainView="MultiSearchView" action="/search" method="get">
+	<div class="clearfix">
+		<input id="globalSearchField" class="text" style="margin: 6px -7px 0 14px;border:1px solid #2b84cc;padding:4px;-moz-border-radius-bottomleft:4px;-moz-border-radius-bottomright:4px;-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;" type="text" id="q" name="q"  autocomplete=off value="Movies, Actors, Directors..." default="Movies, Actors, Directors..." component="SearchField" />
+		<input type="submit" onclick="if($('globalSearchField').value == 'Movies, Actors, Directors...') { $('searchField').focus(); return false; }"  class="button" value="" title="Search" />
+	</div>
+</form>
+	
+</div>
+
+
+	
+
+
+
+<!--[if lt IE 7]> 
+<style type="text/css">
+#pageNavTabs li.hover .menuBridge { display:none; }
+#pageFooter .boxtail { background:none; }
+#pageNavTabs li li, #pageNavTabs li.selected li { height:1em; }
+#pageNavTabs li li a, #pageNavTabs li.selected li a { display: inline-block; width:100%; } /*fixes ie white-space list bug*/
+</style>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="pageTop"><p></p></div>
+
+
+
+    
+	
+    
+    <div id="pageBody">
+    	<div id="theaterList">
+    	  <h2>Theaters in Ontario, CA</h2>
+    	  
+    	  
+    	  
+		  
+		  
+		  <div class="pagination" >
+		  
+			
+			
+			
+				<a  href="/sitemap/theaters/CA/ON">1</a> |
+			
+				<a  href="/sitemap/theaters/CA/ON?page=2">2</a> |
+			
+				<a class="selected" href="/sitemap/theaters/CA/ON?page=3">3</a>
+			
+		  
+		  </div>
+    	  
+	  	  <ol>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/stinson-timmins-cinema-6" >Stinson Timmins Cinema 6</a></h3>
+						<div class="address"><i>215 Cedar Street South<br/> Timmins ON P4N 2H2<br/>(705)268-7070</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/revue-cinema" >Revue Cinema</a></h3>
+						<div class="address"><i>400 Roncesvalles Avenue<br/> Toronto ON M6R 2M9<br/>(416)531-9959</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/alliance-atlantis-cumberland-4" >Alliance Atlantis Cumberland 4</a></h3>
+						<div class="address"><i>159 Cumberland Street<br/> Toronto ON M5R 1A2<br/>(416)964-9359</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/camera-bar" >Camera Bar</a></h3>
+						<div class="address"><i>1028 Queen Street West<br/> Toronto ON M6J 1H6<br/>(416)530-0011</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/imax-ontario-place" >IMAX - Ontario Place</a></h3>
+						<div class="address"><i>955 Lakeshore Boulevard West<br/> Toronto ON M6K 3B9<br/>(416)314-9900</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/gladstone-hotel-art-bar" >Gladstone Hotel Art Bar</a></h3>
+						<div class="address"><i>1214 Queen St. W.<br/> Toronto ON M6J 1J6<br/>(416)531-4635</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/amc-yonge-dundas-24" >AMC Yonge & Dundas 24</a></h3>
+						<div class="address"><i>10 Dundas Street East<br/> Toronto ON M5B 2G9<br/>(416)335-5323</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/cineforum" >Cineforum</a></h3>
+						<div class="address"><i>463 Bathurst St<br/> Toronto ON M5T 2S9<br/>(416)603-6643</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/322228336" >Alliance Atlantis Bayview Village</a></h3>
+						<div class="address"><i>2901 Bayview Avenue<br/> Toronto ON M2K 1E6<br/>(416)646-0444</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/alliance-atlantis-beach-cinemas" >Alliance Atlantis Beach Cinemas</a></h3>
+						<div class="address"><i>1651 Queen Street East<br/> Toronto ON M4L 1G5<br/>(416)699-1327 076</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/bloor-cinema" >Bloor Cinema</a></h3>
+						<div class="address"><i>506 Bloor Street West<br/> Toronto ON M5S 1Y3<br/>(416)516-2330</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-carlton-cinemas" >CO Carlton Cinemas</a></h3>
+						<div class="address"><i>20 Carlton Street<br/> Toronto ON M5B 2H5<br/>(416)598-2309</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-sheppard-grande" >CO Sheppard Grande</a></h3>
+						<div class="address"><i>4861 Yonge Street<br/> Toronto ON M2N 5X2<br/>(416)590-9397</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-varsity" >CO Varsity</a></h3>
+						<div class="address"><i>55 Bloor Street West<br/> Toronto ON M4W 1A5<br/>(416)961-6304</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/322228370" >CO Varsity VIP</a></h3>
+						<div class="address"><i>55 Bloor Street West<br/> Toronto ON M4W 1A5<br/>(416)961-6304</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/royal-cinema" >Royal Cinema</a></h3>
+						<div class="address"><i>608 College St. West<br/> Toronto ON M6G 1A1<br/>(416)534-5252</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/polson-pier-drivein" >Polson Pier Drive-In</a></h3>
+						<div class="address"><i>176 Cherry Street<br/> Toronto ON M5A 1A4<br/>(416)465-4653</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/cinematheque-ontario---jackman-hall-ago" >Cinematheque Ontario - Jackman Hall AGO</a></h3>
+						<div class="address"><i>317 Dundas Street West<br/> Toronto ON M5T 1G4<br/>(416)968-3456</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/empire-theatres-at-empress-walk" >Empire Theatres at Empress Walk</a></h3>
+						<div class="address"><i>5095 Yonge Street<br/> Toronto ON M2N 6Z4<br/>(416)223-9550</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/764946604" >Brunswick Theatre Toronto</a></h3>
+						<div class="address"><i>296 Brunswick Avenue<br/> Toronto ON M5S 2M7<br/>(647)282-3627</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/famous-players-canada-square" >Famous Players Canada Square</a></h3>
+						<div class="address"><i>2190 Yonge Street<br/> Toronto ON M4S 2C6<br/>(416)646-0444</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/scotiabank-theatre-toronto" >Scotiabank Theatre Toronto</a></h3>
+						<div class="address"><i>259 Richmond Street West<br/> Toronto ON M5V 3M6<br/>(416)368-5600</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/famous-players-silvercity-yongeeglinton-centre" >Famous Players SilverCity - Yonge-Eglinton Centre</a></h3>
+						<div class="address"><i>2300 Yonge Street<br/> Toronto ON M4P 1E4<br/>(416)544-1236</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/famous-players-silvercity-yorkdale" >Famous Players SilverCity - Yorkdale</a></h3>
+						<div class="address"><i>3401 Dufferin Street<br/> Toronto ON M6A 2T9<br/>(416)787-4432</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/the-fox" >The Fox</a></h3>
+						<div class="address"><i>2236 Queen Street East<br/> Toronto ON M4E 1G2<br/>(416)691-7330</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/imax-ontario-science-centre" >IMAX - Ontario Science Centre</a></h3>
+						<div class="address"><i>770 Don Mills Road<br/> Toronto ON M3C 1T3<br/>(416)429-4100</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/mt-pleasant-theatre" >Mt. Pleasant Theatre</a></h3>
+						<div class="address"><i>675 Mt. Pleasant Road<br/> Toronto ON M4S 2N2<br/>(416)489-8484</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/drake-hotel---sky-yard" >Drake Hotel - Sky Yard</a></h3>
+						<div class="address"><i>1150 Queen St. W<br/> Toronto ON M6J 1J3<br/>(416)531-5042</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/harbourfront-centre-studio-theatre" >Harbourfront Centre Studio Theatre</a></h3>
+						<div class="address"><i>235 Queens Quay West<br/> Toronto ON M5J 2G8<br/>(416)973-4000</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/movies-under-the-stars---downsview-park" >Movies Under the Stars - Downsview Park</a></h3>
+						<div class="address"><i>35 Carl Hall Rd<br/> Toronto ON M3K 2B6<br/>(416)952-2222</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/innis-town-hall" >Innis Town Hall</a></h3>
+						<div class="address"><i>2 Sussex Ave<br/> Toronto ON M5S 1J5<br/>(416)946-7066</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/rainbow-cinemas-market-square" >Rainbow Cinemas Market Square</a></h3>
+						<div class="address"><i>80 Front Street E. at Jarvis<br/> Toronto ON M5E 1T4<br/>(416)494-9371</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/rainbow-cinemas-woodbine" >Rainbow Cinemas Woodbine</a></h3>
+						<div class="address"><i>500 Rexdale Boulevard<br/> Toronto ON M9W 6K5<br/>(416)494-9371</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/regent-theatre-toronto" >Regent Theatre</a></h3>
+						<div class="address"><i>551 Mount Pleasant Road<br/> Toronto ON M4S 2M5<br/>(416)480-9884</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/kingsway-theatre" >Kingsway Theatre</a></h3>
+						<div class="address"><i>3030 Bloor Street West<br/> Toronto ON M8X 1C4<br/>(416)232-1939</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/nfb-mediatheque" >NFB Mediatheque</a></h3>
+						<div class="address"><i>150 John. St<br/> Toronto ON M5V 3E3<br/>(416)973-3012</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/centre-theatre-trenton" >Centre Theatre - Trenton</a></h3>
+						<div class="address"><i>120 Dundas St West<br/> Trenton ON K8V 3P3<br/>(613)392-6100</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/roxy-theatre-uxbridge" >Roxy Theatre - Uxbridge</a></h3>
+						<div class="address"><i>46 Brock St.W.<br/> Uxbridge ON L9P 1P3<br/>(905)852-7699</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/famous-players-colossus-woodbridge" >Famous Players Colossus Toronto</a></h3>
+						<div class="address"><i>3555 Highway 7 West<br/> Vaughan ON L4L 6B1<br/>(905)851-1001</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/galaxy-cinemas-waterloo" >Galaxy Cinemas @ Waterloo</a></h3>
+						<div class="address"><i>550 King Street N.<br/> Waterloo ON N2J 2W7<br/>(519)883-4268</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/princess" >Princess</a></h3>
+						<div class="address"><i>6 Princess St. W<br/> Waterloo ON N1G 2X6<br/>(519)885-2950</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/princess-twin" >Princess  Twin</a></h3>
+						<div class="address"><i>46 King Street North,<br/> Waterloo ON N1G 2X6<br/>(519)885-2950</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-seaway-mall" >CO Seaway Mall</a></h3>
+						<div class="address"><i>800 Niagara Street<br/> Welland ON L3C 1M3<br/>(905)735-6402</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/amc-whitby-24" >AMC Whitby 24</a></h3>
+						<div class="address"><i>75 Consumers Drive<br/> Whitby ON L1N 9S2<br/>(905)665-7210</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/silvercity-fairview-mall" >SilverCity Fairview Mall</a></h3>
+						<div class="address"><i>1800 Sheppard Avenue East<br/> Willowdale ON M2J 5A7<br/>(416)644-7746</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/co-devonshire-mall" >CO Devonshire Mall</a></h3>
+						<div class="address"><i>3100 Howard Avenue<br/> Windsor ON N8X 3Y8<br/>(519)967-0197</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/famous-players-silvercity-windsor" >Famous Players SilverCity - Windsor</a></h3>
+						<div class="address"><i>4611 Walker Road<br/> Windsor ON N8W 3T6<br/>(519)966-6888</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/forest-glade" >Forest Glade</a></h3>
+						<div class="address"><i>9950 Tecumseh Road East<br/> Windsor ON N8R 1A2<br/>(519)979-1663</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/palace-cinemas" >Palace Cinemas</a></h3>
+						<div class="address"><i>300 Ouelette Avenue<br/> Windsor ON N9A 7B4<br/>(519)977-1300</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/oxford-drivein-theatre" >Oxford Drive-In Theatre</a></h3>
+						<div class="address"><i>684471 Road #68<br/> Woodstock ON N4S 7V7<br/>(519)537-7392</i></div>				
+					</div>
+		        </li>
+			  
+			    <li>
+				    <div class="theater">
+						<h3>
+
+
+
+
+
+
+
+
+
+
+<a href="/showtimes/gallery-cinemas-woodstock" >Gallery Cinemas Woodstock</a></h3>
+						<div class="address"><i>15 Perry Street<br/> Woodstock ON N4S 3C1<br/>(519)421-3456</i></div>				
+					</div>
+		        </li>
+			  
+		  </ol>
+		  
+		  <div class="pagination" >
+		  
+			
+			
+			
+				<a  href="/sitemap/theaters/CA/ON">1</a> |
+			
+				<a  href="/sitemap/theaters/CA/ON?page=2">2</a> |
+			
+				<a class="selected" href="/sitemap/theaters/CA/ON?page=3">3</a>
+			
+		  
+		  </div>
+		  
+      </div> 
+    </div>
+    
+    
+
+    
+      
+    
+
+
+
+<div id="pageFooter">
+	<p class="pageCopyright">Copyright &copy; 2009 Flixster, All Rights Reserved</p>
+	<div class="boxtail"></div>
+	<div id="server" style="color:#fff;text-align:center;">web70.flixster.com</div>
+</div>
+
+
+
+<script type="text/javascript">
+new Component.Binder( document );
+</script>
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+	
+	Tracker.trackSegment("Anonymous");
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		
+		
+		
+	
+		
+
+		
+
+		
+			
+		
+		
+		Tracker.tag('SitemapAnon');
+
+	
+	
+	
+
+</script>
+
+  </body>
+</html>
