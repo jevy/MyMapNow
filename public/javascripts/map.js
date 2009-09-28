@@ -7,15 +7,11 @@ var Map = {
       center: new google.maps.LatLng(lat, lng),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-
-    google.maps.event.addListener(Map.map, 'bounds_changed', function() {
-      // do this when the map bounds change
-    });
-  },
-
-  addItem: function(item) {
-    alert("adding the item " + item.title);
-  },
+  }
 };
+
+updateMapLocation = function(location) {
+	alert(google.geocoder.geocode(location));
+}
 
 $(Map.initialize);
