@@ -10,32 +10,74 @@ describe Flixster do
     }
     @movie_at_amc_kanata = {
       :title => "All About Steve",
-      :begin_at => Time.mktime(2009, 9, 27, 19, 20, 0),
+      :begin_at => Time.mktime(2009, 9, 28, 19, 20, 0),
       :description => "Insert movie description here",
       :address => '801 Kanata Avenue, Kanata, ON'
     }
 
     @flixster = Flixster.new
-    @today = Time.mktime(2009, 9, 27, 19, 0, 0)
+    @today = Time.mktime(2009, 9, 28, 19, 0, 0)
   end
 
-  it "should parse a big movie theatre page and extract movies" do
-    #page = `cat spec/lib/testData/amc-kanata-24-html`
-    #FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/amc-kanata-24", :response => page)
-    item = mock_model(Item)
-    Item.should_receive(:save).with(:title       => @movie_at_amc_kanata[:title],
-                                      :begin_at    => @movie_at_amc_kanata[:begin_at],
-                                      :description => @movie_at_amc_kanata[:description],
-                                      :address     => @movie_at_amc_kanata[:address])
-    @flixster.scrapeTheatrePage("spec/lib/testData/amc-kanata-24-httrack.html", @today)
+  it "should create an item for the movie" do
+    page = `cat spec/lib/testData/theatrePages/amc-sept-28`
+    FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/amc-kanata-24", :response => page)
+    myItem = mock("Item")
+    # Should there be a mock here?
+    myItem.should_receive(:create).with(:title       => @movie_at_amc_kanata[:title],
+                                    :begin_at    => @movie_at_amc_kanata[:begin_at],
+                                    :address     => @movie_at_amc_kanata[:address],
+                                       :kind => 'event')
+    @flixster.scrapeTheatrePage("http://www.flixster.com/showtimes/amc-kanata-24", @today)
   end
 
+  it "should find all pagination links for multi page" do
+    page1 = `cat spec/lib/testData/pagination/page1`
+    page2 = `cat spec/lib/testData/pagination/page2`
+    page3 = `cat spec/lib/testData/pagination/page3`
+    FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/ON", :response => page1)
+    FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/ON?page=2", :response => page2)
+    FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/ON?page=3", :response => page3)
+    links = @flixster.scrapeTheatreListingPaginationLinks("http://www.flixster.com/sitemap/theaters/CA/ON")
+    links.should have(3).strings
+    links.should include("http://www.flixster.com/sitemap/theaters/CA/ON")
+    links.should include("http://www.flixster.com/sitemap/theaters/CA/ON?page=2")
+    links.should include("http://www.flixster.com/sitemap/theaters/CA/ON?page=3")
+  end
 
-  it "should parse a small movie theatre page and extract movies"
-  it "should extract movies and not have duplicates"
-  it "should find links for each theatre page"
+  it "should find no pagination links for single page" do
+    page1 = `cat spec/lib/testData/pagination/NSpage1`
+    FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/NS", :response => page1)
+    links = @flixster.scrapeTheatreListingPaginationLinks("http://www.flixster.com/sitemap/theaters/CA/NS")
+    links.should have(1).strings
+    links.should include("http://www.flixster.com/sitemap/theaters/CA/NS")
+  end
+
+  it "should find links for theatre pages from a multi-page theatre list" do
+    page1 = `cat spec/lib/testData/pagination/page1`
+    page2 = `cat spec/lib/testData/pagination/page2`
+    page3 = `cat spec/lib/testData/pagination/page3`
+    FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/ON", :response => page1)
+    FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/ON?page=2", :response => page2)
+    FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/ON?page=3", :response => page3)
+    links = @flixster.getAllTheaterLinks("http://www.flixster.com/sitemap/theaters/CA/ON")
+    links.should include("http://www.flixster.com/showtimes/co-aurora-cinemas")
+    links.should include("http://www.flixster.com/showtimes/revue-cinema")
+  end
+
+  it "should find links for theatre pages from a single-page theatre list" do
+    page = `cat spec/lib/testData/pagination/NSpage1`
+    FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/NS", :response => page)
+    links = @flixster.getAllTheaterLinks("http://www.flixster.com/sitemap/theaters/CA/NS")
+    links.should include("http://www.flixster.com/showtimes/empire-theatres-antigonish")
+    links.should include("http://www.flixster.com/showtimes/empire-theatres-studio-7-cinemas")
+  end
+
   it "should find movies for the next week"
   it "should find all movie times for the next week from state url"
   it "should geocode the movie theatre to the right place"
+  it "should parse a big movie theatre page and extract movies"
+  it "should parse a small movie theatre page and extract movies"
+  it "should extract movies and not have duplicates"
 
 end

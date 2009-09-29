@@ -1,5 +1,6 @@
 require 'hpricot'
 require 'open-uri'
+require 'uri'
 
 class Flixster
   def scrapeFromAllTheatreAtStateURL(url)
@@ -48,13 +49,10 @@ class Flixster
     movieTimesDivs.each_index do |i|
       stringCleanup(movieTimesDivs[i].inner_text).split(',').each do |time|
         print "."
-        movie = Item.new
-        movie.title = movieNames[i]
-        movie.description = "Insert movie description here"
-        movie.begin_at = convertTimeStringToDate(date, time).to_s
-        movie.address = fullAddress
-        movie.kind = 'event'
-        movie.save
+        movie = Item.create(:title => movieNames[i],
+                            :begin_at => convertTimeStringToDate(date, time).to_s,
+                            :address => fullAddress,
+                            :kind => 'event')
       end
     end
     print "\n"
@@ -69,15 +67,27 @@ class Flixster
     return theatreUrl + "?date=" + date.strftime("%Y%m%d")
   end
 
-  def getPageLinks (doc, url)
+  # Call this with the first state/province page
+  def getAllTheaterLinks(url)
+    resultLinks = []
+    scrapeTheatreListingPaginationLinks(url).each do |pageUrl|
+      resultLinks << scrapeTheaterLinksFromThisPage(pageUrl)
+    end
+    return resultLinks
+  end
+
+  def scrapeTheatreListingPaginationLinks(url)
     pageLinks = []
-    (doc/"div.pagination//a").each { |a| pageLinks << "http://" + url.split('/')[2] + a[:href] } # Nil if this is the only page
+    doc = Hpricot open url
+    (doc/"div.pagination:first//a").each { |a| pageLinks << "http://www.flixster.com" + a[:href] } # Nil if this is the only page
+    return Array.[](url) if pageLinks.empty?
     return pageLinks
   end
 
-  def getTheaterLinks (doc, url)
+  def scrapeTheaterLinksFromThisPage(url)
     theaterLinks = []
-    (doc/"div.theater//h3//a").each { |a| theaterLinks << "http://" + url.split('/')[2] + a[:href] }
+    doc = Hpricot open url
+    (doc/"div.theater//h3//a").each { |a| theaterLinks << "http://www.flixster.com" + a[:href] }
     return theaterLinks
   end
 
