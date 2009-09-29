@@ -10,8 +10,4 @@ var Map = {
   }
 };
 
-updateMapLocation = function(location) {
-	alert(google.geocoder.geocode(location));
-}
-
 $(Map.initialize);
