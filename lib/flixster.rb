@@ -2,6 +2,11 @@ require 'hpricot'
 require 'open-uri'
 require 'uri'
 
+# * The Flixster site as a listing of all provinces/states here:
+# http://www.flixster.com/sitemap/theaters
+# * Each prov/state page may have multiple pagination pages and the pages
+# contain many links to theatres.
+# * Each theatre page has many movies and showtimes for those movies
 class Flixster
   def scrapeFromAllTheatreAtStateURL(url)
     doc = Hpricot(open(url))
@@ -29,14 +34,14 @@ class Flixster
   # Designed for a single theatre's page
   def scrapeTheatrePage(theatreUrl, date)
 
-    #doc = open(generateURL(theatreUrl, date)) { |f| Hpricot(f) }
     doc = Hpricot open theatreUrl
-    name = doc.at("//input[@name='name']")['value']
-    print "Theatre #{name}:"
-    address = doc.at("//input[@name='address']")['value']
-    city = doc.at("//input[@name='city']")['value']
-    region = doc.at("//input[@name='state']")['value']
+
+    name      = doc.at("//input[@name='name']")['value']
+    address   = doc.at("//input[@name='address']")['value']
+    city      = doc.at("//input[@name='city']")['value']
+    region    = doc.at("//input[@name='state']")['value']
     fullAddress = address + ", " + city + ", " + region
+    print "Theatre #{name}:"
 
     # The movies and times alternate between two seperate, but sequential divs
     # Create two arrays, then match them up
@@ -59,13 +64,17 @@ class Flixster
 
   end
 
+  #
+  # Helper methods
+  #
+
   def convertTimeStringToDate(date, timeString) 
     Time.parse(timeString, date) 
   end
 
-  def generateURL(theatreUrl,date)
-    return theatreUrl + "?date=" + date.strftime("%Y%m%d")
-  end
+  #def generateURL(theatreUrl,date)
+  #  return theatreUrl + "?date=" + date.strftime("%Y%m%d")
+  #end
 
   # Call this with the first state/province page
   def getAllTheaterLinks(url)
