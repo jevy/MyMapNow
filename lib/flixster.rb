@@ -80,7 +80,7 @@ class Flixster
   def getAllTheaterLinks(url)
     resultLinks = []
     scrapeTheatreListingPaginationLinks(url).each do |pageUrl|
-      resultLinks << scrapeTheaterLinksFromThisPage(pageUrl)
+      resultLinks.concat scrapeTheaterLinksFromThisPage(pageUrl)
     end
     return resultLinks
   end

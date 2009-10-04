@@ -54,23 +54,32 @@ describe Flixster do
   end
 
   it "should find links for theatre pages from a multi-page theatre list" do
-  # page1 = `cat spec/lib/testData/pagination/page1`
-  # page2 = `cat spec/lib/testData/pagination/page2`
-  # page3 = `cat spec/lib/testData/pagination/page3`
-  # FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/ON", :response => page1)
-  # FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/ON?page=2", :response => page2)
-  # FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/ON?page=3", :response => page3)
-  # links = @flixster.getAllTheaterLinks("http://www.flixster.com/sitemap/theaters/CA/ON")
-  # links.should include("http://www.flixster.com/showtimes/co-aurora-cinemas")
-  # links.should include("http://www.flixster.com/showtimes/revue-cinema")
+    page1 = `cat spec/lib/testData/pagination/page1`
+    page2 = `cat spec/lib/testData/pagination/page2`
+    page3 = `cat spec/lib/testData/pagination/page3`
+    FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/ON", :response => page1)
+    FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/ON?page=2", :response => page2)
+    FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/ON?page=3", :response => page3)
+    links = @flixster.getAllTheaterLinks("http://www.flixster.com/sitemap/theaters/CA/ON")
+    #require "rubygems"; require "ruby-debug"; debugger
+    links.should include("http://www.flixster.com/showtimes/co-aurora-cinemas")
+    links.should include("http://www.flixster.com/showtimes/revue-cinema")
   end
 
   it "should find links for theatre pages from a single-page theatre list" do
-  # page = `cat spec/lib/testData/pagination/NSpage1`
-  # FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/NS", :response => page)
-  # links = @flixster.getAllTheaterLinks("http://www.flixster.com/sitemap/theaters/CA/NS")
-  # links.should include("http://www.flixster.com/showtimes/empire-theatres-antigonish")
-  # links.should include("http://www.flixster.com/showtimes/empire-theatres-studio-7-cinemas")
+    page = `cat spec/lib/testData/pagination/NSpage1`
+    FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/NS", :response => page)
+    links = @flixster.getAllTheaterLinks("http://www.flixster.com/sitemap/theaters/CA/NS")
+    links.should include("http://www.flixster.com/showtimes/empire-theatres-antigonish")
+    links.should include("http://www.flixster.com/showtimes/empire-theatres-studio-7-cinemas")
+  end
+
+  it "should find theatre links from a single pagination page" do
+    page = `cat spec/lib/testData/pagination/NSpage1`
+    FakeWeb.register_uri(:get, "http://www.flixster.com/sitemap/theaters/CA/NS", :response => page)
+    links = @flixster.scrapeTheaterLinksFromThisPage("http://www.flixster.com/sitemap/theaters/CA/NS")
+    links.should include("http://www.flixster.com/showtimes/empire-theatres-antigonish")
+    links.should include("http://www.flixster.com/showtimes/empire-theatres-studio-7-cinemas")
   end
 
   it "should find movies for the next week"
