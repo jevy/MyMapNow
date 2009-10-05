@@ -54,10 +54,10 @@ class Flixster
     movieTimesDivs.each_index do |i|
       stringCleanup(movieTimesDivs[i].inner_text).split(',').each do |time|
         print "."
-        movie = Item.create(:title => movieNames[i],
-                            :begin_at => convertTimeStringToDate(date, time).to_s,
-                            :address => fullAddress,
-                            :kind => 'event')
+        movie = Item.create(:title    => movieNames[i],
+                            :begin_at => convertTimeStringToDate(date, time),
+                            :address  => fullAddress,
+                            :kind     => 'event')
       end
     end
     print "\n"
