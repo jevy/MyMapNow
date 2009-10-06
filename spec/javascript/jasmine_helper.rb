@@ -4,7 +4,7 @@ class JasmineHelper
   end
 
   def self.jasmine_root  
-    File.expand_path(File.join(File.dirname(__FILE__), '..', '..', '..'))
+    File.expand_path(File.join(File.dirname(__FILE__), 'jasmine'))
   end
 
   def self.jasmine
