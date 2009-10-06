@@ -18,7 +18,7 @@ class JasmineHelper
   end
 
   def self.jasmine_spec_dir
-    File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec'))
+    File.expand_path(File.join(File.dirname(__FILE__), 'specs'))
   end
 
   def self.raw_spec_files
