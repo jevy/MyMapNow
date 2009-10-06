@@ -31,6 +31,8 @@ describe Flixster do
     @flixster.scrapeTheatrePage("http://www.flixster.com/showtimes/amc-kanata-24", @today)
   end
 
+  it "should associate movie names with times and return a hash"
+
   it "should parse the time string and return the Time" do
     result = @flixster.convertTimeStringToDate(@today, "11:30 AM")
     result.should eql Time.mktime(2009,9,28,11,30,0)
@@ -89,8 +91,7 @@ describe Flixster do
     links.should include("http://www.flixster.com/showtimes/empire-theatres-studio-7-cinemas")
   end
 
-  it "should find movies for the next week"
-  it "should find all movie times for the next week from state url"
+  it "should find movies for the specified day"
   it "should geocode the movie theatre to the right place"
   it "should parse a big movie theatre page and extract movies"
   it "should parse a small movie theatre page and extract movies"

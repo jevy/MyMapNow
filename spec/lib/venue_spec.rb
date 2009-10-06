@@ -17,7 +17,7 @@ describe Venue do
 
   # TODO: This uses the internet.  Is that bad?
   it "should return the correct lat/log given a correct address" do
-    #@venue.coordinates.should eql @expected_coordinates
+    @venue.coordinates.should eql @expected_coordinates
   end
 
   # TODO: This uses the internet.  Is that bad?
@@ -25,8 +25,6 @@ describe Venue do
     #@venue.address = "1234 Silly Willy St."
     #@venue.coordinates.should eql nil
   end
-
-  it "should return true if the accuracy is too low"
 
   it "should create a full address when all values present" do
     @venue.full_address.should eql @expected_full_address
@@ -36,4 +34,7 @@ describe Venue do
     @venue.address = nil
     @venue.full_address.should eql ""
   end
+
+  it "should return true if the accuracy is too low"
+
 end

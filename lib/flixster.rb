@@ -36,37 +36,57 @@ class Flixster
 
     doc = Hpricot open theatreUrl
 
-    name      = doc.at("//input[@name='name']")['value']
-    address   = doc.at("//input[@name='address']")['value']
-    city      = doc.at("//input[@name='city']")['value']
-    region    = doc.at("//input[@name='state']")['value']
-    fullAddress = address + ", " + city + ", " + region
-    print "Theatre #{name}:"
+    theatre = Venue.new
+    theatre.name = doc.at("//input[@name='name']")['value']
+    theatre.address = doc.at("//input[@name='address']")['value']
+    theatre.city = doc.at("//input[@name='city']")['value']
+    theatre.state = doc.at("//input[@name='state']")['value']
+    coordinates = theatre.coordinates
 
     # The movies and times alternate between two seperate, but sequential divs
     # Create two arrays, then match them up
-    movieNames = []
-    doc.search("//div[@class='mtitle']//a").each { |e| movieNames << e.inner_text }
-    movieNames.each { |movie| movie = stringCleanup(movie) }
+    movie_names = extract_movie_names(doc)
+    movie_times_blocks = doc.search("//div[@class='times']")
+    movies_with_times = associate_movies_and_times(movie_names, movie_times_blocks)
 
-    movieTimesDivs = doc.search("//div[@class='times']")
-
-    movieTimesDivs.each_index do |i|
-      stringCleanup(movieTimesDivs[i].inner_text).split(',').each do |time|
-        print "."
-        movie = Item.create(:title    => movieNames[i],
-                            :begin_at => convertTimeStringToDate(date, time),
-                            :address  => fullAddress,
-                            :kind     => 'event')
+    movies_with_times.each_pair do |movie_name, times|
+      times.each do |time|
+        movie = Item.create(:title     => movie_name,
+                            :begin_at  => convertTimeStringToDate(date, time),
+                            :address   => theatre.full_address,
+                            :latitude  => coordinates[0],
+                            :longitude => coordinates[1],
+                            :kind      => 'event')
       end
     end
-    print "\n"
-
   end
 
   #
   # Helper methods
   #
+
+  def extract_movie_names(doc)
+    movieNames = []
+    doc.search("//div[@class='mtitle']//a").each { |e| movieNames << e.inner_text }
+    movieNames.each { |movie| movie = stringCleanup(movie) }
+  end
+
+  # returns: a hash with the key as the movie and the value as an array of movie times
+  def associate_movies_and_times(movie_names, movie_times_blocks)
+    result = {}
+    movie_times_blocks.each_index do |i|
+      stringCleanup(movie_times_blocks[i].inner_text).split(',').each do |time|
+        if result["#{movie_names[i]}"].nil? 
+          result["#{movie_names[i]}"] = [time]
+        else 
+          result["#{movie_names[i]}"].concat [time]
+        end
+      end
+    end
+
+    return result
+
+  end
 
   def convertTimeStringToDate(date, timeString) 
     Time.parse(timeString, date) 
