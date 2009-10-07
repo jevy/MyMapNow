@@ -52,7 +52,11 @@ class Flixster
 
   def extract_movie_names(doc)
     movieNames = []
-    doc.search("//div[@class='mtitle']//a").each { |e| movieNames << e.inner_text }
+    doc.search("//div[@class='mtitle']").each do |e| 
+      e.search('span').remove
+      movieNames << e.inner_text.strip
+    end
+
     movieNames.each { |movie| movie = stringCleanup(movie) }
   end
 

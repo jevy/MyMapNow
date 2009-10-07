@@ -1,5 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 require 'fakeweb'
+require 'hpricot'
+require 'open-uri'
 
 describe Flixster do
   before(:each) do
@@ -15,9 +17,6 @@ describe Flixster do
     @flixster = Flixster.new
     @today = Time.mktime(2009, 9, 28, 19, 0, 0)
   end
-
-  # Like here: http://www.flixster.com/showtimes/woodside-cinemas?date=20091006
-  it "should find movies with links and not with links"
 
   it "should create items from movies and times" do
     theatre = Venue.new
@@ -41,6 +40,20 @@ describe Flixster do
     Item.should_receive(:create).exactly(3).times
 
     @flixster.create_items_from_movies_hash(movies_with_times, theatre)
+  end
+
+  # Like here: http://www.flixster.com/showtimes/woodside-cinemas?date=20091006
+  it "should find movies names that don't and do have links" do
+    page = `cat spec/lib/testData/theatrePages/woodside-oct-7-with-movie-with-no-link`
+    FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/woodside-cinemas?date=20091006", 
+                         :response => page)
+
+    doc = Hpricot open "http://www.flixster.com/showtimes/woodside-cinemas?date=20091006"
+    movie_names = @flixster.extract_movie_names(doc)
+    movie_names.should have(3).movies
+    movie_names.should include("Do Knot Disturb")
+    movie_names.should include("My Heart Goes Hooray! (Dil Bole Hadippa!)")
+    movie_names.should include("Wanted (2008)")
   end
 
   it "should create movies for the specified a day (say today)" do
