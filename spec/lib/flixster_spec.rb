@@ -19,19 +19,70 @@ describe Flixster do
     @today = Time.mktime(2009, 9, 28, 19, 0, 0)
   end
 
-  it "should create an item for the movie" do
-    page = `cat spec/lib/testData/theatrePages/amc-sept-28`
-    FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/amc-kanata-24", :response => page)
+  it "should create items from movies and times" do
+    theatre = Venue.new
+    theatre.name     = 'AMC Kanata'
+    theatre.address  = '801 Kanata Avenue'
+    theatre.city     = 'Kanata'
+    theatre.state    = 'ON'
+
+    movies_with_times = {"All About Steve" => [ Time.mktime(2009, 9, 28, 19, 20, 0),
+                                                Time.mktime(2009, 9, 28, 12, 00, 0) ],
+                         "9"               => [ Time.mktime(2009, 9, 28, 21, 20, 0),
+                                                Time.mktime(2009, 9, 28, 21, 20, 0) ]}
     myItem = mock("Item")
-    # Should there be a mock here?
-    myItem.should_receive(:create).with(:title      => @movie_at_amc_kanata[:title],
-                                        :begin_at   => @movie_at_amc_kanata[:begin_at],
-                                        :address    => @movie_at_amc_kanata[:address],
-                                        :kind       => 'event')
-    @flixster.scrapeTheatrePage("http://www.flixster.com/showtimes/amc-kanata-24", @today)
+    myItem.should_receive(:create).exactly(4).times
+    @flixster.create_items_from_movies_hash(movies_with_times, theatre)
   end
 
-  it "should associate movie names with times and return a hash"
+  it "should find movies for the specified day" do
+    todays_theatre_page = `cat spec/lib/testData/theatrePages/amc-oct-6`
+    tomorrows_theatre_page = `cat spec/lib/testData/theatrePages/amc-oct-7`
+    FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/amc-kanata-24?date=20091006", 
+                         :response => todays_theatre_page)
+    FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/amc-kanata-24?date=20091007", 
+                         :response => tomorrows_theatre_page)
+    
+    my_item = mock("Item")
+    @flixster.create_all_movies_for_state_on_date('http://www.flixster.com/showtimes/amc-kanata-24',
+                                        Time.mktime(2009,10,6,0,0,0))
+    my_item.should_receive(:create).at_least(:once)
+
+    @flixster.create_all_movies_for_state_on_date('http://www.flixster.com/showtimes/amc-kanata-24',
+                                        Time.mktime(2009,10,7,0,0,0))
+    my_item.should_receive(:create).at_least(:once)
+  end
+
+  it "should generate the url for the theatre on the given day" do
+    amc_today_url = "http://www.flixster.com/showtimes/amc-kanata-24?date=20091006"
+    amc_tomorrow_url = "http://www.flixster.com/showtimes/amc-kanata-24?date=20091007"
+    base_url = "http://www.flixster.com/showtimes/amc-kanata-24"
+    url = @flixster.url_for_theatre_with_date(base_url, Time.mktime(2009, 10, 6, 0, 0, 0))
+    url.should eql amc_today_url
+    url = @flixster.url_for_theatre_with_date(base_url, Time.mktime(2009, 10, 7, 0, 0, 0))
+    url.should eql amc_tomorrow_url
+  end
+
+  it "should associate movie names with times and return a hash" do
+    theatrePage = `cat spec/lib/testData/theatrePages/amc-sept-28`
+    FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/amc-kanata-24", 
+                         :response => theatrePage)
+    doc = Hpricot open "http://www.flixster.com/showtimes/amc-kanata-24"
+    movie_names = @flixster.extract_movie_names(doc)
+    movie_times_blocks = doc.search("//div[@class='times']")
+
+    movies_with_times = @flixster.associate_movies_and_times(movie_names, movie_times_blocks, @today)
+    movies_with_times.should have(20).movie_names
+    movies_with_times.should have_key("9")
+    times_for_movie_9 = movies_with_times["9"]
+    times_for_movie_9.should include Time.mktime(2009, 9, 28, 20, 15, 0)
+    times_for_movie_9.should include Time.mktime(2009, 9, 28, 15, 30, 0)
+
+    movies_with_times.should have_key("Julie & Julia")
+    times_for_movie_j_and_j = movies_with_times["Julie & Julia"]
+    times_for_movie_j_and_j.should include Time.mktime(2009, 9, 28, 14, 15, 0)
+    times_for_movie_j_and_j.should include Time.mktime(2009, 9, 28, 20, 30, 0)
+  end
 
   it "should parse the time string and return the Time" do
     result = @flixster.convertTimeStringToDate(@today, "11:30 AM")
@@ -90,11 +141,5 @@ describe Flixster do
     links.should include("http://www.flixster.com/showtimes/empire-theatres-antigonish")
     links.should include("http://www.flixster.com/showtimes/empire-theatres-studio-7-cinemas")
   end
-
-  it "should find movies for the specified day"
-  it "should geocode the movie theatre to the right place"
-  it "should parse a big movie theatre page and extract movies"
-  it "should parse a small movie theatre page and extract movies"
-  it "should extract movies and not have duplicates"
 
 end

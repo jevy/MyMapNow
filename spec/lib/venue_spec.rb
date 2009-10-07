@@ -12,9 +12,6 @@ describe Venue do
     @expected_coordinates = [45.4409439, -75.6095409]
   end
 
-  it "should get a geocoder when getting coordinates()" do
-  end
-
   # TODO: This uses the internet.  Is that bad?
   it "should return the correct lat/log given a correct address" do
     @venue.coordinates.should eql @expected_coordinates
@@ -34,7 +31,5 @@ describe Venue do
     @venue.address = nil
     @venue.full_address.should eql ""
   end
-
-  it "should return true if the accuracy is too low"
 
 end

@@ -2,33 +2,22 @@ require 'hpricot'
 require 'open-uri'
 require 'uri'
 
-# * The Flixster site as a listing of all provinces/states here:
+# * The Flixster site as a listing of all provinces/states here (called province base URL)
 # http://www.flixster.com/sitemap/theaters
 # * Each prov/state page may have multiple pagination pages and the pages
 # contain many links to theatres.
 # * Each theatre page has many movies and showtimes for those movies
 class Flixster
-  def scrapeFromAllTheatreAtStateURL(url)
-    doc = Hpricot(open(url))
-    pageLinks = getPageLinks(doc, url)
 
-    if pageLinks.nil?
-      puts url
-      scrapeTheatreListingPage(url)
-    else
-      pageLinks.each do |pageLink|
-        puts pageLink
-        scrapeTheatreListingPage(pageLink)
-      end
+  def create_all_movies_for_state_on_date(state_base_url, date)
+    generated_url = url_for_theatre_with_date(state_base_url, date)
+    theatre_urls = getAllTheaterLinks(generated_url)
+
+    theatre_urls.each do |url|
+      movies_with_times = scrapeTheatrePage(url, date)
+      create_items_from_movies_hash(movies_with_times)
     end
-    
-  end
 
-  def scrapeTheatreListingPage(url)
-    doc = Hpricot(open(url))
-    theaterLinks = getTheaterLinks(doc, url)
-
-    theaterLinks.each { |url| scrapeTheatre(url, Time.now) }
   end
 
   # Designed for a single theatre's page
@@ -36,29 +25,17 @@ class Flixster
 
     doc = Hpricot open theatreUrl
 
-    theatre = Venue.new
-    theatre.name = doc.at("//input[@name='name']")['value']
-    theatre.address = doc.at("//input[@name='address']")['value']
-    theatre.city = doc.at("//input[@name='city']")['value']
-    theatre.state = doc.at("//input[@name='state']")['value']
-    coordinates = theatre.coordinates
+    theatre           = Venue.new
+    theatre.name      = doc.at("//input[@name='name']")['value']
+    theatre.address   = doc.at("//input[@name='address']")['value']
+    theatre.city      = doc.at("//input[@name='city']")['value']
+    theatre.state     = doc.at("//input[@name='state']")['value']
 
     # The movies and times alternate between two seperate, but sequential divs
     # Create two arrays, then match them up
     movie_names = extract_movie_names(doc)
     movie_times_blocks = doc.search("//div[@class='times']")
-    movies_with_times = associate_movies_and_times(movie_names, movie_times_blocks)
-
-    movies_with_times.each_pair do |movie_name, times|
-      times.each do |time|
-        movie = Item.create(:title     => movie_name,
-                            :begin_at  => convertTimeStringToDate(date, time),
-                            :address   => theatre.full_address,
-                            :latitude  => coordinates[0],
-                            :longitude => coordinates[1],
-                            :kind      => 'event')
-      end
-    end
+    movies_with_times = associate_movies_and_times(movie_names, movie_times_blocks, date)
   end
 
   #
@@ -72,19 +49,34 @@ class Flixster
   end
 
   # returns: a hash with the key as the movie and the value as an array of movie times
-  def associate_movies_and_times(movie_names, movie_times_blocks)
+  def associate_movies_and_times(movie_names, movie_times_blocks, date)
     result = {}
     movie_times_blocks.each_index do |i|
       stringCleanup(movie_times_blocks[i].inner_text).split(',').each do |time|
         if result["#{movie_names[i]}"].nil? 
-          result["#{movie_names[i]}"] = [time]
+          result["#{movie_names[i]}"] = [convertTimeStringToDate(date, time)]
         else 
-          result["#{movie_names[i]}"].concat [time]
+          result["#{movie_names[i]}"].concat [convertTimeStringToDate(date, time)]
         end
       end
     end
 
     return result
+  end
+
+  def create_items_from_movies_hash(movies_with_times, theatre)
+    coordinates = theatre.coordinates
+
+    movies_with_times.each_pair do |movie_name, times|
+      times.each do |time|
+        Item.create(:title     => movie_name,
+                    :begin_at  => time,
+                    :address   => theatre.full_address,
+                    :latitude  => coordinates[0],
+                    :longitude => coordinates[1],
+                    :kind      => 'event')
+      end
+    end
 
   end
 
@@ -92,14 +84,16 @@ class Flixster
     Time.parse(timeString, date) 
   end
 
-  #def generateURL(theatreUrl,date)
-  #  return theatreUrl + "?date=" + date.strftime("%Y%m%d")
-  #end
+  def url_for_theatre_with_date(theatre_url,date)
+    return theatre_url + "?date=" + date.strftime("%Y%m%d")
+  end
 
   # Call this with the first state/province page
-  def getAllTheaterLinks(url)
+  # This will get all the urls to the theatres even if there are multiple
+  # pagination pages for the state/prov
+  def getAllTheaterLinks(base_url)
     resultLinks = []
-    scrapeTheatreListingPaginationLinks(url).each do |pageUrl|
+    scrapeTheatreListingPaginationLinks(base_url).each do |pageUrl|
       resultLinks.concat scrapeTheaterLinksFromThisPage(pageUrl)
     end
     return resultLinks
