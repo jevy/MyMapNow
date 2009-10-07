@@ -30,8 +30,8 @@ describe Flixster do
                                                 Time.mktime(2009, 9, 28, 12, 00, 0) ],
                          "9"               => [ Time.mktime(2009, 9, 28, 21, 20, 0),
                                                 Time.mktime(2009, 9, 28, 21, 20, 0) ]}
-    myItem = mock("Item")
-    myItem.should_receive(:create).exactly(4).times
+    
+    Item.should_receive(:create).exactly(4).times
     @flixster.create_items_from_movies_hash(movies_with_times, theatre)
   end
 
@@ -42,15 +42,15 @@ describe Flixster do
                          :response => todays_theatre_page)
     FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/amc-kanata-24?date=20091007", 
                          :response => tomorrows_theatre_page)
-    
-    my_item = mock("Item")
+
+    Item.should_receive(:create).at_least(:once)
     @flixster.create_all_movies_for_state_on_date('http://www.flixster.com/showtimes/amc-kanata-24',
                                         Time.mktime(2009,10,6,0,0,0))
-    my_item.should_receive(:create).at_least(:once)
 
-    @flixster.create_all_movies_for_state_on_date('http://www.flixster.com/showtimes/amc-kanata-24',
-                                        Time.mktime(2009,10,7,0,0,0))
-    my_item.should_receive(:create).at_least(:once)
+    # this needs to be in a separate example
+    # @flixster.create_all_movies_for_state_on_date('http://www.flixster.com/showtimes/amc-kanata-24',
+    #                                     Time.mktime(2009,10,7,0,0,0))
+    # Item.should_receive(:create).at_least(:once)
   end
 
   it "should generate the url for the theatre on the given day" do
