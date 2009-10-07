@@ -17,8 +17,6 @@ task :jasmine_server do
 
   puts "your tests are here:"
   puts "  http://localhost:8888/run.html"
-  puts JasmineHelper.spec_file_urls
-  puts JasmineHelper.dir_mappings.inspect
 
   Jasmine::SimpleServer.start(8888,
                               lambda { JasmineHelper.spec_file_urls },
