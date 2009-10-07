@@ -26,14 +26,17 @@ class JasmineHelper
   end
 
   def self.spec_file_urls
+    ['/helpers/spec_helper_without_caching.js'] +
     raw_spec_files.collect {|f| f.sub(jasmine_spec_dir, "/spec")}
   end
 
   def self.dir_mappings
     {
-            "/src" => jasmine_src_dir,
-            "/spec" => jasmine_spec_dir,
-            "/lib" => jasmine_lib_dir
+      "/src" => jasmine_src_dir,
+      "/spec" => jasmine_spec_dir,
+      "/lib" => jasmine_lib_dir,
+      "/helpers" => File.join(jasmine_spec_dir, '/helpers'),
+      "/public" => File.join(File.dirname(__FILE__), '..', '..', 'public')
     }
   end
 end
