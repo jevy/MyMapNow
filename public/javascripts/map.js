@@ -9,9 +9,3 @@ var Map = {
     });
   }
 };
-
-$(Map.initialize);
-
-updateSearchBox = function() {
-  $("#location-search").val(geoip_city() + ", " + geoip_region());
-}
