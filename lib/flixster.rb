@@ -10,12 +10,13 @@ require 'uri'
 class Flixster
 
   def create_all_movies_for_state_on_date(state_base_url, date)
-    generated_url = url_for_theatre_with_date(state_base_url, date)
-    theatre_urls = getAllTheaterLinks(generated_url)
+    theatre_base_urls = getAllTheaterLinks(state_base_url)
 
-    theatre_urls.each do |url|
-      movies_with_times = scrapeTheatrePage(url, date)
-      create_items_from_movies_hash(movies_with_times)
+    theatre_base_urls.each do |url|
+      url_with_date = url_for_theatre_with_date(url, date)
+      movies_with_times = scrapeTheatrePage(url_with_date, date)
+      theatre = extract_venue(url_with_date)
+      create_items_from_movies_hash(movies_with_times, theatre)
     end
 
   end
@@ -24,12 +25,6 @@ class Flixster
   def scrapeTheatrePage(theatreUrl, date)
 
     doc = Hpricot open theatreUrl
-
-    theatre           = Venue.new
-    theatre.name      = doc.at("//input[@name='name']")['value']
-    theatre.address   = doc.at("//input[@name='address']")['value']
-    theatre.city      = doc.at("//input[@name='city']")['value']
-    theatre.state     = doc.at("//input[@name='state']")['value']
 
     # The movies and times alternate between two seperate, but sequential divs
     # Create two arrays, then match them up
@@ -41,6 +36,19 @@ class Flixster
   #
   # Helper methods
   #
+  
+  def extract_venue(url)
+
+    doc = Hpricot open url
+
+    theatre           = Venue.new
+    theatre.name      = doc.at("//input[@name='name']")['value']
+    theatre.address   = doc.at("//input[@name='address']")['value']
+    theatre.city      = doc.at("//input[@name='city']")['value']
+    theatre.state     = doc.at("//input[@name='state']")['value']
+
+    return theatre
+  end
 
   def extract_movie_names(doc)
     movieNames = []
