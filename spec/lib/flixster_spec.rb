@@ -3,21 +3,21 @@ require 'fakeweb'
 
 describe Flixster do
   before(:each) do
-    @movie_at_cineforum = {
-      :title      => "Cocksucker Blues",
-      :begin_at   => Time.mktime(2009, 9, 27, 19, 0, 0),
-      :address    => '463 Bathurst St, Toronto, ON'
-    }
     @movie_at_amc_kanata = {
       :title      => "All About Steve",
       :begin_at   => Time.mktime(2009, 9, 28, 19, 20, 0),
       :address    => '801 Kanata Avenue, Kanata, ON',
+      :latitude   => 45.312168,
+      :longitude  => -75.9093546,
       :kind       => 'event'
     }
 
     @flixster = Flixster.new
     @today = Time.mktime(2009, 9, 28, 19, 0, 0)
   end
+
+  # Like here: http://www.flixster.com/showtimes/woodside-cinemas?date=20091006
+  it "should find movies with links and not with links"
 
   it "should create items from movies and times" do
     theatre = Venue.new
@@ -31,26 +31,37 @@ describe Flixster do
                          "9"               => [ Time.mktime(2009, 9, 28, 21, 20, 0),
                                                 Time.mktime(2009, 9, 28, 21, 20, 0) ]}
     
-    Item.should_receive(:create).exactly(4).times
+    # Should receive a total of 4 calls
+    Item.should_receive(:create).with(:title  =>  @movie_at_amc_kanata[:title],
+                                      :begin_at =>  @movie_at_amc_kanata[:begin_at],
+                                      :address => @movie_at_amc_kanata[:address],
+                                      :latitude => @movie_at_amc_kanata[:latitude],
+                                      :longitude => @movie_at_amc_kanata[:longitude],
+                                      :kind => @movie_at_amc_kanata[:kind])
+    Item.should_receive(:create).exactly(3).times
+
     @flixster.create_items_from_movies_hash(movies_with_times, theatre)
   end
 
-  it "should find movies for the specified day" do
-    todays_theatre_page = `cat spec/lib/testData/theatrePages/amc-oct-6`
+  it "should create movies for the specified a day (say today)" do
+    @flixster.stub(:getAllTheaterLinks).and_return(["http://www.flixster.com/showtimes/amc-kanata-24"])
+    todays_theatre_page = `cat spec/lib/testData/theatrePages/amc-sept-28`
+    FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/amc-kanata-24?date=20090928", 
+                        :response => todays_theatre_page)
+
+    Item.should_receive(:create).exactly(88).times
+    @flixster.create_all_movies_for_state_on_date('http://www.flixster.com/sitemap/theaters/CA/ON', @today)
+  end
+
+  it "should create movies for the specified a day (say in two weeks)" do
+    @flixster.stub(:getAllTheaterLinks).and_return(["http://www.flixster.com/showtimes/amc-kanata-24"])
     tomorrows_theatre_page = `cat spec/lib/testData/theatrePages/amc-oct-7`
-    FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/amc-kanata-24?date=20091006", 
-                         :response => todays_theatre_page)
     FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/amc-kanata-24?date=20091007", 
-                         :response => tomorrows_theatre_page)
+                        :response => tomorrows_theatre_page)
 
-    Item.should_receive(:create).at_least(:once)
+    Item.should_receive(:create).exactly(85).times
     @flixster.create_all_movies_for_state_on_date('http://www.flixster.com/showtimes/amc-kanata-24',
-                                        Time.mktime(2009,10,6,0,0,0))
-
-    # this needs to be in a separate example
-    # @flixster.create_all_movies_for_state_on_date('http://www.flixster.com/showtimes/amc-kanata-24',
-    #                                     Time.mktime(2009,10,7,0,0,0))
-    # Item.should_receive(:create).at_least(:once)
+                                        Time.mktime(2009,10,7,0,0,0))
   end
 
   it "should generate the url for the theatre on the given day" do
