@@ -1,0 +1,395 @@
+HTTP/1.0 200 OK
+Date: Thu, 08 Oct 2009 22:54:00 GMT
+Server: Apache/1.3.39 (Unix)
+X-Proxy-Fix-Up: headers fixed up
+X-Web-Node: www159
+Cache-Control: max-age=3600
+Expires: Thu, 08 Oct 2009 23:54:00 GMT
+Connection: close
+Content-Type: text/xml; charset=utf-8;
+
+<?xml version="1.0" encoding="utf-8"?>
+<lfm status="ok">
+<events location="Ottawa, Canada" page="2" totalpages="12" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" total="116">
+<event>
+  <id>1195950</id>
+  <title>Silversun Pickups</title>
+  <artists>
+    <artist>Silversun Pickups</artist>
+    <artist>Cage the Elephant</artist>
+    <artist>An Horse</artist>
+    <headliner>Silversun Pickups</headliner>
+  </artists>
+  <venue>
+    <name>The Bronson Centre</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>211 Bronson Avenue</street>
+      <postalcode>K1R 6H5</postalcode>
+      <geo:point>
+         <geo:lat>45.413259</geo:lat>
+         <geo:long>-75.70677</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8781314+The+Bronson+Centre</url>
+  </venue>
+  <startDate>Wed, 14 Oct 2009</startDate>
+  <startTime>19:00</startTime>
+  <description><![CDATA[<div class="bbcode">This event is now moved to the Ottawa Civic Center Salons.</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/7730035.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/7730035.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/7730035.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/7730035.jpg</image>
+   <attendance>21</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1195950</tag>  
+  <url>http://www.last.fm/event/1195950+Silversun+Pickups+at+The+Bronson+Centre+on+14+October+2009</url>
+  <website></website>
+  <tickets>
+    <ticket supplier="LiveNation">http://www.last.fm/affiliate/byid/29/1195950/19/</ticket>
+  </tickets>
+</event>
+<event>
+  <id>1250615</id>
+  <title>Hannah Georgas</title>
+  <artists>
+    <artist>Hannah Georgas</artist>
+    <artist>Said the Whale</artist>
+    <artist>The Red Jets</artist>
+    <headliner>Hannah Georgas</headliner>
+  </artists>
+  <venue>
+    <name>Live Lounge</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>128.5 York St.</street>
+      <postalcode>K1N 5T5</postalcode>
+      <geo:point>
+         <geo:lat>45.427515</geo:lat>
+         <geo:long>-75.694805</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8954172+Live+Lounge</url>
+  </venue>
+  <startDate>Thu, 15 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/21387887.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/21387887.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/21387887.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/21387887.jpg</image>
+   <attendance>1</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1250615</tag>  
+  <url>http://www.last.fm/event/1250615+Hannah+Georgas+at+Live+Lounge+on+15+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1219409</id>
+  <title>Kalle Mattson</title>
+  <artists>
+    <artist>Kalle Mattson</artist>
+    <artist>Great Bloomers</artist>
+    <headliner>Kalle Mattson</headliner>
+  </artists>
+  <venue>
+    <name>Zaphod Beeblebrox</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>27 York St.</street>
+      <postalcode>K1N 5S7</postalcode>
+      <geo:point>
+         <geo:lat>45.427855</geo:lat>
+         <geo:long>-75.693986</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8780356+Zaphod+Beeblebrox</url>
+  </venue>
+  <startDate>Thu, 15 Oct 2009</startDate>
+  <startTime>20:00</startTime>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/34298445.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/34298445.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/34298445.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/34298445.jpg</image>
+   <attendance>1</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1219409</tag>  
+  <url>http://www.last.fm/event/1219409+Kalle+Mattson+at+Zaphod+Beeblebrox+on+15+October+2009</url>
+  <website>http://www.facebook.com/event.php?eid=144121964424</website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1162028</id>
+  <title>The Hundreds and Thousands</title>
+  <artists>
+    <artist>The Hundreds and Thousands</artist>
+    <artist>The Sound Technicians</artist>
+    <headliner>The Hundreds and Thousands</headliner>
+  </artists>
+  <venue>
+    <name>Zaphod Beeblebrox</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>27 York St.</street>
+      <postalcode>K1N 5S7</postalcode>
+      <geo:point>
+         <geo:lat>45.427855</geo:lat>
+         <geo:long>-75.693986</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8780356+Zaphod+Beeblebrox</url>
+  </venue>
+  <startDate>Fri, 16 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/23030873.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/23030873.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/23030873.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/23030873.jpg</image>
+   <attendance>10</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1162028</tag>  
+  <url>http://www.last.fm/event/1162028+The+Hundreds+and+Thousands+at+Zaphod+Beeblebrox+on+16+October+2009</url>
+  <website>http://www.arts-crafts.ca/tourdates-post.php?search=3825&amp;venuesID=217</website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1250626</id>
+  <title>Mind Games</title>
+  <artists>
+    <artist>Mind Games</artist>
+    <artist>The Snob Mob</artist>
+    <headliner>Mind Games</headliner>
+  </artists>
+  <venue>
+    <name>Babylon</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>317 Bank Street</street>
+      <postalcode>K2P 1X9</postalcode>
+      <geo:point>
+         <geo:lat>45.414611</geo:lat>
+         <geo:long>-75.695704</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8783365+Babylon</url>
+  </venue>
+  <startDate>Fri, 16 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/403265.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/403265.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/403265.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/403265.jpg</image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1250626</tag>  
+  <url>http://www.last.fm/event/1250626+Mind+Games+at+Babylon+on+16+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1236836</id>
+  <title>Six Shooter Records - Night Of The Shooting Stars</title>
+  <artists>
+    <artist>Luke Doucet</artist>
+    <artist>Melissa McClelland</artist>
+    <artist>Royal Wood</artist>
+    <artist>Justin Rutledge</artist>
+    <artist>NQ Arbuckle</artist>
+    <artist>Amelia Curran</artist>
+    <artist>The Beauties</artist>
+    <artist>BidiniBand</artist>
+    <headliner>Luke Doucet</headliner>
+  </artists>
+  <venue>
+    <name>The New Capital Music Hall</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>128 York Street</street>
+      <postalcode>K1N 5T5</postalcode>
+      <geo:point>
+         <geo:lat>45.429346</geo:lat>
+         <geo:long>-75.689856</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8784333+The+New+Capital+Music+Hall</url>
+  </venue>
+  <startDate>Fri, 16 Oct 2009</startDate>
+  <startTime>21:00</startTime>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/27464251.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/27464251.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/27464251.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/27464251.jpg</image>
+   <attendance>1</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1236836</tag>  
+  <url>http://www.last.fm/event/1236836+Six+Shooter+Records+-+Night+Of+The+Shooting+Stars</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1148440</id>
+  <title>Treasa Levasseur</title>
+  <artists>
+    <artist>Treasa Levasseur</artist>
+    <artist>Noelie McDonnell</artist>
+    <headliner>Treasa Levasseur</headliner>
+  </artists>
+  <venue>
+    <name>Black Sheep Inn</name>
+    <location>
+      <city>Wakefield</city>
+      <country>Canada</country>
+      <street>420 Riverside Drive</street>
+      <postalcode>J0X 3G0</postalcode>
+      <geo:point>
+         <geo:lat>45.635658</geo:lat>
+         <geo:long>-75.92974</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8779239+Black+Sheep+Inn</url>
+  </venue>
+  <startDate>Fri, 16 Oct 2009</startDate>
+  <startTime>21:00</startTime>
+  <description></description>
+  <image size="small"></image>
+  <image size="medium"></image>
+  <image size="large"></image>
+  <image size="extralarge"></image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1148440</tag>  
+  <url>http://www.last.fm/event/1148440+Treasa+Levasseur+at+Black+Sheep+Inn+on+16+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1173031</id>
+  <title>Two Hours Traffic</title>
+  <artists>
+    <artist>Two Hours Traffic</artist>
+    <artist>Spiral Beach</artist>
+    <headliner>Two Hours Traffic</headliner>
+  </artists>
+  <venue>
+    <name>Zaphod Bebblebrox</name>
+    <location>
+      <city>Ottawa, ON</city>
+      <country>Canada</country>
+      <street></street>
+      <postalcode></postalcode>
+      <geo:point>
+         <geo:lat>45.4166667</geo:lat>
+         <geo:long>-75.7</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/9059706+Zaphod+Bebblebrox</url>
+  </venue>
+  <startDate>Sat, 17 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/33527417.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/33527417.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/33527417.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/33527417.jpg</image>
+   <attendance>8</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1173031</tag>  
+  <url>http://www.last.fm/event/1173031+Two+Hours+Traffic+at+Zaphod+Bebblebrox+on+17+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1206511</id>
+  <title>Keb' Mo'</title>
+  <artists>
+    <artist>Keb' Mo'</artist>
+    <headliner>Keb' Mo'</headliner>
+  </artists>
+  <venue>
+    <name>The Bronson Centre</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>211 Bronson Avenue</street>
+      <postalcode>K1R 6H5</postalcode>
+      <geo:point>
+         <geo:lat>45.413259</geo:lat>
+         <geo:long>-75.70677</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8781314+The+Bronson+Centre</url>
+  </venue>
+  <startDate>Sat, 17 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/255978.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/255978.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/255978.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/255978.jpg</image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1206511</tag>  
+  <url>http://www.last.fm/event/1206511+Keb%27+Mo%27+at+The+Bronson+Centre+on+17+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1199934</id>
+  <title>3 Inches of Blood</title>
+  <artists>
+    <artist>3 Inches of Blood</artist>
+    <headliner>3 Inches of Blood</headliner>
+  </artists>
+  <venue>
+    <name>Mavericks</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>221 Rideau Street</street>
+      <postalcode>K1N 5X8</postalcode>
+      <geo:point>
+         <geo:lat>45.427911</geo:lat>
+         <geo:long>-75.68781</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/9024433+Mavericks</url>
+  </venue>
+  <startDate>Sat, 17 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/71784.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/71784.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/71784.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/71784.jpg</image>
+   <attendance>10</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1199934</tag>  
+  <url>http://www.last.fm/event/1199934+3+Inches+of+Blood+at+Mavericks+on+17+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+</events></lfm>

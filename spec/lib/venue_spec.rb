@@ -6,9 +6,10 @@ describe Venue do
     @venue.name = "Cool Place"
     @venue.city = "Ottawa"
     @venue.state = "Ontario"
+    @venue.country = "Canada"
     @venue.address = "1 Steel St."
 
-    @expected_full_address = "1 Steel St., Ottawa, Ontario"
+    @expected_full_address = "1 Steel St., Ottawa, Ontario, Canada"
     @expected_coordinates = [45.4409439, -75.6095409]
   end
 
@@ -27,19 +28,22 @@ describe Venue do
     @bad_address_venue.coordinates.should eql [0,0]
   end
 
-  # TODO: This uses the internet.  Is that bad?
-  it "should return nil given an inaccurate (or wrong) address" do
-    #@venue.address = "1234 Silly Willy St."
-    #@venue.coordinates.should eql nil
-  end
-
   it "should create a full address when all values present" do
     @venue.full_address.should eql @expected_full_address
   end
 
-  it "should not create a full address when a value is not present" do
-    @venue.address = nil
-    @venue.full_address.should eql ""
+  it "should create a full address when address value is not present" do
+    @venue.address = ""
+    @venue.full_address.should eql "Ottawa, Ontario, Canada"
   end
 
+  it "should create a full address when state value is not present" do
+    @venue.state = ""
+    @venue.full_address.should eql "1 Steel St., Ottawa, Canada"
+  end
+
+  it "should create a full address when country value is not present" do
+    @venue.country = ""
+    @venue.full_address.should eql "1 Steel St., Ottawa, Ontario"
+  end
 end

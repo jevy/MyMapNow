@@ -1,0 +1,397 @@
+HTTP/1.0 200 OK
+Date: Thu, 08 Oct 2009 22:53:14 GMT
+Server: Apache/1.3.39 (Unix)
+X-Proxy-Fix-Up: headers fixed up
+X-Web-Node: www187
+Cache-Control: max-age=3600
+Expires: Thu, 08 Oct 2009 23:53:14 GMT
+Connection: close
+Content-Type: text/xml; charset=utf-8;
+
+<?xml version="1.0" encoding="utf-8"?>
+<lfm status="ok">
+<events location="Ottawa, Canada" page="1" totalpages="12" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" total="116">
+<event>
+  <id>1251131</id>
+  <title>Daniel Wesley</title>
+  <artists>
+    <artist>Daniel Wesley</artist>
+    <artist>KO</artist>
+    <artist>Dean Lickyer</artist>
+    <artist>Ty Hall &amp; The EZ3</artist>
+    <headliner>Daniel Wesley</headliner>
+  </artists>
+  <venue>
+    <name>Live Lounge</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>128.5 York St.</street>
+      <postalcode>K1N 5T5</postalcode>
+      <geo:point>
+         <geo:lat>45.427515</geo:lat>
+         <geo:long>-75.694805</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8954172+Live+Lounge</url>
+  </venue>
+  <startDate>Thu, 08 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/33864595.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/33864595.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/33864595.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/33864595.jpg</image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1251131</tag>  
+  <url>http://www.last.fm/event/1251131+Daniel+Wesley+at+Live+Lounge+on+8+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1085723</id>
+  <title>Karkwa</title>
+  <artists>
+    <artist>Karkwa</artist>
+    <headliner>Karkwa</headliner>
+  </artists>
+  <venue>
+    <name>Salle Jean-Despréz</name>
+    <location>
+      <city>Gatineau, Québec</city>
+      <country>Canada</country>
+      <street>25, rue Laurier</street>
+      <postalcode>J8X 4C8</postalcode>
+      <geo:point>
+         <geo:lat>45.428066</geo:lat>
+         <geo:long>-75.710447</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8958248+Salle+Jean-Despr%C3%A9z</url>
+  </venue>
+  <startDate>Thu, 08 Oct 2009</startDate>
+  <description><![CDATA[<div class="bbcode">Gagnant des Félix Groupe de l'année et Auteur-compositeur de l'année 2008, Karkwa s'impose comme un incontournable de la scène rock québécoise avec Le Volume du vent. Encensé par la critique, ce troisième album est à la fois grave et grisant, raffiné, mais foncièrement populaire. Il faut voir les membres du groupe sur scène, totalement maîtres de leur son, transformer de simples mélodies en crescendos quasi symphoniques.<br />
+<br />
+« La force de Karkwa est de même nature que les meilleurs groupes d'hier et d'aujourd'hui, d'Octobre à Radiohead, en passant par Pink Floyd : l'expérience est totale. » - Sylvain Cormier, Le Devoir et Radio-Canada</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/5122122.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/5122122.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/5122122.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/5122122.jpg</image>
+   <attendance>1</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1085723</tag>  
+  <url>http://www.last.fm/event/1085723+Karkwa+at+Salle+Jean-Despr%C3%A9z+on+8+October+2009</url>
+  <website>http://www.gatineau.ca/page.asp?p=quoi_faire/spectacles_theatre</website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1253837</id>
+  <title>The Dirty 30's</title>
+  <artists>
+    <artist>The Dirty 30's</artist>
+    <artist>Transit 14</artist>
+    <artist>Vertigo Flightplan</artist>
+    <artist>The Living Sound System</artist>
+    <headliner>The Dirty 30's</headliner>
+  </artists>
+  <venue>
+    <name>Zaphod Beeblebrox</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>27 York St.</street>
+      <postalcode>K1N 5S7</postalcode>
+      <geo:point>
+         <geo:lat>45.427855</geo:lat>
+         <geo:long>-75.693986</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8780356+Zaphod+Beeblebrox</url>
+  </venue>
+  <startDate>Thu, 08 Oct 2009</startDate>
+  <description></description>
+  <image size="small"></image>
+  <image size="medium"></image>
+  <image size="large"></image>
+  <image size="extralarge"></image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1253837</tag>  
+  <url>http://www.last.fm/event/1253837+The+Dirty+30%27s+at+Zaphod+Beeblebrox+on+8+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1220083</id>
+  <title>Elsiane</title>
+  <artists>
+    <artist>Elsiane</artist>
+    <artist>NLX</artist>
+    <headliner>Elsiane</headliner>
+  </artists>
+  <venue>
+    <name>Mercury Lounge</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>56 Byward Market Square</street>
+      <postalcode>K1N 7A2</postalcode>
+      <geo:point>
+         <geo:lat>45.427559</geo:lat>
+         <geo:long>-75.692636</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8806212+Mercury+Lounge</url>
+  </venue>
+  <startDate>Thu, 08 Oct 2009</startDate>
+  <startTime>20:00</startTime>
+  <description><![CDATA[<div class="bbcode">acoustic show with opening guest NLX</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/15484293.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/15484293.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/15484293.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/15484293.jpg</image>
+   <attendance>5</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1220083</tag>  
+  <url>http://www.last.fm/event/1220083+Elsiane</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1159672</id>
+  <title>Lost Fingers</title>
+  <artists>
+    <artist>Lost Fingers</artist>
+    <headliner>Lost Fingers</headliner>
+  </artists>
+  <venue>
+    <name>Shenkman Arts Centre</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>245 Centrum Boulevard</street>
+      <postalcode>K1E 0A1</postalcode>
+      <geo:point>
+         <geo:lat>45.426896</geo:lat>
+         <geo:long>-75.69235</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/9056996+Shenkman+Arts+Centre</url>
+  </venue>
+  <startDate>Thu, 08 Oct 2009</startDate>
+  <startTime>20:00</startTime>
+  <description></description>
+  <image size="small"></image>
+  <image size="medium"></image>
+  <image size="large"></image>
+  <image size="extralarge"></image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1159672</tag>  
+  <url>http://www.last.fm/event/1159672+Lost+Fingers+at+Shenkman+Arts+Centre+on+8+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1168606</id>
+  <title>Today I Caught The Plague</title>
+  <artists>
+    <artist>Today I Caught The Plague</artist>
+    <artist>Assassinate the Following</artist>
+    <artist>Children of Eve</artist>
+    <artist>Call This Safety</artist>
+    <headliner>Today I Caught The Plague</headliner>
+  </artists>
+  <venue>
+    <name>Maverick's</name>
+    <location>
+      <city>Ottawa, ON</city>
+      <country>Canada</country>
+      <street></street>
+      <postalcode></postalcode>
+      <geo:point>
+         <geo:lat>45.427911</geo:lat>
+         <geo:long>-75.68781</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/9039881+Maverick%27s</url>
+  </venue>
+  <startDate>Fri, 09 Oct 2009</startDate>
+  <startTime>20:00</startTime>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/17455423.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/17455423.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/17455423.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/17455423.jpg</image>
+   <attendance>4</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1168606</tag>  
+  <url>http://www.last.fm/event/1168606+Today+I+Caught+The+Plague+at+Maverick%27s+on+9+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1246397</id>
+  <title>Mumiy Troll</title>
+  <artists>
+    <artist>Мумий Тролль</artist>
+    <headliner>Мумий Тролль</headliner>
+  </artists>
+  <venue>
+    <name>Babylon</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>317 Bank Street</street>
+      <postalcode>K2P 1X9</postalcode>
+      <geo:point>
+         <geo:lat>45.414611</geo:lat>
+         <geo:long>-75.695704</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8783365+Babylon</url>
+  </venue>
+  <startDate>Fri, 09 Oct 2009</startDate>
+  <startTime>21:00</startTime>
+  <description><![CDATA[<div class="bbcode">$25 in advance</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/31483727.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/31483727.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/31483727.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/31483727.jpg</image>
+   <attendance>2</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1246397</tag>  
+  <url>http://www.last.fm/event/1246397+%D0%9C%D1%83%D0%BC%D0%B8%D0%B9+%D0%A2%D1%80%D0%BE%D0%BB%D0%BB%D1%8C+at+Babylon+on+9+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1152086</id>
+  <title>Revolting Cocks</title>
+  <artists>
+    <artist>Revolting Cocks</artist>
+    <artist>Left Spine Down</artist>
+    <artist>Blownload</artist>
+    <artist>Jim Rose Circus</artist>
+    <headliner>Revolting Cocks</headliner>
+  </artists>
+  <venue>
+    <name>Babylon</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>317 Bank Street</street>
+      <postalcode>K2P 1X9</postalcode>
+      <geo:point>
+         <geo:lat>45.414611</geo:lat>
+         <geo:long>-75.695704</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8783365+Babylon</url>
+  </venue>
+  <startDate>Sat, 10 Oct 2009</startDate>
+  <startTime>19:00</startTime>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/294594.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/294594.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/294594.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/294594.jpg</image>
+   <attendance>11</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1152086</tag>  
+  <url>http://www.last.fm/event/1152086+Revolting+Cocks+at+Babylon+on+10+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1244803</id>
+  <title>Staggered Crossing</title>
+  <artists>
+    <artist>Staggered Crossing</artist>
+    <artist>Staging Blame</artist>
+    <headliner>Staggered Crossing</headliner>
+  </artists>
+  <venue>
+    <name>Mavericks</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>221 Rideau Street</street>
+      <postalcode>K1N 5X8</postalcode>
+      <geo:point>
+         <geo:lat>45.427911</geo:lat>
+         <geo:long>-75.68781</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/9024433+Mavericks</url>
+  </venue>
+  <startDate>Sat, 10 Oct 2009</startDate>
+  <startTime>20:00</startTime>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/245919.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/245919.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/245919.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/245919.jpg</image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1244803</tag>  
+  <url>http://www.last.fm/event/1244803+Staggered+Crossing+at+Mavericks+on+10+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1244079</id>
+  <title>The Scenics</title>
+  <artists>
+    <artist>The Scenics</artist>
+    <artist>40 Watt Monkey</artist>
+    <headliner>The Scenics</headliner>
+  </artists>
+  <venue>
+    <name>Zaphod Beeblebrox</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>27 York St.</street>
+      <postalcode>K1N 5S7</postalcode>
+      <geo:point>
+         <geo:lat>45.427855</geo:lat>
+         <geo:long>-75.693986</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8780356+Zaphod+Beeblebrox</url>
+  </venue>
+  <startDate>Wed, 14 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/8205843.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/8205843.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/8205843.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/8205843.jpg</image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1244079</tag>  
+  <url>http://www.last.fm/event/1244079+The+Scenics+at+Zaphod+Beeblebrox+on+14+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+</events></lfm>

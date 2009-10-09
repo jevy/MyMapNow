@@ -1,0 +1,388 @@
+HTTP/1.0 200 OK
+Date: Thu, 08 Oct 2009 22:54:13 GMT
+Server: Apache/1.3.39 (Unix)
+X-Proxy-Fix-Up: headers fixed up
+X-Web-Node: www152
+Cache-Control: max-age=3600
+Expires: Thu, 08 Oct 2009 23:54:13 GMT
+Connection: close
+Content-Type: text/xml; charset=utf-8;
+
+<?xml version="1.0" encoding="utf-8"?>
+<lfm status="ok">
+<events location="Ottawa, Canada" page="3" totalpages="12" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" total="116">
+<event>
+  <id>1240307</id>
+  <title>The Ghost is Dancing</title>
+  <artists>
+    <artist>The Ghost is Dancing</artist>
+    <headliner>The Ghost is Dancing</headliner>
+  </artists>
+  <venue>
+    <name>Cafe Dekcuf</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>221 Rideau Street (2nd Floor)</street>
+      <postalcode>K1N 5X8</postalcode>
+      <geo:point>
+         <geo:lat>45.427911</geo:lat>
+         <geo:long>-75.68781</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8786754+Cafe+Dekcuf</url>
+  </venue>
+  <startDate>Sat, 17 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/19933237.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/19933237.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/19933237.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/19933237.jpg</image>
+   <attendance>2</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1240307</tag>  
+  <url>http://www.last.fm/event/1240307+The+Ghost+is+Dancing+at+Cafe+Dekcuf+on+17+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1250634</id>
+  <title>The Danks</title>
+  <artists>
+    <artist>The Danks</artist>
+    <artist>Two Hours Traffic</artist>
+    <artist>Spiral Beach</artist>
+    <headliner>The Danks</headliner>
+  </artists>
+  <venue>
+    <name>Zaphod Beeblebrox</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>27 York St.</street>
+      <postalcode>K1N 5S7</postalcode>
+      <geo:point>
+         <geo:lat>45.427855</geo:lat>
+         <geo:long>-75.693986</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8780356+Zaphod+Beeblebrox</url>
+  </venue>
+  <startDate>Sat, 17 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/31115741.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/31115741.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/31115741.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/31115741.jpg</image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1250634</tag>  
+  <url>http://www.last.fm/event/1250634+The+Danks+at+Zaphod+Beeblebrox+on+17+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1225933</id>
+  <title>Doc Walker</title>
+  <artists>
+    <artist>Doc Walker</artist>
+    <headliner>Doc Walker</headliner>
+  </artists>
+  <venue>
+    <name>Shenkman Arts Centre</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>245 Centrum Boulevard</street>
+      <postalcode>K1E 0A1</postalcode>
+      <geo:point>
+         <geo:lat>45.426896</geo:lat>
+         <geo:long>-75.69235</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/9056996+Shenkman+Arts+Centre</url>
+  </venue>
+  <startDate>Sat, 17 Oct 2009</startDate>
+  <startTime>20:00</startTime>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/6720339.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/6720339.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/6720339.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/6720339.jpg</image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1225933</tag>  
+  <url>http://www.last.fm/event/1225933+Doc+Walker+at+Shenkman+Arts+Centre+on+17+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1250643</id>
+  <title>It Dies Today</title>
+  <artists>
+    <artist>It Dies Today</artist>
+    <artist>Arsonists Get All The Girls</artist>
+    <artist>The Destro</artist>
+    <headliner>It Dies Today</headliner>
+  </artists>
+  <venue>
+    <name>Mavericks</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>221 Rideau Street</street>
+      <postalcode>K1N 5X8</postalcode>
+      <geo:point>
+         <geo:lat>45.427911</geo:lat>
+         <geo:long>-75.68781</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/9024433+Mavericks</url>
+  </venue>
+  <startDate>Mon, 19 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/2225641.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/2225641.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/2225641.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/2225641.jpg</image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1250643</tag>  
+  <url>http://www.last.fm/event/1250643+It+Dies+Today+at+Mavericks+on+19+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1250646</id>
+  <title>Paco Peña</title>
+  <artists>
+    <artist>Paco Peña</artist>
+    <headliner>Paco Peña</headliner>
+  </artists>
+  <venue>
+    <name>National Arts Centre</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>53 Elgin Street</street>
+      <postalcode>K1P 5W1</postalcode>
+      <geo:point>
+         <geo:lat>45.423421</geo:lat>
+         <geo:long>-75.694796</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8781790+National+Arts+Centre</url>
+  </venue>
+  <startDate>Mon, 19 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/253192.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/253192.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/253192.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/253192.jpg</image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1250646</tag>  
+  <url>http://www.last.fm/event/1250646+Paco+Pe%C3%B1a+at+National+Arts+Centre+on+19+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1151559</id>
+  <title>Metric</title>
+  <artists>
+    <artist>Metric</artist>
+    <artist>The Stills</artist>
+    <headliner>Metric</headliner>
+  </artists>
+  <venue>
+    <name>Ottawa Civic Centre</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>1015 Bank Street</street>
+      <postalcode>K1S 3W7</postalcode>
+      <geo:point>
+         <geo:lat>45.397935</geo:lat>
+         <geo:long>-75.685517</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/9055520+Ottawa+Civic+Centre</url>
+  </venue>
+  <startDate>Mon, 19 Oct 2009</startDate>
+  <startTime>20:00</startTime>
+  <description><![CDATA[<div class="bbcode">PRESALE: July 22, 9am EDT @ <a href="http://www.ilovemetrictickets.com" rel="nofollow">www.ilovemetrictickets.com</a><br />
+<br />
+PUBLIC SALE: July 24, 10am EDT<br />
+End Hits (407 Dalhousie St., Ottawa 613-241-4487). Order online @ <a href="http://www.ticketmaster.ca" rel="nofollow">www.ticketmaster.ca</a>, <a href="http://www.livenation.com" rel="nofollow">www.livenation.com</a>,</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/79231.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/79231.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/79231.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/79231.jpg</image>
+   <attendance>37</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1151559</tag>  
+  <url>http://www.last.fm/event/1151559+Metric</url>
+  <website>http://www.ilovemetric.com/site/</website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1170309</id>
+  <title>Metric with Special Guests The Stills</title>
+  <artists>
+    <artist>Metric</artist>
+    <artist>The Stills</artist>
+    <headliner>Metric</headliner>
+  </artists>
+  <venue>
+    <name>Ottawa Civic Center -  Arena</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>Ottawa Civic Center 1015 Bank Street</street>
+      <postalcode>K1S 3W7</postalcode>
+      <geo:point>
+         <geo:lat>45.397935</geo:lat>
+         <geo:long>-75.685517</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/9014519+Ottawa+Civic+Center+-++Arena</url>
+  </venue>
+  <startDate>Mon, 19 Oct 2009</startDate>
+  <startTime>20:00</startTime>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/79231.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/79231.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/79231.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/79231.jpg</image>
+   <attendance>5</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1170309</tag>  
+  <url>http://www.last.fm/event/1170309+Metric+with+Special+Guests+The+Stills</url>
+  <website></website>
+  <tickets>
+    <ticket supplier="LiveNation">http://www.last.fm/affiliate/byid/29/1170309/19/</ticket>
+  </tickets>
+</event>
+<event>
+  <id>1225885</id>
+  <title>George Jones</title>
+  <artists>
+    <artist>George Jones</artist>
+    <headliner>George Jones</headliner>
+  </artists>
+  <venue>
+    <name>National Arts Centre</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>53 Elgin Street</street>
+      <postalcode>K1P 5W1</postalcode>
+      <geo:point>
+         <geo:lat>45.423421</geo:lat>
+         <geo:long>-75.694796</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8781790+National+Arts+Centre</url>
+  </venue>
+  <startDate>Tue, 20 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/20789297.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/20789297.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/20789297.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/20789297.jpg</image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1225885</tag>  
+  <url>http://www.last.fm/event/1225885+George+Jones+at+National+Arts+Centre+on+20+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1236540</id>
+  <title>Big John Bates</title>
+  <artists>
+    <artist>Big John Bates</artist>
+    <headliner>Big John Bates</headliner>
+  </artists>
+  <venue>
+    <name>Mavericks</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>221 Rideau Street</street>
+      <postalcode>K1N 5X8</postalcode>
+      <geo:point>
+         <geo:lat>45.427911</geo:lat>
+         <geo:long>-75.68781</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/9024433+Mavericks</url>
+  </venue>
+  <startDate>Wed, 21 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/34316909.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/34316909.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/34316909.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/34316909.jpg</image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1236540</tag>  
+  <url>http://www.last.fm/event/1236540+Big+John+Bates+at+Mavericks+on+21+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1225889</id>
+  <title>Corb Lund</title>
+  <artists>
+    <artist>Corb Lund</artist>
+    <artist>Mike Plume Band</artist>
+    <headliner>Corb Lund</headliner>
+  </artists>
+  <venue>
+    <name>The New Capital Music Hall</name>
+    <location>
+      <city>Ottawa</city>
+      <country>Canada</country>
+      <street>128 York Street</street>
+      <postalcode>K1N 5T5</postalcode>
+      <geo:point>
+         <geo:lat>45.429346</geo:lat>
+         <geo:long>-75.689856</geo:long>
+      </geo:point>
+              <timezone>EST</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8784333+The+New+Capital+Music+Hall</url>
+  </venue>
+  <startDate>Wed, 21 Oct 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/7158037.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/7158037.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/7158037.jpg</image>
+  <image size="extralarge">http://userserve-ak.last.fm/serve/252/7158037.jpg</image>
+   <attendance>1</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1225889</tag>  
+  <url>http://www.last.fm/event/1225889+Corb+Lund+at+The+New+Capital+Music+Hall+on+21+October+2009</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+</events></lfm>
