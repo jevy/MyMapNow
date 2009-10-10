@@ -1,0 +1,20 @@
+body, input, select, textarea { font-family:"Lucida Grande", Tahoma, Verdana, sans-serif; font-size:11px;}
+body, p, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, fieldset, button, form, legend, input, textarea {padding: 0;  margin: 0;}
+
+header							{display:block; position:absolute; left:0; right:0; top: 0; height:40px; background:#111 url(images/header.png) repeat-x;}
+header h1						{width:130px; height:40px; text-indent:-9999px; overflow:hidden; background:url(images/logo.png) no-repeat; position:absolute; top:0; left:10px;}
+header input				{position:absolute; left:150px; top:11px; width:100px;}
+header h5						{position:absolute; left:260px; width:45px; top:0; height:40px; background:url(images/during.png) no-repeat; text-indent:-9999px; overflow:hidden;}
+header button				{position:absolute; right:10px; width:68px; height:40px; text-indent:-9999px; overflow:hidden; background:url(images/button_search.png) no-repeat 50% 50%; border:none;}
+#date-range					{position:absolute; top:16px; height:8px; background:url(images/meter.png) repeat-x; left:375px; right:158px; -webkit-border-radius:4px; -moz-border-radius:4px;}
+#date-range a.ui-slider-handle {cursor:default; height:17px; width:17px; background:url(images/handle.png); display:block; position:absolute; margin:-4px 0 0 -4px;}
+#date-range a:active,
+#date-range a:focus {outline:none; border:none;}
+#date-range div.ui-slider-range {height:8px; position:absolute; background:#249C12 url(images/meter.png) repeat-x;}
+#label-left,
+#label-right				{position:absolute; top:-7px; height:23px; line-height:21px; font-weight:bold; color:#fff; white-space:nowrap; text-shadow:#000 0 1px 1px;}
+#label-left					{background:#249C12 url(images/label_left_main.png) no-repeat 100% 0; margin-right:3px;}
+#label-left span		{display:block; height:23px; padding:0 12px 0 10px; background:url(images/label_left_end.png) no-repeat;}
+#label-right				{background:#249C12 url(images/label_right_main.png) no-repeat; margin-left:12px;}
+#label-right span		{display:block; height:23px; padding:0 10px 0 12px; background:url(images/label_right_end.png) no-repeat 100% 0;}
+png) no-repeat top left;}
