@@ -1,7 +1,12 @@
 describe('Map', function() {
   it('should load the map at my current location', function() {
-    jasmine.include('public/javascripts/map.js');
+    spyOn(google.maps, 'Map');
+    spyOn(google.maps, 'LatLng');
+    spyOn(GeoIP, 'latitude').andReturn('1');
+    spyOn(GeoIP, 'longitude').andReturn('2');
 
-    // Map is undefined here!!!
+    Map.initialize();
+
+    expect(google.maps.LatLng).wasCalledWith('1', '2');
   });
 });
