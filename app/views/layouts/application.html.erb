@@ -8,22 +8,21 @@
     <%- end -%>
     <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script src="http://j.maxmind.com/app/geoip.js"></script>
-    <%= stylesheet_link_tag 'slider', :cache => true %>
     <%= javascript_include_tag 'map', 'geoip', :cache => true %>
     <%= javascript_include_tag :jelly, *application_jelly_files %>
     <%= spread_jelly %>
+    <style type="text/css">
+      body { background: #171717; }
+      
+    </style>
   </head>
   <body onload="Map.initialize(); Map.updateSearchBoxWithCurrentLocation();">
     <div class="header">
-      <h1>MyMapNow</h1>
-      <input type="text" id="search-box" name="search-box" value=" " />
-      <h5>during</h5>
-      <div id="date-range">
-        <div id="label-left"><span></span></div>
-        <div id="label-right"><span></span></div>
-      </div>
-      <p><button id="search">Search</button></p>
+      <span style="display:block; position:absolute; left:0; right:0; top: 0; height:40px; background:#111 url(/images/header.png) repeat-x;">
+        <img src="/images/logo.png" />
+        <span style="position:absolute; left:150px; top:11px; width:100px;"><input type="text" id="search-box" name="search-box" value=" " /></span>
+      </span>
     </div>	
-    <div id="map" class="map" style="position: absolute; top: 40px; width: 100%; height: 91%;"></div>
+    <div id="map" class="map" style="position: absolute; left: 0; right: 0; top: 40px; width: 100%; height: 91%;"></div>
   </body>
 </html>
