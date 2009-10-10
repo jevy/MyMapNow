@@ -7,5 +7,8 @@ var Map = {
       center: new google.maps.LatLng(lat, lng),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
+  },
+  updateSearchBoxWithCurrentLocation: function() {
+    $('input[name=search-box]').val(GeoIP.city() + ', ' + GeoIP.region() + ', ' + GeoIP.country());
   }
 };
