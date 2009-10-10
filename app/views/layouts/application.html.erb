@@ -14,16 +14,16 @@
     <%= spread_jelly %>
   </head>
   <body onload="Map.initialize(); Map.updateSearchBoxWithCurrentLocation();">
-    <header>
+    <div class="header">
       <h1>MyMapNow</h1>
-      	<input type="text" id="search-box" name="search-box" value=" " />
+      <input type="text" id="search-box" name="search-box" value=" " />
       <h5>during</h5>
       <div id="date-range">
         <div id="label-left"><span></span></div>
         <div id="label-right"><span></span></div>
       </div>
       <p><button id="search">Search</button></p>
-    </header>	
-	<div id="map" class="map" style="width: 1000px; height: 800px; float: right"></div>
+    </div>	
+    <div id="map" class="map" style="position: absolute; left: 250px; top: 40px; width: 700px; height: 700px; float: right"></div>
   </body>
 </html>
