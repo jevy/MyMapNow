@@ -3,5 +3,5 @@ var GeoIP = {
   longitude: function() { return geoip_longitude(); },
   city: function() { return geoip_city(); },
   region: function() { return geoip_region(); },
-  country: function() { return geoip_country(); }
+  country: function() { return geoip_country_name(); }
 }

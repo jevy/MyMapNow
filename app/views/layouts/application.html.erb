@@ -13,7 +13,7 @@
     <%= javascript_include_tag :jelly, *application_jelly_files %>
     <%= spread_jelly %>
   </head>
-  <body onload="Map.initialize();">
+  <body onload="Map.initialize(); Map.updateSearchBoxWithCurrentLocation();">
     <header>
       <h1>MyMapNow</h1>
       	<input type="text" id="search-box" name="search-box" value=" " />
