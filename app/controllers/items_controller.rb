@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  layout false
+  #layout false
   # GET /items
   # GET /items.xml
   def index
