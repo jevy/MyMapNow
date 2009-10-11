@@ -27,8 +27,7 @@ Rails::Initializer.run do |config|
   config.gem 'hpricot'
   config.gem 'fakeweb'
   config.gem 'nokogiri'
-  # This breaks script/server for me NB
-  #config.gem 'selenium-rc'
+  config.gem 'selenium-rc', :lib => false
   
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
