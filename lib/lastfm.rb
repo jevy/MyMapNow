@@ -27,28 +27,29 @@ class Lastfm
     @event_queue.pop
   end  
 
+  # Returns number of Item's added to the queue
   def populate_queue_with_items
-    return 0 if total_pages_of_feed_for_location < @loaded_page + 1
+    values_added = 0
+    return values_added if total_pages_of_feed_for_location <= @loaded_page
 
     @loaded_page += 1
     url = generate_geo_api_url_page(@loaded_page)
     doc = Nokogiri::XML open url
 
-    values_added = 0
     doc.xpath('//event').each do |event|
       venue = Venue.new
-      venue.name = event.at('//venue/name').inner_text
-      venue.address = event.at('//venue//location/street').inner_text
-      venue.city = event.at('//venue//location/city').inner_text
-      venue.country = event.at('//venue//location/country').inner_text
+      venue.name = (event/'venue/name').inner_text
+      venue.address = (event/'venue/location/street').inner_text
+      venue.city = (event/'venue/location/city').inner_text
+      venue.country = (event/'venue/location/country').inner_text
 
       coordinates = venue.coordinates
 
-      start_time_string = event.at('//startDate').inner_text
+      start_time_string = (event/'startDate').inner_text
 
-      item = Item.new(:title => event.at('//title').inner_text,
+      item = Item.new(:title => (event/'title').inner_text,
                :begin_at => Time.parse(start_time_string),
-               :url => event.at('//event/url').inner_text,
+               :url => (event/'url').inner_text,
                :address => venue.full_address,
                :latitude => coordinates[0],
                :longitude => coordinates[1],

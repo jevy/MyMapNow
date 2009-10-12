@@ -1,6 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 require 'fakeweb'
 
+# Handy to drop in
+#require "rubygems"; require "ruby-debug"; debugger
+
 describe Lastfm do
   before(:all) do
     @today = Time.mktime(2009, 10, 8, 0, 0, 0)
@@ -20,8 +23,9 @@ describe Lastfm do
                                       :longitude => -75.694805,
                                       :kind => 'event'
                                     )
+    my_item = mock("item")
     Item.should_receive(:new).exactly(9).times
-    Item.should_receive(:save).exactly(5).times
+    my_item.should_receive(:save).exactly(5).times
     lastfm.create_events_from_until(@today, @today + 1.day)
   end
 
@@ -94,6 +98,26 @@ describe Lastfm do
     lastfm.stub(:total_pages_of_feed_for_location).and_return(1)
     lastfm.populate_queue_with_items.should eql 10 # Loaded first page succesfully
     lastfm.populate_queue_with_items.should eql 0
+  end
+
+  it "should keep giving next_concert over the feed page 1, page 2 boundary" do
+    page1 = `cat spec/lib/testData/lastfm/ottawa-page-1`
+    page2 = `cat spec/lib/testData/lastfm/ottawa-page-2`
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
+                         :response => page1)
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=2", 
+                         :response => page2)
+    lastfm = Lastfm.new('ottawa')
+
+    # 10 events per page
+    lastfm.event_queue.empty?.should eql true
+    lastfm.stub(:total_pages_of_feed_for_location).and_return(2)
+    lastfm.next_concert.title.should eql "Daniel Wesley"
+    8.times { lastfm.next_concert }
+    lastfm.next_concert.title.should eql "The Scenics"
+    lastfm.next_concert.title.should eql "Silversun Pickups"
+    lastfm.next_concert.title.should eql "Hannah Georgas"
+
   end
 
   it "should create events having a start time"
