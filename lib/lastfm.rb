@@ -4,12 +4,38 @@ class Lastfm
 
   @@APIKEY = "b819d5a155749ad083fcd19407d4fc69"
 
-# def get_local_events_for(loc)
-#   request_result = geo_get_events(loc)
-# end
+  def initialize(loc)
+    @loc = loc
+  end
+
+  def create_events_from_until(start_date, end_date)
+    while(event = next_concert)
+      if event.begin_at <= end_date && event.begin_at >= start_date
+        create_concert_at_venue(event, venue) 
+      end
+    end
+  end
+
+  def next_concert
+    if @concerts_in_current_doc.nil?
+      url = generate_geo_api_url_page(loc, 1)
+      return nil if url.nil?
+      doc = Nokogiri::XML open url
+      @concerts_in_current_doc = doc.xpath('//event')
+    elseif @concerts_in_current_doc.empty?
+      @current_page_number += 1
+      url = generate_geo_api_url_page(loc, @current_page_number)
+      return nil if url.nil?
+      doc = Nokogiri::XML open url
+      @concerts_in_current_doc = doc.xpath('//event')
+    end
+
+    # How do I return the event and venue?
+    
+  end
 
   def geo_get_events(loc)
-    url = generate_geo_api_url(loc, 1)
+    url = generate_geo_api_url_page(loc, 1)
     doc = Nokogiri::XML open url
 
     doc.xpath('//event').each do |event|
@@ -32,13 +58,21 @@ class Lastfm
                   :kind => 'event'
                  )
     end
-
-
   end
 
-  def generate_geo_api_url(loc, page_number)
+  def total_pages_of_feed_for_location
+    url = generate_geo_api_url_page(1)
+    begin
+      doc = Nokogiri::XML open url
+      Integer doc.at("//events")['totalpages'] 
+    rescue
+      return nil
+    end
+  end
+
+  def generate_geo_api_url_page(page_number)
     'http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=' +
-      loc + "&api_key=" + @@APIKEY + "&page=" + page_number.to_s
+      @loc + "&api_key=" + @@APIKEY + "&page=" + page_number.to_s
   end
 
 end

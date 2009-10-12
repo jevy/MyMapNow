@@ -1,0 +1,11 @@
+HTTP/1.0 503 Temp Unavailable
+Date: Sun, 11 Oct 2009 22:35:26 GMT
+Server: Apache/1.3.39 (Unix)
+X-Proxy-Fix-Up: headers fixed up
+X-Web-Node: www111
+Connection: close
+Content-Type: text/xml; charset=utf-8;
+
+<?xml version="1.0" encoding="utf-8"?>
+<lfm status="failed">
+<error code="8">We could not find your specified location.</error></lfm>
