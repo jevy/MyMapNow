@@ -1,43 +1,40 @@
 require 'nokogiri'
 
 class Lastfm
+  attr_reader :event_queue  # FIXME: I should be private!  Needs to be public for testing?
 
   @@APIKEY = "b819d5a155749ad083fcd19407d4fc69"
 
   def initialize(loc)
     @loc = loc
+    @event_queue = Queue.new
+    @loaded_page = 0
   end
 
   def create_events_from_until(start_date, end_date)
-    while(event = next_concert)
-      if event.begin_at <= end_date && event.begin_at >= start_date
-        create_concert_at_venue(event, venue) 
+    while(item = next_concert)
+      if (item.begin_at <= end_date) && (item.begin_at >= start_date)
+        item.save
       end
     end
   end
 
   def next_concert
-    if @concerts_in_current_doc.nil?
-      url = generate_geo_api_url_page(loc, 1)
-      return nil if url.nil?
-      doc = Nokogiri::XML open url
-      @concerts_in_current_doc = doc.xpath('//event')
-    elseif @concerts_in_current_doc.empty?
-      @current_page_number += 1
-      url = generate_geo_api_url_page(loc, @current_page_number)
-      return nil if url.nil?
-      doc = Nokogiri::XML open url
-      @concerts_in_current_doc = doc.xpath('//event')
+    if @event_queue.empty? 
+      return false unless populate_queue_with_items != 0
     end
 
-    # How do I return the event and venue?
-    
-  end
+    @event_queue.pop
+  end  
 
-  def geo_get_events(loc)
-    url = generate_geo_api_url_page(loc, 1)
+  def populate_queue_with_items
+    return 0 if total_pages_of_feed_for_location < @loaded_page + 1
+
+    @loaded_page += 1
+    url = generate_geo_api_url_page(@loaded_page)
     doc = Nokogiri::XML open url
 
+    values_added = 0
     doc.xpath('//event').each do |event|
       venue = Venue.new
       venue.name = event.at('//venue/name').inner_text
@@ -49,15 +46,21 @@ class Lastfm
 
       start_time_string = event.at('//startDate').inner_text
 
-      Item.create(:title => event.at('//title').inner_text,
-                  :begin_at => Time.parse(start_time_string),
-                  :url => event.at('//event/url').inner_text,
-                  :address => venue.full_address,
-                  :latitude => coordinates[0],
-                  :longitude => coordinates[1],
-                  :kind => 'event'
-                 )
+      item = Item.new(:title => event.at('//title').inner_text,
+               :begin_at => Time.parse(start_time_string),
+               :url => event.at('//event/url').inner_text,
+               :address => venue.full_address,
+               :latitude => coordinates[0],
+               :longitude => coordinates[1],
+               :kind => 'event'
+              )
+
+      @event_queue << item
+      values_added += 1
     end
+
+    return values_added
+
   end
 
   def total_pages_of_feed_for_location
@@ -66,7 +69,7 @@ class Lastfm
       doc = Nokogiri::XML open url
       Integer doc.at("//events")['totalpages'] 
     rescue
-      return nil
+      return 0
     end
   end
 
