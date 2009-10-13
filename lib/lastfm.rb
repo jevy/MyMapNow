@@ -9,11 +9,12 @@ class Lastfm
     @loc = loc
     @event_queue = Queue.new
     @loaded_page = 0
+    @items_processed = 0
   end
 
   def create_events_from_until(start_date, end_date)
     while(item = next_concert)
-      if (item.begin_at <= end_date) && (item.begin_at >= start_date)
+      if item.begin_at >= start_date && item.begin_at <= end_date
         item.save
       end
     end
@@ -21,7 +22,8 @@ class Lastfm
 
   def next_concert
     if @event_queue.empty? 
-      return false unless populate_queue_with_items != 0
+      return nil if !items_left_to_queue
+      populate_queue_with_items
     end
 
     @event_queue.pop
@@ -58,6 +60,7 @@ class Lastfm
 
       @event_queue << item
       values_added += 1
+      @items_processed += 1
     end
 
     return values_added
@@ -74,6 +77,21 @@ class Lastfm
     end
   end
 
+  def total_items_in_feed
+    url = generate_geo_api_url_page(1)
+    begin
+      doc = Nokogiri::XML open url
+      Integer doc.at("//events")['total'] 
+    rescue
+      return 0
+    end
+  end
+
+  def items_left_to_queue
+    return true if total_items_in_feed > @items_processed
+    return false
+  end
+    
   def generate_geo_api_url_page(page_number)
     'http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=' +
       @loc + "&api_key=" + @@APIKEY + "&page=" + page_number.to_s

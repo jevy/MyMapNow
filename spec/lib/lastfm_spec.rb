@@ -23,9 +23,10 @@ describe Lastfm do
                                       :longitude => -75.694805,
                                       :kind => 'event'
                                     )
-    my_item = mock("item")
+    item = mock("item")
     Item.should_receive(:new).exactly(9).times
-    my_item.should_receive(:save).exactly(5).times
+    item.should_receive(:save).exactly(5).times
+    #require "rubygems"; require "ruby-debug"; debugger
     lastfm.create_events_from_until(@today, @today + 1.day)
   end
 
