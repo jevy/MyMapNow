@@ -24,9 +24,9 @@ describe Lastfm do
                                       :kind => 'event'
                                     )
     item = mock("item")
-    Item.should_receive(:new).exactly(9).times
+    Item.should_receive(:new).exactly(10).times
     item.should_receive(:save).exactly(5).times
-    #require "rubygems"; require "ruby-debug"; debugger
+    debugger
     lastfm.create_events_from_until(@today, @today + 1.day)
   end
 
@@ -50,6 +50,22 @@ describe Lastfm do
                                     )
     lastfm.create_events_from_until(@today, @today + 7.days)
   end
+
+  it "should save an item that begins after the start_date but before the end_date" do
+    test_item = Item.new(:title => "Kalle Mattson",
+             :begin_at => Time.mktime(2009, 10, 10, 20, 0),
+             :url => 'http://www.last.fm/event/1219409+Kalle+Mattson+at+Zaphod+Beeblebrox+on+15+October+2009',
+             :address => "27 York St., Ottawa, Canada",
+             :latitude => 45.427855, 
+             :longitude => -75.693986,
+             :kind => 'event'
+            )
+
+    lastfm = Lastfm.new('ottawa')
+    lastfm.should_save?(test_item, @today, @today + 7.days).should be_true
+  end
+
+
 
   it "should recognize the current maximum pages for this location" do
     page = `cat spec/lib/testData/lastfm/ottawa-page-1`

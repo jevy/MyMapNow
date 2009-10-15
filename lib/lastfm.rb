@@ -14,7 +14,7 @@ class Lastfm
 
   def create_events_from_until(start_date, end_date)
     while(item = next_concert)
-      if item.begin_at >= start_date && item.begin_at <= end_date
+      if should_save?(item, start_date, end_date)
         item.save
       end
     end
@@ -49,7 +49,7 @@ class Lastfm
 
       start_time_string = (event/'startDate').inner_text
 
-      item = Item.new(:title => (event/'title').inner_text,
+      item_to_add = Item.new(:title => (event/'title').inner_text,
                :begin_at => Time.parse(start_time_string),
                :url => (event/'url').inner_text,
                :address => venue.full_address,
@@ -58,7 +58,7 @@ class Lastfm
                :kind => 'event'
               )
 
-      @event_queue << item
+      @event_queue << item_to_add
       values_added += 1
       @items_processed += 1
     end
@@ -97,5 +97,8 @@ class Lastfm
       @loc + "&api_key=" + @@APIKEY + "&page=" + page_number.to_s
   end
 
+  def should_save?(item, start_date, end_date)
+    item.begin_at >= start_date && item.begin_at <= end_date
+  end
 end
 
