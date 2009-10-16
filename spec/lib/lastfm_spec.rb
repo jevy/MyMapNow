@@ -9,7 +9,7 @@ describe Lastfm do
     @today = Time.mktime(2009, 10, 8, 0, 0, 0)
   end
 
-  it "should parse the feed and create items with the right values" do 
+  it "should create today concerts (from midnight to midnight)" do
     page = `cat spec/lib/testData/lastfm/ottawa-page-1`
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
                          :response => page)
@@ -23,46 +23,14 @@ describe Lastfm do
                                       :longitude => -75.694805,
                                       :kind => 'event'
                                     )
-    Item.should_receive(:new).with(:title => "Karkwa",
-                                      :begin_at => Time.mktime(2009, 10, 8, 0, 0,0),
-                                      :url => 'http://www.last.fm/event/1085723+Karkwa+at+Salle+Jean-Despr%C3%A9z+on+8+October+2009',
-                                      :address => "25, rue Laurier, Gatineau, Québec, Canada",
-                                      :latitude => 45.428066, 
-                                      :longitude => -75.710447,
-                                      :kind => 'event'
-                                    )
-    Item.should_receive(:new).with(:title => "The Dirty 30's",
-                                      :begin_at => Time.mktime(2009, 10, 8, 0, 0,0),
-                                      :url => 'http://www.last.fm/event/1253837+The+Dirty+30%27s+at+Zaphod+Beeblebrox+on+8+October+2009',
-                                      :address => "27 York St., Ottawa, Canada",
-                                      :latitude => 45.427855, 
-                                      :longitude => -75.693986,
-                                      :kind => 'event'
-                                    )
-    Item.should_receive(:new).exactly(6).times
-    Item.should_receive(:new).with(:title => "The Scenics",
-                                      :begin_at => Time.mktime(2009, 10, 14, 0, 0,0),
-                                      :url => 'http://www.last.fm/event/1244079+The+Scenics+at+Zaphod+Beeblebrox+on+14+October+2009',
-                                      :address => "27 York St., Ottawa, Canada",
-                                      :latitude => 45.427855, 
-                                      :longitude => -75.693986,
-                                      :kind => 'event'
-                                    )
+    item = mock("item")
+    Item.should_receive(:new).exactly(10).times
+    item.should_receive(:save).exactly(5).times
+    debugger
     lastfm.create_events_from_until(@today, @today + 1.day)
   end
 
-  it "should create the right number of concerts for today(from midnight to midnight)" do
-    page = `cat spec/lib/testData/lastfm/ottawa-page-1`
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
-                         :response => page)
-    lastfm = Lastfm.new('ottawa')
-    # Total of 5 events on Thursday, Oct 8th.  10 on the feed's page 1
-    my_item = mock("item")
-    my_item.should_receive(:save).exactly(5).times
-    lastfm.create_events_from_until(@today, @today + 1.day)
-  end
-
-  it "should create the right number of concerts for this week" do
+  it "should create the next week's concerts from the xml feed" do
     page1 = `cat spec/lib/testData/lastfm/ottawa-page-1`
     page2 = `cat spec/lib/testData/lastfm/ottawa-page-2`
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
@@ -71,8 +39,15 @@ describe Lastfm do
                          :response => page2)
     lastfm = Lastfm.new('ottawa')
     # Total of 15 events
-    my_item = mock('item')
-    my_item.should_receive(:save).exactly(15).times
+    Item.should_receive(:new).exactly(14).times
+    Item.should_receive(:new).with(:title => "Kalle Mattson",
+                                      :begin_at => Time.mktime(2009, 10, 15, 20, 0),
+                                      :url => 'http://www.last.fm/event/1219409+Kalle+Mattson+at+Zaphod+Beeblebrox+on+15+October+2009',
+                                      :address => "27 York St., Ottawa, Canada",
+                                      :latitude => 45.427855, 
+                                      :longitude => -75.693986,
+                                      :kind => 'event'
+                                    )
     lastfm.create_events_from_until(@today, @today + 7.days)
   end
 
@@ -90,19 +65,6 @@ describe Lastfm do
     lastfm.should_save?(test_item, @today, @today + 7.days).should be_true
   end
 
-  it "should not save an item that is outside the specified dates" do
-    test_item = Item.new(:title => "Kalle Mattson",
-             :begin_at => Time.mktime(2009, 10, 25, 20, 0),
-             :url => 'http://www.last.fm/event/1219409+Kalle+Mattson+at+Zaphod+Beeblebrox+on+15+October+2009',
-             :address => "27 York St., Ottawa, Canada",
-             :latitude => 45.427855, 
-             :longitude => -75.693986,
-             :kind => 'event'
-            )
-
-    lastfm = Lastfm.new('ottawa')
-    lastfm.should_save?(test_item, @today, @today + 7.days).should be_false
-  end
 
 
   it "should recognize the current maximum pages for this location" do
@@ -114,16 +76,22 @@ describe Lastfm do
     lastfm.total_pages_of_feed_for_location.should eql 12
   end
 
-  it "should throw exception when the location doesn't exist" do
+  it "should fail nicely when the location doesn't exist" do
     page = `cat spec/lib/testData/lastfm/blahblah-feed`
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=blahblah&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
                         :response => page)
-    page = `cat spec/lib/testData/lastfm/ottawa-page-1`
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
-                        :response => page)
    
-    lastfm = Lastfm.new('blahblah').should raise_error
-    lastfm2 = Lastfm.new('ottawa').should_not raise_error
+    lastfm = Lastfm.new('blahblah')
+    lastfm.create_events_from_until(@today, @today + 1.day)
+  end
+
+  it "should return nil for total pages if the location is not found" do
+    page = `cat spec/lib/testData/lastfm/blahblah-feed`
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=blahblah&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
+                        :response => page)
+
+    lastfm = Lastfm.new('blahblah')
+    lastfm.total_pages_of_feed_for_location.should eql 0
   end
 
   it "should populate the queue with concerts from an xml page" do

@@ -2,7 +2,6 @@ require 'nokogiri'
 
 class Lastfm
   attr_reader :event_queue  # FIXME: I should be private!  Needs to be public for testing?
-  attr_accessor :loc
 
   @@APIKEY = "b819d5a155749ad083fcd19407d4fc69"
 
@@ -11,23 +10,19 @@ class Lastfm
     @event_queue = Queue.new
     @loaded_page = 0
     @items_processed = 0
-    if !location_exists? 
-      raise InvalidLocationException.new 
-    end
   end
 
   def create_events_from_until(start_date, end_date)
     while(item = next_concert)
       if should_save?(item, start_date, end_date)
         item.save
-      else 
-        break
       end
     end
   end
 
   def next_concert
     if @event_queue.empty? 
+      return nil if !items_left_to_queue
       populate_queue_with_items
     end
 
@@ -56,7 +51,7 @@ class Lastfm
 
       item_to_add = Item.new(:title => (event/'title').inner_text,
                :begin_at => Time.parse(start_time_string),
-               :url => (event/'url')[1].inner_text,
+               :url => (event/'url').inner_text,
                :address => venue.full_address,
                :latitude => coordinates[0],
                :longitude => coordinates[1],
@@ -92,6 +87,11 @@ class Lastfm
     end
   end
 
+  def items_left_to_queue
+    return true if total_items_in_feed > @items_processed
+    return false
+  end
+    
   def generate_geo_api_url_page(page_number)
     'http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=' +
       @loc + "&api_key=" + @@APIKEY + "&page=" + page_number.to_s
@@ -100,18 +100,5 @@ class Lastfm
   def should_save?(item, start_date, end_date)
     item.begin_at >= start_date && item.begin_at <= end_date
   end
-
-  def location_exists?
-    begin
-      open generate_geo_api_url_page(1)
-    rescue
-      return false
-    end
-
-    true
-  end
-
 end
 
-class InvalidLocationException < Exception
-end
