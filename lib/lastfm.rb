@@ -12,7 +12,7 @@ class Lastfm
     @loaded_page = 0
     @items_processed = 0
     if !location_exists? 
-      raise InvalidLocationException.new 
+      raise InvalidLocationException
     end
   end
 
@@ -21,6 +21,8 @@ class Lastfm
       if should_save?(item, start_date, end_date)
         item.save
       else 
+        # Events ordered by start time, so the ones past this will not
+        # satisfy should_save?
         break
       end
     end
@@ -97,8 +99,11 @@ class Lastfm
       @loc + "&api_key=" + @@APIKEY + "&page=" + page_number.to_s
   end
 
+  # If there is no start_time, whenever we run the script "today" at say 10am,
+  # all the concerts starting tonight start at midnight (where there's no time).
+  # So just push everything back one day
   def should_save?(item, start_date, end_date)
-    item.begin_at >= start_date && item.begin_at <= end_date
+    item.begin_at >= (start_date - 1.day) && item.begin_at <= end_date
   end
 
   def location_exists?
