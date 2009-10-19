@@ -136,8 +136,8 @@ describe Lastfm do
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
                         :response => page)
    
-    lastfm = Lastfm.new('blahblah').should raise_error InvalidLocationException
-    lastfm2 = Lastfm.new('ottawa').should_not raise_error
+    lastfm = lambda {Lastfm.new('blahblah')}.should raise_error InvalidLocationException
+    lastfm2 = lambda {Lastfm.new('ottawa')}.should_not raise_error
   end
 
   it "should populate the queue with concerts from an xml page" do
