@@ -21,7 +21,7 @@
   <body onload="Map.initialize(); Map.updateSearchBoxWithCurrentLocation(); loadItems();">
     <div class="header">
       <span class="header-child"><img src="/images/logo.png" /></span>
-      <span class="header-child"><input type="text" id="search-box" name="search-box" /></span>
+      <span class="header-child"><input type="text" id="search-box" name="search-box" /><input type="button" onclick="Map.search($('input[name=search-box]').val())"></span>
       <span class="header-child">from <%= 5.days.ago.to_s %> to <%= 30.days.from_now.to_s %></span>
     </div>
     <div id="map" class="map" style="position: absolute; width: 100%; height: 91%;"></div>
