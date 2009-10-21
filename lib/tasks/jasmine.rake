@@ -7,7 +7,7 @@ namespace :test do
 
   Spec::Rake::SpecTask.new(:ci) do |t|  
     t.spec_opts = ["--color", "--format", "specdoc"]
-    t.spec_files = ["spec/jasmine_spec.rb"]
+    t.spec_files = ["spec/jasmine_spec_runner.rb"]
   end
 end
 
