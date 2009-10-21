@@ -2,7 +2,6 @@ require 'nokogiri'
 
 class Lastfm
   attr_reader :event_queue  # FIXME: I should be private!  Needs to be public for testing?
-  attr_accessor :loc
 
   @@APIKEY = "b819d5a155749ad083fcd19407d4fc69"
 
@@ -10,7 +9,6 @@ class Lastfm
     @loc = loc
     @event_queue = Queue.new
     @loaded_page = 0
-    @items_processed = 0
     if !location_exists? 
       raise InvalidLocationException
     end
@@ -38,8 +36,7 @@ class Lastfm
 
   # Returns number of Item's added to the queue
   def populate_queue_with_items
-    values_added = 0
-    return values_added if total_pages_of_feed_for_location <= @loaded_page
+    return if total_pages_of_feed_for_location <= @loaded_page
 
     @loaded_page += 1
     url = generate_geo_api_url_page(@loaded_page)
@@ -54,10 +51,8 @@ class Lastfm
 
       coordinates = venue.coordinates
 
-      start_time_string = (event/'startDate').inner_text
-
       item_to_add = Item.new(:title => (event/'title').inner_text,
-               :begin_at => Time.parse(start_time_string),
+               :begin_at => Time.parse((event/'startDate').inner_text),
                :url => (event/'url')[1].inner_text,
                :address => venue.full_address,
                :latitude => coordinates[0],
@@ -66,12 +61,7 @@ class Lastfm
               )
 
       @event_queue << item_to_add
-      values_added += 1
-      @items_processed += 1
     end
-
-    return values_added
-
   end
 
   def total_pages_of_feed_for_location
@@ -79,16 +69,6 @@ class Lastfm
     begin
       doc = Nokogiri::XML open url
       Integer doc.at("//events")['totalpages'] 
-    rescue
-      return 0
-    end
-  end
-
-  def total_items_in_feed
-    url = generate_geo_api_url_page(1)
-    begin
-      doc = Nokogiri::XML open url
-      Integer doc.at("//events")['total'] 
     rescue
       return 0
     end
