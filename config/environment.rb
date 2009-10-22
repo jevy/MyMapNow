@@ -1,4 +1,4 @@
-# Be sure to restart your server when you modify this file
+r# Be sure to restart your server when you modify this file
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
@@ -21,6 +21,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'gravtastic', :version => '>= 2.1.0'
   config.gem 'rspec', :lib => 'spec'
+  config.gem 'rspec-rails', :lib => false
   config.gem 'cucumber'
   config.gem 'webrat'
   config.gem 'jelly'
