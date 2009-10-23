@@ -57,7 +57,7 @@ class Lastfm
                :address => venue.full_address,
                :latitude => coordinates[0],
                :longitude => coordinates[1],
-               :kind => 'event'
+               :kind => 'live_music'
               )
 
       @event_queue << item_to_add

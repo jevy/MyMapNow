@@ -86,7 +86,7 @@ class Flixster
                     :address   => theatre.full_address,
                     :latitude  => coordinates[0],
                     :longitude => coordinates[1],
-                    :kind      => 'event')
+                    :kind      => 'movie')
       end
     end
 
