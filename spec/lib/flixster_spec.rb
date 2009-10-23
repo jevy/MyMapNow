@@ -11,7 +11,7 @@ describe Flixster do
       :address    => '801 Kanata Avenue, Kanata, ON',
       :latitude   => 45.312168,
       :longitude  => -75.9093546,
-      :kind       => 'event'
+      :kind       => 'movie'
     }
 
     @flixster = Flixster.new

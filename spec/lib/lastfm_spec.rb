@@ -24,7 +24,7 @@ describe Lastfm do
     item.address.should eql "128.5 York St., Ottawa, Canada"
     item.latitude.should eql 45.4275148
     item.longitude.should eql -75.694805
-    item.kind.should eql 'event'
+    item.kind.should eql 'live_music'
     
     item = queue.pop
     item.title.should eql "Karkwa"
@@ -33,7 +33,7 @@ describe Lastfm do
     item.address.should eql "25, rue Laurier, Gatineau, Québec, Canada"
     item.latitude.should eql 45.4776536
     item.longitude.should eql -75.6458538
-    item.kind.should eql 'event'
+    item.kind.should eql 'live_music'
 
     7.times { queue.pop }
       
@@ -44,7 +44,7 @@ describe Lastfm do
     item.address.should eql  "27 York St., Ottawa, Canada"
     item.latitude.should eql 45.4278552
     item.longitude.should eql -75.693986
-    item.kind.should eql 'event'
+    item.kind.should eql 'live_music'
 
     queue.empty?.should be_true
     
@@ -97,7 +97,7 @@ describe Lastfm do
              :address => "27 York St., Ottawa, Canada",
              :latitude => 45.427855, 
              :longitude => -75.693986,
-             :kind => 'event'
+             :kind => 'live_music'
             )
 
     lastfm = Lastfm.new('ottawa')
@@ -111,7 +111,7 @@ describe Lastfm do
              :address => "27 York St., Ottawa, Canada",
              :latitude => 45.427855, 
              :longitude => -75.693986,
-             :kind => 'event'
+             :kind => 'live_music'
             )
 
     lastfm = Lastfm.new('ottawa')
