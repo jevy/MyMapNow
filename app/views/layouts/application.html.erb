@@ -10,12 +10,16 @@
     <script src="http://j.maxmind.com/app/geoip.js"></script>
     <%= javascript_include_tag 'map', 'geoip', :cache => true %>
     <%= javascript_include_tag :jelly, *application_jelly_files %>
+    <%= stylesheet_link_tag 'screen' %>
+    <%= stylesheet_link_tag 'print' %>
+    <%= stylesheet_link_tag 'ie' %>
     <%= spread_jelly %>
     <style type="text/css">
       body { background: #171717; color: lightgray; margin: 0px;}
       div.header { width: 100%; background: url(/images/header.png) repeat-x; display: table; height: 40px; }
       span.header-child { display: table-cell; vertical-align: middle; }
       div.footer { width: 100%; background: url(/images/header.png) repeat-x; display: table; height: 40px;}
+      div.sidebar { background: lightgray; color: black; }
     </style>
     <script type="text/javascript">
       var userflyHost = (("https:" == document.location.protocol) ? "https://secure.userfly.com" : "http://asset.userfly.com");
@@ -24,13 +28,24 @@
 
   </head>
   <body onload="Map.initialize(); Map.updateSearchBoxWithCurrentLocation(); loadItems();">
-    <div class="header">
-      <span class="header-child"><img src="/images/logo.png" /></span>
-      <span class="header-child"><input type="text" id="search-box" name="search-box" /><input type="button" onclick="Map.search($('input[name=search-box]').val())"></span>
-      <span class="header-child">from <%= 5.days.ago.to_s %> to <%= 30.days.from_now.to_s %></span>
+    <div class="container">
+      <div class="span-24 last header">
+	<span class="header-child"><img src="/images/logo.png" /></span>
+	<span class="header-child">
+	  <input type="text" id="search-box" name="search-box" />
+	  <input type="button" onclick="Map.search($('input[name=search-box]').val())">
+	</span>
+	<span class="header-child">
+	  from <%= 5.days.ago.to_s %> to <%= 30.days.from_now.to_s %>
+	</span>
+      </div>
+      <div class="span-8 sidebar">
+	<div id="item-details">
+	  &nbsp;
+	</div>
+      </div>
+      <div id="map" class="span-16 last" style="width: 630px; height: 630px;"></div>
     </div>
-    <div id="map" class="map" style="position: absolute; width: 100%; height: 91%;"></div>
-    <div id="footer" class="footer" style="height: 40px;"></div>
     <script>
       // FIXME: untested
       var loadItems = function() {
@@ -41,6 +56,12 @@
               position: new google.maps.LatLng(item.latitude, item.longitude),
               map: Map.map
             });
+      var itemHTML = '<span><strong><em>' + item['title'] + '</strong></em></span><br />';
+      if (item['address']) { itemHTML += '<span><strong>Address: </strong>' + item['address'] + '</span>' };
+      if (item['begin_at']) { itemHTML += '<span><strong>Time: </strong>' + item['begin_at'] + '</span>' };
+      if (item['end_at']) { itemHTML += '<span> until ' + item['end_at'] + '</span>' };
+      
+            $('<div id="item-' + i + '">' + itemHTML + '</div><br /><hr style="width: 75%; color: black;"/>').appendTo('#item-details');
           });
         });
       };
