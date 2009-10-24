@@ -9,13 +9,11 @@ class Meetup
     @loc_city = city
     @loc_country = country
     @event_queue = Queue.new
-    @loaded_page = 0
-    if !location_exists?
-      raise InvalidLocationException
-    end
   end
 
   def create_events_from_until(start_date, end_date)
+    raise InvalidLocationException unless location_exists?
+
     while(item = next_concert)
       if should_save?(item, start_date, end_date)
         item.save
@@ -37,45 +35,43 @@ class Meetup
 
   # Returns number of Item's added to the queue
   def populate_queue_with_items
-    #return if total_pages_of_feed_for_location <= @loaded_page
-
-    @loaded_page += 1
-    url = generate_geo_api_url_page(@loaded_page)
-    doc = Nokogiri::XML open url
+    url = generate_geo_api_url_page
+    raw_page = open url
+    doc = Nokogiri::XML raw_page
 
     doc.xpath('//item').each do |event|
       venue = Venue.new
       venue.name = (event/'venue_name').inner_text
-      #venue.address = (event/'venue/location/street').inner_text
-      venue.city = @loc_city
-      venue.country = @loc_country
 
-      #coordinates = venue.coordinates
-
+      if public_meetup?(event)
+        venue.address = (event/'venue_address1').inner_text
+        venue.city = (event/'venue_city').inner_text
+        venue.state = (event/'venue_state').inner_text
+        venue.country = @loc_country
+      else
+        venue.city = @loc_city
+        venue.country = @loc_country
+      end
+        
       item_to_add = Item.new(:title => (event/'name').inner_text,
                :begin_at => Time.parse((event/'time').inner_text),
-               :url => (event/'event-url').inner_text,
-               :latitude => (event/'lat').inner_text,
-               :longitude => (event/'lon').inner_text,
-               :kind => 'event'
+               :url => (event/'event_url').inner_text,
+               :address => venue.full_address,
+               :latitude => (event/'venue_lat').inner_text,
+               :longitude => (event/'venue_lon').inner_text,
+               :kind => 'meetup'
               )
 
       @event_queue << item_to_add
     end
   end
 
-  def total_pages_of_feed_for_location
-    url = generate_geo_api_url_page(1)
-    begin
-      doc = Nokogiri::XML open url
-      Integer doc.at("//events")['totalpages'] 
-    rescue
-      return 0
-    end
+  def public_meetup?(event)
+    return (event/'venue_address1').inner_text != ''
   end
 
-  def generate_geo_api_url_page(page_number)
-    "http://api.meetup.com/events.xml/?country=#{@loc_country}&city=#{@loc_city}&key=#{@@APIKEY}"
+  def generate_geo_api_url_page
+    URI.escape "http://api.meetup.com/events.xml/?country=#{@loc_country}&city=#{@loc_city}&key=#{@@APIKEY}"
   end
 
   # If there is no start_time, whenever we run the script "today" at say 10am,
@@ -87,7 +83,7 @@ class Meetup
 
   def location_exists?
     begin
-      open generate_geo_api_url_page(1)
+      open generate_geo_api_url_page
     rescue
       return false
     end
