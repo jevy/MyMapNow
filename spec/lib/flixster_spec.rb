@@ -80,11 +80,14 @@ describe Flixster do
   it "should generate the url for the theatre on the given day" do
     amc_today_url = "http://www.flixster.com/showtimes/amc-kanata-24?date=20091006"
     amc_tomorrow_url = "http://www.flixster.com/showtimes/amc-kanata-24?date=20091007"
+    silvercity_some_other_day = "http://www.flixster.com/showtimes/famous-players-silvercity-gloucester?date=20091023"
     base_url = "http://www.flixster.com/showtimes/amc-kanata-24"
     url = @flixster.url_for_theatre_with_date(base_url, Time.mktime(2009, 10, 6, 0, 0, 0))
     url.should eql amc_today_url
     url = @flixster.url_for_theatre_with_date(base_url, Time.mktime(2009, 10, 7, 0, 0, 0))
     url.should eql amc_tomorrow_url
+    url = @flixster.url_for_theatre_with_date("http://www.flixster.com/showtimes/famous-players-silvercity-gloucester", Time.mktime(2009, 10, 23, 0, 0, 0))
+    url.should eql silvercity_some_other_day
   end
 
   it "should associate movie names with times and return a hash" do
@@ -164,6 +167,16 @@ describe Flixster do
     links = @flixster.scrapeTheaterLinksFromThisPage("http://www.flixster.com/sitemap/theaters/CA/NS")
     links.should include("http://www.flixster.com/showtimes/empire-theatres-antigonish")
     links.should include("http://www.flixster.com/showtimes/empire-theatres-studio-7-cinemas")
+  end
+
+  it "should not crash on a broken theatre page" do
+    page = `cat spec/lib/testData/theatrePages/broken-theatre2`
+    FakeWeb.allow_net_connect = false
+    FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/famous-players-silvercity-gloucester?date=20091023", 
+                         :response => page)
+    lambda {@flixster.scrapeTheatrePage("http://www.flixster.com/showtimes/famous-players-silvercity-gloucester?date=20091023",
+                              Time.mktime(2009, 10, 23, 0,0,0) )}.should_not raise_error
+
   end
 
 end

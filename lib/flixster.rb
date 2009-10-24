@@ -42,10 +42,15 @@ class Flixster
     doc = Hpricot open url
 
     theatre           = Venue.new
-    theatre.name      = doc.at("//input[@name='name']")['value']
-    theatre.address   = doc.at("//input[@name='address']")['value']
-    theatre.city      = doc.at("//input[@name='city']")['value']
-    theatre.state     = doc.at("//input[@name='state']")['value']
+    begin
+      doc.at("//input[@name='name']")['value'].nil?
+      theatre.name      = doc.at("//input[@name='name']")['value']
+      theatre.address   = doc.at("//input[@name='address']")['value']
+      theatre.city      = doc.at("//input[@name='city']")['value']
+      theatre.state     = doc.at("//input[@name='state']")['value']
+    rescue
+      puts url
+    end
 
     return theatre
   end
