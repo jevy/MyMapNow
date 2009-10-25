@@ -4,12 +4,16 @@ require 'uri'
 
 class ExpressParser
 
-  def initialize(document)
+  def initialize(document, base_uri)
     @page = document
+    @uri = base_uri
   end
 
-  def events(page=@page)
-    
+  def parse_events(page=@page)
+    event_rows(page).collect{|row|
+      info = event_information(@uri+(row/"a")[0].attributes['href'])
+      Item.new info
+    }
   end
 
   def event_rows(doc=@page)
@@ -19,14 +23,25 @@ class ExpressParser
   private
 
   def event_information(url)
-     info = artist_div(Hpricot(open(url)))
-     info = info[0].to_plain_text.split("\n").reject{|line| line.include?"?"}
-     info.reject!{|line| line.empty?}.collect{|line| line.strip}
-     return info[0], Date.parse(info[1]), info[2]
+    info = artist_div(Hpricot open(url, 'User-Agent'=>'ruby'))
+    location_name = doc_links(info).text
+    info = info[0].to_plain_text.split("\n").reject{|line| line.include?"?"}
+    info.reject!{|line| line.strip.empty?}
+    info.collect!{|line| line.strip}
+
+    {:title=>info[0],:begin_at=> DateTime.parse(info[1]),
+      :address=>info[2], :url=>url,
+      :description=> description(info, location_name),:kind=>"Live Music"
+    }
   end
 
-  def venue_information(url)
-    info = artist_div(Hpricot(open(url)))
+  def description(info, location_name)
+    "#{info[0]} is putting on a show at the #{location_name}.\n#{format_extra_event_info(info)}"
+  end
+
+
+  def format_extra_event_info(info)
+    info[3..info.length].join('\n') unless info.length <=3
   end
 
   def is_event_row?(row)
