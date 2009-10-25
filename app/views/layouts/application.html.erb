@@ -14,70 +14,54 @@
     <%= spread_jelly %>
   </head>
   <body onload="Map.initialize(); Map.updateSearchBoxWithCurrentLocation(); loadItems();">
-
-    <div id="header">
-      <!-- begin header-->
-      <span class="header-child"><img src="/images/logo.png" /></span>
-    	<span class="header-child">
-    	  <input type="text" id="search-box" name="search-box" />
-    	  <input type="button" class="go-button" onclick="Map.search($('input[name=search-box]').val())">
-    	</span>
-    	<span class="header-child">
-    	  from <%= 5.days.ago.to_s %> to <%= 30.days.from_now.to_s %>
-    	</span>
-      <!-- end header -->   
+    <div id="mainContainer" style="height: 100%;">
+      <div id="header">
+	<span class="header-child"><img src="/images/logo.png" /></span>
+	<span class="header-child"><input type="text" id="search-box" name="search-box" /></span>
+	<span class="header-child">hello <input type="button" onclick="Map.search($('input[name=search-box]').val())" /></span>
+      </div> 
+      <div class="outer" style="height: 100%; bottom: 100px;">
+	<div class="inner" style="height: 100%;">
+	  <div class="float-wrap" style="height: 100%;">
+            <div id="content" style="height: 100%;"> 
+              <div class="contentWrap" style="height: 100%;">
+		<div id="map" style="height: 100%; width: 100%;"></div>
+              </div>
+            </div>
+            <!-- end centered div -->
+            <div id="left">
+	      <div id="item-details"></div>
+            </div>
+	    <!-- end left div -->
+	  </div>
+	  <div id="right"></div>
+	  <!-- end right div -->
+	</div>
+      </div>
     </div>
- 
-    <div id="main-wrapper">
-      <!-- begin main wrapper -->
-
-      <div id="left-sidebar">
-        <!-- begin left-sidebar -->
-        <div id="item-details">
-      	  &nbsp;
-      	</div>
-        <!-- end left-sidebar -->   
-      </div>
-
-      <div id="map">
-        <!-- map area--> &nbsp;
-      </div>
-
-      <div id="footer">
-        <!-- begin footer-->
-        <p class="copyright">Copyright &copy; 2009 MyMapNow - All Rights Reserved</p>
-        <p class="links">
-          <%= link_to 'Submit News/Events', new_item_url %>
-          <a href="#">About MyMapNow</a>    
-          <a href="#">Privacy Policy</a>   
-          <a href="#">Terms and Conditions</a>
-        </p>
-        <!-- end footer -->   
-      </div>
-
-      <!-- end main wrapper -->   
+    <div id="footer">
+    <div id="footerLeft">dfsadf</div>
+      <p>This is our footer</p>
     </div>
- 
- 
-    <script>
-      // FIXME: untested
-      var loadItems = function() {
-        $.getJSON('/items', function(items) {
-          jQuery.each(items, function(i) {
-            var item = items[i]['item'];
-            var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(item.latitude, item.longitude),
-              map: Map.map
-            });
+<script>
+// FIXME: untested
+var loadItems = function() {
+  $.getJSON('/items', function(items) {
+    jQuery.each(items, function(i) {
+      var item = items[i]['item'];
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(item.latitude, item.longitude),
+        map: Map.map
+      });
       var itemHTML = '<span><strong><em>' + item['title'] + '</strong></em></span><br />';
-      if (item['address']) { itemHTML += '<span><strong>Address: </strong>' + item['address'] + '</span>' };
-      if (item['begin_at']) { itemHTML += '<span><strong>Time: </strong>' + item['begin_at'] + '</span>' };
-      if (item['end_at']) { itemHTML += '<span> until ' + item['end_at'] + '</span>' };
-      
-            $('<div id="item-' + i + '">' + itemHTML + '</div><br /><hr style="width: 75%; color: black;"/>').appendTo('#item-details');
-          });
-        });
-      };
-    </script>
+   if (item['address']) { itemHTML += '<span><strong>Address: </strong>' + item['address'] + '</span>' };
+   if (item['begin_at']) { itemHTML += '<span><strong>Time: </strong>' + item['begin_at'] + '</span>' };
+   if (item['end_at']) { itemHTML += '<span> until ' + item['end_at'] + '</span>' };
+   
+         $('<div id="item-' + i + '">' + itemHTML + '</div><br /><hr style="width: 75%; color: black;"/>').appendTo('#item-details');
+    });
+  });
+};
+ </script>
   </body>
 </html>

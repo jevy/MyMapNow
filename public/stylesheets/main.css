@@ -1,64 +1,90 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+body, html {
+    height: 100%;
+    background: black;
+    color: white;
+}
 body {
-	background: #111; 
-	color: lightgray; 
-	margin: 0px;
+    min-width: 760px;
 }
-	
-#main-wrapper {
-	width:100%; 
+.clear { clear: both; }
+#mainContainer {
+    min-height: 100%;
 }
-
+* html #mainContainer {
+    height: 100%; /*** IE doesn't support min-height, but instead it handles height as min-height so we need to hack the height ***/
+}
+/* HEADER */
 #header {
-	width: 100%; 
-	background: url(/images/header.png) repeat-x; 
-	display: table; 
-	height: 40px;
+    color: gray;
+    background: black;
+    height: 40px;
+    display: table;
 }
 .header-child { display: table-cell; vertical-align: middle; }
-.go-button {
-	
+
+/* CONTENT AND COLUMNS */
+.outer {
+    padding-left: 260px; /*** Same width as margin-left for the float-wrap div ***/
 }
-	
-#left-sidebar {
-	width:22%; /* this width + content width must total 100% */
-	float:left; /* floats on nav and content divs make them sit side by side */
-	background: lightgray; 
-	color: black;
+.inner {
+    width: 100%;
+    padding-bottom: 26px; /*** Padding-bottom value is the same value as the total height of the footer ***/
 }
-	
-#map {
-	float:left; /* floats on nav and content divs make them sit side by side */
-	width:100%; /* this width + nav width must total 100% */
-	height:100%;
-	position: absolute; left: 260px; top: 40px; right: 0; bottom: 26px;
-	margin-right: 260px;
+/*** div.inner is wider than its container, div.outer, and so overlaps to the right, pushing
+     div.right into the proper position. IE expands div.outer instead, requiring a Tan hack to avoid 
+     blowing the layout apart. IE gets the original 100% width as in the Livingstone layout.
+     ***/
+.float-wrap {
+    float: left;
+    width: 100%;
+    margin-left: -260px; /*** Same length as .outer padding-left but with negative value ***/
 }
 
+#content {
+    float: right;
+    margin-right: -260px; /*** Same length as .outer padding-left but with negative value ***/
+    width: 100%;
+    position: relative; /*** IE needs this  ***/
+}
+/* LEFT COLUMN */
+/*** div.left is in div.float-wrap, and when div.float-wrap is neg margined to the left, 
+     div.left is carried over into the proper position. 
+     ***/
+#left {
+    color: black;
+    background: lightgray;
+    float: left;
+    width: 260px;
+    height: 100%;
+    position: relative; /*** IE needs this  ***/
+}
+
+
+/* RIGHT COLUMN */
+#right {
+    float: right; 
+    width: 1px;
+    position: relative; /*** IE needs this  ***/
+}
+
+/* FOOTER */
 #footer {
-	display:block; 
-	position:absolute; 
-	height:26px; 
-	border-top:1px solid #676767; 
-	background:#111 url(/images/header.png) repeat-x; 
-	color: lightgray; 
-	padding:0 10px; 
-	line-height:26px; 
-	left:0; 
-	right:0; 
-	bottom:0; 
-	text-align: right;
+    background: black;
+    height: 26px; /*** The drawback with this solution is that the height of the footer can't be flexible. If you add so much content to the footer that it extends 45px, you will get a vertical scrollbar and the content will overflow the footer if you don't set overflow to hidden ***/
+    margin-top: -26px; /*** By using a negative margin-top we now moves the footer up the same amount as the footer height to avoid vertical scrolling. Remember, if you use borders and padding on your footer you will have to calculate this in your negative margin-top value also. ***/
+    text-align: center;
 }
-
-.copyright {
-	float: left;
+#footerLeft {
+    background: black;
+    float: left;
+    height: 26px;
+    width: 260px; /*** Same length as .outer padding-left ***/
 }
-
-.links a {
-	color: lightgray; 
-	text-decoration: none;
-	margin-left: 15px;
-}
-
-.links a:hover {
-	text-decoration: underline;
+#footer p {
+    clear: both;
 }
