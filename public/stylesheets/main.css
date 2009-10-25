@@ -1,0 +1,63 @@
+body {
+	background: #111; 
+	color: lightgray; 
+	margin: 0px;
+}
+	
+#main-wrapper {
+	width:100%; 
+}
+
+#header {
+	width: 100%; 
+	background: url(/images/header.png) repeat-x; 
+	display: table; 
+	height: 40px;
+}
+.header-child { display: table-cell; vertical-align: middle; }
+.go-button {
+	
+}
+	
+#left-sidebar {
+	width:22%; /* this width + content width must total 100% */
+	float:left; /* floats on nav and content divs make them sit side by side */
+	background: lightgray; 
+	color: black;
+}
+	
+#map {
+	float:left; /* floats on nav and content divs make them sit side by side */
+	width:78%; /* this width + nav width must total 100% */
+	top:0px;	
+	height:100%;
+}
+
+#footer {
+	display:block; 
+	position:absolute; 
+	height:26px; 
+	border-top:1px solid #676767; 
+	background:#111 url(/images/header.png) repeat-x; 
+	color: lightgray; 
+	padding:0 10px; 
+	line-height:26px; 
+	left:0; 
+	right:0; 
+	bottom:0; 
+	text-align: right;
+}
+
+.copyright {
+	float: left;
+}
+
+.links a {
+	color: lightgray; 
+	text-decoration: none;
+	margin-left: 15px;
+}
+
+.links a:hover {
+	text-decoration: underline;
+}
