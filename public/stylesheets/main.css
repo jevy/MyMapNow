@@ -28,9 +28,10 @@ body {
 	
 #map {
 	float:left; /* floats on nav and content divs make them sit side by side */
-	width:78%; /* this width + nav width must total 100% */
-	top:0px;	
+	width:100%; /* this width + nav width must total 100% */
 	height:100%;
+	position: absolute; left: 260px; top: 40px; right: 0; bottom: 26px;
+	margin-right: 260px;
 }
 
 #footer {
