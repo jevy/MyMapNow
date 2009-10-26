@@ -46,7 +46,7 @@ var OldMap = {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
     
       var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div><h2>' + item.title + '</h2><p>Start Time: '+(item.begin_at || '')+'</p><p class="address">'+ (item.address || '') +'<p class="description">'+(item.description || '')+'</p></li>').appendTo('aside ol');
-      if (item.url != "") {
+      if (item.url) {
         $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
       }
       $li.data('marker', new google.maps.Marker({
