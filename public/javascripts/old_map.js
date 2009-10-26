@@ -35,6 +35,7 @@ var OldMap = {
       start: $('#date-range').data('start'),
       end: $('#date-range').data('end')
     };
+    Map.cleanup();
     $(document).trigger('map:change', [bounds, timeframe]);
   },
   
