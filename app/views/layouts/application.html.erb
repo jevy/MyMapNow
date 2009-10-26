@@ -19,12 +19,11 @@
     <header>
       <h1>MyMapNow</h1>
       <p><input type="text" id="search-box" name="search-box" value=""></p>
-      <h5>during</h5>
+      <p><button id="search" onclick="Map.search($('#search-box').val());">Search</button></p>
       <div id="date-range">
         <div id="label-left"><span></span></div>
         <div id="label-right"><span></span></div>
       </div>
-      <p><button id="search" onclick="Map.search($('#search-box').val());">Search</button></p>
     </header>
     <section>
       <%= yield %>
