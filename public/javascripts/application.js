@@ -40,12 +40,6 @@ $(function() {
 	function dateText(n) {
 		return $.fn.strftime(dateForValue(n), '%B %D');
 	}
-		
-
-	$('#toggle-aside').click(function() {
-		$(document.body).toggleClass('hide-aside');
-		return false;
-	});
 	
 	var form = $('#new_item');
 	form.dialog({autoOpen: false,

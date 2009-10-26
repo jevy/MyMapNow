@@ -25,15 +25,11 @@ header button				{position:absolute; left:275px; width:68px; height:40px; text-i
 
 section							{display:block; z-index:6; position:absolute; left:260px; right:0; top:40px; bottom:26px;}
 aside								{background:#f0f0f0; z-index:5; display:block; position:absolute; width:259px; border-right:1px solid #676767; left:0; top:40px; bottom:26px;}
-body.hide-aside aside {left:-260px;}
-body.hide-aside section {left:0;}
 footer							{display:block; position:absolute; height:26px; border-top:1px solid #676767; background:#111 url(images/header.png) repeat-x; color:#999; padding:0 10px; line-height:26px; left:0; right:0; bottom:0; text-align:right;}
 footer .copyright		{float:left;}
 footer a						{color:#fff; margin-left:15px;}
 
 aside h1						{font-size:11px; color:#333; background:url(images/sidebar_header.png) repeat-x; height:28px; border-bottom:1px solid #666; position:relative; padding:0 10px; line-height:28px;}
-#toggle-aside				{position:absolute; z-index:10; left:259px; top:40px; width:30px; height:29px; background:url(images/collapse.png);}
-body.hide-aside #toggle-aside {background-image:url(images/expand.png); left:0;}
 aside ol						{position:absolute; list-style-type:none; top:29px; left:0; right:0; bottom:0; overflow:auto;}
 aside li						{position:relative; padding:8px 10px 8px 43px; background:url(images/detail.png) repeat-x 0 100%; border-bottom:1px solid #999;}
 aside div						{position:absolute; left:10px; top:8px; width:23px; height:25px; line-height:20px; color:#fff; text-align:center;}
