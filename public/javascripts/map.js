@@ -7,6 +7,10 @@ var Map = {
       center: new google.maps.LatLng(lat, lng),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
+    // FIXME: the next line is untested
+    google.maps.event.addListener(Map.map, 'bounds_changed', function() {
+      Map.fetch();
+    });
   },
   updateSearchBoxWithCurrentLocation: function() {
     $('input[name=search-box]').val(GeoIP.city() + ', ' + GeoIP.region() + ', ' + GeoIP.country());
@@ -21,7 +25,12 @@ var Map = {
 	Map.moveTo(response[0].geometry.location);
       }
     });
-  }
+  },
+  fetch: OldMap.fetch,
+  showInfoWindow: OldMap.showInfoWindow,
+  addItem: OldMap.addItem,
+  _markerImages: OldMap._markerImages,
+  markerImages: OldMap.markerImages
 };
 
 $(Map.initialize);

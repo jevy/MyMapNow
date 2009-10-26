@@ -52,10 +52,3 @@ dt {clear: left; font-weight: bold; margin-top: 5px;}
 dt img {float: left; margin: 0 3px 3px 0;}
 
 #map                {height:100%;}
-
-aside .thumbs { display: none;}
-#map .thumbs a { width: 16px; height: 16px; display: block; float: left;}
-#map .thumbs a.up { background: url(images/thumb-up-disable.png) no-repeat top left;}
-#map .thumbs a.up:hover { background: url(images/thumb-up.png) no-repeat top left;}
-#map .thumbs a.down { background: url(images/thumb-down-disable.png) no-repeat top left;}
-#map .thumbs a.down:hover { background: url(images/thumb-down.png) no-repeat top left;}

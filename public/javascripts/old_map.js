@@ -1,21 +1,21 @@
-$('aside li').live('click', function(event) {
-  var $this = $(this);
-  $('aside li.active').each(function() {
-    $(this).data('info').close();
-  }).removeClass('active');
+// $('aside li').live('click', function(event) {
+//   var $this = $(this);
+//   $('aside li.active').each(function() {
+//     $(this).data('info').close();
+//   }).removeClass('active');
   
-  if(!$this.data('info')) {
-    $this.data('info', new google.maps.InfoWindow({
-      content: $this.html(),
-      size: new google.maps.Size(250,150)
-    }));
-  }
+//   if(!$this.data('info')) {
+//     $this.data('info', new google.maps.InfoWindow({
+//       content: $this.html(),
+//       size: new google.maps.Size(250,150)
+//     }));
+//   }
 
-  $this.addClass('active');
-  $this.data('info').open(Map.map, $this.data('marker'));
-});
+//   $this.addClass('active');
+//   $this.data('info').open(Map.map, $this.data('marker'));
+// });
 
-var Map = {
+var OldMap = {
   initialize: function() {
     Map.map = new google.maps.Map($('#map')[0], {
       zoom: 13,
@@ -44,20 +44,9 @@ var Map = {
     if(!$('aside li[data-item-id=' + id + ']')[0]) {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
     
-      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div><h2>' + item.title + '</h2><p class="address">'+ (item.address || '') +'<p class="description">'+item.body+'</p><p class="thumbs"><a href="#" class="up"></a><a href="#" class="down"></a></p></li>').appendTo('aside ol');
-      if (item.conversations && item.conversations.length > 0) {
-        $li.append('<dl class="conversation">');
-        $.each(item.conversations, function() {
-          $li.append('<dt><img src="'+this.gravatar_url+'" class="gravatar">'+this.author+'</dt>');
-          $li.append('<dd>'+this.message+'</dd>');
-        });
-        $li.append('</dl>');
-      }
+      var $li = $('<li class="event" data-item-id="'+item.id+'"><div></div><h2>' + item.title + '</h2><p class="address">'+ (item.address || '') +'<p class="description">'+(item.description || '')+'</p></li>').appendTo('aside ol');
       if (item.url != "") {
-        $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
-      }
-      if (!item.approved) {
-        $li.append('<a href="/items/'+item.id+'/approve" class="approve">Approve</a>');
+        $li.append('<p class="link"><a href="#" target="_blank">More...</a>');
       }
       $li.data('marker', new google.maps.Marker({
           position: point, 
@@ -108,7 +97,3 @@ var Map = {
     return Map._markerImages[kind];
   }
 };
-
-$(document).bind('map:change', Map.cleanup);
-
-$(Map.initialize);
