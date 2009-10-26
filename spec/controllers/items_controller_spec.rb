@@ -17,13 +17,13 @@ describe ItemsController do
   describe "get json for items within bounds" do
     it "should return the item as json" do
       items = mock('the items')
-      items.should_receive(:to_json)
       Item.should_receive(:find_in_bounds).with([46.10848045950527,-60.24051439208984],
                                                 [46.19148824417106,-60.09288560791015],
                                                 Time.parse('2009-09-18 12:00'),
                                                 Time.parse('2009-10-03 12:00')).and_return(items)
+      items.should_receive(:to_json)
 
-      get :index, {:format => 'js', "end"=>"2009-10-03 12:00", "northeast"=>"46.19148824417106,-60.09288560791015", "start"=>"2009-09-18 12:00", "southwest"=>"46.10848045950527,-60.24051439208984"}
+      get :in_bounds, {:format => 'js', "end"=>"2009-10-03 12:00", "northeast"=>"46.19148824417106,-60.09288560791015", "start"=>"2009-09-18 12:00", "southwest"=>"46.10848045950527,-60.24051439208984"}
     end
   end
 

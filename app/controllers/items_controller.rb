@@ -1,5 +1,17 @@
 class ItemsController < ApplicationController
-  #layout false
+  def in_bounds
+    southwest = params[:southwest].split(',').map(&:to_f)
+    northeast = params[:northeast].split(',').map(&:to_f)
+    begin_at = Time.parse(params[:start])
+    end_at = Time.parse(params[:end])
+
+    @items = Item.find_in_bounds(southwest, northeast, begin_at, end_at)
+
+    respond_to do |format|
+      format.js   { render :json => @items.to_json }
+    end
+  end
+
   # GET /items
   # GET /items.xml
   def index
@@ -8,7 +20,6 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @items }
-      format.js   { render :json => @items.to_json }
     end
   end
 
