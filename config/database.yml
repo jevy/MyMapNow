@@ -13,6 +13,7 @@ test:
 production:
   adapter: postgresql
   database: mymapnow
+  username: mymapnow
   password: Woo4ceeZ
   host: localhost
 
