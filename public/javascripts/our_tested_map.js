@@ -23,3 +23,6 @@ var Map = {
     });
   }
 };
+
+$(Map.initialize);
+$(Map.updateSearchBoxWithCurrentLocation);
