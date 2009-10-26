@@ -30,10 +30,15 @@ class ExpressParser
     info.collect!{|line| line.strip}
 
     {:title=>info[0],:begin_at=> DateTime.parse(info[1]),
-      :address=>info[2], :url=>url,
+      :address=>info[2],
+      :url=>url,
       :description=> description(info, location_name),:kind=>"Live Music"
     }
   end
+#
+#  def append_city_to_address(address)
+#    "#{address}, Ottawa Ontario"
+#  end
 
   def description(info, location_name)
     "#{info[0]} is putting on a show at the #{location_name}.\n#{format_extra_event_info(info)}"
@@ -41,7 +46,7 @@ class ExpressParser
 
 
   def format_extra_event_info(info)
-    info[3..info.length].join('\n') unless info.length <=3
+    info[3..info.length].join("\n") unless info.length <=3
   end
 
   def is_event_row?(row)
