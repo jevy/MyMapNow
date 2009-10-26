@@ -35,10 +35,6 @@ class ExpressParser
       :description=> description(info, location_name),:kind=>"Live Music"
     }
   end
-#
-#  def append_city_to_address(address)
-#    "#{address}, Ottawa Ontario"
-#  end
 
   def description(info, location_name)
     "#{info[0]} is putting on a show at the #{location_name}.\n#{format_extra_event_info(info)}"
