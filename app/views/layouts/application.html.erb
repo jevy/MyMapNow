@@ -24,7 +24,7 @@
         <div id="label-left"><span></span></div>
         <div id="label-right"><span></span></div>
       </div>
-      <p><button id="search">Search</button></p>
+      <p><button id="search" onclick="Map.search($('#search-box').val());">Search</button></p>
     </header>
     <section>
       <%= yield %>
