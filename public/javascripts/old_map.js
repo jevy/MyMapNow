@@ -1,19 +1,19 @@
-// $('aside li').live('click', function(event) {
-//   var $this = $(this);
-//   $('aside li.active').each(function() {
-//     $(this).data('info').close();
-//   }).removeClass('active');
+$('aside li').live('click', function(event) {
+  var $this = $(this);
+  $('aside li.active').each(function() {
+    $(this).data('info').close();
+  }).removeClass('active');
   
-//   if(!$this.data('info')) {
-//     $this.data('info', new google.maps.InfoWindow({
-//       content: $this.html(),
-//       size: new google.maps.Size(250,150)
-//     }));
-//   }
+  if(!$this.data('info')) {
+    $this.data('info', new google.maps.InfoWindow({
+      content: $this.html(),
+      size: new google.maps.Size(250,150)
+    }));
+  }
 
-//   $this.addClass('active');
-//   $this.data('info').open(Map.map, $this.data('marker'));
-// });
+  $this.addClass('active');
+  $this.data('info').open(Map.map, $this.data('marker'));
+});
 
 var OldMap = {
   initialize: function() {
@@ -44,9 +44,9 @@ var OldMap = {
     if(!$('aside li[data-item-id=' + id + ']')[0]) {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
     
-      var $li = $('<li class="event" data-item-id="'+item.id+'"><div></div><h2>' + item.title + '</h2><p class="address">'+ (item.address || '') +'<p class="description">'+(item.description || '')+'</p></li>').appendTo('aside ol');
+      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div><h2>' + item.title + '</h2><p class="address">'+ (item.address || '') +'<p class="description">'+(item.description || '')+'</p></li>').appendTo('aside ol');
       if (item.url != "") {
-        $li.append('<p class="link"><a href="#" target="_blank">More...</a>');
+        $li.append('<p class="link"><a href="#" target="_blank" onclick="alert(\'fuck\');">More...</a>');
       }
       $li.data('marker', new google.maps.Marker({
           position: point, 
@@ -57,6 +57,12 @@ var OldMap = {
     
       google.maps.event.addListener($li.data('marker'), 'click', function() {
         Map.showInfoWindow(id);
+      });
+      google.maps.event.addListener($li.data('marker'), 'mouseover', function() {
+	$('aside li[data-item-id=' + id + ']').css('background', 'lightyellow');
+      });
+      google.maps.event.addListener($li.data('marker'), 'mouseout', function() {
+	$('aside li[data-item-id=' + id + ']').css('background', '');
       });
     }
     
