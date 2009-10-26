@@ -4,8 +4,6 @@ $(function() {
 	var start = 0;
 	var end = (start + 30) * 3;
 	
-	var increments = [['Morning', 0], ['Afternoon', 12], ['Evening', 17]];
-	
 	var sliderElement = $('#date-range');
 
 	sliderElement.data('start', dateForValue(.25*(end-start)))
@@ -36,12 +34,11 @@ $(function() {
 	
 	function dateForValue(value) {
 	  var d = new Date(Math.floor(value/3+(startDate.getTime() / (24 * 60 * 60 * 1000))) * 24 * 60 * 60 * 1000);
-	  d.setHours(increments[Math.floor(value%3)][1]);
 	  return d;
 	}
 	
 	function dateText(n) {
-		return $.fn.strftime(dateForValue(n), '%B %D '+increments[n%3][0]);
+		return $.fn.strftime(dateForValue(n), '%B %D');
 	}
 		
 
