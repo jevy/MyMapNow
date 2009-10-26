@@ -26,6 +26,7 @@ var Map = {
       }
     });
   },
+  cleanup: OldMap.cleanup,
   fetch: OldMap.fetch,
   showInfoWindow: OldMap.showInfoWindow,
   addItem: OldMap.addItem,
@@ -33,5 +34,6 @@ var Map = {
   markerImages: OldMap.markerImages
 };
 
+$(document).bind('map:change', Map.cleanup);
 $(Map.initialize);
 $(Map.updateSearchBoxWithCurrentLocation);
