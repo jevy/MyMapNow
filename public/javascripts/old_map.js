@@ -46,7 +46,7 @@ var OldMap = {
     
       var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div><h2>' + item.title + '</h2><p class="address">'+ (item.address || '') +'<p class="description">'+(item.description || '')+'</p></li>').appendTo('aside ol');
       if (item.url != "") {
-        $li.append('<p class="link"><a href="#" target="_blank" onclick="alert(\'fuck\');">More...</a>');
+        $li.append('<p class="link"><a href="#" target="_blank">More...</a>');
       }
       $li.data('marker', new google.maps.Marker({
           position: point, 
