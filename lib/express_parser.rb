@@ -8,7 +8,13 @@ class ExpressParser
   EXTENSION = 'music/listings.aspx'
 
   def initialize(date=nil)
-    @page = open_uri(URI+EXTENSION+build_date_parameters(date))
+    begin
+      @page = open_uri(URI+EXTENSION+build_date_parameters(date))
+    rescue OpenURI::HTTPError => error
+      error_message = "Xpress Server Experienced a #{error.message}\n"
+      date ||= Date.today
+      raise(RuntimeError, error_message+"Cannot parse events for #{date}")
+    end
   end
 
   def parse_events(page=@page)
@@ -41,10 +47,14 @@ class ExpressParser
     info.collect!{|line| line.strip}
 
     {:title=>info[0],:begin_at=> DateTime.parse(info[1]),
-      :address=>info[2],
+      :address=>fix_address_city(info[2]),
       :url=>url,
       :description=> description(info, location_name),:kind=>"Live Music"
     }
+  end
+
+  def fix_address_city(address)
+    address.gsub("Mtl","Montreal")
   end
 
   def description(info, location_name)
