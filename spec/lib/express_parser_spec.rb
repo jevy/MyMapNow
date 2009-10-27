@@ -32,7 +32,8 @@ describe ExpressParser do
   end
 
   it "should parse all document links from the test page" do
-    @parser.send(:doc_links, @doc).length.should eql(83)
+    doc = @parser.instance_values['page']
+    @parser.send(:doc_links, doc).length.should eql(83)
   end
 
   it "should parse venue(IDSalle) links" do
@@ -56,7 +57,8 @@ describe ExpressParser do
   end
 
   it "should parse the test file" do
-    events_length = @parser.send(:event_links, @doc).length
+    doc = @parser.instance_values['page']
+    events_length = @parser.send(:event_links, doc).length
     events_length.should be_even #Two per event, artist and venue
     events_length.should eql(24)
   end
@@ -102,12 +104,14 @@ describe ExpressParser do
     doc = Hpricot.parse($valid_event_row_1+$valid_event_row_2)
     @parser.event_rows(doc).length.should eql(2)
   end
-  
+
+  #Fails on SRB
   it "should return the artist information from an event row" do
     doc = Hpricot.parse($valid_event_row_1+$valid_event_row_2)
     @parser.event_rows(doc).length.should eql(2)
   end
 
+  #Fails on SRB
   it "should scrape the artist information" do
     page = `cat spec/lib/testData/xpress/artist.html`
     args = {:url => 'http://www.ottawaxpress.ca/music/artist.aspx?iIDGroupe=34484',
@@ -120,6 +124,7 @@ describe ExpressParser do
     response.each{|item| item.should_not be_nil}
   end
 
+  #Fails on SRB
   it "should build the event(item) as expected" do
     test_row = Hpricot.parse($valid_event_row_1)
     page = `cat spec/lib/testData/xpress/artist.html`
@@ -134,11 +139,20 @@ describe ExpressParser do
     events[0].begin_at.should eql('Thursday, Oct 22, 2009')
   end
 
+  it "should build the date parameter lines correct for the current date" do
+    result = @parser.send(:build_date_parameters, Date.today)
+    result.should eql("?date=#{Date.today.strftime "%Y%m%d"}&dateC=#{Date.today.strftime "%Y%m00"}")
+  end
+  
+  it "should build the date parameter equalling empty string when built with nil" do
+    result = @parser.send(:build_date_parameters, nil)
+    result.empty?.should be_true
+  end
+
   def create_parser(args)
     args[:url] ||= "#{args[:uri]}/#{args[:type]}/listings.aspx"
     register_uri( args)
-    @doc = Hpricot open(args[:url])
-    @parser = ExpressParser.new(@doc, args[:uri])
+    @parser = ExpressParser.new
   end
 
   def register_uri(args)
@@ -148,6 +162,4 @@ describe ExpressParser do
   after(:each) do
     FakeWeb.clean_registry
   end
-
 end
-

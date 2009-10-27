@@ -4,14 +4,16 @@ require 'uri'
 
 class ExpressParser
 
-  def initialize(document, base_uri)
-    @page = document
-    @uri = base_uri
+  URI = 'http://www.ottawaxpress.ca/'
+  EXTENSION = 'music/listings.aspx'
+
+  def initialize(date=nil)
+    @page = open_uri(URI+EXTENSION+build_date_parameters(date))
   end
 
   def parse_events(page=@page)
     event_rows(page).collect{|row|
-      info = event_information(@uri+(row/"a")[0].attributes['href'])
+      info = event_information(URI+(row/"a")[0].attributes['href'])
       Item.new info
     }
   end
@@ -22,8 +24,17 @@ class ExpressParser
 
   private
 
+  def open_uri(uri)
+    #User agent argument required to avoid random, 500 errors on Xpress server.
+    Hpricot open(uri, 'User-Agent'=>'ruby')
+  end
+
+  def build_date_parameters(date)
+    date ? "?date=#{date.strftime "%Y%m%d"}&dateC=#{date.strftime "%Y%m00"}" : ""
+  end
+
   def event_information(url)
-    info = artist_div(Hpricot open(url, 'User-Agent'=>'ruby'))
+    info = artist_div(open_uri(url))
     location_name = doc_links(info).text
     info = info[0].to_plain_text.split("\n").reject{|line| line.include?"?"}
     info.reject!{|line| line.strip.empty?}
