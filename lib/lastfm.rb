@@ -40,7 +40,7 @@ class Lastfm
 
     @loaded_page += 1
     url = generate_geo_api_url_page(@loaded_page)
-    doc = Nokogiri::XML open url
+    doc = Nokogiri::XML open(url)
 
     doc.xpath('//event').each do |event|
       venue = Venue.new
@@ -67,7 +67,7 @@ class Lastfm
   def total_pages_of_feed_for_location
     url = generate_geo_api_url_page(1)
     begin
-      doc = Nokogiri::XML open url
+      doc = Nokogiri::XML open(url)
       Integer doc.at("//events")['totalpages'] 
     rescue
       return 0

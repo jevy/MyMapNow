@@ -24,7 +24,7 @@ class Flixster
   # Designed for a single theatre's page
   def scrapeTheatrePage(theatreUrl, date)
 
-    doc = Hpricot open theatreUrl
+    doc = Hpricot open(theatreUrl)
 
     # The movies and times alternate between two seperate, but sequential divs
     # Create two arrays, then match them up
@@ -39,7 +39,7 @@ class Flixster
   
   def extract_venue(url)
 
-    doc = Hpricot open url
+    doc = Hpricot open(url)
 
     theatre           = Venue.new
     begin
@@ -118,7 +118,7 @@ class Flixster
 
   def scrapeTheatreListingPaginationLinks(url)
     pageLinks = []
-    doc = Hpricot open url
+    doc = Hpricot open(url)
     (doc/"div.pagination:first//a").each { |a| pageLinks << "http://www.flixster.com" + a[:href] } # Nil if this is the only page
     return Array.[](url) if pageLinks.empty?
     return pageLinks
@@ -126,7 +126,7 @@ class Flixster
 
   def scrapeTheaterLinksFromThisPage(url)
     theaterLinks = []
-    doc = Hpricot open url
+    doc = Hpricot open(url)
     (doc/"div.theater//h3//a").each { |a| theaterLinks << "http://www.flixster.com" + a[:href] }
     return theaterLinks
   end

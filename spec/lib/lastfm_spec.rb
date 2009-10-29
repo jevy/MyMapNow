@@ -18,33 +18,33 @@ describe Lastfm do
     queue = lastfm.event_queue
 
     item = queue.pop
-    item.title.should eql "Daniel Wesley"
-    item.begin_at.should eql Time.mktime(2009, 10, 8, 0, 0,0)
-    item.url.should eql  'http://www.last.fm/event/1251131+Daniel+Wesley+at+Live+Lounge+on+8+October+2009'
-    item.address.should eql "128.5 York St., Ottawa, Canada"
-    item.latitude.should eql 45.4275148
-    item.longitude.should eql -75.694805
-    item.kind.should eql 'live_music'
+    item.title.should eql("Daniel Wesley")
+    item.begin_at.should eql(Time.mktime(2009, 10, 8, 0, 0,0))
+    item.url.should eql('http://www.last.fm/event/1251131+Daniel+Wesley+at+Live+Lounge+on+8+October+2009')
+    item.address.should eql("128.5 York St., Ottawa, Canada")
+    item.latitude.should eql(45.4275148)
+    item.longitude.should eql(-75.694805)
+    item.kind.should eql('live_music')
     
     item = queue.pop
-    item.title.should eql "Karkwa"
-    item.begin_at.should eql Time.mktime(2009, 10, 8, 0, 0,0)
-    item.url.should eql 'http://www.last.fm/event/1085723+Karkwa+at+Salle+Jean-Despr%C3%A9z+on+8+October+2009'
-    item.address.should eql "25, rue Laurier, Gatineau, Québec, Canada"
-    item.latitude.should eql 45.4776536
-    item.longitude.should eql -75.6458538
-    item.kind.should eql 'live_music'
+    item.title.should eql("Karkwa")
+    item.begin_at.should eql(Time.mktime(2009, 10, 8, 0, 0,0))
+    item.url.should eql('http://www.last.fm/event/1085723+Karkwa+at+Salle+Jean-Despr%C3%A9z+on+8+October+2009')
+    item.address.should eql("25, rue Laurier, Gatineau, Québec, Canada")
+    item.latitude.should eql(45.4776536)
+    item.longitude.should eql(-75.6458538)
+    item.kind.should eql('live_music')
 
     7.times { queue.pop }
       
     item = queue.pop
-    item.title.should eql "The Scenics"
-    item.begin_at.should eql Time.mktime(2009, 10, 14, 0, 0,0)
-    item.url.should eql  'http://www.last.fm/event/1244079+The+Scenics+at+Zaphod+Beeblebrox+on+14+October+2009'
-    item.address.should eql  "27 York St., Ottawa, Canada"
-    item.latitude.should eql 45.4278552
-    item.longitude.should eql -75.693986
-    item.kind.should eql 'live_music'
+    item.title.should eql("The Scenics")
+    item.begin_at.should eql(Time.mktime(2009, 10, 14, 0, 0,0))
+    item.url.should eql('http://www.last.fm/event/1244079+The+Scenics+at+Zaphod+Beeblebrox+on+14+October+2009')
+    item.address.should eql("27 York St., Ottawa, Canada")
+    item.latitude.should eql(45.4278552)
+    item.longitude.should eql(-75.693986)
+    item.kind.should eql('live_music')
 
     queue.empty?.should be_true
     
@@ -125,7 +125,7 @@ describe Lastfm do
                         :response => page)
 
     lastfm = Lastfm.new('ottawa')
-    lastfm.total_pages_of_feed_for_location.should eql 12
+    lastfm.total_pages_of_feed_for_location.should eql(12)
   end
 
   it "should throw exception when the location doesn't exist" do
@@ -136,7 +136,7 @@ describe Lastfm do
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
                         :response => page)
    
-    lastfm = lambda {Lastfm.new('blahblah')}.should raise_error InvalidLocationException
+    lastfm = lambda {Lastfm.new('blahblah')}.should raise_error(InvalidLocationException)
     lastfm2 = lambda {Lastfm.new('ottawa')}.should_not raise_error
   end
 
@@ -149,7 +149,7 @@ describe Lastfm do
     lastfm.stub(:total_pages_of_feed_for_location).and_return(2)
     Item.should_receive(:new).exactly(10).times
     lastfm.populate_queue_with_items
-    lastfm.event_queue.length.should eql 10
+    lastfm.event_queue.length.should eql(10)
   end
 
  #it "should have populate_queue_with_items return nil if no more events to load" do
@@ -173,13 +173,13 @@ describe Lastfm do
     lastfm = Lastfm.new('ottawa')
 
     # 10 events per page
-    lastfm.event_queue.empty?.should eql true
+    lastfm.event_queue.empty?.should be_true
     lastfm.stub(:total_pages_of_feed_for_location).and_return(2)
-    lastfm.next_concert.title.should eql "Daniel Wesley"
+    lastfm.next_concert.title.should eql("Daniel Wesley")
     8.times { lastfm.next_concert }
-    lastfm.next_concert.title.should eql "The Scenics"
-    lastfm.next_concert.title.should eql "Silversun Pickups"
-    lastfm.next_concert.title.should eql "Hannah Georgas"
+    lastfm.next_concert.title.should eql("The Scenics")
+    lastfm.next_concert.title.should eql("Silversun Pickups")
+    lastfm.next_concert.title.should eql("Hannah Georgas")
 
   end
 
@@ -190,7 +190,7 @@ describe Lastfm do
   it "should generate the api url when page is given" do
     lastfm = Lastfm.new('ottawa')
     url = lastfm.generate_geo_api_url_page(2)
-    url.should eql "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=2"
+    url.should eql("http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=2")
   end
 
 end

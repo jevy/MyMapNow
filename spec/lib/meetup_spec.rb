@@ -15,48 +15,48 @@ describe Meetup do
     queue = meetup.event_queue
 
     item = queue.pop
-    item.title.should eql "Halloween Meetup"
-    item.begin_at.should eql Time.mktime(2009, 10, 23, 18, 0,0)
-    item.url.should eql  'http://www.meetup.com/Nihongo-Ottawa/calendar/11518741/'
-    item.address.should eql "7893 Bleeks Rd, Munster, ON, CA"
-    item.latitude.should eql 45.161424
-    item.longitude.should eql -75.945004
-    item.kind.should eql 'meetup'
+    item.title.should eql("Halloween Meetup")
+    item.begin_at.should eql(Time.mktime(2009, 10, 23, 18, 0,0))
+    item.url.should eql('http://www.meetup.com/Nihongo-Ottawa/calendar/11518741/')
+    item.address.should eql("7893 Bleeks Rd, Munster, ON, CA")
+    item.latitude.should eql(45.161424)
+    item.longitude.should eql(-75.945004)
+    item.kind.should eql('meetup')
 
     item = queue.pop
-    item.title.should eql "CashFlow Game Night"
-    item.begin_at.should eql Time.mktime(2009, 10, 23, 18, 15,0)
-    item.url.should eql  'http://www.meetup.com/Ottawa-Cashflow-to-Wealth-Club/calendar/11489086/'
-    item.address.should eql "ottawa, CA"
+    item.title.should eql("CashFlow Game Night")
+    item.begin_at.should eql(Time.mktime(2009, 10, 23, 18, 15,0))
+    item.url.should eql('http://www.meetup.com/Ottawa-Cashflow-to-Wealth-Club/calendar/11489086/')
+    item.address.should eql("ottawa, CA")
     item.latitude.should be_nil 
     item.longitude.should be_nil
-    item.kind.should eql 'meetup'
+    item.kind.should eql('meetup')
 
     item = queue.pop
-    item.title.should eql "Rencontre EUROG - EUROG Gathering: Oktoberfest @ The Lindenhof"
-    item.begin_at.should eql Time.mktime(2009, 10, 23, 19, 0, 0)
-    item.url.should eql  'http://www.meetup.com/EUROG-Europeans-of-Ottawa-Gatineau/calendar/11602750/'
-    item.address.should eql "268, Preston, Ottawa, ON, CA"
-    item.latitude.should eql 45.404263
-    item.longitude.should eql -75.711739
-    item.kind.should eql 'meetup'
+    item.title.should eql("Rencontre EUROG - EUROG Gathering: Oktoberfest @ The Lindenhof")
+    item.begin_at.should eql(Time.mktime(2009, 10, 23, 19, 0, 0))
+    item.url.should eql('http://www.meetup.com/EUROG-Europeans-of-Ottawa-Gatineau/calendar/11602750/')
+    item.address.should eql("268, Preston, Ottawa, ON, CA")
+    item.latitude.should eql(45.404263)
+    item.longitude.should eql(-75.711739)
+    item.kind.should eql('meetup')
 
     item = queue.pop
-    item.title.should eql "ReSolutions"
-    item.begin_at.should eql Time.mktime(2009, 10, 23, 19, 0, 0)
-    item.url.should eql  'http://www.meetup.com/htrio0/calendar/11639427/'
-    item.address.should eql "ottawa, CA"
+    item.title.should eql("ReSolutions")
+    item.begin_at.should eql(Time.mktime(2009, 10, 23, 19, 0, 0))
+    item.url.should eql('http://www.meetup.com/htrio0/calendar/11639427/')
+    item.address.should eql("ottawa, CA")
     item.latitude.should be_nil
     item.longitude.should be_nil
-    item.kind.should eql 'meetup'
+    item.kind.should eql('meetup')
   end
 
   it 'should generate the correct url for a Canadian location' do
     meetup = Meetup.new('CA', 'ottawa')
-    meetup.generate_geo_api_url_page.should eql 'http://api.meetup.com/events.xml/?country=CA&city=ottawa&key=f2138374a26136042463e4e8e5d51'
+    meetup.generate_geo_api_url_page.should eql('http://api.meetup.com/events.xml/?country=CA&city=ottawa&key=f2138374a26136042463e4e8e5d51')
 
     meetup = Meetup.new('CA', 'toronto')
-    meetup.generate_geo_api_url_page.should eql 'http://api.meetup.com/events.xml/?country=CA&city=toronto&key=f2138374a26136042463e4e8e5d51'
+    meetup.generate_geo_api_url_page.should eql('http://api.meetup.com/events.xml/?country=CA&city=toronto&key=f2138374a26136042463e4e8e5d51')
   end
 
   it "should throw exception when the location doesn't exist" do

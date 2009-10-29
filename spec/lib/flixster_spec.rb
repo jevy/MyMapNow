@@ -48,7 +48,7 @@ describe Flixster do
     FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/woodside-cinemas?date=20091006", 
                          :response => page)
 
-    doc = Hpricot open "http://www.flixster.com/showtimes/woodside-cinemas?date=20091006"
+    doc = Hpricot(open("http://www.flixster.com/showtimes/woodside-cinemas?date=20091006"))
     movie_names = @flixster.extract_movie_names(doc)
     movie_names.should have(3).movies
     movie_names.should include("Do Knot Disturb")
@@ -83,18 +83,18 @@ describe Flixster do
     silvercity_some_other_day = "http://www.flixster.com/showtimes/famous-players-silvercity-gloucester?date=20091023"
     base_url = "http://www.flixster.com/showtimes/amc-kanata-24"
     url = @flixster.url_for_theatre_with_date(base_url, Time.mktime(2009, 10, 6, 0, 0, 0))
-    url.should eql amc_today_url
+    url.should eql(amc_today_url)
     url = @flixster.url_for_theatre_with_date(base_url, Time.mktime(2009, 10, 7, 0, 0, 0))
-    url.should eql amc_tomorrow_url
+    url.should eql(amc_tomorrow_url)
     url = @flixster.url_for_theatre_with_date("http://www.flixster.com/showtimes/famous-players-silvercity-gloucester", Time.mktime(2009, 10, 23, 0, 0, 0))
-    url.should eql silvercity_some_other_day
+    url.should eql(silvercity_some_other_day)
   end
 
   it "should associate movie names with times and return a hash" do
     theatrePage = `cat spec/lib/testData/theatrePages/amc-sept-28`
     FakeWeb.register_uri(:get, "http://www.flixster.com/showtimes/amc-kanata-24", 
                          :response => theatrePage)
-    doc = Hpricot open "http://www.flixster.com/showtimes/amc-kanata-24"
+    doc = Hpricot open("http://www.flixster.com/showtimes/amc-kanata-24")
     movie_names = @flixster.extract_movie_names(doc)
     movie_times_blocks = doc.search("//div[@class='times']")
 
@@ -102,21 +102,21 @@ describe Flixster do
     movies_with_times.should have(20).movie_names
     movies_with_times.should have_key("9")
     times_for_movie_9 = movies_with_times["9"]
-    times_for_movie_9.should include Time.mktime(2009, 9, 28, 20, 15, 0)
-    times_for_movie_9.should include Time.mktime(2009, 9, 28, 15, 30, 0)
+    times_for_movie_9.should include(Time.mktime(2009, 9, 28, 20, 15, 0))
+    times_for_movie_9.should include(Time.mktime(2009, 9, 28, 15, 30, 0))
 
     movies_with_times.should have_key("Julie & Julia")
     times_for_movie_j_and_j = movies_with_times["Julie & Julia"]
-    times_for_movie_j_and_j.should include Time.mktime(2009, 9, 28, 14, 15, 0)
-    times_for_movie_j_and_j.should include Time.mktime(2009, 9, 28, 20, 30, 0)
+    times_for_movie_j_and_j.should include(Time.mktime(2009, 9, 28, 14, 15, 0))
+    times_for_movie_j_and_j.should include(Time.mktime(2009, 9, 28, 20, 30, 0))
   end
 
   it "should parse the time string and return the Time" do
     result = @flixster.convertTimeStringToDate(@today, "11:30 AM")
-    result.should eql Time.mktime(2009,9,28,11,30,0)
+    result.should eql(Time.mktime(2009,9,28,11,30,0))
 
     result = @flixster.convertTimeStringToDate(@today, "11:30 PM")
-    result.should eql Time.mktime(2009,9,28,23,30,0)
+    result.should eql(Time.mktime(2009,9,28,23,30,0))
   end
 
   it "should find all pagination links for multi page" do
