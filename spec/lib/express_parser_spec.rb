@@ -166,7 +166,7 @@ describe ExpressParser do
     args = load_venue_file
     result = @parser.send(:extract_address, args[:url])
     result.should_not be_nil
-    result.should eql('1425 Hôtel-de-Ville Pl., Trois-Rivières')
+    result.should eql('53 Elgin St., Ottawa')
   end
 
 
@@ -179,7 +179,7 @@ describe ExpressParser do
   end
 
   def load_venue_file
-    page = `cat spec/lib/testData/xpress/artist.html`
+    page = `cat spec/lib/testData/xpress/venue.html`
     args = {:url => 'http://www.ottawaxpress.ca/music/venue.aspx?iIDSalle=6665',
       :body => page}
     register_uri args

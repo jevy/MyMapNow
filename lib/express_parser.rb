@@ -54,7 +54,7 @@ class ExpressParser
   def extract_address(url)
     venue_info = parse_event_cell(open_uri(url))
     information = remove_unnecessary_spacing(venue_info)
-    information[2]
+    information[1]
   end
 
   def remove_unnecessary_spacing(lines)
