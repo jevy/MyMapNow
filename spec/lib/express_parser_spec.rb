@@ -3,11 +3,12 @@ require 'fakeweb'
 
 describe ExpressParser do
 
-  $valid_event_row_1 = "<tr><td>&nbsp;</td><td><a href='/music/artist.aspx?iIDGroupe=34484'>Alexandre Désilets</a></td><td>&nbsp;</td><td><nobr>Song</nobr></td><td>&nbsp;</td><td><a href='/music/venue.aspx?iIDSalle=6665'>Salle Anaïs-Allard-Rousseau</a></td><td>&nbsp;</td><td><nobr>Oct 22</nobr></td></tr>"
+  $valid_event_row_1 = "<tr><td>&nbsp;</td><td><a href='/music/artist.aspx?iIDGroupe=34484'>Alexandre Désilets</a></td><td>&nbsp;</td><td><nobr>Song</nobr></td><td>&nbsp;</td><td><a href='/music/venue.aspx?iIDSalle=6664'>Salle Anaïs-Allard-Rousseau</a></td><td>&nbsp;</td><td><nobr>Oct 22</nobr></td></tr>"
   $valid_event_row_2 = "<tr><td class='musiqueAlternate'>&nbsp;</td><td class='musiqueAlternate'><a href='/music/artist.aspx?iIDGroupe=8010'>Bori</a></td><td class='musiqueAlternate'>&nbsp;</td><td class='musiqueAlternate'><nobr></nobr></td><td class='musiqueAlternate'>&nbsp;</td><td class='musiqueAlternate'><a href='/music/venue.aspx?iIDSalle=2642'>Granada Theater</a></td><td class='musiqueAlternate'>&nbsp;</td><td class='musiqueAlternate'><nobr>Oct 22</nobr></td></tr>"
-  $valid_artist_div = "<div id='pnlFiche'><br /><SPAN class=titreSpectacle><B>Alexandre Désilets</B></SPAN><br />&nbsp;<BR>Thursday, Oct 22, 2009<BR><A href='/music/venue.aspx?iIDSalle=6665'>Salle Anaïs-Allard-Rousseau</A><BR>1425 Hôtel-de-Ville Pl., Trois-Rivières<BR>&nbsp;<BR></div>"
+  $valid_artist_div = "<div id='pnlFiche'><br /><SPAN class=titreSpectacle><B>Alexandre Désilets</B></SPAN><br />&nbsp;<BR>Thursday, Oct 22, 2009<BR><A href='/music/venue.aspx?iIDSalle=6664'>Salle Anaïs-Allard-Rousseau</A><BR>1425 Hôtel-de-Ville Pl., Trois-Rivières<BR>&nbsp;<BR></div>"
 
   before(:each) do
+    FakeWeb.allow_net_connect = false
     FakeWeb.clean_registry
     @page = `cat spec/lib/testData/xpress/music.html`
     @args = {:uri => 'http://www.ottawaxpress.ca',
@@ -109,7 +110,6 @@ describe ExpressParser do
     @parser.event_rows(doc).length.should eql(2)
   end
 
-  #Fails on SRB
   it "should scrape the artist information" do
     load_venue_file
     args = load_artist_file
@@ -120,20 +120,27 @@ describe ExpressParser do
     response.each{|item| item.should_not be_nil}
   end
 
-  #Fails on SRB
-  #    it "should build the event(item) as expected" do
-  #      test_row = Hpricot.parse($valid_event_row_1)
-  #      page = `cat spec/lib/testData/xpress/artist.html`
-  #      args = {:url => 'http://www.ottawaxpress.ca/music/artist.aspx?iIDGroupe=34484',
-  #        :body => page
-  #      }
-  #      register_uri(args)
-  #      events = @parser.parse_events(test_row)
-  #      events.length.should eql(1)
-  #      events[0].title.should eql('Alexandre Désilets')
-  #      events[0].address.should eql('1425 Hôtel-de-Ville Pl., Trois-Rivières')
-  #      events[0].begin_at.should eql('Thursday, Oct 22, 2009')
-  #    end
+  it "should build the event(item) as expected" do
+    test_row = Hpricot.parse($valid_event_row_1)
+    load_artist_file
+    load_venue_file
+    events = @parser.parse_events(test_row)
+    events.length.should eql(1)
+    events[0].title.should eql('Alexandre Désilets')
+    events[0].address.should eql('1425 Hôtel-de-Ville Pl., Trois-Rivières')
+    events[0].begin_at.should eql('Thursday, Oct 22, 2009')
+  end
+
+  it "should replace the edge case of the abbrviation of Mtl, for Montreal" do
+    address = "123 Fake Street, Ottawa Canada"
+    @parser.send(:fix_address_city, address).should eql(address)
+    address = "123 Fake Street, Mtl Canada"
+    @parser.send(:fix_address_city, address).should eql("123 Fake Street, Montreal Canada")
+    address = nil
+    @parser.send(:fix_address_city, address).should be_nil
+    address = "123 Fake Street, Montreal Canada"
+    @parser.send(:fix_address_city, address).should eql(address)
+  end
 
   it "should build the date parameter lines correct for the current date" do
     result = @parser.send(:build_date_parameters, Date.today)
@@ -151,10 +158,6 @@ describe ExpressParser do
     lambda {ExpressParser.new}.should raise_error(RuntimeError)
   end
 
-  it "should locate the venue cell as expected from the test file" do
-    
-  end
-
   it "should open the venue uri as expected" do
     args = load_venue_file
     result = @parser.send(:parse_event_cell, Hpricot.parse(args[:body]))
@@ -164,9 +167,37 @@ describe ExpressParser do
   
   it "should parse the venue information properly" do
     args = load_venue_file
-    result = @parser.send(:extract_address, args[:url])
+    result = @parser.send(:parse_address, args[:url])
     result.should_not be_nil
-    result.should eql('53 Elgin St., Ottawa')
+    result.should eql('1425 Hôtel-de-Ville Pl., Trois-Rivières')
+  end
+
+  it "should be able to parse the venue div without extra array entries" do
+    string="\n"
+    @parser.send(:cleanup_div_lines, string).length.should eql(0)
+    string="\n  \t"
+    @parser.send(:cleanup_div_lines, string).length.should eql(0)
+    string="\n  \t.\t\t\t\t\n"
+    result = @parser.send(:cleanup_div_lines, string)
+    result.length.should eql(1)
+    result[0].should eql(".")
+    string="\n  \t.\t\t\t\t\nBatman\n \n \n\t\n"
+    result = @parser.send(:cleanup_div_lines, string)
+    result.length.should eql(2)
+    string ="\n  \t.\t\t\t\t\nBatman\n \n \n\t\nBatman?\n"
+    result = @parser.send(:cleanup_div_lines, string)
+    result.length.should eql(3)
+  end
+
+  it "should ignore text lines that are just a question mark" do
+    string = "?"
+    @parser.send(:cleanup_div_lines, string).length.should eql(0)
+    string = "\n\t\t?\t\n"
+    @parser.send(:cleanup_div_lines, string).length.should eql(0)
+    string = "\n\t\t?\t\nBatman\n\n"
+    @parser.send(:cleanup_div_lines, string).length.should eql(1)
+    string = "\n\t\t?\t\nBatman\n\nBatman?\n\n"
+    @parser.send(:cleanup_div_lines, string).length.should eql(2)
   end
 
 
@@ -180,7 +211,7 @@ describe ExpressParser do
 
   def load_venue_file
     page = `cat spec/lib/testData/xpress/venue.html`
-    args = {:url => 'http://www.ottawaxpress.ca/music/venue.aspx?iIDSalle=6665',
+    args = {:url => 'http://www.ottawaxpress.ca/music/venue.aspx?iIDSalle=6664',
       :body => page}
     register_uri args
     args

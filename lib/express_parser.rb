@@ -42,25 +42,25 @@ class ExpressParser
   def event_information(url)
     info = artist_div(open_uri(url))
     location_link = doc_links(info)[0]
-    info = remove_unnecessary_spacing(info[0])
+    info = cleanup_div_lines(info[0].to_plain_text)
 
     args = {:title=>info[0],:begin_at=> DateTime.parse(info[1]),
-      :address=>fix_address_city(extract_address(URI+location_link.attributes['href'])),
+      :address=>fix_address_city(parse_address(URI+location_link.attributes['href'])),
       :url=>url,
-      :description=> description(info, location_link.to_plain_text), :kind=>"Live Music"}
+      :description=> description(info, location_link.inner_text), :kind=>"Live Music"}
     args
   end
 
-  def extract_address(url)
+  def parse_address(url)
     venue_info = parse_event_cell(open_uri(url))
-    information = remove_unnecessary_spacing(venue_info)
+    information = cleanup_div_lines(venue_info.to_plain_text)
     information[1]
   end
 
-  def remove_unnecessary_spacing(lines)
-    lines = lines.to_plain_text.split("\n").reject{|line| line.include?"?"}
-    lines = lines.reject{|line| line.strip.empty?}.collect{|line| line.strip}
-    lines
+  def cleanup_div_lines(div_text)
+    div_text = div_text.split("\n").collect{|line| line.strip}
+    div_text = div_text.reject{|line| line.eql?"?"}.reject{|line| line.strip.empty?}
+    div_text
   end
 
   def fix_address_city(address)
