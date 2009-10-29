@@ -111,31 +111,29 @@ describe ExpressParser do
 
   #Fails on SRB
   it "should scrape the artist information" do
-    page = `cat spec/lib/testData/xpress/artist.html`
-    args = {:url => 'http://www.ottawaxpress.ca/music/artist.aspx?iIDGroupe=34484',
-      :body => page
-    }
-    register_uri(args)
+    load_venue_file
+    args = load_artist_file
     response = nil
+    response = @parser.send(:event_information, args[:url])
     lambda{response = @parser.send(:event_information, args[:url])}.should_not raise_error(ArgumentError)
     response.should_not be_nil
     response.each{|item| item.should_not be_nil}
   end
 
-#  #Fails on SRB
-#  it "should build the event(item) as expected" do
-#    test_row = Hpricot.parse($valid_event_row_1)
-#    page = `cat spec/lib/testData/xpress/artist.html`
-#    args = {:url => 'http://www.ottawaxpress.ca/music/artist.aspx?iIDGroupe=34484',
-#      :body => page
-#    }
-#    register_uri(args)
-#    events = @parser.parse_events(test_row)
-#    events.length.should eql(1)
-#    events[0].title.should eql('Alexandre Désilets')
-#    events[0].address.should eql('1425 Hôtel-de-Ville Pl., Trois-Rivières')
-#    events[0].begin_at.should eql('Thursday, Oct 22, 2009')
-#  end
+  #Fails on SRB
+  #    it "should build the event(item) as expected" do
+  #      test_row = Hpricot.parse($valid_event_row_1)
+  #      page = `cat spec/lib/testData/xpress/artist.html`
+  #      args = {:url => 'http://www.ottawaxpress.ca/music/artist.aspx?iIDGroupe=34484',
+  #        :body => page
+  #      }
+  #      register_uri(args)
+  #      events = @parser.parse_events(test_row)
+  #      events.length.should eql(1)
+  #      events[0].title.should eql('Alexandre Désilets')
+  #      events[0].address.should eql('1425 Hôtel-de-Ville Pl., Trois-Rivières')
+  #      events[0].begin_at.should eql('Thursday, Oct 22, 2009')
+  #    end
 
   it "should build the date parameter lines correct for the current date" do
     result = @parser.send(:build_date_parameters, Date.today)
@@ -151,6 +149,41 @@ describe ExpressParser do
     register_uri({:url=>'http://www.ottawaxpress.ca/music/listings.aspx',
         :status => ["500", "Server Error in '/' Application."]})
     lambda {ExpressParser.new}.should raise_error(RuntimeError)
+  end
+
+  it "should locate the venue cell as expected from the test file" do
+    
+  end
+
+  it "should open the venue uri as expected" do
+    args = load_venue_file
+    result = @parser.send(:parse_event_cell, Hpricot.parse(args[:body]))
+    result.should_not be_nil
+    @parser.send(:doc_links, result).length.should eql(1)
+  end
+  
+  it "should parse the venue information properly" do
+    args = load_venue_file
+    result = @parser.send(:extract_address, args[:url])
+    result.should_not be_nil
+    result.should eql('1425 Hôtel-de-Ville Pl., Trois-Rivières')
+  end
+
+
+  def load_artist_file
+    page = `cat spec/lib/testData/xpress/artist.html`
+    args = {:url => 'http://www.ottawaxpress.ca/music/artist.aspx?iIDGroupe=34484',
+      :body => page}
+    register_uri args
+    args
+  end
+
+  def load_venue_file
+    page = `cat spec/lib/testData/xpress/artist.html`
+    args = {:url => 'http://www.ottawaxpress.ca/music/venue.aspx?iIDSalle=6665',
+      :body => page}
+    register_uri args
+    args
   end
 
   def create_parser(args)

@@ -4,8 +4,8 @@ require 'uri'
 
 class ExpressParser
 
-  URI = 'http://www.ottawaxpress.ca/'
-  EXTENSION = 'music/listings.aspx'
+  URI = 'http://www.ottawaxpress.ca'
+  EXTENSION = '/music/listings.aspx'
 
   def initialize(date=nil)
     begin
@@ -41,26 +41,35 @@ class ExpressParser
 
   def event_information(url)
     info = artist_div(open_uri(url))
-    location_name = doc_links(info).text
-    info = info[0].to_plain_text.split("\n").reject{|line| line.include?"?"}
-    info.reject!{|line| line.strip.empty?}
-    info.collect!{|line| line.strip}
+    location_link = doc_links(info)[0]
+    info = remove_unnecessary_spacing(info[0])
 
-    {:title=>info[0],:begin_at=> DateTime.parse(info[1]),
-      :address=>fix_address_city(info[2]),
+    args = {:title=>info[0],:begin_at=> DateTime.parse(info[1]),
+      :address=>fix_address_city(extract_address(URI+location_link.attributes['href'])),
       :url=>url,
-      :description=> description(info, location_name),:kind=>"Live Music"
-    }
+      :description=> description(info, location_link.to_plain_text), :kind=>"Live Music"}
+    args
+  end
+
+  def extract_address(url)
+    venue_info = parse_event_cell(open_uri(url))
+    information = remove_unnecessary_spacing(venue_info)
+    information[2]
+  end
+
+  def remove_unnecessary_spacing(lines)
+    lines = lines.to_plain_text.split("\n").reject{|line| line.include?"?"}
+    lines = lines.reject{|line| line.strip.empty?}.collect{|line| line.strip}
+    lines
   end
 
   def fix_address_city(address)
-    address.gsub("Mtl","Montreal")
+    address.gsub("Mtl","Montreal") unless address.nil?
   end
 
   def description(info, location_name)
     "#{info[0]} is putting on a show at the #{location_name}.\n#{format_extra_event_info(info)}"
   end
-
 
   def format_extra_event_info(info)
     info[3..info.length].join("\n") unless info.length <=3
@@ -98,5 +107,9 @@ class ExpressParser
 
   def artist_div(doc)
     doc/"div[@id='pnlFiche']"
+  end
+
+  def parse_event_cell(doc)
+    doc.search("span[@class='titreSpectacle']").first.parent
   end
 end
