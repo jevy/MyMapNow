@@ -10,8 +10,8 @@
 
 development:
   api: new
-  api_key: 77a233e4d0fc730e8eb5a92bb1d983c6
-  secret_key: fb6df3d135ef41e8b6106ed7cf88d0dc
+  api_key: 455497138cc8253cdefc314e65b61300
+  secret_key: 44aa717f6054af1fc17d6cc4e9ce2039
   canvas_page_name:
   callback_url:
   pretty_errors: true
@@ -25,8 +25,8 @@ development:
 
 test:
   api: new
-  api_key: 77a233e4d0fc730e8eb5a92bb1d983c6
-  secret_key: fb6df3d135ef41e8b6106ed7cf88d0dc
+  api_key: 455497138cc8253cdefc314e65b61300
+  secret_key: 44aa717f6054af1fc17d6cc4e9ce2039
   canvas_page_name: 
   callback_url:
   set_asset_host_to_callback_url: false
