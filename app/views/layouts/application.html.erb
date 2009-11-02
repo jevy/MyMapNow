@@ -21,6 +21,10 @@
     <%= javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min', 'perfecttime/PerfectTime', 'application', 'old_map', 'jquery.form', :cache => true %>
     <%= javascript_include_tag 'geoip', 'map' %>
     <%= javascript_include_tag 'items' %>
+
+    <%= fb_connect_javascript_tag %>
+    <%= init_fb_connect "XFBML", :js => :jquery%>
+
   </head>
   <body>
   <header>
@@ -36,7 +40,7 @@
     <%= yield %>
   </section>
   <aside>
-    <h1>Event Details</h1>
+    <h1>Event Details <%= fb_login_and_redirect(:facebook_login ,:size=>:small, :v=>'2')%></h1>
     <ol>
     </ol>
   </aside>
