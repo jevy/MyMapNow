@@ -49,11 +49,12 @@ var OldMap = {
       if (item.url) {
         $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
       }
+
       $li.data('marker', new google.maps.Marker({
-          position: point, 
-          map: Map.map, 
-          title: item.title, 
-          icon: Map.markerImages(item.kind, $li)
+        position: point, 
+        map: Map.map,
+        title: item.title, 
+        icon: Map.markerImages(item.kind, $li)
       }));
     
       google.maps.event.addListener($li.data('marker'), 'click', function() {
@@ -80,14 +81,10 @@ var OldMap = {
   },
   
   cleanup: function() {
-    // Remove items out of view
     $('aside li').each(function() {
-      var $this = $(this);
-      if(!Map.map.get_bounds().contains($this.data('marker').get_position())) {
-          if($this.data('info')) $this.data('info').close();
-          $this.data('marker').set_map(null);
-          $this.remove();
-      }
+      if($(this).data('info')) $(this).data('info').close();
+      $(this).data('marker').set_map(null);
+      $(this).remove();
     });
   },
   
