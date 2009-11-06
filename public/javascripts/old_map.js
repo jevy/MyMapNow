@@ -45,13 +45,14 @@ var OldMap = {
     if(!$('aside li[data-item-id=' + id + ']')[0]) {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
     
-      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div>' +
-		  '<h2>' + item.title + '</h2>' +
-		  '<p>Start Time: ' + (item.begin_at) + '</p>' + 
-		  '<p>End Time: ' + (item.end_at || '') + '</p>' + 
-		  '<p class="address">' + (item.address || '') + '</p>' +
-		  '<p class="description">' + (item.description || '') + '</p>' +
-		  '</li>').appendTo('aside ol');
+      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div></li>').appendTo('aside ol');
+      $li.append('<h2>' + item.title + '</h2>');
+      $li.append('<p>Start Time: ' + (item.begin_at) + '</p>');
+      if (item.end_at) {
+	$li.append('<p>End Time: ' + (item.end_at) + '</p>');
+      }
+      $li.append('<p class="address">' + (item.address || '') + '</p>');
+      $li.append('<p class="description">' + (item.description || '') + '</p>');
       if (item.url) {
         $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
       }
