@@ -148,14 +148,14 @@ describe "Bounded item finding" do
     items = Item.find_in_bounds([45.18458891027006,-76.02838289184575],
                                 [45.52139421172966,-75.437867755127],
                                 Time.mktime(2009, 10, 1), Time.mktime(2009, 11, 1))
-    items.count.should == @ottawa_events.size
+    items.length.should == @ottawa_events.size
   end
 
   it "should not find anything between the 20th and 28th" do
     items = Item.find_in_bounds([45.18458891027006,-76.02838289184575],
                                 [45.52139421172966,-75.437867755127],
                                 Time.mktime(2009, 10, 20), Time.mktime(2009, 10, 28))
-    items.count.should == 0
+    items.length.should == 0
   end
 
   it "should find items that started before the bounds, but end inside the time bounds" do
