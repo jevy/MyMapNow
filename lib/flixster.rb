@@ -94,7 +94,6 @@ class Flixster
                     :kind      => 'movie')
       end
     end
-
   end
 
   def convertTimeStringToDate(date, timeString) 

@@ -43,7 +43,7 @@ aside .null div   { background-position: 0 -30px; }
 aside .news   div   { background-position: 0 -85px; } 
 aside .review  div   { background-position: 0 -140px; } 
 aside .discussion div   { background-position: 0 -195px; } 
-aside .photo  div   { background-position: 0 -250px; } 
+aside .movie  div   { background-position: 0 -250px; }
 aside .event  div   { background-position: 0 -305px; }
 
 img.gravatar { width: 25px; height: 25px;}

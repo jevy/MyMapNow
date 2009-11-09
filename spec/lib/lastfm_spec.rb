@@ -97,7 +97,7 @@ describe Lastfm do
              :address => "27 York St., Ottawa, Canada",
              :latitude => 45.427855, 
              :longitude => -75.693986,
-             :kind => 'live_music'
+             :kind => 'event'
             )
 
     lastfm = Lastfm.new('ottawa')
@@ -111,7 +111,7 @@ describe Lastfm do
              :address => "27 York St., Ottawa, Canada",
              :latitude => 45.427855, 
              :longitude => -75.693986,
-             :kind => 'live_music'
+             :kind => 'event'
             )
 
     lastfm = Lastfm.new('ottawa')
