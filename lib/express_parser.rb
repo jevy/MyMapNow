@@ -47,7 +47,7 @@ class ExpressParser
     args = {:title=>info[0],:begin_at=> DateTime.parse(info[1]),
       :address=>fix_address_city(parse_address(URI+location_link.attributes['href'])),
       :url=>url,
-      :description=> description(info, location_link.inner_text), :kind=>"Live Music"}
+      :description=> description(info, location_link.inner_text), :kind=>"event"}
     args
   end
 
