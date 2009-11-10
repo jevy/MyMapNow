@@ -59,7 +59,7 @@ class Meetup
                :address => venue.full_address,
                :latitude => (event/'venue_lat').inner_text,
                :longitude => (event/'venue_lon').inner_text,
-               :kind => 'meetup'
+               :kind => 'event'
               )
 
       @event_queue << item_to_add
