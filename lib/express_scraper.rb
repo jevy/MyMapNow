@@ -6,7 +6,7 @@ end_date = Date.today.end_of_week
 
 start_date.upto(end_date) do |date|
   begin
-    ExpressParser.new(date).parse_events do |event|
+    ExpressParser.new(date).parse_events.each do |event|
       event.save
     end
   rescue RuntimeError => error
