@@ -43,8 +43,6 @@ class ExpressParser
     info = artist_div(open_uri(url))
     location_link = doc_links(info)[0]
     info = cleanup_div_lines(info[0].to_plain_text)
-    puts info.inspect
-    puts "Date: #{info[1].to_s}"
 
     args = {:title=>info[0],:begin_at=> DateTime.parse(info[1]),
       :address=>fix_address_city(parse_address(URI+location_link.attributes['href'])),
