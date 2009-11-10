@@ -1,6 +1,15 @@
 
 
 #Run with script/runner lib/express_scraper.rb
-parser = ExpressParser.new(Date.today)
-events = parser.parse_events
-events.each{|event|  puts "Adding event #{event.inspect}"; event.save}
+start_date = Date.today
+end_date = Date.today.end_of_week
+
+start_date.upto(end_date) do |date|
+  begin
+    ExpressParser.new(date).parse_events do |event|
+      event.save
+    end
+  rescue RuntimeError => error
+    puts "Unable to parse events for #{date}, #{error.message}."
+  end
+end
