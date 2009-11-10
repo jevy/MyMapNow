@@ -36,7 +36,7 @@ describe Meetup do
 
     item = queue.pop
     item.title.should eql("Rencontre EUROG - EUROG Gathering: Oktoberfest @ The Lindenhof")
-    item.begin_at.should eql(Time.mktime(2009, 10, 23, 19, 0, 0))
+    item.begin_at.should eql(DateTime.parse("2009/10/23 2000"))
     item.url.should eql('http://www.meetup.com/EUROG-Europeans-of-Ottawa-Gatineau/calendar/11602750/')
     item.address.should eql("268, Preston, Ottawa, ON, CA")
     item.latitude.should eql(45.404263)

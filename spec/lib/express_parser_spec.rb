@@ -200,6 +200,14 @@ describe ExpressParser do
     @parser.send(:cleanup_div_lines, string).length.should eql(2)
   end
 
+  it "should parse out and ignore lines with the \302\240 character" do
+    string = "\302\240"
+    @parser.send(:cleanup_div_lines, string).length.should eql(0)
+    string = "\302\240Dexter]n\302\240"
+    @parser.send(:cleanup_div_lines, string).length.should eql(1)
+    string = "\302\240Dexter]\n\302\240Vultures"
+    @parser.send(:cleanup_div_lines, string).length.should eql(2)
+  end
 
   def load_artist_file
     page = `cat spec/lib/testData/xpress/artist.html`
