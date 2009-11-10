@@ -18,7 +18,7 @@ describe Meetup do
 
     item = queue.pop
     item.title.should eql("Halloween Meetup")
-    item.begin_at.should  eql(DateTime.parse("2009/10/23 22:00:00"))
+    item.begin_at.should  eql(Time.gm(2009,10,23,22,0,0))
     item.url.should eql('http://www.meetup.com/Nihongo-Ottawa/calendar/11518741/')
     item.address.should eql("7893 Bleeks Rd, Munster, ON, CA")
     item.latitude.should eql(45.161424)
@@ -27,7 +27,7 @@ describe Meetup do
 
     item = queue.pop
     item.title.should eql("CashFlow Game Night")
-    item.begin_at.should eql(DateTime.parse("2009/10/23 22:15:00"))
+    item.begin_at.should eql(Time.gm(2009,10,23,22,15,0))
     item.url.should eql('http://www.meetup.com/Ottawa-Cashflow-to-Wealth-Club/calendar/11489086/')
     item.address.should eql("ottawa, CA")
     item.latitude.should be_nil 
@@ -36,7 +36,7 @@ describe Meetup do
 
     item = queue.pop
     item.title.should eql("Rencontre EUROG - EUROG Gathering: Oktoberfest @ The Lindenhof")
-    item.begin_at.should eql(DateTime.parse("2009/10/23 2000"))
+    item.begin_at.should eql(Time.gm(2009,10,23,23,0,0))
     item.url.should eql('http://www.meetup.com/EUROG-Europeans-of-Ottawa-Gatineau/calendar/11602750/')
     item.address.should eql("268, Preston, Ottawa, ON, CA")
     item.latitude.should eql(45.404263)
@@ -45,7 +45,7 @@ describe Meetup do
 
     item = queue.pop
     item.title.should eql("ReSolutions")
-    item.begin_at.should eql(Time.mktime(2009, 10, 23, 19, 0, 0))
+    item.begin_at.should eql(Time.gm(2009, 10, 23, 23, 0, 0))
     item.url.should eql('http://www.meetup.com/htrio0/calendar/11639427/')
     item.address.should eql("ottawa, CA")
     item.latitude.should be_nil
