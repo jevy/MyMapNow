@@ -1,9 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 require 'fakeweb'
 
-# Handy to drop in
-#require "rubygems"; require "ruby-debug"; debugger
-
 describe Lastfm do
   before(:all) do
     @today = Time.mktime(2009, 10, 8, 0, 0, 0)
@@ -22,18 +19,18 @@ describe Lastfm do
     item.begin_at.should eql(Time.mktime(2009, 10, 8, 0, 0,0))
     item.url.should eql('http://www.last.fm/event/1251131+Daniel+Wesley+at+Live+Lounge+on+8+October+2009')
     item.address.should eql("128.5 York St., Ottawa, Canada")
-    item.latitude.should eql(45.4275148)
-    item.longitude.should eql(-75.694805)
-    item.kind.should eql('live_music')
+    item.latitude.should be_close(45.4275148, 0.00001)
+    item.longitude.should be_close(-75.694805, 0.00001)
+    item.kind.should eql('event')
     
     item = queue.pop
     item.title.should eql("Karkwa")
     item.begin_at.should eql(Time.mktime(2009, 10, 8, 0, 0,0))
     item.url.should eql('http://www.last.fm/event/1085723+Karkwa+at+Salle+Jean-Despr%C3%A9z+on+8+October+2009')
     item.address.should eql("25, rue Laurier, Gatineau, Québec, Canada")
-    item.latitude.should eql(45.4776536)
-    item.longitude.should eql(-75.6458538)
-    item.kind.should eql('live_music')
+    item.latitude.should be_close(45.4776536, 0.00001)
+    item.longitude.should be_close(-75.6458538, 0.00001)
+    item.kind.should eql('event')
 
     7.times { queue.pop }
       
@@ -42,9 +39,9 @@ describe Lastfm do
     item.begin_at.should eql(Time.mktime(2009, 10, 14, 0, 0,0))
     item.url.should eql('http://www.last.fm/event/1244079+The+Scenics+at+Zaphod+Beeblebrox+on+14+October+2009')
     item.address.should eql("27 York St., Ottawa, Canada")
-    item.latitude.should eql(45.4278552)
-    item.longitude.should eql(-75.693986)
-    item.kind.should eql('live_music')
+    item.latitude.should be_close(45.4278552, 0.00001)
+    item.longitude.should be_close(-75.693986, 0.00001)
+    item.kind.should eql('event')
 
     queue.empty?.should be_true
     

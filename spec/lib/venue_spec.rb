@@ -10,12 +10,14 @@ describe Venue do
     @venue.address = "1 Steel St."
 
     @expected_full_address = "1 Steel St., Ottawa, Ontario, Canada"
-    @expected_coordinates = [45.4409439, -75.6095409]
+    @expected_coordinates = [45.4409434, -75.6095398]
   end
 
   # TODO: This uses the internet.  Is that bad?
   it "should return the correct lat/log given a correct address" do
-    @venue.coordinates.should eql(@expected_coordinates)
+    coords = @venue.coordinates
+    coords[0].should be_close(45.4409434, 0.00001)
+    coords[1].should be_close(-75.6095398, 0.00001)
   end
 
   it "should return [0,0] for an incorrect address" do

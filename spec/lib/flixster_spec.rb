@@ -5,41 +5,31 @@ require 'open-uri'
 
 describe Flixster do
   before(:each) do
-    @movie_at_amc_kanata = {
-      :title      => "All About Steve",
-      :begin_at   => Time.mktime(2009, 9, 28, 19, 20, 0),
-      :address    => '801 Kanata Avenue, Kanata, ON',
-      :latitude   => 45.312168,
-      :longitude  => -75.9093546,
-      :kind       => 'movie'
-    }
-
     @flixster = Flixster.new
     @today = Time.mktime(2009, 9, 28, 19, 0, 0)
   end
 
   it "should create items from movies and times" do
-    theatre = Venue.new
+    theatre          = Venue.new
     theatre.name     = 'AMC Kanata'
     theatre.address  = '801 Kanata Avenue'
     theatre.city     = 'Kanata'
     theatre.state    = 'ON'
 
-    movies_with_times = {"All About Steve" => [ Time.mktime(2009, 9, 28, 19, 20, 0),
-                                                Time.mktime(2009, 9, 28, 12, 00, 0) ],
-                         "9"               => [ Time.mktime(2009, 9, 28, 21, 20, 0),
-                                                Time.mktime(2009, 9, 28, 21, 20, 0) ]}
+    movies_with_times = {"9"               => [ Time.mktime(2009, 9, 28, 21, 20, 0),
+                                                Time.mktime(2009, 9, 28, 21, 20, 0) ], 
+                         "All About Steve" => [ Time.mktime(2009, 9, 28, 19, 20, 0),
+                                                Time.mktime(2009, 9, 28, 12, 00, 0) ]}
     
     # Should receive a total of 4 calls
-    Item.should_receive(:create).with(:title  =>  @movie_at_amc_kanata[:title],
-                                      :begin_at =>  @movie_at_amc_kanata[:begin_at],
-                                      :address => @movie_at_amc_kanata[:address],
-                                      :latitude => @movie_at_amc_kanata[:latitude],
-                                      :longitude => @movie_at_amc_kanata[:longitude],
-                                      :kind => @movie_at_amc_kanata[:kind])
-    Item.should_receive(:create).exactly(3).times
+    Item.should_receive(:create).exactly(2).times
+    Item.should_receive(:create).once.with(hash_including(:title  =>  "All About Steve",
+                                      :begin_at => Time.mktime(2009, 9, 28, 19, 20, 0) ,
+                                      :address =>  '801 Kanata Avenue, Kanata, ON',
+                                      :kind => 'movie'))
+    Item.should_receive(:create).exactly(1).times
 
-    @flixster.create_items_from_movies_hash(movies_with_times, theatre)
+    items = @flixster.create_items_from_movies_hash(movies_with_times, theatre)
   end
 
   # Like here: http://www.flixster.com/showtimes/woodside-cinemas?date=20091006
