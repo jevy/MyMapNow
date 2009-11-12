@@ -1,49 +1,57 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Venue do
-  before(:each) do
-    @venue = Venue.new
-    @venue.name = "Cool Place"
-    @venue.city = "Ottawa"
-    @venue.state = "Ontario"
-    @venue.country = "Canada"
-    @venue.address = "1 Steel St."
 
-    @expected_full_address = "1 Steel St., Ottawa, Ontario, Canada"
-    @expected_coordinates = [45.4409439, -75.6095409]
-  end
-
-  # TODO: This uses the internet.  Is that bad?
   it "should return the correct lat/log given a correct address" do
-    @venue.coordinates.should eql(@expected_coordinates)
+    loc = mock("location")
+    loc.stub!(:coordinates).and_return([45.4409434, -75.6095398])
+    geocoder = mock("geocoder")
+    geocoder.stub!(:locate).and_return(loc)
+    Graticule.stub_chain(:service, :new).and_return(geocoder)
+
+    venue = Venue.new
+    venue.city = "Ottawa"
+    venue.state = "Ontario"
+    venue.country = "Canada"
+    venue.address = "1 Steel St."
+
+    coords = venue.coordinates
+    coords[0].should eql(45.4409434)
+    coords[1].should eql(-75.6095398)
   end
 
   it "should return [0,0] for an incorrect address" do
-    @bad_address_venue = Venue.new
-    @bad_address_venue.name = "Bad Place"
-    @bad_address_venue.address = "Hwy 121"
-    @bad_address_venue.city = "Kinmount"
-    @bad_address_venue.state = "ON"
+    bad_address_venue = Venue.new
+    bad_address_venue.name = "Bad Place"
+    bad_address_venue.address = "Hwy 121"
+    bad_address_venue.city = "Kinmount"
+    bad_address_venue.state = "ON"
 
-    @bad_address_venue.coordinates.should eql([0,0])
+    bad_address_venue.coordinates.should eql([0,0])
   end
 
   it "should create a full address when all values present" do
-    @venue.full_address.should eql(@expected_full_address)
-  end
+    venue = Venue.new
+    venue.name = "Cool Place"
+    venue.city = "Ottawa"
+    venue.state = "Ontario"
+    venue.country = "Canada"
+    venue.address = "1 Steel St."
 
-  it "should create a full address when address value is not present" do
-    @venue.address = ""
-    @venue.full_address.should eql("Ottawa, Ontario, Canada")
-  end
-
-  it "should create a full address when state value is not present" do
-    @venue.state = ""
-    @venue.full_address.should eql("1 Steel St., Ottawa, Canada")
+    expected_full_address = "1 Steel St., Ottawa, Ontario, Canada"
+    venue.full_address.should eql(expected_full_address)
   end
 
   it "should create a full address when country value is not present" do
-    @venue.country = ""
-    @venue.full_address.should eql("1 Steel St., Ottawa, Ontario")
+    venue = Venue.new
+    venue.name = "Cool Place"
+    venue.city = "Ottawa"
+    venue.state = "Ontario"
+    venue.country = "Canada"
+    venue.address = "1 Steel St."
+
+    expected_full_address = "1 Steel St., Ottawa, Ontario, Canada"
+    venue.country = ""
+    venue.full_address.should eql("1 Steel St., Ottawa, Ontario")
   end
 end

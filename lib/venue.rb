@@ -3,8 +3,11 @@ class Venue
     :latitude, :longitude
 
   Api_code =  "ABQIAAAAFRf0kHHTAwfnYFoh1eZH6BRi_QCTkdRWobLL_A5W6S7qSSFeQRRqJG7tcFKh_yySJlsACF58wUTsLg"
-  @@geocoder = Graticule.service(:google).new Api_code
 
+  def initialize
+    @geocoder = Graticule.service(:google).new Api_code
+  end
+    
   def full_address
     result = []
     result << address  unless address.nil? or address.empty?
@@ -18,7 +21,7 @@ class Venue
   # Maybe let the exception pass through?
   def coordinates
     begin
-      location = @@geocoder.locate full_address
+      location = @geocoder.locate(full_address)
     rescue
       return [0,0]
     end
