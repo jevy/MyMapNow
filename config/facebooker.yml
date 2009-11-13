@@ -13,7 +13,7 @@ development:
   api_key: 455497138cc8253cdefc314e65b61300
   secret_key: 44aa717f6054af1fc17d6cc4e9ce2039
   canvas_page_name:
-  callback_url:
+  callback_url: http://localhost:3000/maps/facebook_login/
   pretty_errors: true
   set_asset_host_to_callback_url: false
   tunnel:

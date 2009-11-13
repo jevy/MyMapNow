@@ -13,10 +13,10 @@
     <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script src="http://j.maxmind.com/app/geoip.js"></script>
 
-    <script type="text/javascript">
-      var userflyHost = (("https:" == document.location.protocol) ? "https://secure.userfly.com" : "http://asset.userfly.com");
-      document.write(unescape("%3Cscript src='" + userflyHost + "/users/33910/userfly.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
+    <%#*<script type="text/javascript">%>
+      <%#*var userflyHost = (("https:" == document.location.protocol) ? "https://secure.userfly.com" : "http://asset.userfly.com");%>
+      <%#*document.write(unescape("%3Cscript src='" + userflyHost + "/users/33910/userfly.js' type='text/javascript'%3E%3C/script%3E"));%>
+    <%#*</script>%>
 
     <%= javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min', 'perfecttime/PerfectTime', 'application', 'old_map', 'jquery.form', :cache => true %>
     <%= javascript_include_tag 'geoip', 'map' %>
