@@ -36,7 +36,7 @@
     <%= yield %>
   </section>
   <aside>
-    <h1>Event Details <%= fb_login_and_redirect(:facebook_login ,:size=>:small, :v=>'2')%></h1>
+    <h1>Event Details <%= authlogic_facebook_login_button %></h1>
     <ol>
     </ol>
   </aside>
