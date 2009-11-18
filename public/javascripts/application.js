@@ -39,4 +39,26 @@ $(function() {
   function dateText(n) {
     return $.fn.strftime(dateForValue(n), '%B %D');
   }
+
 });
+
+ var tl;
+ function onLoad() {
+   var bandInfos = [
+     Timeline.createBandInfo({
+         width:          "100%", 
+         intervalUnit:   Timeline.DateTime.DAY, 
+         intervalPixels: 100
+     })];
+   tl = Timeline.create(document.getElementById("timeline"), bandInfos);
+ }
+
+ var resizeTimerID = null;
+ function onResize() {
+     if (resizeTimerID == null) {
+         resizeTimerID = window.setTimeout(function() {
+             resizeTimerID = null;
+             tl.layout();
+         }, 500);
+     }
+ }

@@ -12,6 +12,7 @@
     <![endif]-->
     <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script src="http://j.maxmind.com/app/geoip.js"></script>
+    <script src="http://static.simile.mit.edu/timeline/api-2.3.0/timeline-api.js?bundle=true"></script>
 
     <%#*<script type="text/javascript">%>
       <%#*var userflyHost = (("https:" == document.location.protocol) ? "https://secure.userfly.com" : "http://asset.userfly.com");%>
@@ -26,15 +27,10 @@
     <%= init_fb_connect "XFBML", :js => :jquery%>
 
   </head>
-  <body>
+  <body onload="onLoad();" onresize="onResize();">
   <header>
-    <h1>MyMapNow</h1>
     <p><input type="text" id="search-box" name="search-box" value=""></p>
     <p><button id="search" onclick="Map.search($('#search-box').val());">Search</button></p>
-    <div id="date-range">
-      <div id="label-left"><span></span></div>
-      <div id="label-right"><span></span></div>
-    </div>
   </header>
   <section>
     <%= yield %>
@@ -44,10 +40,21 @@
     <ol>
     </ol>
   </aside>
-  <footer>
+  <div id="spacer">
+    <%= link_to '<span>Add Event</span>', new_item_path, :id => 'add-event' %>
+  </div>
+  <div id="timeline"></div>
+    
+  <!--<div id="date-container">
+    <div id="date-range">
+      <div id="label-left"><span></span></div>
+      <div id="label-right"><span></span></div>
+    </div>
+  </div>-->
+  <!--<footer>
     <p class="copyright">Copyright © 2009 MyMapNow - All Rights Reserved</p>
-    <p class="links"><%= link_to 'Submit News/Events', new_item_path, :id => 'add_new_item' %>   <a href="#">About MyMapNow</a>    <a href="#">Privacy Policy</a>   <a href="#">Terms and Conditions</a></p>
-  </footer>
+    "links"><%= link_to 'Submit News/Events', new_item_path, :id => 'add_new_item' %>   <a href="#">About MyMapNow</a>    <a href="#">Privacy Policy</a>   <a href="#">Terms and Conditions</a></p>
+    </footer>-->
   <div id="dialogs">
 <%# render 'items/form' %>
   </div>
