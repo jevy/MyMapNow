@@ -15,6 +15,8 @@ $(function() {
     })];
   tl = Timeline.create(document.getElementById("timeline"), bandInfos);
   band = tl.getBand(0);
+
+  band.addOnScrollListener(Map.fetch);
   // items/in_bounds: begin_at = band.getMinVisibleDate());
   // items/in_bounds: end_at = band.getMaxVisibleDate());
 
