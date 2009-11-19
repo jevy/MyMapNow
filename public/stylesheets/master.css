@@ -31,12 +31,12 @@ footer							{display:block; position:absolute; height:26px; border-top:1px soli
 footer .copyright		{float:left;}
 footer a						{color:#fff; margin-left:15px;}
 
-aside h1						{font-size:11px; color:#333; background:url(images/sidebar_header.png) repeat-x; height:28px; border-bottom:1px solid #666; position:relative; padding:0 10px; line-height:28px;}
-aside ol						{position:absolute; list-style-type:none; top:29px; left:0; right:0; bottom:0; overflow:auto;}
-aside li						{position:relative; padding:8px 10px 8px 43px; background:url(images/detail.png) repeat-x 0 100%; border-bottom:1px solid #999;}
-aside div						{position:absolute; left:10px; top:8px; width:23px; height:25px; line-height:20px; color:#fff; text-align:center;}
-aside h2						{font-size:15px; font-family:"Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;}
-aside img           {width: 160px;}
+aside h1	{font-size:11px; color:#333; background:url(images/sidebar_header.png) repeat-x; height:28px; border-bottom:1px solid #666; position:relative; padding:0 10px; line-height:28px;}
+aside ol	{position:absolute; list-style-type:none; top:29px; left:0; right:0; bottom:0; overflow:auto;}
+aside li	{position:relative; padding:8px 10px 8px 43px; background:url(images/detail.png) repeat-x 0 100%; border-bottom:1px solid #999;}
+aside div	{position:absolute; left:10px; top:8px; width:23px; height:25px; line-height:20px; color:#fff; text-align:center;}
+aside h2	{font-size:15px; font-family:"Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;}
+aside img       {width: 160px;}
 aside .address			{color:#999;}
 aside .description	{color:#555;}
 

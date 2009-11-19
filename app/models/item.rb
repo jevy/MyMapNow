@@ -22,7 +22,8 @@ class Item < ActiveRecord::Base
                                southwest[1], northeast[1],
                                begin_at.to_s(:db), end_at.to_s(:db),
                                begin_at.to_s(:db), begin_at.to_s(:db), end_at.to_s(:db),
-                               begin_at.to_s(:db), end_at.to_s(:db)])
+                               begin_at.to_s(:db), end_at.to_s(:db)],
+        :order => 'begin_at')
   end
 
   def geocode_address
