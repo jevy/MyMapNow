@@ -1,10 +1,24 @@
+var tl, band;
 $(function() {
-  var date = new Date();
+  /*var date = new Date();
   var startDate = new Date((Math.floor(date.getTime()/(1000 * 60 * 60 * 24))-15)* 1000 * 60 * 60 * 24);
   var start = 0;
   var end = (start + 30) * 3;
   var sliderElement = $('#date-range');
+  */
 
+  var bandInfos = [
+    Timeline.createBandInfo({
+        width:          "100%", 
+        intervalUnit:   Timeline.DateTime.DAY, 
+        intervalPixels: 100
+    })];
+  tl = Timeline.create(document.getElementById("timeline"), bandInfos);
+  band = tl.getBand(0);
+  // items/in_bounds: begin_at = band.getMinVisibleDate());
+  // items/in_bounds: end_at = band.getMaxVisibleDate());
+
+  /*
   sliderElement.data('start', dateForValue(.25*(end-start)))
     .data('end', dateForValue(.75*(end-start)))
     .slider({
@@ -39,26 +53,6 @@ $(function() {
   function dateText(n) {
     return $.fn.strftime(dateForValue(n), '%B %D');
   }
+  */
 
 });
-
- var tl;
- function onLoad() {
-   var bandInfos = [
-     Timeline.createBandInfo({
-         width:          "100%", 
-         intervalUnit:   Timeline.DateTime.DAY, 
-         intervalPixels: 100
-     })];
-   tl = Timeline.create(document.getElementById("timeline"), bandInfos);
- }
-
- var resizeTimerID = null;
- function onResize() {
-     if (resizeTimerID == null) {
-         resizeTimerID = window.setTimeout(function() {
-             resizeTimerID = null;
-             tl.layout();
-         }, 500);
-     }
- }

@@ -32,8 +32,8 @@ var OldMap = {
   fetch: function() {
     var bounds = Map.map.get_bounds();
     var timeframe = {
-      start: $('#date-range').data('start'),
-      end: $('#date-range').data('end')
+      start: band.getMinVisibleDate(),
+      end: band.getMaxVisibleDate()
     };
     Map.cleanup();
     $(document).trigger('map:change', [bounds, timeframe]);

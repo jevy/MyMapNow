@@ -4,8 +4,8 @@ $(function() {
 	      {
 		southwest: ''+bounds.getSouthWest().lat()+','+bounds.getSouthWest().lng(),
 		northeast: ''+bounds.getNorthEast().lat()+','+bounds.getNorthEast().lng(),
-		start: $.fn.strftime(timeframe.start, '%Y-%m-%d %H:%M'),
-		end: $.fn.strftime(timeframe.end, '%Y-%m-%d %H:%M')
+		start: $.fn.strftime(timeframe.start, '%a %b %d %Y %H:%M:%S'),
+		end: $.fn.strftime(timeframe.end, '%a %b %d %Y %H:%M:%S')
 	      }, 
 	      function(data) {
       // Add new items
