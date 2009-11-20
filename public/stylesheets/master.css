@@ -40,13 +40,13 @@ aside img       {width: 160px;}
 aside .address			{color:#999;}
 aside .description	{color:#555;}
 
-aside li div        { background: url(images/pointers.png) no-repeat top left; }
-aside .null div   { background-position: 0 -30px; } 
-aside .news   div   { background-position: 0 -85px; } 
-aside .review  div   { background-position: 0 -140px; } 
-aside .discussion div   { background-position: 0 -195px; } 
-aside .movie  div   { background-position: 0 -250px; }
-aside .event  div   { background-position: 0 -305px; }
+aside li div          { background: url(images/pointers.png) no-repeat top left; }
+aside .null div       { background-position: 0 -30px; } 
+aside .news   div     { background-position: 0 -85px; } 
+aside .review  div    { background-position: 0 -140px; } 
+aside .discussion div { background-position: 0 -195px; } 
+aside .movie  div     { background-position: 0 -250px; }
+aside .event  div     { background-position: 0 -305px; }
 
 #spacer     {position:fixed; bottom:0; left:0; width: 260px; height:26px;}
 #spacer a#add-event {display:block; position:fixed; bottom:8px; left:175px; width: 53px; height:53px; background:url(images/buttonAddEvent.png); #555555; z-index: 150} 

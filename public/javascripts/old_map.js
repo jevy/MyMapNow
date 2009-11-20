@@ -61,7 +61,7 @@ var OldMap = {
         position: point, 
         map: Map.map,
         title: item.title, 
-        icon: Map.markerImages(item.kind, $li)
+        icon: "images/pin_off.png"
       }));
     
       google.maps.event.addListener($li.data('marker'), 'click', function() {
