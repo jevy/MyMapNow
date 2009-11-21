@@ -20,13 +20,13 @@ class ItemsController < ApplicationController
 
     @items = Item.find_in_bounds(southwest, northeast, begin_at, end_at)
 
-    the_json = "{ 'entries': ["
+    the_json = "{ \"events\": ["
     @items.each do |item|
       the_json << "{"
-      the_json << "'start': new Date(#{item.begin_at.year}, #{item.begin_at.month}, #{item.begin_at.day}, #{item.begin_at.hour}, #{item.begin_at.min}),"
-      the_json << "'end': new Date(#{item.end_at.year}, #{item.end_at.month}, #{item.end_at.day}, #{item.end_at.hour}, #{item.end_at.min})," unless item.end_at.blank?
-      the_json << "'durationEvent': #{!item.end_at.blank?},"
-      the_json << "'title': '#{item.title}',"
+      the_json << "\"start\": new Date(#{item.begin_at.year}, #{item.begin_at.month}, #{item.begin_at.day}, #{item.begin_at.hour}, #{item.begin_at.min}),"
+      the_json << "\"end\": new Date(#{item.end_at.year}, #{item.end_at.month}, #{item.end_at.day}, #{item.end_at.hour}, #{item.end_at.min})," unless item.end_at.blank?
+      the_json << "\"durationEvent\": #{!item.end_at.blank?},"
+      the_json << "\"title\": \"#{item.title}\","
       the_json << "},"
     end
     the_json << "]};"

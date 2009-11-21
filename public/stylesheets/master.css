@@ -7,12 +7,12 @@ body								{background:#fff; overflow:hidden; color:#222;}
 a										{color:#06C; text-decoration:none;}
 a:hover							{text-decoration:underline;}
 
-header			{display:block; position:absolute; left:0; right:0; top: 0; height:40px; width: 260px; background:#111 url(images/header.png) repeat-x;}
+header			{display:block; position:absolute; left:0; right:0; top: 0; height:40px; width: 320px; background:#111 url(images/header.png) repeat-x;}
 /*header h1		{width:130px; height:40px; text-indent:-9999px; overflow:hidden; background:url(images/logo.png) no-repeat; position:absolute; top:0; left:10px;}*/
 header input    	{position:absolute; left:15px; top:11px; width:100px;}
 header button		{position:absolute; left:130px; width:68px; height:40px; text-indent:-9999px; overflow:hidden; background:url(images/button_search.png) no-repeat 50% 50%; border:none;}
 
-#date-container                 {display:block; position:absolute; left:259px; right:0; bottom: 0; height:40px; background:#111 url(images/header.png) repeat-x;}
+#date-container                 {display:block; position:absolute; left:320px; right:0; bottom: 0; height:40px; background:#111 url(images/header.png) repeat-x;}
 #date-range		        {position:absolute; left:0; right:0; top:16px; height:8px; background:url(images/meter.png) repeat-x; left:375px; right:158px; -webkit-border-radius:4px; -moz-border-radius:4px;}
 #date-range a.ui-slider-handle  {cursor:default; height:17px; width:17px; background:url(images/handle.png); display:block; position:absolute; margin:-4px 0 0 -4px;}
 #date-range a:active,
@@ -25,11 +25,11 @@ header button		{position:absolute; left:130px; width:68px; height:40px; text-ind
 #label-right			{background:#249C12 url(images/label_right_main.png) no-repeat; margin-left:12px;}
 #label-right span		{display:block; height:23px; padding:0 10px 0 12px; background:url(images/label_right_end.png) no-repeat 100% 0;}
 
-section							{display:block; z-index:6; position:absolute; left:260px; right:0; top:0px; bottom:26px;}
-aside							{background:#f0f0f0; z-index:5; display:block; position:absolute; width:259px; border-right:1px solid #676767; left:0; top:40px; bottom:26px; border-bottom: 1px solid #777;}
-footer							{display:block; position:absolute; height:26px; border-top:1px solid #676767; background:#111 url(images/header.png) repeat-x; color:#999; padding:0 10px; line-height:26px; left:0; right:0; bottom:0; text-align:right;}
+section				{display:block; z-index:6; position:absolute; left:320px; right:0; top:0px; bottom:26px;}
+aside				{background:#f0f0f0; z-index:5; display:block; position:absolute; width:320px; border-right:1px solid #676767; left:0; top:40px; bottom:26px; border-bottom: 1px solid #777;}
+footer				{display:block; position:absolute; height:26px; border-top:1px solid #676767; background:#111 url(images/header.png) repeat-x; color:#999; padding:0 10px; line-height:26px; left:0; right:0; bottom:0; text-align:right;}
 footer .copyright		{float:left;}
-footer a						{color:#fff; margin-left:15px;}
+footer a			{color:#fff; margin-left:15px;}
 
 aside h1	{font-size:11px; color:#333; background:url(images/sidebar_header.png) repeat-x; height:28px; border-bottom:1px solid #666; position:relative; padding:0 10px; line-height:28px;}
 aside ol	{position:absolute; list-style-type:none; top:29px; left:0; right:0; bottom:0; overflow:auto;}
@@ -37,7 +37,7 @@ aside li	{position:relative; padding:8px 10px 8px 43px; background:url(images/de
 aside div	{position:absolute; left:10px; top:8px; width:23px; height:25px; line-height:20px; color:#fff; text-align:center;}
 aside h2	{font-size:15px; font-family:"Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;}
 aside img       {width: 160px;}
-aside .address			{color:#999;}
+aside .address		{color:#999;}
 aside .description	{color:#555;}
 
 aside li div          { background: url(images/pointers.png) no-repeat top left; }
@@ -48,11 +48,11 @@ aside .discussion div { background-position: 0 -195px; }
 aside .movie  div     { background-position: 0 -250px; }
 aside .event  div     { background-position: 0 -305px; }
 
-#spacer     {position:fixed; bottom:0; left:0; width: 260px; height:26px;}
+#spacer     {position:fixed; bottom:0; left:0; width: 320px; height:26px;}
 #spacer a#add-event {display:block; position:fixed; bottom:8px; left:175px; width: 53px; height:53px; background:url(images/buttonAddEvent.png); #555555; z-index: 150} 
 #spacer a#add-event span{ display:none; }
 
-#timeline   {position:absolute; bottom:0; left:260px; right: 0; height:40px;}
+#timeline   {position:absolute; bottom:0; left:320px; right: 0; height:40px;}
 
 img.gravatar { width: 25px; height: 25px;}
 
