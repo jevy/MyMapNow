@@ -19,6 +19,6 @@ $(function() {
       'start='+$.fn.strftime(timeframe.start, '%a %b %d %Y %H:%M:%S')+'&'+
       'end='+$.fn.strftime(timeframe.end, '%a %b %d %Y %H:%M:%S');
 
-    Timeline.loadJSON(url, function(data, url) { alert(data['events'][0]); debugger; eventSource.loadJSON(data, url) });
+    Timeline.loadJSON(url, function(data, url) { eventSource.loadJSON(data, url) });
   });
 });

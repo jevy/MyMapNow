@@ -26,10 +26,13 @@ class ItemsController < ApplicationController
       the_json << "\"start\": new Date(#{item.begin_at.year}, #{item.begin_at.month}, #{item.begin_at.day}, #{item.begin_at.hour}, #{item.begin_at.min}),"
       the_json << "\"end\": new Date(#{item.end_at.year}, #{item.end_at.month}, #{item.end_at.day}, #{item.end_at.hour}, #{item.end_at.min})," unless item.end_at.blank?
       the_json << "\"durationEvent\": #{!item.end_at.blank?},"
-      the_json << "\"title\": \"#{item.title}\","
-      the_json << "},"
+      escaped_title = item.title
+      escaped_title = escaped_title.gsub('"', '\"')
+      escaped_title = escaped_title.gsub(',', '\"')
+      the_json << "\"title\": \"#{escaped_title}\""
+      the_json << (item == @items.last ? "}" : "},")
     end
-    the_json << "]};"
+    the_json << "]}"
 
     respond_to do |format|
       format.js   { render :text => the_json  }
