@@ -10,7 +10,7 @@ class Item < ActiveRecord::Base
 
   after_create :geocode_address
 
-  acts_as_taggable_on :tags
+#  acts_as_taggable_on :tags
 
   def self.find_in_bounds(southwest, northeast, begin_at, end_at)
     find(:all, :conditions => ["latitude BETWEEN ? AND ? " + 
