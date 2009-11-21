@@ -14,10 +14,10 @@
     <script src="http://j.maxmind.com/app/geoip.js"></script>
     <script src="http://static.simile.mit.edu/timeline/api-2.3.0/timeline-api.js?bundle=true"></script>
 
-    <%#*<script type="text/javascript">%>
-      <%#*var userflyHost = (("https:" == document.location.protocol) ? "https://secure.userfly.com" : "http://asset.userfly.com");%>
-      <%#*document.write(unescape("%3Cscript src='" + userflyHost + "/users/33910/userfly.js' type='text/javascript'%3E%3C/script%3E"));%>
-    <%#*</script>%>
+<%#*<script type="text/javascript">%>
+<%#*var userflyHost = (("https:" == document.location.protocol) ? "https://secure.userfly.com" : "http://asset.userfly.com");%>
+<%#*document.write(unescape("%3Cscript src='" + userflyHost + "/users/33910/userfly.js' type='text/javascript'%3E%3C/script%3E"));%>
+<%#*</script>%>
 
     <%= javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min', 'perfecttime/PerfectTime', 'application', 'old_map', 'jquery.form', :cache => true %>
     <%= javascript_include_tag 'geoip', 'map' %>
@@ -29,6 +29,7 @@
   </head>
   <body>
   <header>
+    <%#=  link_to(image_tag("/images/login_button.jpg", :alt=>'Login', :height=>"5px"), '#') if @user_session.nil?  %>
     <p><input type="text" id="search-box" name="search-box" value=""></p>
     <p><button id="search" onclick="Map.search($('#search-box').val());">Search</button></p>
   </header>
@@ -37,18 +38,16 @@
   </section>
   <aside>
     <h1>
-      <%=image_tag "login_button"%>
-
-
-      <a href="#" onclick="">Login</a></h1>
+      Event Details
+    </h1>
     <ol>
     </ol>
   </aside>
   <div id="spacer">
-    <%= link_to '<span>Add Event</span>', new_item_path, :id => 'add-event' %>
+    <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') unless @user_session%>
   </div>
   <div id="timeline"></div>
-    
+
   <!--<div id="date-container">
     <div id="date-range">
       <div id="label-left"><span></span></div>

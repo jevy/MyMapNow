@@ -1,13 +1,16 @@
-  <% form_for @user_session do |f| %>
-    <%= f.error_messages %>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %><br />
-    <br />
-    <%= f.label :password %><br />
-    <%= f.password_field :password %><br />
-    <br />
-    <%= f.submit "Login"%>
-  <% end %>
-
-
-    <%=authlogic_facebook_login_button%>
+<% form_for @user_session do |f| %>
+  <%= f.error_messages %>
+  <%= f.label :email %><br />
+  <%= f.text_field :email %><br />
+  <br />
+  <%= f.label :password %><br />
+  <%= f.password_field :password %><br />
+  <br />
+  <%= f.check_box :remember_me %>
+  <%= f.label :remember_me %><br/>
+  <br/>
+  <%= f.submit "Login"%>
+  <br/>
+  Or Signin with Facebook!
+  <%= authlogic_facebook_login_button(:size=>:small, :v=>'2') %>
+<% end %>
