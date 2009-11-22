@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   #Keeps user logged in across sessions.
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
+    return false
     @current_user_session = UserSession.find
   end
 
