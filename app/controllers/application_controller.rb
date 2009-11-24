@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   filter_parameter_logging :password, :password_confirmation
-  before_filter :activate_authlogic
   helper_method :current_user_session
   #  before_filter :current_user_session
 

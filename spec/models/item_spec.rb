@@ -228,7 +228,7 @@ describe "Relationships" do
     results.should include(@item)
   end
 
-  it "should be able to " do
+  it "should be able to have multiple items be associated with it" do
     @user.save; @item.save; @item2.save    
     results = Item.find_all_by_user_id(@user.id)
     results.should have_exactly(2).items
