@@ -12,7 +12,7 @@ class UserSessionsController < ApplicationController
       end
     end
 
-    def logout
+    def destroy
       current_user_session.destroy
       redirect_to root_url
     end
