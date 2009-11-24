@@ -29,7 +29,7 @@
     <p><input type="text" id="search-box" name="search-box" value=""></p>
     <p><button id="search" onclick="Map.search($('#search-box').val());">Search</button></p>
     <p>
-      <%=  link_to(image_tag("/images/login_button.jpg", :alt=>'Login', :height=>"10px"), :controller=>"user_sessions", :action=>"new")%>
+      <%=  link_to(image_tag("/images/login_button.jpg", :alt=>'Login', :height=>"10px"), :controller=>"user_sessions", :action=>"new") unless @current_user_session%>
     </p>  
   </header>
   <section>
