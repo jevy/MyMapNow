@@ -9,6 +9,7 @@ class Item < ActiveRecord::Base
   validates_presence_of :address, :unless => :latitude_and_longitude_provided?
 
   after_create :geocode_address
+  belongs_to :user
 
 #  acts_as_taggable_on :tags
 
