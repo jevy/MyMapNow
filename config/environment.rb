@@ -29,6 +29,8 @@ Rails::Initializer.run do |config|
   config.gem 'fakeweb'
   config.gem 'nokogiri'
   config.gem 'selenium-rc', :lib => false
+  config.gem 'authlogic', :version =>'>= 2.1.3'
+#  config.gem 'facebooker', :version =>'>= 1.0.55'
   
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
