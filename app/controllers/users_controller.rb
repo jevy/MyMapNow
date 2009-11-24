@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Account registered!"
-      redirect_back_or_default login_url
+      redirect_to :controller=>"user_sessions", :action=>"create", :params=>params
     else
       render :action => :new
     end

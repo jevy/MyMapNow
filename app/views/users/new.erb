@@ -1,23 +1,19 @@
+Register for MyMapNow<br/>
 <%form_for @user do |user|%>
 
   <%=user.error_messages%>
-  Register for MyMapNow<br/>
-  <p>
-    <%=user.label :name %>
-    <%=user.text_field :name %><br/>
-  </p>
-  <p>
-    <%=user.label :email%>
-    <%=user.text_field :email%>
-  </p>
-  <p>
-    <%=user.label :password%>
-    <%=user.password_field :password%>
-  </p>
-  <p>
-    <%=user.label :password_confirmation%>
-    <%=user.password_field :password_confirmation%>
-  </p>
+  <br/>
+  <%=user.label :name %>
+  <%=user.text_field :name %><br/>
+
+  <%=user.label :email%>
+  <%=user.text_field :email%><br/>
+
+  <%=user.label :password%>
+  <%=user.password_field :password%><br/>
+
+  <%=user.label :password_confirmation%>
+  <%=user.password_field :password_confirmation%><br/>
 
   <%= user.submit "Register" %>
 
