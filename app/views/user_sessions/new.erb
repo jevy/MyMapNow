@@ -1,3 +1,7 @@
+
+<%#= fb_connect_javascript_tag %>
+<%#= init_fb_connect "XFBML", :js => :jquery%>
+
 <% form_for @user_session do |f| %>
   <%= f.error_messages %>
   <%= f.label :email %><br />
@@ -12,7 +16,8 @@
   <%= f.submit "Login"%>
   <br/>
   Or Signin with Facebook!
-  <%= authlogic_facebook_login_button(:size=>:small, :v=>'2') %>
+  <%#= authlogic_facebook_login_button(:size=>:small, :v=>'2') %>
+  <%#= authlogic_facebook_login_button %>
 
   Register With MyMapNow
   <%=  link_to "Register", :controller=>"users", :action=>"new" %>

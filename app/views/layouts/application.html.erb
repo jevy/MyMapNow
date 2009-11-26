@@ -23,16 +23,13 @@
     <%= javascript_include_tag 'geoip', 'map' %>
     <%= javascript_include_tag 'items', 'timeline' %>
 
-    <%= fb_connect_javascript_tag %>
-    <%= init_fb_connect "XFBML", :js => :jquery%>
-
   </head>
   <body>
   <header>
     <p><input type="text" id="search-box" name="search-box" value=""></p>
     <p><button id="search" onclick="Map.search($('#search-box').val());">Search</button></p>
     <p>
-      <%#=  link_to(image_tag("/images/login_button.jpg", :alt=>'Login', :height=>"10px"), :controller=>"user_sessions", :action=>"new")%>
+      <%=  link_to(image_tag("/images/login_button.jpg", :alt=>'Login', :height=>"10px"), :controller=>"user_sessions", :action=>"new") unless @current_user_session%>
     </p>  
   </header>
   <section>
@@ -46,7 +43,7 @@
     </ol>
   </aside>
   <div id="spacer">
-    <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event')%>
+    <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') if @current_user_session%>
   </div>
   <div id="timeline"></div>
 
