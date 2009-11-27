@@ -1,8 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Meetup do
-  FakeWeb.allow_net_connect = false
-  FakeWeb.clean_registry
   before(:all) do
     @today = Time.mktime(2009, 10, 23 , 0, 0, 0)
   end
@@ -12,7 +10,7 @@ describe Meetup do
     FakeWeb.allow_net_connect = false
     FakeWeb.register_uri(:get, 'http://api.meetup.com/events.xml/?country=CA&city=ottawa&key=f2138374a26136042463e4e8e5d51',
       :response => page)
-    meetup = Meetup.new('CA', 'ottawa')
+    meetup = Meetup.new('ottawa', 'ontario', 'canada')
     meetup.populate_queue_with_items
     queue = meetup.event_queue
 
@@ -54,10 +52,10 @@ describe Meetup do
   end
 
   it 'should generate the correct url for a Canadian location' do
-    meetup = Meetup.new('CA', 'ottawa')
+    meetup = Meetup.new('ottawa', 'ontario', 'canada')
     meetup.generate_geo_api_url_page.should eql('http://api.meetup.com/events.xml/?country=CA&city=ottawa&key=f2138374a26136042463e4e8e5d51')
 
-    meetup = Meetup.new('CA', 'toronto')
+    meetup = Meetup.new('toronto', 'ontario', 'canada')
     meetup.generate_geo_api_url_page.should eql('http://api.meetup.com/events.xml/?country=CA&city=toronto&key=f2138374a26136042463e4e8e5d51')
   end
 
@@ -66,20 +64,20 @@ describe Meetup do
     FakeWeb.allow_net_connect = false
     FakeWeb.register_uri(:get, "http://api.meetup.com/events.xml/?key=f2138374a26136042463e4e8e5d51&country=CA&city=blahblah", 
       :response => page)
-    meetup = Meetup.new('CA', 'blahblah')
+    meetup = Meetup.new('blahblah', 'blahprov', 'canada')
     meetup.location_exists?.should be_false
 
     page = `cat spec/lib/testData/meetup/ottawa-oct-23-2009`
     FakeWeb.allow_net_connect = false
     FakeWeb.register_uri(:get, 'http://api.meetup.com/events.xml/?country=CA&city=ottawa&key=f2138374a26136042463e4e8e5d51', 
       :response => page)
-    meetup = Meetup.new('CA', 'ottawa')
+    meetup = Meetup.new('ottawa', 'ontario', 'canada')
     meetup.location_exists?.should be_true
    
   end
 
   it 'should create the right number of concerts for one day' do
-    meetup = Meetup.new('CA', 'ottawa')
+    meetup = Meetup.new('ottawa', 'ontario', 'canada')
     item1 = Item.new( :title => "First meetup",
       :begin_at => Time.mktime(2009, 10, 23, 6, 0, 0)
     )
@@ -98,7 +96,7 @@ describe Meetup do
   end
 
   it "should create the right number of meetups for this week" do
-    meetup = Meetup.new('CA', 'ottawa')
+    meetup = Meetup.new('ottawa', 'ontario', 'canada')
     item1 = Item.new( :title => "First meetup",
       :begin_at => Time.mktime(2009, 10, 23, 1, 0, 0)
     )
@@ -121,7 +119,7 @@ describe Meetup do
       :begin_at => Time.mktime(2009, 10, 23, 20, 0, 0)
     )
 
-    meetup = Meetup.new('CA', 'ottawa')
+    meetup = Meetup.new('ottawa', 'ontario', 'canada')
     meetup.should_save?(test_item, @today, @today + 1.day).should be_true
   end
 
@@ -130,7 +128,7 @@ describe Meetup do
       :begin_at => Time.mktime(2009, 10, 24, 0, 0, 1)
     )
 
-    meetup = Meetup.new('CA', 'ottawa')
+    meetup = Meetup.new('ottawa', 'ontario', 'canada')
     meetup.should_save?(test_item, @today, @today + 1.day).should be_false
   end
 
