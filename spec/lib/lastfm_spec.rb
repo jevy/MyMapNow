@@ -6,14 +6,47 @@ describe Lastfm do
     @today = Time.mktime(2009, 10, 8, 0, 0, 0)
   end
 
+  context "on initialize @loc" do
+    it "should be 'city,state' if given city, state, and country" do
+      #debugger
+      lastfm = Lastfm.new('ottawa', 'ontario', 'canada')
+      lastfm.loc.should eql 'ottawa,ontario'
+    end
+
+    it "should be 'city,state' if given just city and state" do
+      lastfm = Lastfm.new('ottawa', 'ontario', nil)
+      lastfm.loc.should eql 'ottawa,ontario'
+    end
+
+    it "should be 'state,country' if given just state and country" do
+      lastfm = Lastfm.new(nil, 'ontario', 'canada')
+      lastfm.loc.should eql 'ontario,canada'
+    end
+
+    it "should be 'city' if just given city" do
+      lastfm = Lastfm.new('ottawa', nil, nil)
+      lastfm.loc.should eql 'ottawa'
+    end
+
+    it "should be 'state' if just given state" do
+      lastfm = Lastfm.new(nil, 'ontario', nil)
+      lastfm.loc.should eql 'ontario'
+    end
+
+    it "should be 'country' if just given country" do
+      lastfm = Lastfm.new(nil, nil, 'canada')
+      lastfm.loc.should eql 'canada'
+    end
+  end 
+
   it "should parse the feed and create items with the right values" do 
     page1 = `cat spec/lib/testData/lastfm/ottawa-page-1`
     page2 = `cat spec/lib/testData/lastfm/ottawa-page-2`
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,ontario&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
                          :response => page1)
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=2", 
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,ontario&api_key=b819d5a155749ad083fcd19407d4fc69&page=2", 
                          :response => page2)
-    lastfm = Lastfm.new('ottawa')
+    lastfm = Lastfm.new('ottawa', 'ontario', 'canada')
     lastfm.populate_queue_with_items
     queue = lastfm.event_queue
 
@@ -52,7 +85,7 @@ describe Lastfm do
   end
 
   it "should create the right number of concerts for one day" do
-    lastfm = Lastfm.new('ottawa')
+    lastfm = Lastfm.new('ottawa', 'ontario', 'canada')
     # item1 and item2 should be saved, item3 should not be
     item1 = Item.new( :title => "First concert",
                       :begin_at => Time.mktime(2009, 10, 8, 0, 0, 0)
@@ -72,7 +105,7 @@ describe Lastfm do
   end
 
   it "should create the right number of concerts for this week" do
-    lastfm = Lastfm.new('ottawa')
+    lastfm = Lastfm.new('ottawa', 'ontario', 'canada')
     item1 = Item.new( :title => "First concert",
                       :begin_at => Time.mktime(2009, 10, 8, 0, 0, 0)
                     )
@@ -100,7 +133,7 @@ describe Lastfm do
              :kind => 'event'
             )
 
-    lastfm = Lastfm.new('ottawa')
+    lastfm = Lastfm.new('ottawa', 'ontario', 'canada')
     lastfm.should_save?(test_item, @today, @today + 7.days).should be_true
   end
 
@@ -114,63 +147,54 @@ describe Lastfm do
              :kind => 'event'
             )
 
-    lastfm = Lastfm.new('ottawa')
+    lastfm = Lastfm.new('ottawa', 'ontario', 'canada')
     lastfm.should_save?(test_item, @today, @today + 7.days).should be_false
   end
 
 
   it "should recognize the current maximum pages for this location" do
     page = `cat spec/lib/testData/lastfm/ottawa-page-1`
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,canada&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
                         :response => page)
 
-    lastfm = Lastfm.new('ottawa')
+    lastfm = Lastfm.new('ottawa', 'ontario', 'canada')
     lastfm.total_pages_of_feed_for_location.should eql(12)
   end
 
   it "should throw exception when the location doesn't exist" do
     page = `cat spec/lib/testData/lastfm/blahblah-feed`
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=blahblah&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=blahblah,blahcountry&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
                         :response => page)
     page = `cat spec/lib/testData/lastfm/ottawa-page-1`
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,canada&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
                         :response => page)
    
-    lastfm = lambda {Lastfm.new('blahblah')}.should raise_error(InvalidLocationException)
-    lastfm2 = lambda {Lastfm.new('ottawa')}.should_not raise_error
+    lastfm = Lastfm.new('blahblah', 'blahprov', 'blahcountry')
+    lambda {lastfm.location_exists?}.should raise_error(InvalidLocationException)
+    lastfm2 = Lastfm.new('ottawa', 'ontario', 'canada')
+    lambda {lastfm2.location_exists?}.should_not raise_error
   end
 
   it "should populate the queue with concerts from an xml page" do
     page = `cat spec/lib/testData/lastfm/ottawa-page-1`
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,canada&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
                         :response => page)
 
-    lastfm = Lastfm.new('ottawa')
+    lastfm = Lastfm.new('ottawa', 'ontario', 'canada')
     lastfm.stub(:total_pages_of_feed_for_location).and_return(2)
     Item.should_receive(:new).exactly(10).times
     lastfm.populate_queue_with_items
     lastfm.event_queue.length.should eql(10)
   end
 
- #it "should have populate_queue_with_items return nil if no more events to load" do
- #  page = `cat spec/lib/testData/lastfm/ottawa-page-1`
- #  FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
- #                      :response => page)
-
- #  lastfm = Lastfm.new('ottawa')
- #  lastfm.stub(:total_pages_of_feed_for_location).and_return(1)
- #  lastfm.populate_queue_with_items.should eql 10 # Loaded first page succesfully
- #  lastfm.populate_queue_with_items.should eql 0
- #end
-
   it "should keep giving next_concert over the feed page 1, page 2 boundary" do
     page1 = `cat spec/lib/testData/lastfm/ottawa-page-1`
     page2 = `cat spec/lib/testData/lastfm/ottawa-page-2`
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,canada&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
                          :response => page1)
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=2", 
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,canada&api_key=b819d5a155749ad083fcd19407d4fc69&page=2", 
                          :response => page2)
-    lastfm = Lastfm.new('ottawa')
+    lastfm = Lastfm.new('ottawa', 'ontario', 'canada')
 
     # 10 events per page
     lastfm.event_queue.empty?.should be_true
@@ -188,9 +212,9 @@ describe Lastfm do
   it "should keep adding events until end of feed if end_date is after the last xml event"
 
   it "should generate the api url when page is given" do
-    lastfm = Lastfm.new('ottawa')
+    lastfm = Lastfm.new('ottawa', 'ontario', 'canada')
     url = lastfm.generate_geo_api_url_page(2)
-    url.should eql("http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=2")
+    url.should eql("http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,ontario&api_key=b819d5a155749ad083fcd19407d4fc69&page=2")
   end
 
 end
