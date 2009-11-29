@@ -1,17 +1,14 @@
-require 'nokogiri'
+require 'xmlfeed.rb'
 
-class Lastfm
-  attr_reader :event_queue  # FIXME: I should be private!  Needs to be public for testing?
+class Lastfm < XMLFeed
+  attr_reader :loc
 
   @@APIKEY = "b819d5a155749ad083fcd19407d4fc69"
 
-  def initialize(loc)
-    @loc = loc
+  def initialize(city, state, country)
+    @loc = location_string(city, state, country)
     @event_queue = Queue.new
     @loaded_page = 0
-    if !location_exists? 
-      raise InvalidLocationException
-    end
   end
 
   def create_events_from_until(start_date, end_date)
@@ -41,6 +38,8 @@ class Lastfm
     @loaded_page += 1
     url = generate_geo_api_url_page(@loaded_page)
     doc = Nokogiri::XML open(url)
+
+    location_exists? 
 
     doc.xpath('//event').each do |event|
       venue = Venue.new
@@ -86,17 +85,22 @@ class Lastfm
     item.begin_at >= (start_date - 1.day) && item.begin_at <= end_date
   end
 
+  def location_string(city, state, country)
+    result = []
+    result << city if city
+    result << state if state
+    result << country if country unless (city && state)
+    result.join(',')
+  end
+
   def location_exists?
     begin
       open generate_geo_api_url_page(1)
     rescue
-      return false
+      raise InvalidLocationException
     end
 
     true
   end
 
-end
-
-class InvalidLocationException < Exception
 end

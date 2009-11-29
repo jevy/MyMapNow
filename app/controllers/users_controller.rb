@@ -1,17 +1,14 @@
 class UsersController < ApplicationController
-  #  before_filter :require_no_user, :only => [:new, :create]
-  #  before_filter :require_user, :only => [:show, :edit, :update]
 
   def new
     @user = User.new
   end
 
   def create
-    #Change to make new session
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Account registered!"
-      redirect_to :controller=>"user_sessions", :action=>"create", :params=>params
+      redirect_to :controller=>"user_sessions", :action=>"create"
     else
       render :action => :new
     end
@@ -34,4 +31,5 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+  
 end

@@ -17,7 +17,7 @@ describe ApplicationHelper do
 
   it "should return nil for the user if no sesison is created" do
     activate_authlogic
-    @application_controller.current_user.should be_nil    
+    @application_controller.current_user.should be_nil
   end
 
   it "should allow user sesions to be created" do

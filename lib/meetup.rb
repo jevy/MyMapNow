@@ -1,13 +1,19 @@
-require 'nokogiri'
+require 'xmlfeed.rb'
 
-class Meetup
-  attr_reader :event_queue  # FIXME: I should be private!  Needs to be public for testing?
+class Meetup < XMLFeed
 
   @@APIKEY = "f2138374a26136042463e4e8e5d51"
 
-  def initialize(country, city)
+  def initialize(city, state, country)
     @loc_city = city
-    @loc_country = country
+    if country == "canada"
+      @loc_country = 'CA'
+    elsif country == 'US'
+      @loc_country = 'US'
+    else 
+      raise InvalidLocationException 
+    end
+
     @event_queue = Queue.new
   end
 
