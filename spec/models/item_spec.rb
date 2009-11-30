@@ -240,5 +240,49 @@ describe "Relationships" do
     @item.destroy if defined?(@item)
     @item2.destroy if defined?(@item2)
   end
+end
+
+
+describe "Duplicate event checking" do
+  before(:each) do
+    @item_params = {
+      :title => "Grey Cup 2009",
+      :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
+      :latitude => 51.071504,
+      :longitude => -114.122307,
+      :address => 'McMahon Stadium, Calgary, Alberta'
+    }
+  end
+
+  it "should mark a single item as valid" do
+    Item.new(@item_params).valid?.should be_true
+    Item.new(@item_params).save.should be_true
+    Item.find(:all).length.should eql(1)
+  end
+
+  it "should not allow two items with exactly the same name to be valid same case" do
+    Item.new(@item_params).save.should be_true
+    Item.find(:all).length.should eql(1)
+    Item.new(@item_params).valid?.should be_false
+  end
+
+  it "should not allow two items with exactly the same name to be valid, different cases first letter" do
+    Item.new(@item_params).save.should be_true
+    @item_params[:title] = "grey Cup 2009"
+    Item.new(@item_params).valid?.should be_false
+  end
+
+  it "should not allow two items with exactly the same name to be valid, different cases middle letter" do
+    Item.new(@item_params).save.should be_true
+    @item_params[:title] = "Grey cup 2009"
+    Item.new(@item_params).valid?.should be_false
+  end
+
+    it "should not allow two items with exactly the same name to be valid, opposite cases" do
+    Item.new(@item_params).save.should be_true
+    @item_params[:title] = "gREY cUP 2009"
+    Item.new(@item_params).valid?.should be_false
+  end
   
+
 end

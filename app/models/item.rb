@@ -1,3 +1,5 @@
+require 'levenshtein'
+
 class Item < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :begin_at
@@ -7,6 +9,8 @@ class Item < ActiveRecord::Base
   validates_presence_of :latitude, :unless => :address_provided?
   validates_presence_of :longitude, :unless => :address_provided?
   validates_presence_of :address, :unless => :latitude_and_longitude_provided?
+
+  validates_uniqueness_of :title, :case_sensitive=>false, :if=>Proc.new{|item| item.matches_other_item}
 
   after_create :geocode_address
   belongs_to :user
@@ -44,5 +48,18 @@ class Item < ActiveRecord::Base
 
   def latitude_and_longitude_provided?
     !(latitude.nil? and longitude.nil?)
+  end
+
+  def matches_other_item
+#    return true
+    puts "Items length #{Item.find(:all).length}"
+    Item.find(:all).each do |current_item|
+      puts "Levenshtein distance: #{Levenshtein.distance(current_item.title.downcase, self.title)}"
+      if Levenshtein.distance(current_item.title.downcase, item_title) <3
+        return 
+        break
+      end
+    end
+
   end
 end
