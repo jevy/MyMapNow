@@ -61,12 +61,12 @@ describe UsersController do
 
   describe "update action" do
 
-    it "should flash a notice when a user is updated" do
-      ApplicationController.stub!(:current_user).and_return(mock_user(:update_attributes=>true))
-      UsersController.stub!(:current_user).and_return(mock_user(:update_attributes=>true))
-      post :update, :user => @user_params
-      flash[:notice].should eql("Account updated!!")
-    end
+#    it "should flash a notice when a user is updated" do
+#      ApplicationController.stub!(:current_user).and_return(mock_user(:update_attributes=>true))
+#      UsersController.stub!(:current_user).and_return(mock_user(:update_attributes=>true))
+#      post :update, :user => @user_params
+#      flash[:notice].should eql("Account updated!!")
+#    end
 
   end
   

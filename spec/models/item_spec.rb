@@ -283,6 +283,12 @@ describe "Duplicate event checking" do
     @item_params[:title] = "gREY cUP 2009"
     Item.new(@item_params).valid?.should be_false
   end
+
+    it "should not allow the same string w/o spaces to be saved twice" do
+    Item.new(@item_params).save.should be_true
+    @item_params[:title] = "GreyCup2009"
+    Item.new(@item_params).valid?.should be_false
+  end
   
 
 end
