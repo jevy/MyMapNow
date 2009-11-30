@@ -51,7 +51,7 @@ class Item < ActiveRecord::Base
   end
 
   def matches_other_item
-#    return true
+    return true
     puts "Items length #{Item.find(:all).length}"
     Item.find(:all).each do |current_item|
       puts "Levenshtein distance: #{Levenshtein.distance(current_item.title.downcase, self.title)}"
