@@ -14,51 +14,41 @@
     <script src="http://j.maxmind.com/app/geoip.js"></script>
     <script src="http://static.simile.mit.edu/timeline/api-2.3.0/timeline-api.js?bundle=true"></script>
 
-<%#*<script type="text/javascript">%>
-<%#*var userflyHost = (("https:" == document.location.protocol) ? "https://secure.userfly.com" : "http://asset.userfly.com");%>
-<%#*document.write(unescape("%3Cscript src='" + userflyHost + "/users/33910/userfly.js' type='text/javascript'%3E%3C/script%3E"));%>
-<%#*</script>%>
-
     <%= javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min', 'perfecttime/PerfectTime', 'application', 'old_map', 'jquery.form', :cache => true %>
     <%= javascript_include_tag 'geoip', 'map' %>
     <%= javascript_include_tag 'items', 'timeline' %>
-
   </head>
   <body>
   <header>
-    <p><input type="text" id="search-box" name="search-box" value=""></p>
-    <p><button id="search" onclick="Map.search($('#search-box').val());">Search</button></p>
-    <p>
-      <%=  link_to(image_tag("/images/login_button.jpg", :alt=>'Login', :height=>"10px"), :controller=>"user_sessions", :action=>"new") unless @current_user_session%>
-    </p>  
+    <img src="images/mymapnow_logo.png" />
   </header>
   <section>
     <%= yield %>
   </section>
   <aside>
     <h1>
-      Event Details
+      <span class="tab">Comments</span><span class="tab selected">Events</span><span class="tab last"></span>
     </h1>
+    <br style="clear: left; "/>
+    <h2>
+      <span class="filter">Current View</span>
+      <span class="filter">This City</span>
+      <span class="filter">Friends</span>
+    </h2>
+    <br style="clear: left; "/>
+    <h2>
+      <span class="search-items">Search Items</span>
+    </h2>
+    <br style="clear: left; "/>
     <ol>
     </ol>
   </aside>
   <div id="spacer">
-    <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') if @current_user_session%>
+    <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %>
   </div>
   <div id="timeline"></div>
 
-  <!--<div id="date-container">
-    <div id="date-range">
-      <div id="label-left"><span></span></div>
-      <div id="label-right"><span></span></div>
-    </div>
-  </div>-->
-  <!--<footer>
-    <p class="copyright">Copyright © 2009 MyMapNow - All Rights Reserved</p>
-    "links"><%= link_to 'Submit News/Events', new_item_path, :id => 'add_new_item' %>   <a href="#">About MyMapNow</a>    <a href="#">Privacy Policy</a>   <a href="#">Terms and Conditions</a></p>
-    </footer>-->
   <div id="dialogs">
-<%# render 'items/form' %>
   </div>
 </body>
 </html>

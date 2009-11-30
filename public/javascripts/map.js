@@ -37,4 +37,3 @@ var Map = {
 $(document).bind('map:change', Map.cleanup);
 $(Map.initialize);
 $(Map.search('Ottawa, ON'));
-$(function() { $('input[name=search-box]').val('Ottawa, ON'); });
