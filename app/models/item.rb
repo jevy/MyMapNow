@@ -55,11 +55,8 @@ class Item < ActiveRecord::Base
   def matches_other_item
     return true if self.title.nil? #Bah! Feels hackish, config wouldn't handle nil
     current_item_simplified = self.title.downcase.gsub(' ','')
-    puts "string 1 #{current_item_simplified}"
     Item.find(:all).each do |current_item|
       comp_string_comparison = current_item.title.downcase.gsub(' ','')
-      puts "string 2 #{comp_string_comparison}"
-      puts "distance #{Levenshtein.distance(comp_string_comparison,current_item_simplified )}"
       return true if (Levenshtein.distance(comp_string_comparison,current_item_simplified ) < 3)
     end
     false
