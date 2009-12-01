@@ -216,7 +216,7 @@ describe "Relationships" do
     @item = Item.new(:user=>@user, :title=>'test_item',
       :begin_at=>Time.now, :address=>'6307 Centre Street SW, Calgary Alberta',
       :latitude=>50.9952449, :longitude=>-114.0638135)
-    @item2 = Item.new(:user=>@user, :title=>'test_item2',
+    @item2 = Item.new(:user=>@user, :title=>'cant match first item',
       :begin_at=>Time.now, :address=>'425 5 Street SW, Calgary Alberta',
       :latitude=>51.0493941, :longitude=>-114.0735727)
   end
@@ -254,41 +254,44 @@ describe "Duplicate event checking" do
     }
   end
 
-  it "should mark a single item as valid" do
-    Item.new(@item_params).valid?.should be_true
-    Item.new(@item_params).save.should be_true
+  it "should mark a single item as valid and save it accordingly" do
+    Item.create(@item_params).should be_valid
     Item.find(:all).length.should eql(1)
   end
 
   it "should not allow two items with exactly the same name to be valid same case" do
-    Item.new(@item_params).save.should be_true
+    Item.create(@item_params).should be_valid
     Item.find(:all).length.should eql(1)
-    Item.new(@item_params).valid?.should be_false
+    Item.new(@item_params).should_not be_valid
   end
 
   it "should not allow two items with exactly the same name to be valid, different cases first letter" do
-    Item.new(@item_params).save.should be_true
+    Item.create(@item_params).should be_true
     @item_params[:title] = "grey Cup 2009"
-    Item.new(@item_params).valid?.should be_false
+    Item.new(@item_params).should_not be_valid
   end
 
   it "should not allow two items with exactly the same name to be valid, different cases middle letter" do
-    Item.new(@item_params).save.should be_true
+    Item.create(@item_params).should be_valid
     @item_params[:title] = "Grey cup 2009"
-    Item.new(@item_params).valid?.should be_false
+    Item.new(@item_params).should_not be_valid
   end
 
-    it "should not allow two items with exactly the same name to be valid, opposite cases" do
-    Item.new(@item_params).save.should be_true
+  it "should not allow two items with exactly the same name to be valid, opposite cases" do
+    Item.create(@item_params).should be_valid
     @item_params[:title] = "gREY cUP 2009"
-    Item.new(@item_params).valid?.should be_false
+    Item.new(@item_params).should_not be_valid
   end
 
-    it "should not allow the same string w/o spaces to be saved twice" do
-    Item.new(@item_params).save.should be_true
-    @item_params[:title] = "GreyCup2009"
-    Item.new(@item_params).valid?.should be_false
+  it "should not allow the same string w/o spaces to be saved twice" do
+    Item.create(@item_params).should be_valid
+    @item_params[:title].gsub(' ', '')
+    Item.new(@item_params).should_not be_valid
   end
-  
 
+  it "should allow 2 characters to be different" do
+    Item.create(@item_params).should be_valid
+    @item_params.merge(:title=>'Brey Lup 2009')
+    Item.new(@item_params).should_not be_valid    
+  end
 end

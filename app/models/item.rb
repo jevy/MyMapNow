@@ -10,9 +10,7 @@ class Item < ActiveRecord::Base
   validates_presence_of :longitude, :unless => :address_provided?
   validates_presence_of :address, :unless => :latitude_and_longitude_provided?
 
-  validates_uniqueness_of :title, :allow_nil=>true, :allow_blank=>true,
-    :case_sensitive=>false, 
-    :if=>:matches_other_item
+  validate :title, :unique_item_title
 
   after_create :geocode_address
   belongs_to :user
@@ -52,14 +50,19 @@ class Item < ActiveRecord::Base
     !(latitude.nil? and longitude.nil?)
   end
 
-  def matches_other_item
-    return true if self.title.nil? #Bah! Feels hackish, config wouldn't handle nil
-    current_item_simplified = self.title.downcase.gsub(' ','')
+  def unique_item_title
     Item.find(:all).each do |current_item|
-      comp_string_comparison = current_item.title.downcase.gsub(' ','')
-      return true if (Levenshtein.distance(comp_string_comparison,current_item_simplified ) < 3)
+      unless current_item.eql?(self)
+        if Levenshtein.distance(current_item.title.simplify, self.title.simplify ) < 3
+          errors.add_to_base "Duplicate event title."
+        end
+      end
     end
-    false
   end
-  
+end
+
+class String
+  def simplify
+    self.downcase.gsub(' ','')
+  end
 end
