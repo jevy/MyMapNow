@@ -2,5 +2,6 @@ require 'meetup'
 
 ## run this with Rails' script/runner
 
-meetup = Meetup.new('CA', 'ottawa')
-meetup.create_events_from_until(Time.now, Time.now + 7.days)
+loc = Location.new('ottawa', 'ontario', 'CA')
+debugger
+items = Meetup.get_items(loc, Time.now, Time.now + 7.days)

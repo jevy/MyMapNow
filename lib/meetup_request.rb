@@ -61,7 +61,9 @@ class MeetupRequest < FeedRequest
   # @return all items on page as Nokogiri elements
   def grab_xml_events_from_page
     xml = Nokogiri::XML open url
+    @items_left_to_process = false
     xml.xpath('//item')
+    # only one page so no more items to process
   end
 
   def map_xml_to_item(event)
