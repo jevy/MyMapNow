@@ -5,6 +5,7 @@ var Map = {
     Map.map = new google.maps.Map($('#map')[0], {
       zoom: 13,
       center: new google.maps.LatLng(lat, lng),
+			mapTypeControl: false,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
     // FIXME: the next line is untested

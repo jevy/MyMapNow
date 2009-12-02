@@ -2,8 +2,8 @@ body, input, select, textarea { font-family:"Lucida Grande", Tahoma, Verdana, sa
 body, p, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, fieldset, button, form, legend, input, textarea {padding: 0;  margin: 0;}
 
 /* Structure */
-html								{margin:0; padding:0;}
-body								{background:#fff; overflow:hidden; color:#222;}
+html								{margin:0; padding:0; height: 100%;}
+body								{background:#fff; overflow:hidden; color:#222; height: 100%;}
 a										{color:#06C; text-decoration:none;}
 a:hover							{text-decoration:underline;}
 
@@ -104,4 +104,4 @@ img.gravatar { width: 25px; height: 25px;}
 dt {clear: left; font-weight: bold; margin-top: 5px;}
 dt img {float: left; margin: 0 3px 3px 0;}
 
-#map                {height:100%;}
+#map                {height:98%;}
