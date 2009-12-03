@@ -51,15 +51,6 @@ var MMNTimeline = {
         }
     },
 
-    on_resize: function() {
-        if (this.resizeTimerID == null) {
-            this.resizeTimerID = window.setTimeout(function() {
-                this.resizeTimerID = null;
-                tl.layout();
-            }, 500);
-        }
-    },
-
     scroll_listener: function(scrolled_band) {
         Map.fetch();
     }
@@ -68,9 +59,5 @@ var MMNTimeline = {
 //TODO: Might be better to have this init code in a central application file..opinions?
 $(document).ready(function() {
     MMNTimeline.initialize();
-});
-
-$(window).resize(function() {
-    MMNTimeline.on_resize();
 });
 
