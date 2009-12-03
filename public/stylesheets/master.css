@@ -116,11 +116,12 @@ footer a			{color:#fff; margin-left:15px;}
 #spacer a#add-event {display:block; position:fixed; bottom:12px; left:200px; width: 53px; height:53px; background:url(images/buttonAddEvent.png); #555555; z-index: 150} 
 #spacer a#add-event span{ display:none; }
 
-#timeline   {position:absolute; bottom:0; left:320px; right: 0; height:40px;}
+#timeline   {position:absolute; bottom:0; left:320px; right: 0; height:100px;}
 
 img.gravatar { width: 25px; height: 25px;}
 
 dt {clear: left; font-weight: bold; margin-top: 5px;}
 dt img {float: left; margin: 0 3px 3px 0;}
 
-#map { height:98%; min-width: 480px; }
+#map {height:98%;}
+
