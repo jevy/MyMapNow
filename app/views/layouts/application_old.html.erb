@@ -6,7 +6,7 @@
     <%- if protect_against_forgery? -%>
       <meta name="authenticity-token" id="authenticity-token" content="<%= form_authenticity_token %>">
     <%- end -%>
-    <%= stylesheet_link_tag 'dialog/jquery-ui-1.7.2.custom.css', 'master', :cache => true %>
+    <%= stylesheet_link_tag 'dialog/jquery-ui-1.7.2.custom.css', 'layout', :cache => true %>
     <!--[if IE]>
     <%= javascript_include_tag 'html5' %>
     <![endif]-->
@@ -17,35 +17,21 @@
     <%= javascript_include_tag 'items' %>
   </head>
   <body>
-  <header>
-    <img src="images/mymapnow_logo.png" /><img src="images/buttonLogin.png" align="right" hspace="20"/>
-  </header>
-  <section>
-    <%= yield %>
-  </section>
-  <aside>
-    <h1>
-      <span class="tab"><img src="images/tmpComments.png" /></span><span class="tab selected"><img src="images/tmpEvents.png" /></span><span class="tab last"></span>
-    </h1>
-    <br style="clear: left; "/>
-    <h2>
-      <span class="filter"><img src="images/buttonCurrentView_on.png" /></span>
-      <span class="filter"><img src="images/buttonThisCity_off.png" /></span>
-      <span class="filter"><img src="images/buttonFriends_off.png" /></span>
-    </h2>
-    <br style="clear: left; "/>
-    <h2>
-      <span class="search-items"><img src="images/searchItems.png" /></span>
-    </h2>
-    <br style="clear: left; "/>
-    <ol>
-    </ol>
-  </aside>
-  <div id="spacer">
-    <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %>
-  </div>
-
-  <div id="dialogs">
-  </div>
-</body>
+    <wrapper>
+      <sidebar-wrapper>
+        <sidebar-header>
+          <img src="images/mymapnow_logo.png" /><img src="images/buttonLogin.png" align="right"/>
+        </sidebar-header>
+        <aside>
+          <sidebar-tab-comments>&nbsp;</sidebar-tab-comments>
+          <sidebar-tab-events>&nbsp;</sidebar-tab-events>
+        </sidebar-tab-wrapper>
+      </aside>
+      <div id="map-wrapper">
+        <div id="map">&nbsp;</div>
+      </div>
+      <div id="timeline-wrapper">&nbsp;</div>
+    </wrapper>
+  </body>
 </html>
+<script>Map.initialize();</script>

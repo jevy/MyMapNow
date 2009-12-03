@@ -17,8 +17,10 @@ header {
 }
 
 header img {
+	float: left;
   padding-top: 12px;
   padding-left: 12px;
+	padding-right: 12px;
 }
 
 aside {
