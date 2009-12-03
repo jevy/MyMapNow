@@ -1,4 +1,4 @@
-body, input, select, textarea { font-family:"Lucida Grande", Tahoma, Verdana, sans-serif; }
+body, input, select, textarea { font-family: Tahoma, Verdana, sans-serif; }
 body, p, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, fieldset, button, form, legend, input, textarea { padding: 0;  margin: 0; }
 
 /* Structure */
@@ -74,11 +74,12 @@ aside h2 span.search-items {
 }
 
 aside input { 
-		background-color: #78cbf3; 
-		height: 20px;
-    border: none; 
-    font-size: 12px; 
+		background-color: #78cbf3; 	
+    border: 1px solid #3bb9e2; 
+    font-size: 14px; 
     color: white;
+	  padding: 3px 12px 3px 12px;
+		text-align: center;
 		vertical-align: top;
 }
 
@@ -122,4 +123,4 @@ img.gravatar { width: 25px; height: 25px;}
 dt {clear: left; font-weight: bold; margin-top: 5px;}
 dt img {float: left; margin: 0 3px 3px 0;}
 
-#map                {height:98%;}
+#map { height:98%; min-width: 480px; }
