@@ -17,17 +17,21 @@
     <%= javascript_include_tag 'items' %>
   </head>
   <body>
-    <div id="wrapper">
-      <div id="sidebar-wrapper">
-        <div id="sidebar-header">
+    <wrapper>
+      <sidebar-wrapper>
+        <sidebar-header>
           <img src="images/mymapnow_logo.png" /><img src="images/buttonLogin.png" align="right"/>
-        </div>
-      </div>
-      <div id="map_wrapper">
+        </sidebar-header>
+        <aside>
+          <sidebar-tab-comments>&nbsp;</sidebar-tab-comments>
+          <sidebar-tab-events>&nbsp;</sidebar-tab-events>
+        </sidebar-tab-wrapper>
+      </aside>
+      <div id="map-wrapper">
         <div id="map">&nbsp;</div>
       </div>
-      <div id="footer">&nbsp;</div>
-    </div>
+      <div id="timeline-wrapper">&nbsp;</div>
+    </wrapper>
   </body>
 </html>
 <script>Map.initialize();</script>

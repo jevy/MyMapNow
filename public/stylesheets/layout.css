@@ -6,19 +6,21 @@ body, p, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, fieldset, button, 
 html { margin:0; padding:0; height: 100%; }
 body { margin: 0; padding: 0; height: 100%; }
 
+/* Main Wrapper - to give baseline width and height to keep Google Maps happy */
+wrapper { width: 100%; height: 100%; }
 
-#wrapper { width: 100%; height: 100%; }
+/* Sidebar Block */
+sidebar-wrapper { background: white; width: 259px; height: 100%; position: fixed; border-right: 1px solid #d4d4d4;}
+sidebar-header { display:block; background: white; height: 48px; border-bottom: 1px solid #d4d4d4; }
+sidebar-header img { float: left; padding-top: 12px; padding-left: 13px; padding-right: 13px; }
 
-#sidebar-wrapper { background: white; width: 258px; height: 100%; position: fixed; border-right: 2px solid #d4d4d4;}
-#sidebar-header { display:block; background: white; height: 48px; border-bottom: 2px solid #d4d4d4; }
-img {
-	float: left;
-  padding-top: 12px;
-  padding-left: 12px;
-	padding-right: 12px;
-}
+aside { display: block; height: 80px; border-bottom: 1px solid #d4d4d4; }
+sidebar-tab-comments { display: block; float: left; width: 94px; height: 40px; border-right: 1px solid #d4d4d4; border-bottom: 1px solid #d4d4d4; }
+sidebar-tab-events { display: block; float: left; width: 94px; height: 40px; border-right: 1px solid #d4d4d4; border-bottom: 1px solid #d4d4d4; }
 
-#map_wrapper { background: white; width: 100%; height: 100%; position: fixed; left: 260px; z-index: 100px; }
+/* Map Block */
+#map-wrapper { background: white; width: 100%; height: 100%; position: fixed; left: 260px; z-index: 100px; }
 #map { width: 100%; max-height: 100%; height: 100%;}
 
-#footer { background: white; width: 100%; height: 38px; position: fixed; left: 260px; bottom: 0px; border-top: 2px solid #d4d4d4; }
+/* Timeline Block */
+#timeline-wrapper { background: white; width: 100%; height: 38px; position: fixed; left: 260px; bottom: 0px; border-top: 1px solid #d4d4d4; }
