@@ -1,10 +1,9 @@
-var tl, band; // FIXME: bad globals
-var resizeTimer = null;
+var tl; // FIXME: bad globals
 
 var MMNTimeline = {
+    band: null,
     eventSource: null,
     resizeTimerID: null,
-    dateTimeFormatStr: "ddd mmm dd yyyy HH:MM:ss Z",
 
     initialize: function() {
         this.eventSource = new Timeline.DefaultEventSource(0);
@@ -16,8 +15,8 @@ var MMNTimeline = {
                 eventSource: this.eventSource
             })];
         tl = Timeline.create(document.getElementById("timeline"), bandInfos);
-        band = tl.getBand(0);
-        band.addOnScrollListener(this.scroll_listener);
+        this.band = tl.getBand(0);
+        this.band.addOnScrollListener(this.scroll_listener);
     },
 
     load_events: function(items) {
