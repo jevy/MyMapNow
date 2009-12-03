@@ -16,26 +16,25 @@
     <%= javascript_include_tag 'geoip', 'map' %>
     <%= javascript_include_tag 'items' %>
   </head>
-  <body>
+  <body onload="Map.initialize(); Map.updateSearchBoxWithCurrentLocation();">
   <header>
-    <img src="images/mymapnow_logo.png" /><img src="images/buttonLogin.png">
+    <img src="images/mymapnow_logo.png" /> <!-- <img src="images/buttonLogin.png"> -->
   </header>
   <section>
     <%= yield %>
   </section>
   <aside>
     <h1>
-      <span class="tab"><img src="images/tmpComments.png" /></span><span class="tab selected"><img src="images/tmpEvents.png" /></span><span class="tab last"></span>
+      <span class="tab selected"><img src="images/tmpEvents.png" /></span>
+      <span class="tab"> <!-- <img src="images/tmpComments.png" /> --> </span>
+      <span class="tab last"></span>
     </h1>
     <br style="clear: left; "/>
     <h2>
-      <span class="filter"><img src="images/buttonCurrentView_on.png" /></span>
-      <span class="filter"><img src="images/buttonThisCity_off.png" /></span>
-      <span class="filter"><img src="images/buttonFriends_off.png" /></span>
-    </h2>
-    <br style="clear: left; "/>
-    <h2>
-      <span class="search-items"><img src="images/searchItems.png" /></span>
+      <span class="search-items">
+        <button class="search" onclick="Map.search($('#search-box').val());">&nbsp;</button>
+        <img class="search-ends" src="images/roundedBoxSmall_left_on.png" /><input type="text" id="search-box" name="search-box" value=" "/><img class="search-ends" src="images/roundedBoxSmall_right_on.png" />
+      </span>
     </h2>
     <br style="clear: left; "/>
     <ol>
