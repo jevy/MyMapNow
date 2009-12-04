@@ -108,7 +108,7 @@ aside .event  div     { background-position: 0 -305px; }
 
 section				{display:block; z-index:6; position:absolute; left:286px; right:0; top:0px; bottom:26px;}
 
-footer				{display:block; position:absolute; height:26px; border-top:1px solid #676767; background:#111 url(images/header.png) repeat-x; color:#999; padding:0 10px; line-height:26px; left:0; right:0; bottom:0; text-align:right;}
+footer				{display:block; position:absolute; height:26px; border-top:1px solid #676767; background:#111 url(/images/header.png) repeat-x; color:#999; padding:0 10px; line-height:26px; left:0; right:0; bottom:0; text-align:right;}
 footer .copyright		{float:left;}
 footer a			{color:#fff; margin-left:15px;}
 
@@ -116,12 +116,12 @@ footer a			{color:#fff; margin-left:15px;}
 #spacer a#add-event {display:block; position:fixed; bottom:12px; left:200px; width: 53px; height:53px; background:url(images/buttonAddEvent.png); #555555; z-index: 150} 
 #spacer a#add-event span{ display:none; }
 
-#timeline   {position:absolute; bottom:0; left:320px; right: 0; height:100px;}
+#timeline   {position:absolute; bottom:0; left: 285px; right: 0; height: 40px; border-left: 1px solid lightgray;}
 
 img.gravatar { width: 25px; height: 25px;}
 
 dt {clear: left; font-weight: bold; margin-top: 5px;}
 dt img {float: left; margin: 0 3px 3px 0;}
 
-#map {height:98%;}
+#map { height:99%; }
 
