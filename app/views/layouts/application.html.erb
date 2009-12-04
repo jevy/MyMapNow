@@ -26,8 +26,8 @@
   </section>
   <aside>
     <h1>
-      <span class="tab selected"><img src="images/tmpEvents.png" /></span>
-      <span class="tab"> <!-- <img src="images/tmpComments.png" /> --> </span>
+      <span class="tab selected"><img src="images/events.png" /></span>
+      <span class="tab"> <!-- <img src="images/tmpComments.png" /> Comments --> </span>
       <span class="tab last"></span>
     </h1>
     <br style="clear: left; "/>
@@ -38,11 +38,16 @@
       </span>
     </h2>
     <br style="clear: left; "/>
+    <events>
     <ol>
     </ol>
+    </events>
   </aside>
   <div id="spacer">
     <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %>
+    <footer>
+      <p><a class="copyright" href="#">About MyMapNow</a><br /><a class="copyright" href="#">Privacy Policy</a></p>
+    </footer>
   </div>
 
   <div id="dialogs">

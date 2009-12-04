@@ -1,10 +1,10 @@
-body, input, select, textarea { font-family: Tahoma, Verdana, sans-serif; }
+body, input, select, textarea { font-family: Tahoma, Verdana, sans-serif; color: darkgrey; font-size: 12px;}
 body, p, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, fieldset, button, form, legend, input, textarea { padding: 0;  margin: 0; }
 
 /* Structure */
 html								{margin:0; padding:0; height: 100%;}
 body								{background:#fff; overflow:hidden; color:#222; height: 100%;}
-a										{color:#06C; text-decoration:none;}
+a										{color: darkgrey; text-decoration:none; font-size: 10px;}
 a:hover							{text-decoration:underline;}
 
 header {
@@ -25,11 +25,11 @@ header img {
 
 aside {
   background:#fff;
+	color: darkgrey;
   z-index:5;
   display:block;
   width:285px;
-  border-right:1px solid lightgray;
-  border-bottom: 1px solid lightgray;
+  border-right:1px solid lightgrey;
 }
 
 aside h1 {
@@ -58,7 +58,7 @@ aside h1 span.last {
 aside h2 {
   display: block;
   float: left;
-  font-size:15px;
+  font-size:14px;
   height: 34px;
 }
 
@@ -83,13 +83,13 @@ aside input {
 		vertical-align: top;
 }
 
-aside img.search-ends { vertical-align: top; height: 20px; }
-
 aside button.search { background: url('/images/buttonLocate_on.png') no-repeat; border: none; vertical-align: top; width: 24px; height: 24px; }
 
 aside ol {
   list-style-type:none;
   height: 100%;
+	border-top: 1px solid #999;
+	bottom: 40px;
 }
 
 aside li {
@@ -97,6 +97,8 @@ aside li {
   padding:8px 10px 8px 43px;
   border-bottom:1px solid #999;
 }
+
+events { bottom: 40px; }
 
 aside li div          { background: url(images/pointers.png) no-repeat top left; }
 aside .null div       { background-position: 0 -30px; } 
@@ -106,18 +108,39 @@ aside .discussion div { background-position: 0 -195px; }
 aside .movie  div     { background-position: 0 -250px; }
 aside .event  div     { background-position: 0 -305px; }
 
-section				{display:block; z-index:6; position:absolute; left:286px; right:0; top:0px; bottom:26px;}
+section				{
+	display:block; 
+	z-index:6; 
+	position:absolute; 
+	left:286px; 
+	right:0; 
+	top:0px; 
+	bottom:41px;
+}
 
-footer				{display:block; position:absolute; height:26px; border-top:1px solid #676767; background:#111 url(/images/header.png) repeat-x; color:#999; padding:0 10px; line-height:26px; left:0; right:0; bottom:0; text-align:right;}
-footer .copyright		{float:left;}
-footer a			{color:#fff; margin-left:15px;}
+footer				{ 
+	display:block; 
+	position:absolute; 
+	height:35px; 
+	padding:0 10px; 
+	line-height:16px; 
+	top: 3px;
+	left:0; 
+	right:0; 
+	bottom:0; 
+	text-align: left; 
+	font-size: 9px;
+}
+
+footer .copyright		{ float:left; }
+footer a {color: lightblue; margin-left:10px; }
 
 #spacer     {position:fixed; bottom:0; left:0; width: 285px; height:40px; border-top: 1px solid lightgray;}
 #spacer a#add-event {display:block; position:fixed; bottom:12px; left:200px; width: 53px; height:53px; background:url(images/buttonAddEvent.png); #555555; z-index: 150} 
 #spacer a#add-event span{ display:none; }
 
 /* Formatting for map related stuffs */
-#map { height:98%; 	border-bottom: 1px solid lightgray; }
+#map { height:100%; border-bottom: 1px solid lightgray; }
 
 /* Formatting for timeline related stuffs */
 #timeline { 
