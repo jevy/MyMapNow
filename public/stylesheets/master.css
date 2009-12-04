@@ -116,12 +116,24 @@ footer a			{color:#fff; margin-left:15px;}
 #spacer a#add-event {display:block; position:fixed; bottom:12px; left:200px; width: 53px; height:53px; background:url(images/buttonAddEvent.png); #555555; z-index: 150} 
 #spacer a#add-event span{ display:none; }
 
-#timeline   {position:absolute; bottom:0; left: 285px; right: 0; height: 40px; border-left: 1px solid lightgray;}
+/* Formatting for map related stuffs */
+#map { height:98%; 	border-bottom: 1px solid lightgray; }
 
+/* Formatting for timeline related stuffs */
+#timeline { 
+	position: absolute; 
+	height: 40px; 
+	bottom:0; 
+	left: 286px; 
+	right: 0; 
+	border-left: 1px solid lightgray; 
+	border-right: 1px solid lightgray; 
+}
+
+/* Formatting for misc. stuffs */
 img.gravatar { width: 25px; height: 25px;}
 
 dt {clear: left; font-weight: bold; margin-top: 5px;}
 dt img {float: left; margin: 0 3px 3px 0;}
 
-#map { height:99%; }
 
