@@ -16,6 +16,25 @@
     <%= javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min', 'perfecttime/PerfectTime', 'old_map', 'jquery.form', :cache => true %>
 	<%= javascript_include_tag 'timeline' %>
     <%= javascript_include_tag 'geoip', 'map', 'items' %>
+    <SCRIPT TYPE="text/javascript">
+    <!--
+    function submitenter(myfield,e)
+    {
+    var keycode;
+    if (window.event) keycode = window.event.keyCode;
+    else if (e) keycode = e.which;
+    else return true;
+
+    if (keycode == 13)
+       {
+       Map.search($('#search-box').val());
+       return false;
+       }
+    else
+       return true;
+    }
+    //-->
+    </SCRIPT>
   </head>
   <body onload="Map.initialize(); Map.updateSearchBoxWithCurrentLocation();">
   <header>
@@ -34,7 +53,7 @@
     <h2>
       <span class="search-items">
         <button class="search" onclick="Map.search($('#search-box').val());">&nbsp;</button>
-        <input type="text" id="search-box" name="search-box" value=" "/>
+        <input type="text" id="search-box" name="search-box" value=" " onKeyPress="return submitenter(this,event)" />
       </span>
     </h2>
     <br style="clear: left; "/>
@@ -44,7 +63,7 @@
   <div id="spacer">
     <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %>
     <footer>
-      <p><a class="copyright" href="#">About MyMapNow</a><br /><a class="copyright" href="#">Privacy Policy</a></p>
+      <p><a class="copyright" href="#">Privacy Policy</a><br /><a class="copyright" href="#">About MyMapNow</a></p>
     </footer>
   </div>
 
