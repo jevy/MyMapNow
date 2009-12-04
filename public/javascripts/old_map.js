@@ -47,12 +47,12 @@ var OldMap = {
     
       var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div></li>').appendTo('aside ol');
       $li.append('<h2>' + item.title + '</h2><br />');
-      $li.append('<p>Start Time: ' + (item.begin_at) + '</p>');
+      $li.append('<p class="time"><br />Start Time: ' + (item.begin_at) + '</p>');
       if (item.end_at) {
-	$li.append('<p>End Time: ' + (item.end_at) + '<br /></p>');
+	$li.append('<p class="time"><br />End Time: ' + (item.end_at) + '</p>');
       }
-      $li.append('<p class="address">' + (item.address || '') + '<br /></p>');
-      $li.append('<p class="description">' + (item.description || '') + '<br /></p>');
+      $li.append('<p class="address">' + (item.address || '') + '</p>');
+      $li.append('<p class="description">' + (item.description || '') + '</p>');
       if (item.url) {
         $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
       }

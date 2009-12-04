@@ -89,7 +89,6 @@ aside ol {
   list-style-type:none;
   height: 100%;
 	border-top: 1px solid #999;
-	bottom: 40px;
 }
 
 aside li {
@@ -98,7 +97,7 @@ aside li {
   border-bottom:1px solid #999;
 }
 
-events { bottom: 40px; }
+aside .time {  }
 
 aside li div          { background: url(images/pointers.png) no-repeat top left; }
 aside .null div       { background-position: 0 -30px; } 
