@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyMapNow.com</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <%- if protect_against_forgery? -%>
+      <meta name="authenticity-token" id="authenticity-token" content="<%= form_authenticity_token %>">
+    <%- end -%>
+    <%= stylesheet_link_tag 'dialog/jquery-ui-1.7.2.custom.css', 'layout', :cache => true %>
+    <!--[if IE]>
+    <%= javascript_include_tag 'html5' %>
+    <![endif]-->
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="http://j.maxmind.com/app/geoip.js"></script>
+    <%= javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min', 'perfecttime/PerfectTime', 'old_map', 'jquery.form', :cache => true %>
+    <%= javascript_include_tag 'geoip', 'map' %>
+    <%= javascript_include_tag 'items' %>
+  </head>
+  <body>
+    <wrapper>
+      <sidebar-wrapper>
+        <sidebar-header>
+          <img src="images/mymapnow_logo.png" /><img src="images/buttonLogin.png" align="right"/>
+        </sidebar-header>
+        <aside>
+          <sidebar-tab-comments>&nbsp;</sidebar-tab-comments>
+          <sidebar-tab-events>&nbsp;</sidebar-tab-events>
+        </sidebar-tab-wrapper>
+      </aside>
+      <div id="map-wrapper">
+        <div id="map">&nbsp;</div>
+      </div>
+      <div id="timeline-wrapper">&nbsp;</div>
+    </wrapper>
+  </body>
+</html>
+<script>Map.initialize();</script>

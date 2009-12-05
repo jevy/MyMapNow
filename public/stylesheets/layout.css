@@ -1,0 +1,26 @@
+body, input, select, textarea { font-family:"Lucida Grande", Tahoma, Verdana, sans-serif; font-size:11px;}
+body, p, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, fieldset, button, form, legend, input, textarea {padding: 0;  margin: 0;}
+
+/* Structure */
+* { margin: 0; padding: 0; }
+html { margin:0; padding:0; height: 100%; }
+body { margin: 0; padding: 0; height: 100%; }
+
+/* Main Wrapper - to give baseline width and height to keep Google Maps happy */
+wrapper { width: 100%; height: 100%; }
+
+/* Sidebar Block */
+sidebar-wrapper { background: white; width: 259px; height: 100%; position: fixed; border-right: 1px solid #d4d4d4;}
+sidebar-header { display:block; background: white; height: 48px; border-bottom: 1px solid #d4d4d4; }
+sidebar-header img { float: left; padding-top: 12px; padding-left: 13px; padding-right: 13px; }
+
+aside { display: block; height: 80px; border-bottom: 1px solid #d4d4d4; }
+sidebar-tab-comments { display: block; float: left; width: 94px; height: 40px; border-right: 1px solid #d4d4d4; border-bottom: 1px solid #d4d4d4; }
+sidebar-tab-events { display: block; float: left; width: 94px; height: 40px; border-right: 1px solid #d4d4d4; border-bottom: 1px solid #d4d4d4; }
+
+/* Map Block */
+#map-wrapper { background: white; width: 100%; height: 100%; position: fixed; left: 260px; z-index: 100px; }
+#map { width: 100%; max-height: 100%; height: 100%;}
+
+/* Timeline Block */
+#timeline-wrapper { background: white; width: 100%; height: 38px; position: fixed; left: 260px; bottom: 0px; border-top: 1px solid #d4d4d4; }

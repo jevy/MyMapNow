@@ -46,10 +46,10 @@ var OldMap = {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
     
       var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div></li>').appendTo('aside ol');
-      $li.append('<h2>' + item.title + '</h2>');
-      $li.append('<p>Start Time: ' + (item.begin_at) + '</p>');
+      $li.append('<h2>' + item.title + '</h2><br />');
+      $li.append('<p class="time"><br />Start Time: ' + (item.begin_at) + '</p>');
       if (item.end_at) {
-	$li.append('<p>End Time: ' + (item.end_at) + '</p>');
+	$li.append('<p class="time"><br />End Time: ' + (item.end_at) + '</p>');
       }
       $li.append('<p class="address">' + (item.address || '') + '</p>');
       $li.append('<p class="description">' + (item.description || '') + '</p>');
@@ -68,10 +68,12 @@ var OldMap = {
         Map.showInfoWindow(id);
       });
       google.maps.event.addListener($li.data('marker'), 'mouseover', function() {
-	$('aside li[data-item-id=' + id + ']').css('background', 'lightyellow');
+				$('aside li[data-item-id=' + id + ']').css('background', '#c2ebff');
+				$('aside li[data-item-id=' + id + ']').css('color', '#6e6e6e');
       });
       google.maps.event.addListener($li.data('marker'), 'mouseout', function() {
-	$('aside li[data-item-id=' + id + ']').css('background', '');
+				$('aside li[data-item-id=' + id + ']').css('background', '');
+				$('aside li[data-item-id=' + id + ']').css('color', '');
       });
     }
     
