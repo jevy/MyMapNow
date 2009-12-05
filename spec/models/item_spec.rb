@@ -184,28 +184,29 @@ describe "Bounded item finding" do
 end
 
 describe "Item Geocoding" do
-  before(:each) do
-    @valid_attributes = {
-      :title => "Prime Minister's Residence",
-      :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
-      :latitude => 45.444363,
-      :longitude => -75.693811,
-      :address => '24 Sussex Dr., Ottawa, ON, Canada'
-    }
-  end
+# For now, let the scrapers geocode themselves
+# before(:each) do
+#   @valid_attributes = {
+#     :title => "Prime Minister's Residence",
+#     :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
+#     :latitude => 45.444363,
+#     :longitude => -75.693811,
+#     :address => '24 Sussex Dr., Ottawa, ON, Canada'
+#   }
+# end
 
-  it "should geocode an address if provided" do
-    geocoder = stub(:latitude => @valid_attributes[:latitude], :longitude => @valid_attributes[:longitude])
-    Geocoder.should_receive(:locate).with(@valid_attributes[:address]).and_return(geocoder)
-    item = Item.create(@valid_attributes.merge(:latitude => nil, :longitude => nil))
-    item.latitude.should == @valid_attributes[:latitude]
-    item.longitude.should == @valid_attributes[:longitude]
-  end
+# it "should geocode an address if provided" do
+#   geocoder = stub(:latitude => @valid_attributes[:latitude], :longitude => @valid_attributes[:longitude])
+#   Geocoder.should_receive(:locate).with(@valid_attributes[:address]).and_return(geocoder)
+#   item = Item.create(@valid_attributes.merge(:latitude => nil, :longitude => nil))
+#   item.latitude.should == @valid_attributes[:latitude]
+#   item.longitude.should == @valid_attributes[:longitude]
+# end
 
-  it "should not geocode if latitude and longitude are provided" do
-    Geocoder.should_not_receive(:locate)
-    item = Item.create(@valid_attributes)
-  end
+# it "should not geocode if latitude and longitude are provided" do
+#   Geocoder.should_not_receive(:locate)
+#   item = Item.create(@valid_attributes)
+# end
 end
 
 describe "Relationships" do

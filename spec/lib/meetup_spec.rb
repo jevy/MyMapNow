@@ -5,9 +5,17 @@ describe Meetup do
     @today = Time.mktime(2009, 10, 23 , 0, 0, 0)
   end
 
+  before(:each) do
+    FakeWeb.allow_net_connect = false
+    FakeWeb.clean_registry
+  end
+
   it 'should return the correct items when reaching end of feed' do
+    page = `cat spec/lib/testData/meetup/ottawa-oct-23-2009`
+    FakeWeb.register_uri(:get, "http://api.meetup.com/events.xml/?city=ottawa&country=CA&key=f2138374a26136042463e4e8e5d51",
+      :response => page)
     loc = Location.new('ottawa', 'ontario', 'CA')
-    items = Meetup.get_items(loc, @today, Time.mktime(2010, 12,31,0,0,0) )
+    items = Meetup.get_items(loc, @today, Time.mktime(2010,12,31,0,0,0))
 
     item = items.at(0)
     item.title.should eql("Halloween Meetup")
@@ -93,7 +101,5 @@ describe Meetup do
     item.kind.should eql('event')
   end
 
-  it "should set public_meetup to true if address isn't known"
-  it "should set public_meetup to false if address is known"
 end
 

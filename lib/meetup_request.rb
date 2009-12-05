@@ -33,8 +33,6 @@ class MeetupRequest < FeedRequest
     end
   end  
 
-  # return true if more items available
-  #        false if this if this returned the last event based on criteria
   def populate_queue_with_items
     grab_xml_events_from_page.each do |event|
       item = map_xml_to_item(event)

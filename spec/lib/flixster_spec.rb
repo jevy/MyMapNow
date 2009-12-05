@@ -5,6 +5,8 @@ require 'open-uri'
 
 describe Flixster do
   before(:each) do
+    FakeWeb.allow_net_connect = false
+    FakeWeb.clean_registry
     @flixster = Flixster.new
     @today = Time.mktime(2009, 9, 28, 19, 0, 0)
   end

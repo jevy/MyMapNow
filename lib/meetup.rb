@@ -12,6 +12,7 @@ class Meetup < Item
     request.end_date = end_date
 
     items = request.pull_items_from_service
+    items.each {|i| i.save}
   end
 
 end
