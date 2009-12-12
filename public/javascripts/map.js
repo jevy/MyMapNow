@@ -23,7 +23,8 @@ var Map = {
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'address': query }, function(response, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-				Map.moveTo(response[0].geometry.location);				
+				Map.moveTo(response[0].geometry.location);			
+				$('input[name=search-box]').val(response[0].formatted_address);
       }
     });
   },

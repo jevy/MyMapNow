@@ -70,10 +70,12 @@ var OldMap = {
       google.maps.event.addListener($li.data('marker'), 'mouseover', function() {
 				$('aside li[data-item-id=' + id + ']').css('background', '#c2ebff');
 				$('aside li[data-item-id=' + id + ']').css('color', '#6e6e6e');
+				$('aside a').css('color', '#6e6e6e');
       });
       google.maps.event.addListener($li.data('marker'), 'mouseout', function() {
 				$('aside li[data-item-id=' + id + ']').css('background', '');
 				$('aside li[data-item-id=' + id + ']').css('color', '');
+				$('aside a').css('color', '');
       });
     }
     

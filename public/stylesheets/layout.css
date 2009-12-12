@@ -1,20 +1,10 @@
-body, input, select, textarea { font-family:"Lucida Grande", Tahoma, Verdana, sans-serif; font-size: 11px;}
-body, p, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, fieldset, button, form, legend, input, textarea {padding: 0;  margin: 0;}
+body, input, select, textarea { font-family:"Lucida Grande", Tahoma, Verdana, sans-serif; font-size: 11px; }
 
 /* Structure */
 * { margin: 0; padding: 0; }
 html { margin:0; padding:0; height: 100%; }
 body { margin: 0; padding: 0; height: 100%; }
 
-section				{
-	display:block; 
-	z-index:6; 
-	position:absolute; 
-	left:260px; 
-	right:0; 
-	top:0px; 
-	bottom:41px;
-}
 
 /* Main Wrapper - to give baseline width and height to keep Google Maps happy */
 wrapper { width: 100%; height: 100%; }
@@ -36,26 +26,25 @@ sidebar-search input {
 		vertical-align: top;
 }
 
-sidebar-events { display: block; float: left; width: 100%; height: 100%; overflow : auto; background: #e9b751; }
+sidebar-events { display: block; float: left; width: 100%; height: 90%; overflow : auto; }
 
 aside {
   background: #fff;
 	color: darkgrey;
-  display: block;
-	height: 100%; overflow : auto;
+	width: 259px;
 }
 
 aside h1 {
   font-size: 11px;
-  height: 40px;
-  line-height: 40px;
+  height: 20px;
+  line-height: 25px;
 }
 
 aside h2 {
   display: block;
   float: left;
-  font-size:14px;
-  height: 34px;
+  font-size:12px;
+  height: 24px;
 }
 
 aside ol {
@@ -77,7 +66,8 @@ aside .event  div     { background-position: 0 -305px; }
 
 aside .time { 
 	display: block;
-  padding: 8px 0 8px 23px;
+	position: relative;
+  padding: 8px 0 0 -30px;
 }
 
 aside a {
@@ -125,7 +115,7 @@ sidebar-footer a { color: #3bb9e2; margin-left: 10px; }
 
 /* Timeline Block */
 /* Formatting for timeline related stuffs */
-#timeline-wrapper { background: white; width: 100%; height: 40px; position: fixed; left: 260px; right: 40px; bottom: 0px; border-top: 1px solid #d4d4d4; }
+#timeline-wrapper { background: white; width: 100%; height: 40px; position: fixed; left: 260px; bottom: 0px; border-top: 1px solid #d4d4d4; }
 #timeline { 
 	position: absolute; 
 	height: 40px; 
