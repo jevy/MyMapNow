@@ -24,26 +24,25 @@ sidebar-wrapper { background: white; width: 259px; height: 100%; position: fixed
 sidebar-header { display:block; background: white; height: 45px; }
 sidebar-header img { float: left; padding: 12px 13px 0 13px; }
 
-sidebar-search { display: block; float: left; width: 100%; height: 35px; border-bottom: 1px solid #d4d4d4; padding: 5px 0 0 12px; }
+sidebar-search { display: block; float: left; width: 100%; height: 35px; border-bottom: 1px solid #d4d4d4; padding: 0 0 0 12px; }
 sidebar-search button.search { background: url('/images/buttonLocate_on.png') no-repeat; border: none; vertical-align: top; width: 24px; height: 24px; }
 sidebar-search input { 
 		background-color: #78cbf3; 	
     border: 1px solid #3bb9e2; 
     font-size: 14px; 
     color: white;
-	  padding: 3px 10px 3px 10px;
+	  padding: 3px 8px 3px 8px;
 		text-align: center;
 		vertical-align: top;
 }
 
-sidebar-events { display: block; float: left; width: 100%; height: 100%; bottom: 40px; overflow : auto; }
+sidebar-events { display: block; float: left; width: 100%; height: 100%; overflow : auto; background: #e9b751; }
 
 aside {
   background: #fff;
 	color: darkgrey;
-
   display: block;
-	bottom: 40px;
+	height: 100%; overflow : auto;
 }
 
 aside h1 {
@@ -107,7 +106,7 @@ sidebar-footer {
 sidebar-footer .copyright	{ float:left; }
 sidebar-footer a { color: #3bb9e2; margin-left: 10px; }
 
-#spacer { position: fixed; bottom: 0; left: 0; width: 260px; height:40px; border-top: 1px solid #d4d4d4; display: none;}
+#spacer { position: fixed; bottom: 0; left: 0; width: 260px; height:40px; border-top: 1px solid #d4d4d4; }
 #spacer a#add-event {
 	display:block; 
 	position:fixed; 
@@ -135,8 +134,7 @@ sidebar-footer a { color: #3bb9e2; margin-left: 10px; }
 }
 
 /* Add Event */
-add-event-dialogue {
-	display: none;
+add-event-panel {
 	position: fixed;
 	background: white;
 	width: 340px;
