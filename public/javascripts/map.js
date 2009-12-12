@@ -23,7 +23,7 @@ var Map = {
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'address': query }, function(response, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-	Map.moveTo(response[0].geometry.location);
+				Map.moveTo(response[0].geometry.location);				
       }
     });
   },
@@ -37,4 +37,4 @@ var Map = {
 
 $(document).bind('map:change', Map.cleanup);
 $(Map.initialize);
-$(Map.search('Ottawa, ON'));
+//$(Map.search('Ottawa, ON'));

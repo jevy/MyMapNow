@@ -45,11 +45,11 @@ var OldMap = {
     if(!$('aside li[data-item-id=' + id + ']')[0]) {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
     
-      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div></li>').appendTo('aside ol');
+      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"></li>').appendTo('aside ol');
       $li.append('<h2>' + item.title + '</h2><br />');
       $li.append('<p class="time"><br />Start Time: ' + (item.begin_at) + '</p>');
       if (item.end_at) {
-	$li.append('<p class="time"><br />End Time: ' + (item.end_at) + '</p>');
+				$li.append('<p class="time"><br />End Time: ' + (item.end_at) + '</p>');
       }
       $li.append('<p class="address">' + (item.address || '') + '</p>');
       $li.append('<p class="description">' + (item.description || '') + '</p>');
