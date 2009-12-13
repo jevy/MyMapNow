@@ -28,6 +28,10 @@ var Map = {
       }
     });
   },
+	whatsMyLocation: function() { // FIXME: untested
+		Map.updateSearchBoxWithCurrentLocation();
+		Map.search($('#search-box').val());
+	},
   cleanup: OldMap.cleanup,
   fetch: OldMap.fetch,
   showInfoWindow: OldMap.showInfoWindow,
