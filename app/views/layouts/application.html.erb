@@ -47,9 +47,9 @@
           <button class="search" onclick="Map.search($('#search-box').val());">&nbsp;</button>
           <input type="text" id="search-box" name="search-box" value=" " onKeyPress="return submitenter(this,event)" />
         </sidebar-search>
-        <sidebar-events>
-          <aside><ol></ol></aside>
-        </sidebar-events>
+        <aside>
+          <ol></ol>
+        </aside>
         <sidebar-footer>
         <div id="spacer">
           <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %>

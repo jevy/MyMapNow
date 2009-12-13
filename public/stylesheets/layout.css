@@ -1,4 +1,4 @@
-body, input, select, textarea { font-family:"Lucida Grande", Tahoma, Verdana, sans-serif; font-size: 11px; }
+body { font-family:"Lucida Grande", Tahoma, Verdana, sans-serif; font-size: 11px; }
 
 /* Structure */
 * { margin: 0; padding: 0; }
@@ -11,11 +11,11 @@ wrapper { width: 100%; height: 100%; }
 
 /* Sidebar Block */
 sidebar-wrapper { background: white; width: 259px; height: 100%; position: fixed; border-right: 1px solid #d4d4d4;}
-sidebar-header { display:block; background: white; height: 45px; }
+sidebar-header { position: relative; display: block; background: white; height: 45px; width: 100%;  }
 sidebar-header img { float: left; padding: 12px 13px 0 13px; }
 
-sidebar-search { display: block; float: left; width: 100%; height: 35px; border-bottom: 1px solid #d4d4d4; padding: 0 0 0 12px; }
-sidebar-search button.search { background: url('/images/buttonLocate_on.png') no-repeat; border: none; vertical-align: top; width: 24px; height: 24px; }
+sidebar-search { position: relative; display: block; height: 35px; width: 100%; border-bottom: 1px solid #d4d4d4; }
+sidebar-search button.search { background: url('/images/buttonLocate_on.png') no-repeat; border: none; vertical-align: top; margin-left: 12px; width: 24px; height: 24px; }
 sidebar-search input { 
 		background-color: #78cbf3; 	
     border: 1px solid #3bb9e2; 
@@ -26,12 +26,14 @@ sidebar-search input {
 		vertical-align: top;
 }
 
-sidebar-events { display: block; float: left; width: 100%; height: 90%; overflow : auto; }
-
-aside {
-  background: #fff;
+aside {	
+	background: white;
 	color: darkgrey;
+	position: fixed;
 	width: 259px;
+	top: 82px;	
+	left: 0px;
+	bottom: 40px;
 }
 
 aside h1 {
@@ -43,17 +45,20 @@ aside h1 {
 aside h2 {
   display: block;
   float: left;
-  font-size:12px;
-  height: 24px;
+  font-size:14px;
+  height: 40px;
 }
 
 aside ol {
   list-style-type: none;
+	height: 100%;
+
+	overflow: auto;
 }
 
 aside li {
   position: relative;
-  padding: 8px 13px 8px 23px;
+  padding: 8px 18px 8px 18px;
   border-bottom: 1px solid #d4d4d4;
 }
 
@@ -81,11 +86,11 @@ aside a:hover {
 }
 
 sidebar-footer { 
-	display:block; 
+	display: block; 
 	position: fixed;
 	height: 40px; 
 	width: 259px;
-	bottom: 0px;
+	bottom: 0;
 	background: white;
 	line-height:17px; 
 	text-align: left; 
@@ -98,14 +103,14 @@ sidebar-footer a { color: #3bb9e2; margin-left: 10px; }
 
 #spacer { position: fixed; bottom: 0; left: 0; width: 260px; height:40px; border-top: 1px solid #d4d4d4; }
 #spacer a#add-event {
-	display:block; 
-	position:fixed; 
-	bottom:12px; 
-	left:180px; 
+	display: block; 
+	position: fixed; 
+	bottom: 12px; 
+	left: 180px; 
 	width: 53px; 
 	height:53px; 
 	background:url(images/buttonAddEvent.png); 
-	z-index: 150
+	z-index: 150;
 } 
 #spacer a#add-event span{ display:none; }
 
