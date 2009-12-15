@@ -13,6 +13,7 @@ $('aside li').live('click', function(event) {
 
   $this.addClass('active');
   $this.data('info').open(Map.map, $this.data('marker'));
+  MMNTimeline.load_event($this.data('item'));
 });
 
 var OldMap = {
@@ -63,6 +64,8 @@ var OldMap = {
         title: item.title, 
         icon: "images/pin_off.png"
       }));
+
+      $li.data('item', item);
     
       google.maps.event.addListener($li.data('marker'), 'click', function() {
         Map.showInfoWindow(id);
