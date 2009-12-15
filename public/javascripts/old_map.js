@@ -66,6 +66,7 @@ var OldMap = {
     
       google.maps.event.addListener($li.data('marker'), 'click', function() {
         Map.showInfoWindow(id);
+        MMNTimeline.load_event(item);
       });
       google.maps.event.addListener($li.data('marker'), 'mouseover', function() {
 				$('aside li[data-item-id=' + id + ']').css('background', '#c2ebff');

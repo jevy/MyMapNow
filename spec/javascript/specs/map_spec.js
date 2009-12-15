@@ -53,42 +53,32 @@ describe('Map', function() {
         });
 
 
-        it("should load events into the eventSource", function() {
+        it("should load event into the eventSource", function() {
             // execute
-            MMNTimeline.load_events(two_items);
+            MMNTimeline.load_event(single_item);
 
             // assert
-            expect(MMNTimeline.eventSource.getCount()).toEqual(2);
+            expect(MMNTimeline.eventSource.getCount()).toEqual(1);
         });
 
-        it("should refresh event source after adding multiple events", function() {
+        it("should refresh event source after adding event", function() {
             // setup
             spyOn(MMNTimeline, 'refresh_event_source');
 
             // execute
-            MMNTimeline.load_events(two_items);
+            MMNTimeline.load_event(single_item);
 
             // assert
             expect(MMNTimeline.refresh_event_source).wasCalled();
         });
 
-        it("should not contain dupliates if we call add events twice", function(){
+        it("should not contain dupliates if we call add event twice", function(){
             // execute
-            MMNTimeline.load_events(two_items);
-            MMNTimeline.load_events(two_items);
+            MMNTimeline.load_event(single_item);
+            MMNTimeline.load_event(single_item);
 
             // assert
-            expect(MMNTimeline.eventSource.getCount()).toEqual(2);
-        });
-
-        it("container should display the events", function() {
-            // execute
-            MMNTimeline.load_events(two_items);
-
-            // assert
-            var eventImages = $("#timeline").find("img");
-            expect(eventImages.size()).toEqual(2);
-            //TODO: Assert on the actual title text (and other attributes as we add them) contained in eventImage parent innerHTML
+            expect(MMNTimeline.eventSource.getCount()).toEqual(1);
         });
     });
 });
