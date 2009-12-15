@@ -129,6 +129,9 @@ sidebar-footer a { color: #3bb9e2; margin-left: 10px; }
     background-color: transparent;
 }
 
+#event-duration {overflow: visible !Important; margin: 10px; padding: 0 4px 0 12px;  height:20px; float: left; background: url(/images/timeline-duration-bg.gif) no-repeat top left; position: relative; color: #fff; line-height: 1.7;}
+	  #round-cap {height:20px; width:8px; position: absolute; top:0; right: -8px; background: url(/images/timeline-duration-cap.gif) no-repeat top right;}
+#event-instant{height:41px !Important; width:36px !Important; position: absolute; top:-8px; right:120px; background: url(/images/timeline-instant-icon.png) no-repeat top left;}
 /* Add Event */
 add-event-panel {
 	position: fixed;

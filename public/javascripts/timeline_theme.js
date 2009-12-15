@@ -58,20 +58,20 @@ Timeline.MMNTTheme._Impl = function() {
         track: {
             offset:         0.5, // em sets top margin of the time band
             height:         2.5, // em, sets height of the event div
-            gap:            1  // em, sets margin between events
+            gap:            0  // em, sets margin between events
         },
         instant: { // set isDuration="false" in XML file
 //            icon:           "/images/buttonLocate_on.png",
-            lineColor:      "#333366", // div bkg color
-            impreciseColor: "#333366",
-            impreciseOpacity: 20, // color opacity, not text opacity
+            lineColor:      "", // div bkg color
+            impreciseColor: "",
+            impreciseOpacity: 100, // color opacity, not text opacity
             showLineForNoText: true
         },
         duration: { // no icon
-            color:          "#78CBF3", // div bkg color
-            opacity:        80, // color opacity, not text opacity
-            impreciseColor: "#78CBF3",
-            impreciseOpacity: 80
+            color:          "", // div bkg color
+            opacity:        70, // color opacity, not text opacity
+            impreciseColor: "",
+            impreciseOpacity: 70
         },
         label: {
             insideColor:    "white",  // ?

@@ -24,6 +24,7 @@ var MMNTimeline = {
         this.eventSource.clear();
         this.eventSource.add(this.create_event(item));
         this.refresh_event_source();
+        this.mark_event_with_id();
     },
 
     create_event: function(item) {
@@ -35,8 +36,8 @@ var MMNTimeline = {
                 start, //latestStart
                 end, //earliestEnd
                 false, //instant
-                item.title, //text
-                item.description //description
+                '', //text
+                '' //description
                 );
     },
 
@@ -44,6 +45,20 @@ var MMNTimeline = {
         for (var i = 0; i < this.eventSource._listeners.length; i++) {
             this.eventSource._listeners[i].onAddMany();
         }
+    },
+
+    mark_event_with_id: function() {
+        $('div.timeline-band-layer-inner').filter(function() {
+            return $(this).attr('name') == "events";
+        }).each(function() {
+            var first_child_div = $(this).children(":first-child");
+            if ($(this).children().size() == 2) { // 2 children == a duration event
+                first_child_div.attr("id", "event-duration");
+                first_child_div.append($('<span></span>').attr("id", "round-cap"));
+            } else {
+                first_child_div.attr("id", "event-instant");
+            }
+        });
     },
 
     scroll_listener: function(scrolled_band) {

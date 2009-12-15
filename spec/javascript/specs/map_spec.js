@@ -1,46 +1,46 @@
 describe('Map', function() {
     it('should load the map at my current location', function() {
-     spyOn(google.maps, 'Map');
-     spyOn(google.maps, 'LatLng');
-     spyOn(GeoIP, 'latitude').andReturn('1');
-     spyOn(GeoIP, 'longitude').andReturn('2');
+        spyOn(google.maps, 'Map');
+        spyOn(google.maps, 'LatLng');
+        spyOn(GeoIP, 'latitude').andReturn('1');
+        spyOn(GeoIP, 'longitude').andReturn('2');
 
-     Map.initialize();
+        Map.initialize();
 
-     expect(google.maps.LatLng).wasCalledWith('1', '2');
-     });
+        expect(google.maps.LatLng).wasCalledWith('1', '2');
+    });
 
-     it('should update the current location into the search box', function() {
-     spyOn(GeoIP, 'city').andReturn('Foo');
-     spyOn(GeoIP, 'region').andReturn('Bar');
-     spyOn(GeoIP, 'country').andReturn('Baz');
+    it('should update the current location into the search box', function() {
+        spyOn(GeoIP, 'city').andReturn('Foo');
+        spyOn(GeoIP, 'region').andReturn('Bar');
+        spyOn(GeoIP, 'country').andReturn('Baz');
 
-     $('#jasmine_content').append('<input type="text" name="search-box" value="Hello" />');
+        $('#jasmine_content').append('<input type="text" name="search-box" value="Hello" />');
 
-     Map.updateSearchBoxWithCurrentLocation();
-     expect($('input[name=search-box]').val()).toEqual('Foo, Bar, Baz');
-     });
+        Map.updateSearchBoxWithCurrentLocation();
+        expect($('input[name=search-box]').val()).toEqual('Foo, Bar, Baz');
+    });
 
-     it('should reposition the map when the search location changes', function() {
-     var geocoderSpy = jasmine.createSpy();
-     geocoderSpy.geocode = function () {
-     };
+    it('should reposition the map when the search location changes', function() {
+        var geocoderSpy = jasmine.createSpy();
+        geocoderSpy.geocode = function () {
+        };
 
-     spyOn(google.maps, 'Map');
-     spyOn(google.maps, 'LatLng');
-     spyOn(geocoderSpy, 'geocode');
-     spyOn(google.maps, 'Geocoder').andReturn(geocoderSpy);
-     spyOn(GeoIP, 'latitude').andReturn('1');
-     spyOn(GeoIP, 'longitude').andReturn('2');
+        spyOn(google.maps, 'Map');
+        spyOn(google.maps, 'LatLng');
+        spyOn(geocoderSpy, 'geocode');
+        spyOn(google.maps, 'Geocoder').andReturn(geocoderSpy);
+        spyOn(GeoIP, 'latitude').andReturn('1');
+        spyOn(GeoIP, 'longitude').andReturn('2');
 
-     spyOn(Map, 'map');
+        spyOn(Map, 'map');
 
-     var q = 'Halifax, NS';
-     Map.search(q);
+        var q = 'Halifax, NS';
+        Map.search(q);
 
-     expect(geocoderSpy.geocode).wasCalledWith({ 'address': q });
-     expect(Map.map.panTo).wasCalledWith('theLatLng');
-     });
+        expect(geocoderSpy.geocode).wasCalledWith({ 'address': q });
+        expect(Map.map.panTo).wasCalledWith('theLatLng');
+    });
 
     describe('MMNTimeline', function() {
         beforeEach(function () {
@@ -72,7 +72,7 @@ describe('Map', function() {
             expect(MMNTimeline.refresh_event_source).wasCalled();
         });
 
-        it("should not contain dupliates if we call add event twice", function(){
+        it("should not contain dupliates if we call add event twice", function() {
             // execute
             MMNTimeline.load_event(single_item);
             MMNTimeline.load_event(single_item);
@@ -80,5 +80,46 @@ describe('Map', function() {
             // assert
             expect(MMNTimeline.eventSource.getCount()).toEqual(1);
         });
+
+        it("should mark the event with a css id", function() {
+            // setup
+            spyOn(MMNTimeline, 'mark_event_with_id');
+
+            // execute
+            MMNTimeline.load_event(single_item);
+
+            // assert
+            expect(MMNTimeline.mark_event_with_id).wasCalled();
+        });
+
+
+        //        describe('Duration Event', function() {
+        //            it("should contain the correct css id attribute", function() {
+        //                // setup
+        //                spyOn(MMNTimeline, 'mark_event_with_id');
+        //
+        //                // execute
+        //                MMNTimeline.load_event(single_item);
+        //
+        //                // assert
+        //                expect(MMNTimeline.mark_event_with_id).wasCalled();
+        //                expect($("#event-duration").length).toEqual(1);
+        //            });
+        //        });
+        //
+        //        describe('Instant Event', function() {
+        //            it("should contain the correct css id attribute", function() {
+        //                // setup
+        //                spyOn(MMNTimeline, 'mark_event_with_id');
+        //
+        //                // execute
+        //                MMNTimeline.load_event(single_item);
+        //
+        //                // assert
+        //                expect(MMNTimeline.mark_event_with_id).wasCalled();
+        //                expect($("#event-instant").length).toEqual(1);
+        //            });
+        //    });
     });
-});
+})
+        ;
