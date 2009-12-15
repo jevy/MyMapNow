@@ -30,7 +30,7 @@ var OldMap = {
   },
   
   fetch: function() {
-    var bounds = Map.map.get_bounds();
+    var bounds = Map.map.getBounds();
     var timeframe = {
       start: MMNTimeline.band.getMinVisibleDate(),
       end: MMNTimeline.band.getMaxVisibleDate()
@@ -94,7 +94,8 @@ var OldMap = {
   cleanup: function() {
     $('aside li').each(function() {
       if($(this).data('info')) $(this).data('info').close();
-      $(this).data('marker').set_map(null);
+        //FIXME: Mike -> This just throws a set_map is not a function error
+        //$(this).data('marker').set_map(null);
       $(this).remove();
     });
   },
