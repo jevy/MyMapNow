@@ -34,7 +34,7 @@ var MMNTimeline = {
                 end, //end
                 start, //latestStart
                 end, //earliestEnd
-                true, //instant
+                false, //instant
                 item.title, //text
                 item.description //description
                 );
@@ -51,8 +51,10 @@ var MMNTimeline = {
     }
 };
 
-//TODO: Might be better to have this init code in a central application file..opinions?
+// disable timeline event popup InfoWindow
+Timeline.DurationEventPainter.prototype._showBubble = function(x, y, evt) {
+    // do nothing       
+};
 $(document).ready(function() {
     MMNTimeline.initialize();
 });
-

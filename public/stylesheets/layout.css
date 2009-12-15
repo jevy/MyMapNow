@@ -121,11 +121,12 @@ sidebar-footer a { color: #3bb9e2; margin-left: 10px; }
 /* Timeline Block */
 /* Formatting for timeline related stuffs */
 #timeline-wrapper { background: white; width: 100%; height: 40px; position: fixed; left: 260px; bottom: 0px; border-top: 1px solid #d4d4d4; }
-#timeline { 
+#timeline {
 	position: absolute; 
 	height: 40px; 
 	width: 100%;
-	bottom:0;  
+	bottom:0;
+    background-color: transparent;
 }
 
 /* Add Event */
