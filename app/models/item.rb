@@ -38,9 +38,9 @@ class Item < ActiveRecord::Base
         start_time.advance(:hours=>hour_range)])
   end
 
-  def self.group_in_bounds_by_date(southwest, northeast, begin_at, end_at)
+  def self.group_by_date(items)
     result ={}
-    Item.find_in_bounds(southwest, northeast, begin_at, end_at).each do |item|
+    items.each do |item|
       date = item.begin_at.to_date
       result[date] ? result[date] << item : result[date] = [item]
     end

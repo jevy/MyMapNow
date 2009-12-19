@@ -184,29 +184,29 @@ describe "Bounded item finding" do
 end
 
 describe "Item Geocoding" do
-# For now, let the scrapers geocode themselves
-# before(:each) do
-#   @valid_attributes = {
-#     :title => "Prime Minister's Residence",
-#     :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
-#     :latitude => 45.444363,
-#     :longitude => -75.693811,
-#     :address => '24 Sussex Dr., Ottawa, ON, Canada'
-#   }
-# end
+  # For now, let the scrapers geocode themselves
+  # before(:each) do
+  #   @valid_attributes = {
+  #     :title => "Prime Minister's Residence",
+  #     :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
+  #     :latitude => 45.444363,
+  #     :longitude => -75.693811,
+  #     :address => '24 Sussex Dr., Ottawa, ON, Canada'
+  #   }
+  # end
 
-# it "should geocode an address if provided" do
-#   geocoder = stub(:latitude => @valid_attributes[:latitude], :longitude => @valid_attributes[:longitude])
-#   Geocoder.should_receive(:locate).with(@valid_attributes[:address]).and_return(geocoder)
-#   item = Item.create(@valid_attributes.merge(:latitude => nil, :longitude => nil))
-#   item.latitude.should == @valid_attributes[:latitude]
-#   item.longitude.should == @valid_attributes[:longitude]
-# end
+  # it "should geocode an address if provided" do
+  #   geocoder = stub(:latitude => @valid_attributes[:latitude], :longitude => @valid_attributes[:longitude])
+  #   Geocoder.should_receive(:locate).with(@valid_attributes[:address]).and_return(geocoder)
+  #   item = Item.create(@valid_attributes.merge(:latitude => nil, :longitude => nil))
+  #   item.latitude.should == @valid_attributes[:latitude]
+  #   item.longitude.should == @valid_attributes[:longitude]
+  # end
 
-# it "should not geocode if latitude and longitude are provided" do
-#   Geocoder.should_not_receive(:locate)
-#   item = Item.create(@valid_attributes)
-# end
+  # it "should not geocode if latitude and longitude are provided" do
+  #   Geocoder.should_not_receive(:locate)
+  #   item = Item.create(@valid_attributes)
+  # end
 end
 
 describe "Relationships" do
@@ -337,19 +337,13 @@ describe "Item Hash by Date" do
       :latitude => 45.397936, :longitude => -75.685518,
       :address => 'McMahon Stadium, Calgary'
     }
-    @start_time = Date.yesterday
-    @end_time = Date.tomorrow.tomorrow
-
-    @first_item = Item.create(@item_params)
-    @second_item = Item.create(@second_item_params)
+    @first_item = Item.new(@item_params)
+    @second_item = Item.new(@second_item_params)
+    @list = [@first_item, @second_item]
   end
 
   it "should return items in correct format" do
-    result = Item.group_in_bounds_by_date([45.18458891027006,-76.02838289184575],
-      [45.52139421172966,-74.437867755127],
-      Date.today.beginning_of_month, Date.today.end_of_month)
-    result.should be_kind_of(Hash)
-    result.should_not be_nil
+    result = Item.group_by_date(@list)
     result.keys.should have_at_least(2).items
     result.values.flatten.should have_at_least(2).items
     key = result.keys[0]
@@ -357,28 +351,16 @@ describe "Item Hash by Date" do
   end
 
   it "should return items keyed by their date" do
-    result = Item.group_in_bounds_by_date([45.18458891027006,-76.02838289184575],
-      [45.52139421172966,-74.437867755127],
-      Date.today.beginning_of_month, Date.today.end_of_month)
-    result.should be_kind_of(Hash)
+    result = Item.group_by_date(@list)
     key_date = result.keys[0]
     key_date.should eql(@second_item.begin_at.to_date)
   end
 
   it "should return multiple items by their respective date" do
-    result = Item.group_in_bounds_by_date([45.18458891027006,-76.02838289184575],
-      [45.52139421172966,-74.437867755127],
-      Date.today.beginning_of_month, Date.today.end_of_month)
-    result.should_not be_nil
+    result = Item.group_by_date(@list)
     result.each_pair do |key, values|
       values.each{|item| item.begin_at.to_date.should eql(key) }
     end
-  end
-
-  it "should order keys by date" do
-        result = Item.group_in_bounds_by_date([45.18458891027006,-76.02838289184575],
-      [45.52139421172966,-74.437867755127],
-      Date.today.beginning_of_month, Date.today.end_of_month)
   end
   
 end
