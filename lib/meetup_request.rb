@@ -5,7 +5,7 @@ class MeetupRequest < FeedRequest
   @@APIKEY = "f2138374a26136042463e4e8e5d51"
 
   @city = @region = @country = nil
-
+  
   # There is no 'region/state' for Meetup
   def url
     #URI.escape "http://api.meetup.com/events.xml/?country=#{@country}&city=#{@city}&key=#{@@APIKEY}"
