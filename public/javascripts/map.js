@@ -41,5 +41,8 @@ var Map = {
 };
 
 $(document).bind('map:change', Map.cleanup);
-$(Map.initialize);
+$(document).ready(function() {
+    Map.initialize();
+    Map.updateSearchBoxWithCurrentLocation();
+});
 //$(Map.search('Ottawa, ON'));

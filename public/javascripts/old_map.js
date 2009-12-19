@@ -13,6 +13,7 @@ $('aside li').live('click', function(event) {
 
   $this.addClass('active');
   $this.data('info').open(Map.map, $this.data('marker'));
+  MMNTimeline.load_event($this.data('item'));
 });
 
 var OldMap = {
@@ -30,7 +31,7 @@ var OldMap = {
   },
   
   fetch: function() {
-    var bounds = Map.map.get_bounds();
+    var bounds = Map.map.getBounds();
     var timeframe = {
       start: MMNTimeline.band.getMinVisibleDate(),
       end: MMNTimeline.band.getMaxVisibleDate()
@@ -63,9 +64,12 @@ var OldMap = {
         title: item.title, 
         icon: "images/pin_off.png"
       }));
+
+      $li.data('item', item);
     
       google.maps.event.addListener($li.data('marker'), 'click', function() {
         Map.showInfoWindow(id);
+        MMNTimeline.load_event(item);
       });
       google.maps.event.addListener($li.data('marker'), 'mouseover', function() {
 				$('aside li[data-item-id=' + id + ']').css('background', '#c2ebff');
@@ -94,7 +98,8 @@ var OldMap = {
   cleanup: function() {
     $('aside li').each(function() {
       if($(this).data('info')) $(this).data('info').close();
-      $(this).data('marker').set_map(null);
+        //FIXME: Mike -> This just throws a set_map is not a function error
+        //$(this).data('marker').set_map(null);
       $(this).remove();
     });
   },
