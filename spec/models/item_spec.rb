@@ -53,43 +53,43 @@ describe Item do
     item.should have(1).error_on(:end_at)
   end
 end
-
-describe "tagging" do
-  before(:each) do
-    @valid_attributes = {
-      :title => "Prime Minister's Residence",
-      :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
-      :latitude => 45.444363,
-      :longitude => -75.693811,
-      :address => '24 Sussex Dr., Ottawa, ON, Canada'
-    }
-
-    @item1 = Item.create(@valid_attributes)
-    @item1.tag_list = "foo, bar"
-    @item1.save
-
-    @item2 = Item.create(@valid_attributes)
-    @item2.tag_list = "bar, baz"
-    @item2.save
-  end
-
-  it "should find multiple items with a tag" do
-    Item.tagged_with('bar', :on => :tags).length.should == 2
-    Item.tagged_with('bar', :on => :tags).should include(@item1)
-    Item.tagged_with('bar', :on => :tags).should include(@item2)
-  end
-
-  it "should find one item, but not the other using tags" do
-    Item.tagged_with('foo', :on => :tags).should include(@item1)
-    Item.tagged_with('foo', :on => :tags).should_not include(@item2)
-  end
-
-  it "should find all items with intersecting tags" do
-    Item.tagged_with('foo, baz', :on => :tags).length.should == 2
-    Item.tagged_with('foo, baz', :on => :tags).should include(@item1)
-    Item.tagged_with('foo, baz', :on => :tags).should include(@item2)
-  end
-end
+#
+#describe "tagging" do
+#  before(:each) do
+#    @valid_attributes = {
+#      :title => "Prime Minister's Residence",
+#      :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
+#      :latitude => 45.444363,
+#      :longitude => -75.693811,
+#      :address => '24 Sussex Dr., Ottawa, ON, Canada'
+#    }
+#
+#    @item1 = Item.create(@valid_attributes)
+#    @item1.tag_list = "foo, bar"
+#    @item1.save
+#
+#    @item2 = Item.create(@valid_attributes)
+#    @item2.tag_list = "bar, baz"
+#    @item2.save
+#  end
+#
+#  it "should find multiple items with a tag" do
+#    Item.tagged_with('bar', :on => :tags).length.should == 2
+#    Item.tagged_with('bar', :on => :tags).should include(@item1)
+#    Item.tagged_with('bar', :on => :tags).should include(@item2)
+#  end
+#
+#  it "should find one item, but not the other using tags" do
+#    Item.tagged_with('foo', :on => :tags).should include(@item1)
+#    Item.tagged_with('foo', :on => :tags).should_not include(@item2)
+#  end
+#
+#  it "should find all items with intersecting tags" do
+#    Item.tagged_with('foo, baz', :on => :tags).length.should == 2
+#    Item.tagged_with('foo, baz', :on => :tags).should include(@item1)
+#    Item.tagged_with('foo, baz', :on => :tags).should include(@item2)
+#  end
+#end
 
 describe "Bounded item finding" do
   before(:each) do
@@ -319,4 +319,65 @@ describe "Duplicate event checking" do
       Item.new(@item_params).should be_valid
     end
   end
+end
+
+describe "Item Hash by Date" do
+
+  before(:each) do
+    @item_params = {
+      :title => "Grey Cup 2009",
+      :begin_at => Date.today,
+      :latitude => 45.397936, :longitude => -75.685518,
+      :address => 'McMahon Stadium, Calgary'
+    }
+    @second_item_params = {
+      :title => "Zombie Apocalypse",
+      :begin_at => Date.tomorrow,
+      :latitude => 45.397936, :longitude => -75.685518,
+      :address => 'McMahon Stadium, Calgary'
+    }
+    @start_time = Date.yesterday
+    @end_time = Date.tomorrow.tomorrow
+
+    @first_item = Item.create(@item_params)
+    @second_item = Item.create(@second_item_params)
+  end
+
+  it "should return items in correct format" do
+    result = Item.group_in_bounds_by_date([45.18458891027006,-76.02838289184575],
+      [45.52139421172966,-74.437867755127],
+      Date.today.beginning_of_month, Date.today.end_of_month)
+    result.should be_kind_of(Hash)
+    result.should_not be_nil
+    result.keys.should have_at_least(2).items
+    result.values.flatten.should have_at_least(2).items
+    key = result.keys[0]
+    key.should eql(@second_item.begin_at.to_date)
+  end
+
+  it "should return items keyed by their date" do
+    result = Item.group_in_bounds_by_date([45.18458891027006,-76.02838289184575],
+      [45.52139421172966,-74.437867755127],
+      Date.today.beginning_of_month, Date.today.end_of_month)
+    result.should be_kind_of(Hash)
+    key_date = result.keys[0]
+    key_date.should eql(@second_item.begin_at.to_date)
+  end
+
+  it "should return multiple items by their respective date" do
+    result = Item.group_in_bounds_by_date([45.18458891027006,-76.02838289184575],
+      [45.52139421172966,-74.437867755127],
+      Date.today.beginning_of_month, Date.today.end_of_month)
+    result.should_not be_nil
+    result.each_pair do |key, values|
+      values.each{|item| item.begin_at.to_date.should eql(key) }
+    end
+  end
+
+  it "should order keys by date" do
+        result = Item.group_in_bounds_by_date([45.18458891027006,-76.02838289184575],
+      [45.52139421172966,-74.437867755127],
+      Date.today.beginning_of_month, Date.today.end_of_month)
+  end
+  
 end
