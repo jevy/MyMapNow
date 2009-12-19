@@ -243,56 +243,81 @@ describe "Relationships" do
   end
 end
 
-
 describe "Duplicate event checking" do
   before(:each) do
     @item_params = {
       :title => "Grey Cup 2009",
-      :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
+      :begin_at => Time.now,
       :latitude => 51.071504,
       :longitude => -114.122307,
       :address => 'McMahon Stadium, Calgary, Alberta'
     }
-  end
-
-  it "should mark a single item as valid and save it accordingly" do
     Item.create(@item_params).should be_valid
-    Item.find(:all).length.should eql(1)
   end
 
   it "should not allow two items with exactly the same name to be valid same case" do
-    Item.create(@item_params).should be_valid
-    Item.find(:all).length.should eql(1)
     Item.new(@item_params).should_not be_valid
   end
 
   it "should not allow two items with exactly the same name to be valid, different cases first letter" do
-    Item.create(@item_params).should be_true
     @item_params[:title] = "grey Cup 2009"
     Item.new(@item_params).should_not be_valid
   end
 
   it "should not allow two items with exactly the same name to be valid, different cases middle letter" do
-    Item.create(@item_params).should be_valid
     @item_params[:title] = "Grey cup 2009"
     Item.new(@item_params).should_not be_valid
   end
 
   it "should not allow two items with exactly the same name to be valid, opposite cases" do
-    Item.create(@item_params).should be_valid
     @item_params[:title] = "gREY cUP 2009"
     Item.new(@item_params).should_not be_valid
   end
 
   it "should not allow the same string w/o spaces to be saved twice" do
-    Item.create(@item_params).should be_valid
     @item_params[:title].gsub(' ', '')
     Item.new(@item_params).should_not be_valid
   end
 
   it "should allow 2 characters to be different" do
-    Item.create(@item_params).should be_valid
-    @item_params.merge(:title=>'Brey Lup 2009')
+    @item_params.merge!(:title=>'Brey Lup 2009')
     Item.new(@item_params).should_not be_valid    
+  end
+
+  it "should validate the same event(title) 1 week apart " do
+    @item_params.merge!(:begin_at=>Time.now.advance(:weeks=>1))
+    Item.new(@item_params).should be_valid
+  end
+
+  describe "date/time boundary checking" do
+    it "should not validate an event 1:59 hours before another event with the same name" do
+      @item_params.merge!(:begin_at=>@item_params[:begin_at].advance(:hours=>-2,:minutes=>1))
+      Item.new(@item_params).should_not be_valid
+    end
+
+    it "should not validate an event 2 hours before another event with the same name" do
+      @item_params.merge!(:begin_at=>@item_params[:begin_at].advance(:hours=>-2))
+      Item.new(@item_params).should_not be_valid
+    end
+
+    it "should validate an event 2:01 hours before another event with the same name" do
+      @item_params.merge!(:begin_at=>@item_params[:begin_at].advance(:hours=>-2, :minutes=>-1))
+      Item.new(@item_params).should be_valid
+    end
+
+    it "should not validate an event 1:59 hours after another event with the same name" do
+      @item_params.merge!(:begin_at=>@item_params[:begin_at].advance(:hours=>2,:minutes=>-1))
+      Item.new(@item_params).should_not be_valid
+    end
+  
+    it "should not validate an event 2 hours after another event with the same name" do
+      @item_params.merge!(:begin_at=>@item_params[:begin_at].advance(:hours=>2))
+      Item.new(@item_params).should_not be_valid
+    end
+
+    it "should validate an event 2:01 hours after another event with the same name" do
+      @item_params.merge!(:begin_at=>@item_params[:begin_at].advance(:hours=>2, :minutes=>1))
+      Item.new(@item_params).should be_valid
+    end
   end
 end

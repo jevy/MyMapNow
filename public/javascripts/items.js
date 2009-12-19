@@ -12,7 +12,6 @@ $(function() {
                     $.each(data, function() {
                         Map.addItem(this.item);
                     });
-                    MMNTimeline.load_events(data);
                 });
     });
 });

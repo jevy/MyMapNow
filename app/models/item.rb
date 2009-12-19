@@ -1,6 +1,7 @@
 require 'levenshtein'
 
 class Item < ActiveRecord::Base
+  ACCEPTABLE_TITLE_DISTANCE = 3
   validates_presence_of :title
   validates_presence_of :begin_at
   validate :end_at_is_after_begin_at
@@ -31,6 +32,12 @@ class Item < ActiveRecord::Base
       :order => 'begin_at')
   end
 
+  def self.find_in_hour_range(hour_range, start_time)
+    Item.find(:all, :conditions=>["begin_at BETWEEN ? AND ?",
+        start_time.advance(:hours=>-hour_range),
+        start_time.advance(:hours=>hour_range)])
+  end
+
   def geocode_address
     return unless latitude.nil? or longitude.nil?
     location = Geocoder.locate(address)
@@ -50,15 +57,22 @@ class Item < ActiveRecord::Base
     !(latitude.nil? and longitude.nil?)
   end
 
+  def duplicate?(comparison)
+    return false if self.eql?(comparison)
+    distance = Levenshtein.distance(comparison.title.simplify, self.title.simplify)
+    distance < ACCEPTABLE_TITLE_DISTANCE
+  end
+
   def unique_item_title
-    Item.find(:all).each do |current_item|
-      unless current_item.eql?(self)
-        if Levenshtein.distance(current_item.title.simplify, self.title.simplify ) < 3
-          errors.add_to_base "Duplicate event title."
-        end
+    return unless begin_at
+    Item.find_in_hour_range(2, begin_at).each do |event|
+      if duplicate?(event)
+        errors.add(:title,"Duplicate event title.")
+        break
       end
     end
   end
+  
 end
 
 class String

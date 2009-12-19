@@ -7,6 +7,7 @@ var MMNTimeline = {
 
     initialize: function() {
         this.eventSource = new Timeline.DefaultEventSource(0);
+
         var bandInfos = [
             Timeline.createBandInfo({
                 width:          "100%",
@@ -19,30 +20,25 @@ var MMNTimeline = {
         this.band.addOnScrollListener(this.scroll_listener);
     },
 
-    load_events: function(items) {
+    load_event: function(item) {
         this.eventSource.clear();
-        this.eventSource.addMany(this.create_events(items));
+        this.eventSource.add(this.create_event(item));
         this.refresh_event_source();
+        this.mark_event_with_id();
     },
 
-    create_events: function(items) {
-        var events = new Array();
-        for (var i = 0; i < items.length; i++) {
-            var item = items[i].item;
-            var start = Timeline.DateTime.parseIso8601DateTime(item.begin_at);
-            var end = Timeline.DateTime.parseIso8601DateTime(item.begin_at);
-            var evt = new Timeline.DefaultEventSource.Event(
-                    start, //start
-                    end, //end
-                    start, //latestStart
-                    end, //earliestEnd
-                    true, //instant
-                    item.title, //text
-                    item.description //description
-                    );
-            events.push(evt);
-        }
-        return events;
+    create_event: function(item) {
+        var start = Timeline.DateTime.parseIso8601DateTime(item.begin_at);
+        var end = Timeline.DateTime.parseIso8601DateTime(item.end_at);
+        return new Timeline.DefaultEventSource.Event(
+                start, //start
+                end, //end
+                start, //latestStart
+                end, //earliestEnd
+                false, //instant
+                '', //text
+                '' //description
+                );
     },
 
     refresh_event_source: function() {
@@ -51,13 +47,29 @@ var MMNTimeline = {
         }
     },
 
+    mark_event_with_id: function() {
+        $('div.timeline-band-layer-inner').filter(function() {
+            return $(this).attr('name') == "events";
+        }).each(function() {
+            var first_child_div = $(this).children(":first-child");
+            if ($(this).children().size() == 2) { // 2 children == a duration event
+                first_child_div.attr("id", "event-duration");
+                first_child_div.append($('<span></span>').attr("id", "round-cap"));
+            } else {
+                first_child_div.attr("id", "event-instant");
+            }
+        });
+    },
+
     scroll_listener: function(scrolled_band) {
         Map.fetch();
     }
-}
+};
 
-//TODO: Might be better to have this init code in a central application file..opinions?
+// disable timeline event popup InfoWindow
+Timeline.DurationEventPainter.prototype._showBubble = function(x, y, evt) {
+    // do nothing       
+};
 $(document).ready(function() {
     MMNTimeline.initialize();
 });
-

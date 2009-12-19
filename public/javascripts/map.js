@@ -23,10 +23,15 @@ var Map = {
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'address': query }, function(response, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-	Map.moveTo(response[0].geometry.location);
+				Map.moveTo(response[0].geometry.location);			
+				$('input[name=search-box]').val(response[0].formatted_address);
       }
     });
   },
+	whatsMyLocation: function() { // FIXME: untested
+		Map.updateSearchBoxWithCurrentLocation();
+		Map.search($('#search-box').val());
+	},
   cleanup: OldMap.cleanup,
   fetch: OldMap.fetch,
   showInfoWindow: OldMap.showInfoWindow,
@@ -36,5 +41,8 @@ var Map = {
 };
 
 $(document).bind('map:change', Map.cleanup);
-$(Map.initialize);
-$(Map.search('Ottawa, ON'));
+$(document).ready(function() {
+    Map.initialize();
+    Map.updateSearchBoxWithCurrentLocation();
+});
+//$(Map.search('Ottawa, ON'));

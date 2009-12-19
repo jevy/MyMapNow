@@ -13,6 +13,7 @@ $('aside li').live('click', function(event) {
 
   $this.addClass('active');
   $this.data('info').open(Map.map, $this.data('marker'));
+  MMNTimeline.load_event($this.data('item'));
 });
 
 var OldMap = {
@@ -30,7 +31,7 @@ var OldMap = {
   },
   
   fetch: function() {
-    var bounds = Map.map.get_bounds();
+    var bounds = Map.map.getBounds();
     var timeframe = {
       start: MMNTimeline.band.getMinVisibleDate(),
       end: MMNTimeline.band.getMaxVisibleDate()
@@ -45,14 +46,14 @@ var OldMap = {
     if(!$('aside li[data-item-id=' + id + ']')[0]) {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
     
-      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div></li>').appendTo('aside ol');
-      $li.append('<h2>' + item.title + '</h2>');
-      $li.append('<p>Start Time: ' + (item.begin_at) + '</p>');
+      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"></li>').appendTo('aside ol');
+      $li.append('<h2>' + item.title + '</h2><br />');
+      $li.append('<p class="time"><br />Start Time: ' + (item.begin_at) + '</p>');
       if (item.end_at) {
-	$li.append('<p>End Time: ' + (item.end_at) + '</p>');
+				$li.append('<p class="time"><br />End Time: ' + (item.end_at) + '</p>');
       }
-      $li.append('<p class="address">' + (item.address || '') + '</p>');
-      $li.append('<p class="description">' + (item.description || '') + '</p>');
+      $li.append('<p class="address"><br />' + (item.address || '') + '</p>');
+      $li.append('<p class="description"><br />' + (item.description || '') + '</p>');
       if (item.url) {
         $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
       }
@@ -63,15 +64,22 @@ var OldMap = {
         title: item.title, 
         icon: "images/pin_off.png"
       }));
+
+      $li.data('item', item);
     
       google.maps.event.addListener($li.data('marker'), 'click', function() {
         Map.showInfoWindow(id);
+        MMNTimeline.load_event(item);
       });
       google.maps.event.addListener($li.data('marker'), 'mouseover', function() {
-	$('aside li[data-item-id=' + id + ']').css('background', 'lightyellow');
+				$('aside li[data-item-id=' + id + ']').css('background', '#c2ebff');
+				$('aside li[data-item-id=' + id + ']').css('color', '#6e6e6e');
+				$('aside a').css('color', '#6e6e6e');
       });
       google.maps.event.addListener($li.data('marker'), 'mouseout', function() {
-	$('aside li[data-item-id=' + id + ']').css('background', '');
+				$('aside li[data-item-id=' + id + ']').css('background', '');
+				$('aside li[data-item-id=' + id + ']').css('color', '');
+				$('aside a').css('color', '');
       });
     }
     
@@ -90,7 +98,8 @@ var OldMap = {
   cleanup: function() {
     $('aside li').each(function() {
       if($(this).data('info')) $(this).data('info').close();
-      $(this).data('marker').set_map(null);
+        //FIXME: Mike -> This just throws a set_map is not a function error
+        //$(this).data('marker').set_map(null);
       $(this).remove();
     });
   },
