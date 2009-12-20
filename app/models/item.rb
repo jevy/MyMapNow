@@ -13,10 +13,10 @@ class Item < ActiveRecord::Base
 
   validate :title, :unique_item_title
 
-  after_create :geocode_address
+  # after_create :geocode_address
   belongs_to :user
 
-  #  acts_as_taggable_on :tags
+  # acts_as_taggable_on :tags
 
   def self.find_in_bounds(southwest, northeast, begin_at, end_at)
     find(:all, :conditions => ["latitude BETWEEN ? AND ? " + 
@@ -32,10 +32,19 @@ class Item < ActiveRecord::Base
       :order => 'begin_at')
   end
 
-  def self.find_in_hour_range(hour_range, start_time)
+  def self.find_in_time_range(hour_range, start_time)
     Item.find(:all, :conditions=>["begin_at BETWEEN ? AND ?",
         start_time.advance(:hours=>-hour_range),
         start_time.advance(:hours=>hour_range)])
+  end
+
+  def self.group_by_date(items)
+    result ={}
+    items.each do |item|
+      date = item.begin_at.to_date
+      result[date] ? result[date] << item : result[date] = [item]
+    end
+    result
   end
 
   def geocode_address
@@ -65,7 +74,7 @@ class Item < ActiveRecord::Base
 
   def unique_item_title
     return unless begin_at
-    Item.find_in_hour_range(2, begin_at).each do |event|
+    Item.find_in_time_range(2, begin_at).each do |event|
       if duplicate?(event)
         errors.add(:title,"Duplicate event title.")
         break

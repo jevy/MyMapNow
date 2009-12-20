@@ -1,52 +1,11 @@
 require 'feedrequest.rb'
 
 class MeetupRequest < FeedRequest
-  attr_accessor :city, :region, :country, :start_date, :end_date
 
   @@APIKEY = "f2138374a26136042463e4e8e5d51"
 
   @city = @region = @country = nil
-
-  def initialize
-    @items_left_to_process = true
-  end
-
-  def pull_items_from_service
-    @event_queue = Array.new
-    result = []
-
-    while(item = next_concert)
-      result << item
-    end
-    result.reverse
-  end
-
-  def next_concert
-    if @event_queue.empty? and @items_left_to_process
-      populate_queue_with_items
-    end
-
-    if !@event_queue.empty? 
-      return @event_queue.pop 
-    else 
-      return nil
-    end
-  end  
-
-  # return true if more items available
-  #        false if this if this returned the last event based on criteria
-  def populate_queue_with_items
-    grab_xml_events_from_page.each do |event|
-      item = map_xml_to_item(event)
-      if should_save?(item)
-        @event_queue << item
-      else
-        @items_left_to_process = false
-        break
-      end
-    end
-  end
-
+  
   # There is no 'region/state' for Meetup
   def url
     #URI.escape "http://api.meetup.com/events.xml/?country=#{@country}&city=#{@city}&key=#{@@APIKEY}"
@@ -85,13 +44,13 @@ class MeetupRequest < FeedRequest
     end
       
     item_to_add = Meetup.new(:title => (event/'name').inner_text,
-              :begin_at => Time.parse((event/'time').inner_text),
-              :url => (event/'event_url').inner_text,
-              :address => venue.full_address,
-              :latitude => (event/'venue_lat').inner_text,
-              :longitude => (event/'venue_lon').inner_text,
-              :kind => 'event'
-            )
+      :begin_at => Time.parse((event/'time').inner_text),
+      :url => (event/'event_url').inner_text,
+      :address => venue.full_address,
+      :latitude => (event/'venue_lat').inner_text,
+      :longitude => (event/'venue_lon').inner_text,
+      :kind => 'event'
+    )
 
     item_to_add.public_meetup = public_meetup
     item_to_add
@@ -108,14 +67,3 @@ class MeetupRequest < FeedRequest
     item.begin_at >= (start_date - 1.day) && item.begin_at <= end_date
   end
 end
-
-class Hash
-  def to_url_params
-    elements = []
-    keys.size.times do |i|
-      elements << "#{CGI::escape(keys[i])}=#{CGI::escape(values[i])}"
-    end
-    elements.join('&')
-  end
-end
-

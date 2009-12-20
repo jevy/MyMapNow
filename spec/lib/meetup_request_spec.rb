@@ -5,6 +5,11 @@ describe MeetupRequest do
     @key =  "f2138374a26136042463e4e8e5d51"
   end
 
+  before(:each) do
+    FakeWeb.allow_net_connect = false
+    FakeWeb.clean_registry
+  end
+
   context 'url' do
     it 'should generate the correct url for Ottawa, Ontario, Canada' do
       r = MeetupRequest.new

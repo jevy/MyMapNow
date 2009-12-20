@@ -10,7 +10,7 @@ Content-Type: text/xml; charset=utf-8;
 
 <?xml version="1.0" encoding="utf-8"?>
 <lfm status="ok">
-<events location="Ottawa, Canada" page="1" totalpages="12" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" total="116">
+<events location="Ottawa, Canada" page="1" totalpages="3" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" total="116">
 <event>
   <id>1251131</id>
   <title>Daniel Wesley</title>
