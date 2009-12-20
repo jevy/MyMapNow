@@ -1,4 +1,13 @@
 describe('Map', function() {
+    beforeEach(function () {
+        $('#jasmine_content').append('<aside><ol></ol></aside>');
+        $('#jasmine_content').append('<div id="map"></div>');
+    });
+
+    afterEach(function () {
+        $('#jasmine_content').children().remove();
+    });
+
     it('should load the map at my current location', function() {
         spyOn(google.maps, 'Map');
         spyOn(google.maps, 'LatLng');
@@ -40,6 +49,36 @@ describe('Map', function() {
 
         expect(geocoderSpy.geocode).wasCalledWith({ 'address': q });
         expect(Map.map.panTo).wasCalledWith('theLatLng');
+    });
+
+    //FIXME: Mike The execute should trigger the actual marker event
+    // google.maps.event.trigger(markerLiEle.data('marker', 'mouseover'));
+    it('should set marker pin to active state', function() {
+        // setup
+        Map.initialize();
+        Map.addItem(single_item);
+        var markerLiEle = $("aside ol li:first");
+
+        // execute
+        Map.setMarkerToActiveState(markerLiEle.data('marker'));
+
+        // assert
+        expect(markerLiEle.data('marker').icon).toEqual("/images/pin_on.png");
+    });
+
+    //FIXME: Mike The execute should trigger the actual marker event
+    // google.maps.event.trigger(markerLiEle.data('marker', 'mouseout'));
+    it('should set marker pin to default state', function() {
+        // setup
+        Map.initialize();
+        Map.addItem(single_item);
+        var markerLiEle = $("aside ol li:first");
+
+        // execute
+        Map.setMarkerToDefaultState(markerLiEle.data('marker'));
+
+        // assert
+        expect(markerLiEle.data('marker').icon).toEqual("/images/pin_off.png");
     });
 
     describe('MMNTimeline', function() {
@@ -121,5 +160,4 @@ describe('Map', function() {
         //            });
         //    });
     });
-})
-        ;
+});
