@@ -8,12 +8,14 @@ $('aside li').live('click', function(event) {
     if (!$this.data('info')) {
         $this.data('info', new google.maps.InfoWindow({
             content: $this.html(),
-            size: new google.maps.Size(250, 150)
+            size: new google.maps.Size(250, 150),
+            disableAutoPan: true
         }));
     }
 
     $this.addClass('active');
     Map.setMarkerToActiveState($this.data('marker'));
+    Map.map.setCenter($this.data('marker').getPosition());
     $this.data('info').open(Map.map, $this.data('marker'));
     MMNTimeline.load_event($this.data('item'));
 });
