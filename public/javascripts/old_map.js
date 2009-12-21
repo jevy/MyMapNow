@@ -102,8 +102,7 @@ var OldMap = {
     cleanup: function() {
         $('aside li').each(function() {
             if ($(this).data('info')) $(this).data('info').close();
-            //FIXME: Mike -> This just throws a set_map is not a function error
-            //$(this).data('marker').set_map(null);
+            $(this).data('marker').setMap(null);
             $(this).remove();
         });
     },
