@@ -106,6 +106,7 @@ var OldMap = {
             if ($(this).data('info')) $(this).data('info').close();
             $(this).data('marker').setMap(null);
             $(this).remove();
+            MMNTimeline.eventSource.clear();
         });
     },
 
