@@ -5,34 +5,48 @@ class StubhubFeed < FeedRequest
   COLUMNS = [%w(description city state
 active cancelled venue_name event_time_local )].join(',')
   ROWS = 50
-  SEARCH_TERMS = "Ottawa"
+  SEARCH_TERM = "Ottawa"
 
   def url(page_number=0)
     #Not Pretty I know, refactorings on order.
     string =[
       escape("+stubhubDocumentType:event"),
       escape("leaf:")+"+true",
-      escape("description:")+"+\"#{SEARCH_TERMS}\""
-    ].join(escape("\r\n+ "))
-    string+= escape("\r\n+ ")
+      escape("description:")+"+\"#{SEARCH_TERM}\""
+    ].join(solr_separator)
+    string+= solr_separator
     
     params = {}
     params['q'] = escape(string)
-    params['f1'] = COLUMNS
+    params['fl'] = COLUMNS
     params['rows'] = 10
     params['start'] = params['rows'].to_i * page_number if page_number > 0 
-#    puts URL + params.to_url_params
+#      puts URL + params.to_url_params
     URL + params.to_url_params
   end
 
   def grab_xml_events_from_page(page_number)
     xml = Nokogiri::XML open url(page_number)
     @items_left_to_process = false
-    xml.xpath('//response//result')
+    xml.search('//response//result//doc')
   end
 
   def map_xml_to_item(event)
-    
+#    puts event.children
+    Item.new(
+      :description=>(event/"[name=description]").inner_text,
+      :title=> (event/"[name=title]").inner_text,
+      :begin_at=> (event/"[name=event_date_time_local]").inner_text,
+      :address=> address_from_xml(event),
+      :url=> build_result_url(event),
+      :kind=>'event'
+    )
+  end
+
+  def build_result_url(event)
+    genre = (event/"[name=genreUrlPath]").inner_text
+    suffix = (event/"[name=urlPath]").inner_text
+    "http://stubhub.com/#{genre}/#{suffix}/"
   end
 
   def discover_total_pages
@@ -41,12 +55,19 @@ active cancelled venue_name event_time_local )].join(',')
     attribute ? attribute.value.to_i : raise("No event length")
   end
 
-  def should_save?(item)
-    !item.nil?
+  def address_from_xml(event)
+    venue = (event/"[name=venue_name]").inner_text
+    city = (event/"[name=city]").inner_text
+    state = (event/"[name=state]").inner_text
+    "#{venue}, #{city}, #{state}"
   end
 
   def escape(string)
     CGI.escape(string)
+  end
+
+  def solr_separator
+    escape("\r\n+ ")
   end
 
 end

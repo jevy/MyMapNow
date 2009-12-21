@@ -1,13 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 require 'fakeweb'
 
+PAGE = `cat spec/lib/testData/stubhub/stubhub.xml`
+BLANK_PAGE = `cat spec/lib/testData/stubhub/stubhub_blank.xml`
+PAGE_TRIAL_1 = `cat spec/lib/testData/stubhub/stubhub_1.xml`
+PAGE_NO_LENGTH = `cat spec/lib/testData/stubhub/stubhub_no_length.xml`
+
 describe StubhubFeed do
-
-  PAGE = `cat spec/lib/testData/stubhub/stubhub.xml`
-  BLANK_PAGE = `cat spec/lib/testData/stubhub/stubhub_blank.xml`
-  PAGE_1 = `cat spec/lib/testData/stubhub/stubhub_1.xml`
-  PAGE_NO_LENGTH = `cat spec/lib/testData/stubhub/stubhub_no_length.xml`
-
   before(:each) do
     FakeWeb.allow_net_connect = false
     FakeWeb.clean_registry
@@ -44,21 +43,20 @@ describe StubhubFeed do
     end
 
     it "should match this url" do
-      url = "http://www.stubhub.com/listingCatalog/select/?f1=description,city,state,active,cancelled,venue_name,event_time_local&q=%252BstubhubDocumentType%253Aevent%250D%250A%252B%2Bleaf%253A%2Btrue%250D%250A%252B%2Bdescription%253A%2B%22Ottawa%22%250D%250A%252B%2B&rows=10"
+      url = "http://www.stubhub.com/listingCatalog/select/?fl=description,city,state,active,cancelled,venue_name,event_time_local&q=%252BstubhubDocumentType%253Aevent%250D%250A%252B%2Bleaf%253A%2Btrue%250D%250A%252B%2Bdescription%253A%2B%22Ottawa%22%250D%250A%252B%2B&rows=10"
       url.should eql(@stubhub.url)
     end
 
   end
 
   describe "discover pages" do
-    
     it "should return 0 if no elements are found" do
       register_basic_page
       @stubhub.discover_total_pages.should eql(0)
     end
 
     it "should return the number in the response" do
-      register_basic_page(PAGE_1)
+      register_basic_page(PAGE_TRIAL_1)
       @stubhub.discover_total_pages.should eql(78)
     end
 
@@ -68,7 +66,38 @@ describe StubhubFeed do
     end
     
   end
-  
+
+  describe "grab xml events from page" do
+    
+    it "should grab 0 events from a test page" do
+      register_basic_page(PAGE_NO_LENGTH)
+      result = @stubhub.grab_xml_events_from_page(0)
+      result.empty?.should be_true
+    end
+
+    it "should grab 10 events from test page" do
+      register_basic_page(PAGE)
+      result = @stubhub.grab_xml_events_from_page(0)
+      result.empty?.should_not be_true
+      result.length.should eql(10)
+    end
+
+  end
+
+  describe "map xml to item" do
+
+    before(:each) do
+      register_basic_page(PAGE)
+      @list = @stubhub.grab_xml_events_from_page(0)
+    end
+
+    it "should return a new item" do
+#      puts  @stubhub.map_xml_to_item(@list.first).inspect
+      @stubhub.map_xml_to_item(@list.first).should be_kind_of(Item)
+    end
+
+  end
+
 end
 
 def register_basic_page(page=BLANK_PAGE)
