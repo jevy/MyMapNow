@@ -9,7 +9,7 @@ var Map = {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
         // FIXME: the next line is untested
-        google.maps.event.addListener(Map.map, 'bounds_changed', function() {
+        google.maps.event.addListener(Map.map, 'dragend', function() {
             Map.fetch();
         });
     },
@@ -57,5 +57,6 @@ $(document).bind('map:change', Map.cleanup);
 $(document).ready(function() {
     Map.initialize();
     Map.updateSearchBoxWithCurrentLocation();
+    Map.fetch();
 });
 //$(Map.search('Ottawa, ON'));
