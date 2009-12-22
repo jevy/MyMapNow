@@ -290,18 +290,6 @@ describe Lastfm do
 #   lambda {lastfm2.location_exists?}.should_not raise_error
 # end
 
-# it "should populate the queue with concerts from an xml page" do
-#   page = `cat spec/lib/testData/lastfm/ottawa-page-1`
-#   FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,canada&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
-#                       :response => page)
-
-#   lastfm = Lastfm.new('ottawa', 'ontario', 'canada')
-#   lastfm.stub(:total_pages_of_feed_for_location).and_return(2)
-#   Item.should_receive(:new).exactly(10).times
-#   lastfm.populate_queue_with_items
-#   lastfm.event_queue.length.should eql(10)
-# end
-
 # it "should keep giving next_concert over the feed page 1, page 2 boundary" do
 #   page1 = `cat spec/lib/testData/lastfm/ottawa-page-1`
 #   page2 = `cat spec/lib/testData/lastfm/ottawa-page-2`
