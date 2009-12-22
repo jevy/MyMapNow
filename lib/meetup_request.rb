@@ -31,7 +31,7 @@ class MeetupRequest < FeedRequest
   # return true if more items available
   #        false if this if this returned the last event based on criteria
   def populate_queue_with_items
-    grab_xml_events_from_page.each do |event|
+    grab_events_from_xml.each do |event|
       item = map_xml_to_item(event)
       if should_save?(item)
         @event_queue << item
@@ -54,7 +54,7 @@ class MeetupRequest < FeedRequest
   end
 
   # @return all items on page as Nokogiri elements
-  def grab_xml_events_from_page
+  def grab_events_from_xml
     xml = Nokogiri::XML open url
     @items_left_to_process = false
     xml.xpath('//item')

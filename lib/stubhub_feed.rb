@@ -15,24 +15,24 @@ active cancelled venue_name event_time_local )].join(',')
       escape("description:")+"+\"#{SEARCH_TERM}\""
     ].join(solr_separator)
     string+= solr_separator
-    
+    page_number -= 1
     params = {}
     params['q'] = escape(string)
     params['fl'] = COLUMNS
-    params['rows'] = 10
+    params['rows'] = ROWS
     params['start'] = params['rows'].to_i * page_number if page_number > 0 
-#      puts URL + params.to_url_params
+    #      puts URL + params.to_url_params
     URL + params.to_url_params
   end
 
-  def grab_xml_events_from_page(page_number)
+  def grab_events_from_xml(page_number)
     xml = Nokogiri::XML open url(page_number)
     @items_left_to_process = false
     xml.search('//response//result//doc')
   end
 
   def map_xml_to_item(event)
-#    puts event.children
+    #    puts event.children
     Item.new(
       :description=>(event/"[name=description]").inner_text,
       :title=> (event/"[name=title]").inner_text,
@@ -49,10 +49,10 @@ active cancelled venue_name event_time_local )].join(',')
     "http://stubhub.com/#{genre}/#{suffix}/"
   end
 
-  def discover_total_pages
+  def total_pages
     doc = Nokogiri::XML(open(url))
     attribute = doc.xpath('//response//result').attr("numFound")
-    attribute ? attribute.value.to_i : raise("No event length")
+    attribute ? (attribute.value.to_f/ROWS).ceil : raise("No event length")
   end
 
   def address_from_xml(event)

@@ -45,7 +45,7 @@ describe MeetupRequest do
       r.region = 'ontario'
       r.country = 'CA'
 
-      events = r.grab_xml_events_from_page
+      events = r.grab_events_from_xml
       events.count.should eql 194
     end
   end

@@ -30,20 +30,20 @@ describe StubhubFeed do
       @stubhub.url.should_not include(check)
     end
 
-    it "should contain the start parameter if a page is specified" do
+    it "should not contain the start parameter if a page is specified" do
       check = 'start='
-      @stubhub.url(1).should include(check)
+      @stubhub.url(1).should_not include(check)
     end
 
     it "start parameter should be the page number multiplied by the number of rows" do
-      check = 'start=10'
-      @stubhub.url(1).should include(check)
       check = 'start=50'
-      @stubhub.url(5).should include(check)
+      @stubhub.url(1).should_not include(check)
+      check = 'start=100'
+      @stubhub.url(3).should include(check)
     end
 
     it "should match this url" do
-      url = "http://www.stubhub.com/listingCatalog/select/?fl=description,city,state,active,cancelled,venue_name,event_time_local&q=%252BstubhubDocumentType%253Aevent%250D%250A%252B%2Bleaf%253A%2Btrue%250D%250A%252B%2Bdescription%253A%2B%22Ottawa%22%250D%250A%252B%2B&rows=10"
+      url = "http://www.stubhub.com/listingCatalog/select/?fl=description,city,state,active,cancelled,venue_name,event_time_local&q=%252BstubhubDocumentType%253Aevent%250D%250A%252B%2Bleaf%253A%2Btrue%250D%250A%252B%2Bdescription%253A%2B%22Ottawa%22%250D%250A%252B%2B&rows=50"
       url.should eql(@stubhub.url)
     end
 
@@ -52,17 +52,17 @@ describe StubhubFeed do
   describe "discover pages" do
     it "should return 0 if no elements are found" do
       register_basic_page
-      @stubhub.discover_total_pages.should eql(0)
+      @stubhub.total_pages.should eql(0)
     end
 
     it "should return the number in the response" do
       register_basic_page(PAGE_TRIAL_1)
-      @stubhub.discover_total_pages.should eql(78)
+      @stubhub.total_pages.should eql(2)
     end
 
     it "should raise a runtime exception if no response length is given" do
       register_basic_page(PAGE_NO_LENGTH)
-      lambda{@stubhub.discover_total_pages}.should raise_error(RuntimeError)
+      lambda{@stubhub.total_pages}.should raise_error(RuntimeError)
     end
     
   end
@@ -71,13 +71,13 @@ describe StubhubFeed do
     
     it "should grab 0 events from a test page" do
       register_basic_page(PAGE_NO_LENGTH)
-      result = @stubhub.grab_xml_events_from_page(0)
+      result = @stubhub.grab_events_from_xml(0)
       result.empty?.should be_true
     end
 
     it "should grab 10 events from test page" do
       register_basic_page(PAGE)
-      result = @stubhub.grab_xml_events_from_page(0)
+      result = @stubhub.grab_events_from_xml(0)
       result.empty?.should_not be_true
       result.length.should eql(10)
     end
@@ -88,7 +88,7 @@ describe StubhubFeed do
 
     before(:each) do
       register_basic_page(PAGE)
-      @list = @stubhub.grab_xml_events_from_page(0)
+      @list = @stubhub.grab_events_from_xml(0)
     end
 
     it "should return a new item" do
