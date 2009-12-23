@@ -15,20 +15,18 @@ event_date_time_local title genreUrlPath urlPath)].join(',')
   end
 
   def url(page_number=0)
-    #Not Pretty I know, refactorings on order.
-    string =[
+    solr_statement =[
       escape("+stubhubDocumentType:event"),
       escape("leaf:")+"+true",
       description_terms
     ].join(solr_separator)
-    string+= solr_separator
+    solr_statement+= solr_separator
     page_number -= 1
     params = {}
-    params['q'] = escape(string)
+    params['q'] = escape(solr_statement)
     params['fl'] = COLUMNS
     params['rows'] = ROWS
     params['start'] = params['rows'].to_i * page_number if page_number > 0 
-    puts URL + params.to_url_params
     URL + params.to_url_params
   end
 
@@ -39,7 +37,7 @@ event_date_time_local title genreUrlPath urlPath)].join(',')
         event.geocode_address
         event.save
       rescue Graticule::AddressError
-        end
+      end
     end
   end
 
@@ -51,8 +49,8 @@ event_date_time_local title genreUrlPath urlPath)].join(',')
 
   def map_xml_to_item(event)
     Item.new(
-      :description=>(event/"[name=description]").inner_text,
-      :title=> (event/"[name=title]").inner_text,
+      :description=>(event/"[name=title]").inner_text,
+      :title=> (event/"[name=description]").inner_text,
       :begin_at=> Time.parse((event/"[name=event_date_time_local]").inner_text),
       :address=> address_from_xml(event),
       :url=> build_result_url(event),
