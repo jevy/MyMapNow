@@ -14,7 +14,6 @@ class Item < ActiveRecord::Base
   validate :title, :unique_item_title
 
   # after_create :geocode_address
-  belongs_to :user
 
   # acts_as_taggable_on :tags
 

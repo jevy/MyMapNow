@@ -208,41 +208,6 @@ describe "Item Geocoding" do
   #   item = Item.create(@valid_attributes)
   # end
 end
-
-describe "Relationships" do
-
-  before(:each) do
-    @user = User.new(:email=>'user@test.ca', :password=>'test1',
-      :password_confirmation=>'test1', :name=>'test')
-    @item = Item.new(:user=>@user, :title=>'test_item',
-      :begin_at=>Time.now, :address=>'6307 Centre Street SW, Calgary Alberta',
-      :latitude=>50.9952449, :longitude=>-114.0638135)
-    @item2 = Item.new(:user=>@user, :title=>'cant match first item',
-      :begin_at=>Time.now, :address=>'425 5 Street SW, Calgary Alberta',
-      :latitude=>51.0493941, :longitude=>-114.0735727)
-  end
-
-  it "should be able to be associated with an item" do
-    @user.save; @item.save
-    results = Item.find_all_by_user_id(@user.id)
-    results.should have_exactly(1).items
-    results.should include(@item)
-  end
-
-  it "should be able to have multiple items be associated with it" do
-    @user.save; @item.save; @item2.save    
-    results = Item.find_all_by_user_id(@user.id)
-    results.should have_exactly(2).items
-    results.should include(@item, @item2)
-  end
-
-  after(:each) do
-    @user.destroy if defined?(@user)
-    @item.destroy if defined?(@item)
-    @item2.destroy if defined?(@item2)
-  end
-end
-
 describe "Duplicate event checking" do
   before(:each) do
     @item_params = {
