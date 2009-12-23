@@ -36,6 +36,7 @@ describe StubhubFeed do
     end
 
     it "start parameter should be the page number multiplied by the number of rows" do
+      @stubhub.rows = 50
       check = 'start=50'
       @stubhub.url(1).should_not include(check)
       check = 'start=100'
@@ -43,8 +44,9 @@ describe StubhubFeed do
     end
 
     it "should match this url" do
-      url = "http://www.stubhub.com/listingCatalog/select/?fl=description,city,state,active,cancelled,venue_name,event_date_time_local,title,genreUrlPath,urlPath&q=%252BstubhubDocumentType%253Aevent%250D%250A%252B%2Bleaf%253A%2Btrue%250D%250A%252B%2Bdescription%253A%2B%22Canada%22%250D%250A%252B%2B&rows=50"
+      url = "http://www.stubhub.com/listingCatalog/select/?fl=description,city,state,active,cancelled,venue_name,event_date_time_local,title,genreUrlPath,urlPath&q=%252BstubhubDocumentType%253Aevent%250D%250A%252B%2Bleaf%253A%2Btrue%250D%250A%252B%2Bdescription%253A+%22Canada%22%250D%250A%252B%2B%253Bevent_date_time_local%2Basc%250D%250A%252B%2B&rows=50"
       @stubhub.search_terms = ["Canada"]
+      @stubhub.rows = 50
       @stubhub.url.should eql(url)
     end
 
@@ -52,16 +54,19 @@ describe StubhubFeed do
 
   describe "discover pages" do
     it "should return 0 if no elements are found" do
+      @stubhub.rows = 50
       register_basic_page
       @stubhub.total_pages.should eql(0)
     end
 
     it "should return the number in the response" do
+      @stubhub.rows = 50
       register_basic_page(PAGE_TRIAL_1)
       @stubhub.total_pages.should eql(2)
     end
 
     it "should raise a runtime exception if no response length is given" do
+      @stubhub.rows = 50
       register_basic_page(PAGE_NO_LENGTH)
       lambda{@stubhub.total_pages}.should raise_error(RuntimeError)
     end
@@ -106,12 +111,12 @@ describe StubhubFeed do
 
     it "should transform single search terms correctly" do
       @stubhub.search_terms = ["Canada"]
-      @stubhub.description_terms.should eql('description%3A+"Canada"')
+      @stubhub.description_terms.should eql('description%3A "Canada"')
     end
 
     it "should transform multiple search terms correctly" do
       @stubhub.search_terms = ["The","Big", "Bang", "Theory"]
-      @stubhub.description_terms.should eql('description%3A+"The"+"Big"+"Bang"+"Theory"')
+      @stubhub.description_terms.should eql('description%3A "The" "Big" "Bang" "Theory"')
     end
     
   end

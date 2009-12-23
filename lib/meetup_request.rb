@@ -19,7 +19,7 @@ class MeetupRequest < FeedRequest
   end
 
   # @return all items on page as Nokogiri elements
-  def grab_events_from_xml
+  def grab_events_from_xml(page_number)
     xml = Nokogiri::XML open url
     @items_left_to_process = false
     xml.xpath('//item')
@@ -45,7 +45,8 @@ class MeetupRequest < FeedRequest
     end
       
     item_to_add = Meetup.new(:title => (event/'name').inner_text,
-      :begin_at => Time.parse((event/'time').inner_text),
+      :begin_at => MeetupRequest.extract_start_time(event),
+      :end_at => MeetupRequest.extract_end_time(event),
       :url => (event/'event_url').inner_text,
       :address => venue.full_address,
       :latitude => (event/'venue_lat').inner_text,
@@ -55,6 +56,14 @@ class MeetupRequest < FeedRequest
 
     item_to_add.public_meetup = public_meetup
     item_to_add
+  end
+
+  def self.extract_start_time(event)
+    Time.parse((event/'time').inner_text)
+  end
+
+  def self.extract_end_time(event)
+    Time.parse((event/'time').inner_text) + 3.hours
   end
 
   def public_meetup?(event)

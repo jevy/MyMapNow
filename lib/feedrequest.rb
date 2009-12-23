@@ -2,7 +2,7 @@ class FeedRequest
   attr_accessor :start_date, :end_date
   @items_left_to_process = true
 
-  def initialize(date_end=Date.today.next_week, start=Date.today)
+  def initialize(date_end=Date.today.next_month, start=Date.today)
     self.start_date = start
     self.end_date = date_end
   end
@@ -11,11 +11,10 @@ class FeedRequest
     result = []
     1.upto(total_pages).each do |page_number|
       events_from_page = grab_events_from_xml(page_number)
-
       events_from_page.each do |event|
         item = map_xml_to_item(event)
         if item.valid?
-          if should_save?(item, end_date)
+          if should_save?(item)
             result << item
           else
             return result
@@ -31,7 +30,7 @@ class FeedRequest
     1
   end
 
-  def should_save?(item, end_date)
+  def should_save?(item)
     !item.nil? and !item.begin_at.nil? and (item.begin_at <= end_date)
   end
 

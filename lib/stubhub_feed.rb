@@ -11,27 +11,28 @@ event_date_time_local title genreUrlPath urlPath)].join(',')
 
   def initialize
     super(start_date ||= Date.today.next_year)
-    @rows ||= ROWS
   end
 
   def url(page_number=0)
     solr_statement =[
       escape("+stubhubDocumentType:event"),
       escape("leaf:")+"+true",
-      description_terms
+      description_terms,
+      escape(";event_date_time_local asc")
     ].join(solr_separator)
     solr_statement+= solr_separator
     page_number -= 1
     params = {}
     params['q'] = escape(solr_statement)
     params['fl'] = COLUMNS
-    params['rows'] = ROWS
-    params['start'] = params['rows'].to_i * page_number if page_number > 0 
+    params['rows'] = @rows ||= ROWS
+    params['start'] = params['rows'].to_i * page_number if page_number > 0
+    puts URL + params.to_url_params
     URL + params.to_url_params
   end
 
   def pull_items_from_service
-    items = super unless items
+    items = super
     items.each do |event|
       begin
         event.geocode_address
@@ -42,7 +43,7 @@ event_date_time_local title genreUrlPath urlPath)].join(',')
   end
 
   def grab_events_from_xml(page_number)
-    xml = Nokogiri::XML open url(page_number)
+    xml = Nokogiri::XML(open(url(page_number)))
     @items_left_to_process = false
     xml.search('//response//result//doc')
   end
@@ -79,7 +80,7 @@ event_date_time_local title genreUrlPath urlPath)].join(',')
 
   def description_terms(terms=@search_terms)
     return "" unless terms
-    escape("description:")+terms.collect{|term| " \"#{term}\""}.join
+    escape("description:") + terms.collect{|term| " \"#{term}\""}.join("")
   end
 
   def escape(string)

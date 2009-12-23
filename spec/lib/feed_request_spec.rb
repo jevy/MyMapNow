@@ -9,6 +9,7 @@ describe FeedRequest do
   describe "initialize" do
 
     it "should create an item with the correct initial dates" do
+      @feed_request = FeedRequest.new(Date.today.next_week, Date.today)
       @feed_request.start_date.should eql(Date.today)
       @feed_request.end_date.should eql(Date.today.next_week)
     end
@@ -65,20 +66,24 @@ describe FeedRequest do
 
   describe "should save" do
     it "should not save nil items" do
-      @feed_request.should_save?(nil, Date.today).should be_false
+      @feed_request.end_date = Date.today
+      @feed_request.should_save?(nil).should be_false
     end
 
     it "should not save items where begin_at is nil" do
-      @feed_request.should_save?(Item.new, Date.today).should be_false
+      @feed_request.end_date = Date.today
+      @feed_request.should_save?(Item.new).should be_false
     end
 
     it "should not save items where the item is invalid" do
-      @feed_request.should_save?(Item.new(:begin_at=>Date.today), Date.today).should be_false
+      @feed_request.end_date = Date.today
+      @feed_request.should_save?(Item.new(:begin_at=>Date.today)).should be_false
     end
 
     it "should save items where the item begin_at date is before the end date" do
       i = build_valid_item(Date.yesterday)
-      @feed_request.should_save?(i, Date.today).should be_true
+      @feed_request.end_date = Date.today
+      @feed_request.should_save?(i).should be_true
     end
   end
 
