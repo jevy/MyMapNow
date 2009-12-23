@@ -43,7 +43,8 @@ describe StubhubFeed do
     end
 
     it "should match this url" do
-      url = "http://www.stubhub.com/listingCatalog/select/?fl=description,city,state,active,cancelled,venue_name,event_date_time_local,title&q=%252BstubhubDocumentType%253Aevent%250D%250A%252B%2Bleaf%253A%2Btrue%250D%250A%252B%2Bdescription%253A%2B%22Canada%22%250D%250A%252B%2B&rows=50"
+      url = "http://www.stubhub.com/listingCatalog/select/?fl=description,city,state,active,cancelled,venue_name,event_date_time_local,title,genreUrlPath,urlPath&q=%252BstubhubDocumentType%253Aevent%250D%250A%252B%2Bleaf%253A%2Btrue%250D%250A%252B%2Bdescription%253A%2B%22Canada%22%250D%250A%252B%2B&rows=50"
+      @stubhub.search_terms = ["Canada"]
       @stubhub.url.should eql(url)
     end
 
@@ -95,6 +96,24 @@ describe StubhubFeed do
       @stubhub.map_xml_to_item(@list.first).should be_kind_of(Item)
     end
 
+  end
+
+  describe "description terms" do
+
+    it "should return nothing if no terms are selected" do
+      @stubhub.description_terms.should eql("")
+    end
+
+    it "should transform single search terms correctly" do
+      @stubhub.search_terms = ["Canada"]
+      @stubhub.description_terms.should eql('description%3A+"Canada"')
+    end
+
+    it "should transform multiple search terms correctly" do
+      @stubhub.search_terms = ["The","Big", "Bang", "Theory"]
+      @stubhub.description_terms.should eql('description%3A+"The"+"Big"+"Bang"+"Theory"')
+    end
+    
   end
 
 end

@@ -1,14 +1,17 @@
 require 'feedrequest.rb'
 
 class StubhubFeed < FeedRequest
+
+  attr_accessor :search_terms, :rows
+
   URL = "http://www.stubhub.com/listingCatalog/select/?"
-  COLUMNS = [%w(description city state
-active cancelled venue_name event_date_time_local title)].join(',')
+  COLUMNS = [%w(description city state active cancelled venue_name
+event_date_time_local title genreUrlPath urlPath)].join(',')
   ROWS = 50
-  SEARCH_TERM = "Canada"
 
   def initialize
-    super(Date.today.next_year)
+    super(start_date ||= Date.today.next_year)
+    @rows ||= ROWS
   end
 
   def url(page_number=0)
@@ -16,7 +19,7 @@ active cancelled venue_name event_date_time_local title)].join(',')
     string =[
       escape("+stubhubDocumentType:event"),
       escape("leaf:")+"+true",
-      escape("description:")+"+\"#{SEARCH_TERM}\""
+      description_terms
     ].join(solr_separator)
     string+= solr_separator
     page_number -= 1
@@ -25,8 +28,19 @@ active cancelled venue_name event_date_time_local title)].join(',')
     params['fl'] = COLUMNS
     params['rows'] = ROWS
     params['start'] = params['rows'].to_i * page_number if page_number > 0 
-#    puts URL + params.to_url_params
+    puts URL + params.to_url_params
     URL + params.to_url_params
+  end
+
+  def pull_items_from_service
+    items = super unless items
+    items.each do |event|
+      begin
+        event.geocode_address
+        event.save
+      rescue Graticule::AddressError
+        end
+    end
   end
 
   def grab_events_from_xml(page_number)
@@ -62,8 +76,12 @@ active cancelled venue_name event_date_time_local title)].join(',')
     venue = (event/"[name=venue_name]").inner_text
     city = (event/"[name=city]").inner_text
     state = (event/"[name=state]").inner_text
-#    puts "#{venue}, #{city}, #{state}"
     venue.blank? || city.blank? || state.blank? ? nil : "#{venue}, #{city}, #{state}"
+  end
+
+  def description_terms(terms=@search_terms)
+    return "" unless terms
+    escape("description:")+terms.collect{|term| " \"#{term}\""}.join
   end
 
   def escape(string)
