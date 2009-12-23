@@ -27,7 +27,6 @@ event_date_time_local title genreUrlPath urlPath)].join(',')
     params['fl'] = COLUMNS
     params['rows'] = @rows ||= ROWS
     params['start'] = params['rows'].to_i * page_number if page_number > 0
-    puts URL + params.to_url_params
     URL + params.to_url_params
   end
 
