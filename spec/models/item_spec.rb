@@ -326,5 +326,39 @@ describe "Item Hash by Date" do
       values.each{|item| item.begin_at.to_date.should eql(key) }
     end
   end
+
+  describe "city_wide flag" do
+
+    before(:each) do
+      @item_params = {
+        :title => "Grey Cup 2009",
+        :begin_at => Date.today,
+        :address => 'McMahon Stadium, Calgary',
+        :city_wide => true
+      }
+      @latlng = {:latitude => 45.397936, :longitude => -75.685518}
+    end
+
+    it "should exist" do
+      Item.create(@item_params).city_wide?.should be_true
+    end
+
+    it "should default to false" do
+      Item.new.city_wide?.should be_false
+    end
+
+    it "should not geocode on creation if city_wide is true" do
+      item = Item.create(@item_params)
+      item.city_wide?.should be_true
+      item.latitude.should be_nil
+      item.longitude.should be_nil
+    end
+
+    it "should not try to locate with geocoder" do
+      Geocoder.should_not_receive(:locate)
+      item = Item.create(@item_params)
+    end
+
+  end
   
 end

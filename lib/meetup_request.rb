@@ -51,7 +51,8 @@ class MeetupRequest < FeedRequest
       :address => venue.full_address,
       :latitude => (event/'venue_lat').inner_text,
       :longitude => (event/'venue_lon').inner_text,
-      :kind => 'event'
+      :kind => 'event',
+      :city_wide=> !public_meetup?(event)
     )
 
     item_to_add.public_meetup = public_meetup

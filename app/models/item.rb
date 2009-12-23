@@ -13,7 +13,7 @@ class Item < ActiveRecord::Base
 
   validate :title, :unique_item_title
 
-  after_create :geocode_address
+  after_create :geocode_address, :unless => :city_wide?
 
   acts_as_taggable_on :tags
 
