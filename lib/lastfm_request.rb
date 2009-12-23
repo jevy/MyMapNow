@@ -46,12 +46,8 @@ class LastfmRequest < FeedRequest
 
     coordinates = venue.coordinates
 
-    start_time_string = (event/'startDate').inner_text + 
-      (!(event/'startTime').nil? ? " " + (event/'startTime').inner_text : "") +
-      (!(event/'venue/location/timezone').nil? ? " " + (event/'venue/location/timezone').inner_text : "")
-    
     item_to_add = Lastfm.new(:title => (event/'title').inner_text,
-              :begin_at => Time.parse(start_time_string),
+              :begin_at => extract_start_time(event),
               :url => (event/'url')[1].inner_text,
               :address => venue.full_address,
               :latitude => coordinates[0],
@@ -60,6 +56,13 @@ class LastfmRequest < FeedRequest
             )
 
     item_to_add
+  end
+
+  def extract_start_time(event)
+    start_time_string = (event/'startDate').inner_text + 
+      (!(event/'startTime').nil? ? " " + (event/'startTime').inner_text : "") +
+      (!(event/'venue/location/timezone').nil? ? " " + (event/'venue/location/timezone').inner_text : "")
+    Time.parse(start_time_string)
   end
 
   # There is no 'region/state' for Meetup
