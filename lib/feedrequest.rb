@@ -27,8 +27,12 @@ class FeedRequest
     return result
   end
 
+  def total_pages
+    1
+  end
+
   def should_save?(item, end_date)
-    !item.nil? and item.valid? and (item.begin_at <= end_date)
+    !item.nil? and !item.begin_at.nil? and (item.begin_at <= end_date)
   end
 
 end

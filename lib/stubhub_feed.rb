@@ -3,9 +3,13 @@ require 'feedrequest.rb'
 class StubhubFeed < FeedRequest
   URL = "http://www.stubhub.com/listingCatalog/select/?"
   COLUMNS = [%w(description city state
-active cancelled venue_name event_time_local )].join(',')
+active cancelled venue_name event_date_time_local title)].join(',')
   ROWS = 50
-  SEARCH_TERM = "Ottawa"
+  SEARCH_TERM = "Canada"
+
+  def initialize
+    super(Date.today.next_year)
+  end
 
   def url(page_number=0)
     #Not Pretty I know, refactorings on order.
@@ -21,7 +25,7 @@ active cancelled venue_name event_time_local )].join(',')
     params['fl'] = COLUMNS
     params['rows'] = ROWS
     params['start'] = params['rows'].to_i * page_number if page_number > 0 
-    #      puts URL + params.to_url_params
+#    puts URL + params.to_url_params
     URL + params.to_url_params
   end
 
@@ -32,11 +36,10 @@ active cancelled venue_name event_time_local )].join(',')
   end
 
   def map_xml_to_item(event)
-    #    puts event.children
     Item.new(
       :description=>(event/"[name=description]").inner_text,
       :title=> (event/"[name=title]").inner_text,
-      :begin_at=> (event/"[name=event_date_time_local]").inner_text,
+      :begin_at=> Time.parse((event/"[name=event_date_time_local]").inner_text),
       :address=> address_from_xml(event),
       :url=> build_result_url(event),
       :kind=>'event'
@@ -59,7 +62,8 @@ active cancelled venue_name event_time_local )].join(',')
     venue = (event/"[name=venue_name]").inner_text
     city = (event/"[name=city]").inner_text
     state = (event/"[name=state]").inner_text
-    "#{venue}, #{city}, #{state}"
+#    puts "#{venue}, #{city}, #{state}"
+    venue.blank? || city.blank? || state.blank? ? nil : "#{venue}, #{city}, #{state}"
   end
 
   def escape(string)

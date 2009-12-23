@@ -43,8 +43,8 @@ describe StubhubFeed do
     end
 
     it "should match this url" do
-      url = "http://www.stubhub.com/listingCatalog/select/?fl=description,city,state,active,cancelled,venue_name,event_time_local&q=%252BstubhubDocumentType%253Aevent%250D%250A%252B%2Bleaf%253A%2Btrue%250D%250A%252B%2Bdescription%253A%2B%22Ottawa%22%250D%250A%252B%2B&rows=50"
-      url.should eql(@stubhub.url)
+      url = "http://www.stubhub.com/listingCatalog/select/?fl=description,city,state,active,cancelled,venue_name,event_date_time_local,title&q=%252BstubhubDocumentType%253Aevent%250D%250A%252B%2Bleaf%253A%2Btrue%250D%250A%252B%2Bdescription%253A%2B%22Canada%22%250D%250A%252B%2B&rows=50"
+      @stubhub.url.should eql(url)
     end
 
   end
@@ -92,7 +92,6 @@ describe StubhubFeed do
     end
 
     it "should return a new item" do
-#      puts  @stubhub.map_xml_to_item(@list.first).inspect
       @stubhub.map_xml_to_item(@list.first).should be_kind_of(Item)
     end
 
