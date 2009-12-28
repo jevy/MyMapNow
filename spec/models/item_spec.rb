@@ -310,14 +310,16 @@ describe "Item Hash by Date" do
     result = Item.group_by_date(@list)
     result.keys.should have_at_least(2).items
     result.values.flatten.should have_at_least(2).items
-    key = result.keys[0]
-    key.should eql(@first_item.begin_at.to_date)
+    key = result.keys
+    key.should include(@first_item.begin_at.to_date)
+    key.should include(@second_item.begin_at.to_date)
   end
 
   it "should return items keyed by their date" do
     result = Item.group_by_date(@list)
-    key_date = result.keys[0]
-    key_date.should eql(@first_item.begin_at.to_date)
+    key_date = result.keys
+    key_date.should include(@first_item.begin_at.to_date)
+    key_date.should include(@second_item.begin_at.to_date)
   end
 
   it "should return multiple items by their respective date" do

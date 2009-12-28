@@ -1,6 +1,5 @@
 class FeedRequest
   attr_accessor :start_date, :end_date
-  @items_left_to_process = true
 
   def initialize(date_end=Date.today.next_month, start=Date.today)
     self.start_date = start

@@ -31,8 +31,7 @@ event_date_time_local title genreUrlPath urlPath)].join(',')
   end
 
   def pull_items_from_service
-    items = super
-    items.each do |event|
+    super.each do |event|
       begin
         event.geocode_address
         event.save
@@ -43,7 +42,6 @@ event_date_time_local title genreUrlPath urlPath)].join(',')
 
   def grab_events_from_xml(page_number)
     xml = Nokogiri::XML(open(url(page_number)))
-    @items_left_to_process = false
     xml.search('//response//result//doc')
   end
 
