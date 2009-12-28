@@ -9,22 +9,38 @@ body { margin: 0; padding: 0; height: 100%; }
 /* Main Wrapper - to give baseline width and height to keep Google Maps happy */
 wrapper { width: 100%; height: 100%; }
 
-/* Sidebar Block */
-sidebar-wrapper { background: white; width: 259px; height: 100%; position: fixed; border-right: 1px solid #d4d4d4;}
-sidebar-header { position: relative; display: block; background: white; height: 45px; width: 100%;  }
-sidebar-header img { float: left; padding: 12px 13px 0 13px; }
-
-sidebar-search { position: relative; display: block; height: 35px; width: 100%; border-bottom: 1px solid #d4d4d4; }
-sidebar-search button.search { background: url('/images/buttonLocate_on.png') no-repeat; border: none; vertical-align: top; margin-left: 12px; width: 24px; height: 24px; }
-sidebar-search input { 
+/* Search Block */
+search { 
+	position: relative; 
+	display: block; 
+ 	float: right;
+	height: 40px; 
+	width: 255px; 
+	z-index: 160;
+}
+search button.search { 
+	background: url('/images/buttonLocate_on.png') no-repeat; 
+	border: none; 
+	vertical-align: top; 
+	margin-left: 12px; 
+	margin-top: 7px;
+	width: 24px; 
+	height: 24px; 
+}
+search input { 
 		background-color: #78cbf3; 	
     border: 1px solid #3bb9e2; 
     font-size: 14px; 
     color: white;
 	  padding: 3px 8px 3px 8px;
 		text-align: center;
-		vertical-align: top;
+		margin-top: 7px;
 }
+
+/* Sidebar Block */
+sidebar-wrapper { background: white; width: 259px; height: 100%; position: fixed; border-right: 1px solid #d4d4d4;}
+sidebar-header { position: relative; display: block; background: white; height: 45px; width: 100%;  }
+sidebar-header img { float: left; padding: 12px 13px 0 13px; }
 
 aside {	
 	background: white;

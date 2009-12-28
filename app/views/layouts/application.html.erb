@@ -39,14 +39,14 @@
   </head>
   <body>
     <wrapper>
+      <search>
+        <button class="search" onclick="Map.whatsMyLocation();">&nbsp;</button>
+        <input type="text" id="search-box" name="search-box" value=" " onKeyPress="return submitenter(this,event)" />
+      </search>      
       <sidebar-wrapper>
         <sidebar-header>
           <img src="/images/mymapnow_logo.png" />
         </sidebar-header>
-        <sidebar-search>
-          <button class="search" onclick="Map.whatsMyLocation();">&nbsp;</button>
-          <input type="text" id="search-box" name="search-box" value=" " onKeyPress="return submitenter(this,event)" />
-        </sidebar-search>
         <aside>
           <ol></ol>
         </aside>
