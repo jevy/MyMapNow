@@ -11,30 +11,35 @@ wrapper { width: 100%; height: 100%; }
 
 /* Search Block */
 search { 
-	position: relative; 
-	display: block; 
+	position: relative;  
  	float: right;
-	height: 40px; 
-	width: 255px; 
+	height: 38px; 
+	width: 259px; 
+	margin-top: 5px;
 	z-index: 160;
+	background: url('/images/search_bg.png') no-repeat; 
 }
-search button.search { 
+search button { 
 	background: url('/images/buttonLocate_on.png') no-repeat; 
 	border: none; 
 	vertical-align: top; 
-	margin-left: 12px; 
+	margin-left: 11px; 
 	margin-top: 7px;
 	width: 24px; 
 	height: 24px; 
 }
 search input { 
 		background-color: #78cbf3; 	
-    border: 1px solid #3bb9e2; 
     font-size: 14px; 
-    color: white;
-	  padding: 3px 8px 3px 8px;
+		line-height: 27px;
+		border: none;
+		margin-top: 4px;
+    color: #ffffff;
+		padding-top: 6px;
 		text-align: center;
-		margin-top: 7px;
+		width: 210px;
+		height: 27px;
+		background: url('/images/search_input_bg.png') no-repeat; 
 }
 
 /* Sidebar Block */
