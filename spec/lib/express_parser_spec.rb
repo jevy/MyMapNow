@@ -209,8 +209,6 @@ describe ExpressParser do
     @parser.send(:cleanup_div_lines, string).length.should eql(2)
   end
 
-  it 'should catch a Errno::ECONNRESET from open-uri'
-
   def load_artist_file
     page = `cat spec/lib/testData/xpress/artist.html`
     args = {:url => 'http://www.ottawaxpress.ca/music/artist.aspx?iIDGroupe=34484',

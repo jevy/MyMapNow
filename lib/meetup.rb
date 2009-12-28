@@ -1,4 +1,3 @@
-require 'xmlfeed.rb'
 
 class Meetup < Item
   attr_accessor :public_meetup

@@ -111,13 +111,17 @@ sidebar-footer {
 	bottom: 0px;
 	background: white;
 	line-height:17px; 
-	text-align: left; 
 	font-size: 9px; 
 	border-top: 1px solid #d4d4d4;
 
 }
-sidebar-footer .copyright	{ float:left; }
-sidebar-footer a { color: #3bb9e2; margin-left: 10px; }
+#copyright	{ position: fixed;
+	height: 35px; 
+	width: 259px;
+	bottom: 0px;
+	z-index: 149;
+}
+#copyright a { color: #3bb9e2; margin-left: 10px; text-decoration: none; }
 
 #spacer { position: fixed; bottom: 0; left: 0; width: 260px; height:40px; border-top: 1px solid #d4d4d4; }
 #spacer a#add-event {

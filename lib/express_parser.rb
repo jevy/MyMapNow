@@ -10,7 +10,8 @@ class ExpressParser
   def initialize(date=nil)
     begin
       @page = open_uri(URI+EXTENSION+build_date_parameters(date))
-    rescue OpenURI::HTTPError, Errno::ECONNRESET, Timeout::Error => error
+    rescue OpenURI::HTTPError, Errno::ECONNRESET,
+        Timeout::Error, Errno::ETIMEDOUT => error
       error_message = "Xpress Server Experienced a #{error.message}\n"
       date ||= Date.today
       raise(RuntimeError, error_message+"Cannot parse events for #{date}")

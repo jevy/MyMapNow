@@ -53,43 +53,43 @@ describe Item do
     item.should have(1).error_on(:end_at)
   end
 end
-#
-#describe "tagging" do
-#  before(:each) do
-#    @valid_attributes = {
-#      :title => "Prime Minister's Residence",
-#      :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
-#      :latitude => 45.444363,
-#      :longitude => -75.693811,
-#      :address => '24 Sussex Dr., Ottawa, ON, Canada'
-#    }
-#
-#    @item1 = Item.create(@valid_attributes)
-#    @item1.tag_list = "foo, bar"
-#    @item1.save
-#
-#    @item2 = Item.create(@valid_attributes)
-#    @item2.tag_list = "bar, baz"
-#    @item2.save
-#  end
-#
-#  it "should find multiple items with a tag" do
-#    Item.tagged_with('bar', :on => :tags).length.should == 2
-#    Item.tagged_with('bar', :on => :tags).should include(@item1)
-#    Item.tagged_with('bar', :on => :tags).should include(@item2)
-#  end
-#
-#  it "should find one item, but not the other using tags" do
-#    Item.tagged_with('foo', :on => :tags).should include(@item1)
-#    Item.tagged_with('foo', :on => :tags).should_not include(@item2)
-#  end
-#
-#  it "should find all items with intersecting tags" do
-#    Item.tagged_with('foo, baz', :on => :tags).length.should == 2
-#    Item.tagged_with('foo, baz', :on => :tags).should include(@item1)
-#    Item.tagged_with('foo, baz', :on => :tags).should include(@item2)
-#  end
-#end
+
+describe "tagging" do
+  before(:each) do
+    @valid_attributes = {
+      :title => "Prime Minister's Residence",
+      :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
+      :latitude => 45.444363,
+      :longitude => -75.693811,
+      :address => '24 Sussex Dr., Ottawa, ON, Canada'
+    }
+
+    @item1 = Item.create(@valid_attributes)
+    @item1.tag_list = "foo, bar"
+    @item1.save
+
+    @item2 = Item.create(@valid_attributes.merge!(:title=>"Parliament Hill"))
+    @item2.tag_list = "bar, baz"
+    @item2.save
+  end
+
+  it "should find multiple items with a tag" do
+    Item.tagged_with('bar', :on => :tags).length.should eql(2)
+    Item.tagged_with('bar', :on => :tags).should include(@item1)
+    Item.tagged_with('bar', :on => :tags).should include(@item2)
+  end
+
+  it "should find one item, but not the other using tags" do
+    Item.tagged_with('foo', :on => :tags).should include(@item1)
+    Item.tagged_with('foo', :on => :tags).should_not include(@item2)
+  end
+
+  it "should find all items with intersecting tags" do
+    Item.tagged_with('foo, baz', :on => :tags).length.should eql(2)
+    Item.tagged_with('foo, baz', :on => :tags).should include(@item1)
+    Item.tagged_with('foo, baz', :on => :tags).should include(@item2)
+  end
+end
 
 describe "Bounded item finding" do
   before(:each) do
@@ -184,65 +184,29 @@ describe "Bounded item finding" do
 end
 
 describe "Item Geocoding" do
-  # For now, let the scrapers geocode themselves
-  # before(:each) do
-  #   @valid_attributes = {
-  #     :title => "Prime Minister's Residence",
-  #     :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
-  #     :latitude => 45.444363,
-  #     :longitude => -75.693811,
-  #     :address => '24 Sussex Dr., Ottawa, ON, Canada'
-  #   }
-  # end
-
-  # it "should geocode an address if provided" do
-  #   geocoder = stub(:latitude => @valid_attributes[:latitude], :longitude => @valid_attributes[:longitude])
-  #   Geocoder.should_receive(:locate).with(@valid_attributes[:address]).and_return(geocoder)
-  #   item = Item.create(@valid_attributes.merge(:latitude => nil, :longitude => nil))
-  #   item.latitude.should == @valid_attributes[:latitude]
-  #   item.longitude.should == @valid_attributes[:longitude]
-  # end
-
-  # it "should not geocode if latitude and longitude are provided" do
-  #   Geocoder.should_not_receive(:locate)
-  #   item = Item.create(@valid_attributes)
-  # end
-end
-
-describe "Relationships" do
-
   before(:each) do
-    @user = User.new(:email=>'user@test.ca', :password=>'test1',
-      :password_confirmation=>'test1', :name=>'test')
-    @item = Item.new(:user=>@user, :title=>'test_item',
-      :begin_at=>Time.now, :address=>'6307 Centre Street SW, Calgary Alberta',
-      :latitude=>50.9952449, :longitude=>-114.0638135)
-    @item2 = Item.new(:user=>@user, :title=>'cant match first item',
-      :begin_at=>Time.now, :address=>'425 5 Street SW, Calgary Alberta',
-      :latitude=>51.0493941, :longitude=>-114.0735727)
+    @valid_attributes = {
+      :title => "Prime Minister's Residence",
+      :begin_at => Time.mktime(1983, 3, 22, 15, 35, 0),
+      :latitude => 45.444363,
+      :longitude => -75.693811,
+      :address => '24 Sussex Dr., Ottawa, ON, Canada'
+    }
   end
 
-  it "should be able to be associated with an item" do
-    @user.save; @item.save
-    results = Item.find_all_by_user_id(@user.id)
-    results.should have_exactly(1).items
-    results.should include(@item)
+  it "should geocode an address if provided" do
+    geocoder = stub(:latitude => @valid_attributes[:latitude], :longitude => @valid_attributes[:longitude])
+    Geocoder.should_receive(:locate).with(@valid_attributes[:address]).and_return(geocoder)
+    item = Item.create(@valid_attributes.merge(:latitude => nil, :longitude => nil))
+    item.latitude.should == @valid_attributes[:latitude]
+    item.longitude.should == @valid_attributes[:longitude]
   end
 
-  it "should be able to have multiple items be associated with it" do
-    @user.save; @item.save; @item2.save    
-    results = Item.find_all_by_user_id(@user.id)
-    results.should have_exactly(2).items
-    results.should include(@item, @item2)
-  end
-
-  after(:each) do
-    @user.destroy if defined?(@user)
-    @item.destroy if defined?(@item)
-    @item2.destroy if defined?(@item2)
+  it "should not geocode if latitude and longitude are provided" do
+    Geocoder.should_not_receive(:locate)
+    item = Item.create(@valid_attributes)
   end
 end
-
 describe "Duplicate event checking" do
   before(:each) do
     @item_params = {
@@ -346,14 +310,16 @@ describe "Item Hash by Date" do
     result = Item.group_by_date(@list)
     result.keys.should have_at_least(2).items
     result.values.flatten.should have_at_least(2).items
-    key = result.keys[0]
-    key.should eql(@second_item.begin_at.to_date)
+    key = result.keys
+    key.should include(@first_item.begin_at.to_date)
+    key.should include(@second_item.begin_at.to_date)
   end
 
   it "should return items keyed by their date" do
     result = Item.group_by_date(@list)
-    key_date = result.keys[0]
-    key_date.should eql(@second_item.begin_at.to_date)
+    key_date = result.keys
+    key_date.should include(@first_item.begin_at.to_date)
+    key_date.should include(@second_item.begin_at.to_date)
   end
 
   it "should return multiple items by their respective date" do
@@ -361,6 +327,40 @@ describe "Item Hash by Date" do
     result.each_pair do |key, values|
       values.each{|item| item.begin_at.to_date.should eql(key) }
     end
+  end
+
+  describe "city_wide flag" do
+
+    before(:each) do
+      @item_params = {
+        :title => "Grey Cup 2009",
+        :begin_at => Date.today,
+        :address => 'McMahon Stadium, Calgary',
+        :city_wide => true
+      }
+      @latlng = {:latitude => 45.397936, :longitude => -75.685518}
+    end
+
+    it "should exist" do
+      Item.create(@item_params).city_wide?.should be_true
+    end
+
+    it "should default to false" do
+      Item.new.city_wide?.should be_false
+    end
+
+    it "should not geocode on creation if city_wide is true" do
+      item = Item.create(@item_params)
+      item.city_wide?.should be_true
+      item.latitude.should be_nil
+      item.longitude.should be_nil
+    end
+
+    it "should not try to locate with geocoder" do
+      Geocoder.should_not_receive(:locate)
+      item = Item.create(@item_params)
+    end
+
   end
   
 end
