@@ -38,30 +38,30 @@
     </script>
   </head>
   <body>
-    <wrapper>
-      <search>
+    <div id="wrapper">
+      <div id="search">
         <button onclick="Map.whatsMyLocation();">&nbsp;</button>
         <input type="text" id="search-box" name="search-box" value=" " onKeyPress="return submitenter(this,event)" />
-      </search>      
-      <sidebar-wrapper>
-        <sidebar-header>
+      </div>      
+      <div id="sidebar-wrapper">
+        <div id="sidebar-header">
           <img src="/images/mymapnow_logo.png" />
-        </sidebar-header>
-        <aside>
+        </div>
+        <div id="aside">
           <ol></ol>
-        </aside> 
+        </div> 
         <div id="copyright">
           <a href="/terms.html">Terms of Use</a>
         </div>
-        <sidebar-footer> 
+        <div id="sidebar-footer"> 
         <div id="spacer">
           <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %>
         </div>
-        </sidebar-footer>
-      </sidebar-wrapper>
+        </div>
+      </div>
       <div>
         <%= yield %>
       </div>
-    </wrapper>
+    </div>
   </body>
 </html>

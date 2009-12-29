@@ -7,10 +7,10 @@ body { margin: 0; padding: 0; height: 100%; }
 
 
 /* Main Wrapper - to give baseline width and height to keep Google Maps happy */
-wrapper { width: 100%; height: 100%; }
+#wrapper { width: 100%; height: 100%; }
 
 /* Search Block */
-search { 
+#search { 
 	position: relative;  
  	float: right;
 	height: 38px; 
@@ -19,7 +19,7 @@ search {
 	z-index: 160;
 	background: url('/images/search_bg.png') no-repeat; 
 }
-search button { 
+#search button { 
 	background: url('/images/buttonLocate_on.png') no-repeat; 
 	border: none; 
 	vertical-align: top; 
@@ -28,7 +28,7 @@ search button {
 	width: 24px; 
 	height: 24px; 
 }
-search input { 
+#search input { 
 		background-color: #78cbf3; 	
     font-size: 14px; 
 		line-height: 26px;
@@ -43,11 +43,11 @@ search input {
 }
 
 /* Sidebar Block */
-sidebar-wrapper { background: white; width: 259px; height: 100%; position: fixed; border-right: 1px solid #d4d4d4;}
-sidebar-header { position: relative; display: block; background: white; height: 45px; width: 100%;  }
-sidebar-header img { float: left; padding: 12px 13px 0 13px; }
+#sidebar-wrapper { background: white; width: 259px; height: 100%; position: fixed; border-right: 1px solid #d4d4d4;}
+#sidebar-header { position: relative; display: block; background: white; height: 45px; width: 100%;  }
+#sidebar-header img { float: left; padding: 12px 13px 0 13px; }
 
-aside {	
+#aside {	
 	background: white;
 	color: darkgrey;
 	position: fixed;
@@ -57,13 +57,13 @@ aside {
 	bottom: 40px;
 }
 
-aside h1 {
+#aside h1 {
   font-size: 11px;
   height: 20px;
   line-height: 25px;
 }
 
-aside h2 {
+#aside h2 {
   display: block;
   float: left;
   font-size:14px;
@@ -71,44 +71,44 @@ aside h2 {
   width: 100%;
 }
 
-aside ol {
+#aside ol {
   list-style-type: none;
 	height: 100%;
 
 	overflow: auto;
 }
 
-aside li {
+#aside li {
   position: relative;
   padding: 8px 18px 8px 18px;
   border-bottom: 1px solid #d4d4d4;
   cursor: pointer;
 }
 
-aside .null div       { background-position: 0 -30px; } 
-aside .news   div     { background-position: 0 -85px; } 
-aside .review  div    { background-position: 0 -140px; } 
-aside .discussion div { background-position: 0 -195px; } 
-aside .movie  div     { background-position: 0 -250px; }
-aside .event  div     { background-position: 0 -305px; }
+#aside .null div       { background-position: 0 -30px; } 
+#aside .news div     { background-position: 0 -85px; } 
+#aside .review div    { background-position: 0 -140px; } 
+#aside .discussion div { background-position: 0 -195px; } 
+#aside .movie div     { background-position: 0 -250px; }
+#aside .event div     { background-position: 0 -305px; }
 
-aside .time { 
+#aside .time { 
 	display: block;
 	position: relative;
   padding: 8px 0 0 -30px;
 }
 
-aside a {
+#aside a {
  	color: darkgrey;
 	font-weight: bold;
 	text-decoration: none;
 }
 
-aside a:hover {
+#aside a:hover {
 	text-decoration: underline;
 }
 
-sidebar-footer { 
+#sidebar-footer { 
 	display: block; 
 	position: fixed;
 	height: 40px; 
