@@ -17,7 +17,38 @@
     <%= javascript_include_tag 'timeline', 'timeline_theme' %>
     <%= javascript_include_tag 'geoip', 'old_map', 'map' %>
     <%= javascript_include_tag 'items' %>
-    <script type="text/javascript">
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="search">
+        <!-- ><button onclick="Map.whatsMyLocation();"></button> -->
+        <button onclick="Map.search($('#search-box').val());"></button>
+        <input type="text" id="search-box" name="search-box" value=" " onKeyPress="return submitenter(this,event)" />
+      </div>      
+      <div id="sidebar-wrapper">
+        <div id="sidebar-header">
+          <img class="logo" src="/images/mymapnow_logo.png" /><a href="#"><img class="login" src="/images/buttonLogin.png" /></a>
+        </div>
+        <div id="event-list">
+          <ol></ol>
+        </div> 
+        <div id="copyright">
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+        <div id="sidebar-footer"> 
+        <div id="spacer">
+          <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %>
+        </div>
+        </div>
+      </div>
+      <div>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>   
+
+<script type="text/javascript">
     <!--
     function submitenter(myfield,e)
     {
@@ -35,33 +66,4 @@
        return true;
     }
     //-->
-    </script>
-  </head>
-  <body>
-    <div id="wrapper">
-      <div id="search">
-        <button onclick="Map.whatsMyLocation();">&nbsp;</button>
-        <input type="text" id="search-box" name="search-box" value=" " onKeyPress="return submitenter(this,event)" />
-      </div>      
-      <div id="sidebar-wrapper">
-        <div id="sidebar-header">
-          <img src="/images/mymapnow_logo.png" />
-        </div>
-        <div id="aside">
-          <ol></ol>
-        </div> 
-        <div id="copyright">
-          <a href="/terms.html">Terms of Use</a>
-        </div>
-        <div id="sidebar-footer"> 
-        <div id="spacer">
-          <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %>
-        </div>
-        </div>
-      </div>
-      <div>
-        <%= yield %>
-      </div>
-    </div>
-  </body>
-</html>
+</script>
