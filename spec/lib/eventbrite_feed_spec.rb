@@ -23,17 +23,15 @@ describe EventbriteFeed do
   end
 
   describe "total pages" do
-#
-#    it "retrieve the total number of pages correctly" do
-#      register_page(COUNT_ONLY_PAGE)
-#      @eventbrite.total_pages.should eql(6)
-#    end
+
+    it "retrieve the total number of pages correctly" do
+      register_page(COUNT_ONLY_PAGE)
+      @eventbrite.total_pages.should eql(6)
+    end
     
   end
 end
 
-def register_page(page=COUNT_ONLY_PAGE, url=nil)
-  url ||= @eventbrite.url
-  puts "Registering #{url} with #{page}"
-  FakeWeb.register_uri(:get, url, :body=>page)
+def register_page(page=COUNT_ONLY_PAGE)
+  FakeWeb.register_uri(:get,@eventbrite.url, :body=>page)
 end
