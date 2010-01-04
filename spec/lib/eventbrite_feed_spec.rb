@@ -33,5 +33,5 @@ describe EventbriteFeed do
 end
 
 def register_page(page=COUNT_ONLY_PAGE)
-  FakeWeb.register_uri(:get,@eventbrite.url, :body=>page)
+  FakeWeb.register_uri(:get, @eventbrite.url, :body=>page)
 end

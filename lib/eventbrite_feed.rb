@@ -4,6 +4,7 @@ class EventbriteFeed < FeedRequest
 
   API = 'NDcxMGM1MmQxMmI3'
   BASE_URL = 'http://www.eventbrite.com/xml/event_search?'
+  
   def url(page_number=1)
     params = {
       'app_key' =>API,
@@ -11,17 +12,17 @@ class EventbriteFeed < FeedRequest
       'sort_by'=>'date',
       "page"=>page_number
     }
-#    puts "URL: #{BASE_URL + params.to_url_params}"
+    puts "URL: #{BASE_URL + params.to_url_params}"
     BASE_URL + params.to_url_params
   end
 
   def total_pages
     doc = Nokogiri::XML(open(url))
-#    puts doc.to_s
+    puts doc.to_s
     total = (doc/'events//summary//total_items').inner_text.to_f
     rows = (doc/'events//summary//num_showing').inner_text.to_f
 
-#    puts "TOTAL: #{total}, ROWS: #{rows}"
+    puts "TOTAL: #{total}, ROWS: #{rows}"
 
     (total/rows).ceil
   end
@@ -34,12 +35,6 @@ class EventbriteFeed < FeedRequest
 
   def map_xml_to_item(event)
     Item.new(
-      :description=>(event/"[name=title]").inner_text,
-      :title=> (event/"[name=description]").inner_text,
-      :begin_at=> Time.parse((event/"[name=event_date_time_local]").inner_text),
-      :address=> address_from_xml(event),
-      :url=> build_result_url(event),
-      :kind=>'event'
     )
   end
 
