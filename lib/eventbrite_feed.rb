@@ -12,18 +12,13 @@ class EventbriteFeed < FeedRequest
       'sort_by'=>'date',
       "page"=>page_number
     }
-    puts "URL: #{BASE_URL + params.to_url_params}"
     BASE_URL + params.to_url_params
   end
 
   def total_pages
     doc = Nokogiri::XML(open(url))
-    puts doc.to_s
-    total = (doc/'events//summary//total_items').inner_text.to_f
-    rows = (doc/'events//summary//num_showing').inner_text.to_f
-
-    puts "TOTAL: #{total}, ROWS: #{rows}"
-
+    total = (doc.xpath("/events//summary/total_items")).inner_text.to_f
+    rows = (doc/"/events/summary/num_showing").inner_text.to_f
     (total/rows).ceil
   end
 

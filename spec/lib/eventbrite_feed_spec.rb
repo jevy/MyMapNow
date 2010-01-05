@@ -1,6 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'fakeweb'
 
-COUNT_ONLY_PAGE = 'cat spec/lib/testData/eventbrite/count_only.xml'
+COUNT_ONLY_PAGE = 'spec/lib/testData/eventbrite/count.xml'
+LOW_COUNT = 'spec/lib/testData/eventbrite/count_1.xml'
 
 describe EventbriteFeed do
   before(:each) do
@@ -24,14 +26,18 @@ describe EventbriteFeed do
 
   describe "total pages" do
 
-    it "retrieve the total number of pages correctly" do
+    it "should retrieve the total number of pages correctly" do
       register_page(COUNT_ONLY_PAGE)
       @eventbrite.total_pages.should eql(6)
+    end
+
+    it "should " do
+      
     end
     
   end
 end
 
-def register_page(page=COUNT_ONLY_PAGE)
-  FakeWeb.register_uri(:get, @eventbrite.url, :body=>page)
+def register_page(page)
+  FakeWeb.register_uri(:any, @eventbrite.url, :body=>IO.read(page))
 end
