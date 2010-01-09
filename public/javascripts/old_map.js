@@ -1,6 +1,6 @@
-$('aside li').live('click', function(event) {
+$('#event-list li').live('click', function(event) {
     var $this = $(this);
-    $('aside li.active').each(function() {
+    $('#event-list li.active').each(function() {
         $(this).data('info').close();
         Map.setMarkerToDefaultState($(this).data('marker'));
     }).removeClass('active');
@@ -47,10 +47,10 @@ var OldMap = {
     addItem: function(item) {
         var id = item.id;
 
-        if (!$('aside li[data-item-id=' + id + ']')[0]) {
+        if (!$('#event-list li[data-item-id=' + id + ']')[0]) {
             var point = new google.maps.LatLng(item.latitude, item.longitude);
 
-            var $li = $('<li class="' + item.kind + '" data-item-id="' + item.id + '"></li>').appendTo('aside ol');
+            var $li = $('<li class="' + item.kind + '" data-item-id="' + item.id + '"></li>').appendTo('#event-list ol');
             $li.append('<h2>' + item.title + '</h2><br />');
             $li.append('<p class="time"><br />Start Time: ' + (item.begin_at) + '</p>');
             if (item.end_at) {
@@ -77,22 +77,22 @@ var OldMap = {
             });
 
             google.maps.event.addListener($li.data('marker'), 'mouseover', function() {
-                $('aside li[data-item-id=' + id + ']').css('background', '#c2ebff');
-                $('aside li[data-item-id=' + id + ']').css('color', '#6e6e6e');
-                $('aside a').css('color', '#6e6e6e');
+                $('#event-list li[data-item-id=' + id + ']').css('background', '#c2ebff');
+                $('#event-list li[data-item-id=' + id + ']').css('color', '#6e6e6e');
+                $('#event-list a').css('color', '#6e6e6e');
                 Map.setMarkerToActiveState($li.data('marker'));
             });
             google.maps.event.addListener($li.data('marker'), 'mouseout', function() {
-                $('aside li[data-item-id=' + id + ']').css('background', '');
-                $('aside li[data-item-id=' + id + ']').css('color', '');
-                $('aside a').css('color', '');
+                $('#event-list li[data-item-id=' + id + ']').css('background', '');
+                $('#event-list li[data-item-id=' + id + ']').css('color', '');
+                $('#event-list a').css('color', '');
                 Map.setMarkerToDefaultState($li.data('marker'));
             });
         }
     },
 
     showInfoWindow: function(id) {
-        $('aside li[data-item-id="' + id + '"]:first').click();
+        $('#event-list li[data-item-id="' + id + '"]:first').click();
     },
 
     highlight: function(item) {
@@ -102,7 +102,7 @@ var OldMap = {
     },
 
     cleanup: function() {
-        $('aside li').each(function() {
+        $('#event-list li').each(function() {
             if ($(this).data('info')) $(this).data('info').close();
             $(this).data('marker').setMap(null);
             $(this).remove();

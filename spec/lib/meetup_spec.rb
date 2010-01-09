@@ -17,7 +17,7 @@ describe Meetup do
     loc = Location.new('ottawa', 'ontario', 'CA')
     items = Meetup.get_items(loc, @today, Time.mktime(2010,12,31,0,0,0))
 
-    item = items.at(-1)
+    item = items.at(0)
     item.title.should eql("Halloween Meetup")
     item.begin_at.should  eql(Time.gm(2009,10,23,22,0,0))
     item.url.should eql('http://www.meetup.com/Nihongo-Ottawa/calendar/11518741/')
@@ -25,7 +25,7 @@ describe Meetup do
     item.public_meetup.should be_true
     item.kind.should eql('event')
 
-    item = items.at(-2)
+    item = items.at(1)
     item.title.should eql("CashFlow Game Night")
     item.begin_at.should eql(Time.gm(2009,10,23,22,15,0))
     item.url.should eql('http://www.meetup.com/Ottawa-Cashflow-to-Wealth-Club/calendar/11489086/')
@@ -33,7 +33,7 @@ describe Meetup do
     item.public_meetup.should be_false
     item.kind.should eql('event')
 
-    item = items.at(-3)
+    item = items.at(2)
     item.title.should eql("Rencontre EUROG - EUROG Gathering: Oktoberfest @ The Lindenhof")
     item.begin_at.should eql(Time.gm(2009,10,23,23,0,0))
     item.url.should eql('http://www.meetup.com/EUROG-Europeans-of-Ottawa-Gatineau/calendar/11602750/')
@@ -41,7 +41,7 @@ describe Meetup do
     item.public_meetup.should be_true
     item.kind.should eql('event')
 
-    item = items.at(-4)
+    item = items.at(3)
     item.title.should eql("ReSolutions")
     item.begin_at.should eql(Time.gm(2009, 10, 23, 23, 0, 0))
     item.end_at.should eql(Time.gm(2009, 10, 24, 02, 0, 0))
@@ -50,7 +50,7 @@ describe Meetup do
     item.public_meetup.should be_false
     item.kind.should eql('event')
 
-    item = items.at(0)
+    item = items.at(-1)
     item.title.should eql("Ski / Board @ Mt. Tremblant (Available: carpools, x-country skiing, snowshoeing)")
     item.begin_at.should eql(Time.gm(2009, 12, 19, 12, 30, 0))
     item.end_at.should eql(Time.gm(2009, 12, 19, 15, 30, 0))
@@ -67,35 +67,35 @@ describe Meetup do
     loc = Location.new('ottawa', 'ontario', 'CA')
     items = Meetup.get_items(loc, @today, Time.mktime(2009,10,30,0,0,0) )
 
-    item = items.at(-1)
+    item = items.at(0)
     item.title.should eql("Halloween Meetup")
     item.begin_at.should  eql(Time.gm(2009,10,23,22,0,0))
     item.url.should eql('http://www.meetup.com/Nihongo-Ottawa/calendar/11518741/')
     item.address.should eql("7893 Bleeks Rd, Munster, ON, CA")
     item.kind.should eql('event')
 
-    item = items.at(-2)
+    item = items.at(1)
     item.title.should eql("CashFlow Game Night")
     item.begin_at.should eql(Time.gm(2009,10,23,22,15,0))
     item.url.should eql('http://www.meetup.com/Ottawa-Cashflow-to-Wealth-Club/calendar/11489086/')
     item.address.should eql("ottawa, CA")
     item.kind.should eql('event')
 
-    item = items.at(-3)
+    item = items.at(2)
     item.title.should eql("Rencontre EUROG - EUROG Gathering: Oktoberfest @ The Lindenhof")
     item.begin_at.should eql(Time.gm(2009,10,23,23,0,0))
     item.url.should eql('http://www.meetup.com/EUROG-Europeans-of-Ottawa-Gatineau/calendar/11602750/')
     item.address.should eql("268, Preston, Ottawa, ON, CA")
     item.kind.should eql('event')
 
-    item = items.at(-4)
+    item = items.at(3)
     item.title.should eql("ReSolutions")
     item.begin_at.should eql(Time.gm(2009, 10, 23, 23, 0, 0))
     item.url.should eql('http://www.meetup.com/htrio0/calendar/11639427/')
     item.address.should eql("ottawa, CA")
     item.kind.should eql('event')
 
-    item = items.at(0)
+    item = items.at(-1)
     item.title.should eql("Euchre and Trivia night")
     item.begin_at.should eql(Time.local(2009, 10, 28, 19, 15, 0))
     item.url.should eql('http://www.meetup.com/A-Memorable-Introduction-com/calendar/11641337/')

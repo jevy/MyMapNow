@@ -7,26 +7,50 @@ body { margin: 0; padding: 0; height: 100%; }
 
 
 /* Main Wrapper - to give baseline width and height to keep Google Maps happy */
-wrapper { width: 100%; height: 100%; }
+#wrapper { width: 100%; height: 100%; }
 
-/* Sidebar Block */
-sidebar-wrapper { background: white; width: 259px; height: 100%; position: fixed; border-right: 1px solid #d4d4d4;}
-sidebar-header { position: relative; display: block; background: white; height: 45px; width: 100%;  }
-sidebar-header img { float: left; padding: 12px 13px 0 13px; }
-
-sidebar-search { position: relative; display: block; height: 35px; width: 100%; border-bottom: 1px solid #d4d4d4; }
-sidebar-search button.search { background: url('/images/buttonLocate_on.png') no-repeat; border: none; vertical-align: top; margin-left: 12px; width: 24px; height: 24px; }
-sidebar-search input { 
+/* Search Block */
+#search { 
+	position: relative;  
+ 	float: right;
+	height: 38px; 
+	width: 259px; 
+	margin-top: 5px;
+	z-index: 160;
+	background: url('/images/search_bg.png') no-repeat; 
+}
+#search button { 
+	background: url('/images/buttonLocate_on.png') no-repeat; 
+	border: none; 
+	vertical-align: top; 
+	margin-left: 11px; 
+	margin-top: 7px;
+	width: 24px; 
+	height: 24px; 
+}
+#search input { 
 		background-color: #78cbf3; 	
-    border: 1px solid #3bb9e2; 
     font-size: 14px; 
-    color: white;
-	  padding: 3px 8px 3px 8px;
+		line-height: 26px;
+		border: none;
+		margin-top: 4px;
+    color: #ffffff;
+		padding-top: 6px;
 		text-align: center;
-		vertical-align: top;
+		width: 210px;
+		height: 27px;
+		background: url('/images/search_input_bg.png') no-repeat; 
 }
 
-aside {	
+/* Sidebar Block */
+#sidebar-wrapper { background: white; width: 259px; height: 100%; position: fixed; border-right: 1px solid #d4d4d4;}
+#sidebar-header { position: relative; display: block; background: white; height: 45px; width: 100%;  }
+#sidebar-header a { text-decoration: none; }
+#sidebar-header img { border: 0;}
+#sidebar-header .logo { float: left; padding: 12px 13px 0 13px; }
+#sidebar-header .login { float: right; padding: 16px 12px 0 0; width: 91px; height: 25px; }
+
+#event-list {	
 	background: white;
 	color: darkgrey;
 	position: fixed;
@@ -36,13 +60,13 @@ aside {
 	bottom: 40px;
 }
 
-aside h1 {
+#event-list h1 {
   font-size: 11px;
   height: 20px;
   line-height: 25px;
 }
 
-aside h2 {
+#event-list h2 {
   display: block;
   float: left;
   font-size:14px;
@@ -50,44 +74,44 @@ aside h2 {
   width: 100%;
 }
 
-aside ol {
+#event-list ol {
   list-style-type: none;
 	height: 100%;
 
 	overflow: auto;
 }
 
-aside li {
+#event-list li {
   position: relative;
   padding: 8px 18px 8px 18px;
   border-bottom: 1px solid #d4d4d4;
   cursor: pointer;
 }
 
-aside .null div       { background-position: 0 -30px; } 
-aside .news   div     { background-position: 0 -85px; } 
-aside .review  div    { background-position: 0 -140px; } 
-aside .discussion div { background-position: 0 -195px; } 
-aside .movie  div     { background-position: 0 -250px; }
-aside .event  div     { background-position: 0 -305px; }
+#event-list .null div       { background-position: 0 -30px; } 
+#event-list .news div     { background-position: 0 -85px; } 
+#event-list .review div    { background-position: 0 -140px; } 
+#event-list .discussion div { background-position: 0 -195px; } 
+#event-list .movie div     { background-position: 0 -250px; }
+#event-list .event div     { background-position: 0 -305px; }
 
-aside .time { 
+#event-list .time { 
 	display: block;
 	position: relative;
   padding: 8px 0 0 -30px;
 }
 
-aside a {
+#event-list a {
  	color: darkgrey;
 	font-weight: bold;
 	text-decoration: none;
 }
 
-aside a:hover {
+#event-list a:hover {
 	text-decoration: underline;
 }
 
-sidebar-footer { 
+#sidebar-footer { 
 	display: block; 
 	position: fixed;
 	height: 40px; 
@@ -95,13 +119,17 @@ sidebar-footer {
 	bottom: 0px;
 	background: white;
 	line-height:17px; 
-	text-align: left; 
 	font-size: 9px; 
 	border-top: 1px solid #d4d4d4;
 
 }
-sidebar-footer .copyright	{ float:left; }
-sidebar-footer a { color: #3bb9e2; margin-left: 10px; }
+#copyright	{ position: fixed;
+	height: 35px; 
+	width: 259px;
+	bottom: 0px;
+	z-index: 149;
+}
+#copyright a { color: #3bb9e2; margin-left: 10px; text-decoration: none; }
 
 #spacer { position: fixed; bottom: 0; left: 0; width: 260px; height:40px; border-top: 1px solid #d4d4d4; }
 #spacer a#add-event {

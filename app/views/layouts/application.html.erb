@@ -17,7 +17,38 @@
     <%= javascript_include_tag 'timeline', 'timeline_theme' %>
     <%= javascript_include_tag 'geoip', 'old_map', 'map' %>
     <%= javascript_include_tag 'items' %>
-    <script type="text/javascript">
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="search">
+        <!-- ><button onclick="Map.whatsMyLocation();"></button> -->
+        <button onclick="Map.search($('#search-box').val());"></button>
+        <input type="text" id="search-box" name="search-box" value=" " onKeyPress="return submitenter(this,event)" />
+      </div>      
+      <div id="sidebar-wrapper">
+        <div id="sidebar-header">
+          <img class="logo" src="/images/mymapnow_logo.png" /><a href="#"><img class="login" src="/images/buttonLogin.png" /></a>
+        </div>
+        <div id="event-list">
+          <ol></ol>
+        </div> 
+        <div id="copyright">
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+        <div id="sidebar-footer"> 
+        <div id="spacer">
+          <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %>
+        </div>
+        </div>
+      </div>
+      <div>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>   
+
+<script type="text/javascript">
     <!--
     function submitenter(myfield,e)
     {
@@ -35,32 +66,4 @@
        return true;
     }
     //-->
-    </script>
-  </head>
-  <body>
-    <wrapper>
-      <sidebar-wrapper>
-        <sidebar-header>
-          <img src="/images/mymapnow_logo.png" />
-        </sidebar-header>
-        <sidebar-search>
-          <button class="search" onclick="Map.whatsMyLocation();">&nbsp;</button>
-          <input type="text" id="search-box" name="search-box" value=" " onKeyPress="return submitenter(this,event)" />
-        </sidebar-search>
-        <aside>
-          <ol></ol>
-        </aside>
-        <sidebar-footer>
-        <div id="spacer">
-          <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %>
-        </div>
-          <!-- <a class="copyright" href="#">About MyMapNow</a><br /><a class="copyright" href="#">Privacy Policy</a> -->
-        </sidebar-footer>
-      </sidebar-wrapper>
-
-      <div>
-        <%= yield %>
-      </div>
-    </wrapper>
-  </body>
-</html>
+</script>
