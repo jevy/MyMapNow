@@ -43,8 +43,8 @@ body { margin: 0; padding: 0; height: 100%; }
 }
 
 /* Sidebar Block */
-#sidebar-wrapper { background: white; width: 259px; height: 100%; position: fixed; border-right: 1px solid #d4d4d4;}
-#sidebar-header { position: relative; display: block; background: white; height: 45px; width: 100%;  }
+#sidebar-wrapper { background: white; width: 259px; height: 100%; position: fixed; border-right: 1px solid #d4d4d4; }
+#sidebar-header { position: relative; display: block; background: white; height: 45px; width: 100%; border-bottom: 1px solid #d4d4d4;  }
 #sidebar-header a { text-decoration: none; }
 #sidebar-header img { border: 0;}
 #sidebar-header .logo { float: left; padding: 12px 13px 0 13px; }
