@@ -3,6 +3,7 @@ require 'fakeweb'
 
 COUNT_ONLY_PAGE = 'spec/lib/testData/eventbrite/count.xml'
 LOW_COUNT = 'spec/lib/testData/eventbrite/count_1.xml'
+FULL_PAGE = 'spec/lib/testData/eventbrite/full_page.xml'
 
 describe EventbriteFeed do
   before(:each) do
@@ -18,9 +19,14 @@ describe EventbriteFeed do
     end
 
     it "should sort the results by date" do
-      @eventbrite.url.should include('sort_by')
+      @eventbrite.url.should include('sort_by=')
       @eventbrite.url.should include('=date')
     end
+    
+    it "should contain the app key" do
+      @eventbrite.url.should include('app_key=')
+    end
+
 
   end
 
@@ -31,10 +37,18 @@ describe EventbriteFeed do
       @eventbrite.total_pages.should eql(6)
     end
 
-    it "should " do
-      
+    it "should retrieve the number of pages if the total number is less than the amount showing" do
+      register_page(LOW_COUNT)
+      @eventbrite.total_pages.should eql(1)
     end
     
+  end
+
+  describe "grab events from xml" do
+    it "should parse the correct number of pages" do
+      register_page(FULL_PAGE)
+      @eventbrite.grab_events_from_xml(1).length
+    end
   end
 end
 

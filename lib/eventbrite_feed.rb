@@ -24,12 +24,15 @@ class EventbriteFeed < FeedRequest
 
   def grab_events_from_xml(page_number)
     xml = Nokogiri::XML(open(url(page_number)))
-    xml.search('//events//event')
+    (xml/'//events//event')
   end
 
 
   def map_xml_to_item(event)
+    coordinates = event/"/venue/Lat-Long".inner_text.split('/')
     Item.new(
+      :latitude => coordinates[0],
+      :longitude=> coordinates[1]
     )
   end
 
