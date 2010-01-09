@@ -1,25 +1,51 @@
 namespace :scrape do
   desc "This task will run all scrapers."
-  task :all => ["scrape:xpress", "scrape:lastfm", "scrape:flixster"]
+  # Notice no flixster
+  task :all => ["scrape:xpress", "scrape:lastfm", "scrape:stubhub", "scrape:meetup"]
 
   desc "This task will scrape the Ottawa Xpress site."
-  task :xpress do
-    require "./lib/express_scraper.rb"
+  task (:xpress => :environment) do
+    require 'lib/lastfm'
+    start_date = Date.today
+    end_date = Date.today.end_of_week
+
+    start_date.upto(end_date) do |date|
+      begin
+        ExpressParser.new(date).parse_events.each do |event|
+          event.save
+        end
+      rescue RuntimeError => error
+        puts "Unable to parse events for #{date}, #{error.message}."
+      end
+    end
   end
 
   desc "This task will scrape the lastfm site."
-  task :lastfm do
-    lastfm = Lastfm.new('ontario')
-    lastfm.create_events_from_until(Time.now, Time.now + 7.days)
+  task (:lastfm => :environment) do
+    require 'lib/lastfm'
+    loc = Location.new(nil, 'ontario', 'canada')
+    items = Lastfm.get_items(loc, Time.now, Time.now + 7.days)
+    items.each {|i| i.save}
   end
   
-  desc "This task will scrape Flixster site."
-  task :flixster do
-    Flixster.new.create_all_movies_for_state_on_date("http://www.flixster.com/sitemap/theaters/CA/ON", Time.now)
+  desc "This task will scrape Stubhub."
+  task (:stubhub => :environment) do
+    scraper = StubhubFeed.new
+    scraper.search_terms = ["Canada", "Ottawa", "Toronto", "Ontario", "Montreal"]
+    scraper.rows = 100
+    scraper.pull_items_from_service
   end
 
   desc "This task will scrape Meetup.com"
-  task :meetup do
-    Meetup.new('CA', 'ottawa').create_events_from_until(Time.now, Time.now + 7.days)
+  task (:meetup => :environment) do
+    loc = Location.new('ottawa', 'ontario', 'CA')
+    items = Meetup.get_items(loc, Time.now, Time.now + 7.days)
+    items.each {|i| i.save if i.public_meetup}
+  end
+
+  desc "Scrape all of Flixster"
+  task (:flixster => :environment) do
+    f = Flixster.new
+    f.create_all_movies_for_state_on_date("http://www.flixster.com/sitemap/theaters/CA/ON", Time.now)
   end
 end
