@@ -27,6 +27,11 @@ class EventbriteFeed < FeedRequest
     (xml/'/events/event')
   end
 
+  def pull_items_from_service
+    super.each do |event|
+      event.save
+    end
+  end
 
   def map_xml_to_item(event)
     coordinates = (event/"venue/Lat-Long").inner_text.split('/')
@@ -52,6 +57,7 @@ class EventbriteFeed < FeedRequest
 
   def remove_formatting(string)
     string = string.to_s.gsub('&amp;', '&').gsub('&lt;', '<').gsub('&gt;', '>').gsub('&quot;', "'").gsub(/<\/?[^>]*>/,  "")
+
   end
 
 end
