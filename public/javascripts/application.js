@@ -19,4 +19,4 @@ function submitenter(myfield,e) {
 	   return true;
 }
 
- $(Map.search('Ottawa, ON'));
+//$(Map.search('Ottawa, ON'));
