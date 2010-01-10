@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<venue>
+    <Lat-Long>40.73 / -74.0</Lat-Long>
+    <address>23 West 10th Street</address>
+    <address_2>(between 5th-6th Avenue)</address_2>
+    <city>New York</city>
+    <country>United States</country>
+    <country_code>US</country_code>
+    <id>8984</id>
+    <latitude>40.73</latitude>
+    <longitude>-74.0</longitude>
+    <name>World-Famous Marshall Chess Club</name>
+    <postal_code>10011</postal_code>
+    <region>NY</region>
+</venue>
