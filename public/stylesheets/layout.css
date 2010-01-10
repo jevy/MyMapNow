@@ -48,7 +48,7 @@ body { margin: 0; padding: 0; height: 100%; }
 #sidebar-header a { text-decoration: none; }
 #sidebar-header img { border: 0;}
 #sidebar-header .logo { float: left; padding: 12px 13px 0 13px; }
-#sidebar-header .login { float: right; padding: 16px 12px 0 0; width: 91px; height: 25px; }
+#sidebar-header .login { float: right; padding: 12px 12px 0 0; width: 91px; height: 25px; }
 
 #event-list {	
 	background: white;

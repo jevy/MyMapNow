@@ -55,7 +55,7 @@ describe StubhubFeed do
   describe "discover pages" do
     it "should return 0 if no elements are found" do
       @stubhub.rows = 50
-      register_basic_page
+      register_basic_page(BLANK_PAGE)
       @stubhub.total_pages.should eql(0)
     end
 
@@ -123,7 +123,7 @@ describe StubhubFeed do
 
 end
 
-def register_basic_page(page=BLANK_PAGE)
+def register_basic_page(page)
   FakeWeb.register_uri(:get, @stubhub.url, :body=>page)
 end
 
