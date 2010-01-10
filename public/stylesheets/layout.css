@@ -184,8 +184,6 @@ add-event-panel {
  *************************/
 .datepicker {
 	font-size: 8pt;
-	text-align: center;
-	line-height: 40px;
 	bottom: 0;
 	background: #fff;
 	color: #d4d4d4;	
@@ -193,6 +191,13 @@ add-event-panel {
 	height: 40px;
 	border-top: 1px solid #d4d4d4;
 	z-index: 120;
+}
+
+.datepicker img {
+	text-align: center;
+	line-height: 40px;
+	border: none;
+	padding: 5px 2px 2px 5px;
 }
 
 #startdatepicker {
