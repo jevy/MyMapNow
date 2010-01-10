@@ -4,8 +4,6 @@ $(document).ready(
 	}
 );
 
-$(Map.search('Ottawa, ON'));
-
 function submitenter(myfield,e) {
 	var keycode;
 	if (window.event) keycode = window.event.keyCode;
