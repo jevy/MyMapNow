@@ -18,3 +18,5 @@ function submitenter(myfield,e) {
 	else
 	   return true;
 }
+
+ $(Map.search('Ottawa, ON'));
