@@ -19,16 +19,16 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'gravtastic', :version => '>= 2.1.0'
-  config.gem 'rspec', :lib => 'spec'
-  config.gem 'rspec-rails', :lib => false
-  config.gem 'cucumber'
-  config.gem 'webrat'
+  #config.gem 'gravtastic', :version => '>= 2.1.0'
+  #config.gem 'rspec', :lib => 'spec'
+  #config.gem 'rspec-rails', :lib => false
+  #config.gem 'cucumber'
+  #config.gem 'webrat'
   config.gem 'jelly'
   config.gem 'hpricot'
-  config.gem 'fakeweb'
+  #config.gem 'fakeweb'
   config.gem 'nokogiri'
-  config.gem 'selenium-rc', :lib => false
+  #config.gem 'selenium-rc', :lib => false
   config.gem 'authlogic', :version =>'>= 2.1.3'
   config.gem 'facebooker', :version =>'>= 1.0.55'
   config.gem 'levenshtein', :version=> '>= 0.2.0'
