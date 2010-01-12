@@ -27,8 +27,8 @@ $(function() {
   function updateLabels(left, right) {
     $('#label-left span').text(dateText(left));
     $('#label-right span').text(dateText(right));
-    setTimeout( function() { $('#label-left').css('right', 100-parseFloat($('#date-range a:first').css('left'))+'%'); }, 10);
-    setTimeout( function() { $('#label-right').css('left', $('#date-range a:last').css('left')); }, 10);
+    // setTimeout( function() { $('#label-left').css('right', 100-parseFloat($('#date-range a:first').css('left'))+'%'); }, 10);
+    // setTimeout( function() { $('#label-right').css('left', $('#date-range a:last').css('left')); }, 10);
   }
 
   function dateForValue(value) {

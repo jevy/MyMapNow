@@ -11,20 +11,19 @@ a:hover							{text-decoration:underline;}
  * Date Slider
  ***************/
 
-#date-range					{ position:absolute; top:16px; height:8px; background:url(images/meter.png) repeat-x; left:375px; right:158px; -webkit-border-radius:4px; -moz-border-radius:4px; }
+#date-range					{ position:absolute; top:16px; height:8px; background:url(images/meter.png) repeat-x; left:305px; right:50px; -webkit-border-radius:4px; -moz-border-radius:4px; }
 #date-range a.ui-slider-handle { cursor:default; height:17px; width:17px; background:url(images/handle.png); display:block; position:absolute; margin:-4px 0 0 -4px;}
 #date-range a:active,
 #date-range a:focus { outline:none; border:none;}
 #date-range div.ui-slider-range  {height:8px; position:absolute; background:#42c1f3 url(images/meter.png) repeat-x;}
 #label-left,
-#label-right				{ position: absolute; z-index: 200; height: 35px; width: 117px; font-weight: bold; color:#fff; white-space:nowrap; text-shadow:#000 0 1px 1px; bottom: 43px;}
+#label-right				{ position: absolute; z-index: 200; height: 35px; width: 117px; font-weight: bold; color:#fff; white-space:nowrap; text-shadow:#000 0 1px 1px; bottom: 25px; }
 
 
-#label-left					{ left: 263px;  background: url(images/date_left.png) no-repeat; }
-/*#label-left span		{display:block; height:23px; padding:0 12px 0 10px; background:url(images/label_left_end.png) no-repeat;}*/
-#label-right				{ right: 0; background: url(images/date_right.png) no-repeat; }
-/*#label-right span		{display:block; height:23px; padding:0 10px 0 12px; background:url(images/label_right_end.png) no-repeat 100% 0;}*/
-
+#label-left					{ left: 265px;  background: url(images/date_left.png) no-repeat; padding-left: 7px; }
+#label-right				{ right: 5px; background: url(images/date_right.png) no-repeat; padding-left: 7px; }
+#label-left span,
+#label-right span { float: left; width: 100px; line-height: 26px; font-size: 12px; text-align: center;}
 
 /* Search Block */
 #search { 
