@@ -6,7 +6,7 @@ class StubhubFeed < FeedRequest
 
   URL = "http://www.stubhub.com/listingCatalog/select/?"
   COLUMNS = [%w(description city state active cancelled venue_name
-event_date_time_local title genreUrlPath urlPath)].join(',')
+event_date_time_local title genreUrlPath urlPath venue_config_id)].join(',')
   ROWS = 50
 
   def initialize
@@ -42,7 +42,7 @@ event_date_time_local title genreUrlPath urlPath)].join(',')
 
   def grab_events_from_xml(page_number)
     xml = Nokogiri::XML(open(url(page_number)))
-    xml.search('//response//result//doc')
+    xml.search('/response/result/doc')
   end
 
   def map_xml_to_item(event)
@@ -69,7 +69,8 @@ event_date_time_local title genreUrlPath urlPath)].join(',')
   end
 
   def address_from_xml(event)
-    venue = (event/"[name=venue_name]").inner_text
+    venue_id = (event/"[name=venue_config_id]").inner_text
+    venue = (event/"[name=venue_name]").inner_text unless venue = retrieve_address(venue_id)
     city = (event/"[name=city]").inner_text
     state = (event/"[name=state]").inner_text
     venue.blank? || city.blank? || state.blank? ? nil : "#{venue}, #{city}, #{state}"
@@ -86,6 +87,12 @@ event_date_time_local title genreUrlPath urlPath)].join(',')
 
   def solr_separator
     escape("\r\n+ ")
+  end
+
+  def retrieve_address(venue_id)
+    string = URL+"q=stubhubDocumentType:venue+venue_config_id:#{venue_id}&rows=1"
+    results = (Nokogiri::XML(open(string))/"response/result/doc")
+    results.length > 0 ? (results.first/"[name=addr1]").inner_text : nil
   end
 
 end
