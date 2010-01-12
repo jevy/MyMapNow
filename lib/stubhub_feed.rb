@@ -69,7 +69,7 @@ event_date_time_local title genreUrlPath urlPath venue_config_id)].join(',')
   end
 
   def address_from_xml(event)
-    venue_id = event/"[name=venue_config_id]"
+    venue_id = (event/"[name=venue_config_id]").inner_text
     venue = (event/"[name=venue_name]").inner_text unless venue = retrieve_address(venue_id)
     city = (event/"[name=city]").inner_text
     state = (event/"[name=state]").inner_text
