@@ -27,6 +27,7 @@
   <section>
     <%= yield %>
   </section>
+
   <div id="sidebar-header">
     <img class="logo" src="/images/mymapnow_logo.png" /><a href="#"><img class="login" src="/images/buttonLogin.png" /></a>
   </div>
@@ -39,11 +40,21 @@
       <ol></ol>
 	</aside> 
 
-  <footer> 
-  <div id="date-range"></div>
-  <div id="label-left"><span></span></div>
-  <div id="label-right"><span></span></div>
+  <footer>  
+    <div id="date-range"></div>
+    <div id="label-left"><span></span></div>
+    <div id="label-right"><span></span></div>
+
   </footer>
+
+  <div id="copyright">
+    <a href="/terms.html">Terms of Use</a>
+  </div>
+
+  <div id="spacer">
+    <a id="add-event" href="#"><span>Add Event</span></a>
+    <!-- <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %> -->
+  </div>
   
   <div id="dialogs">
 <%# render 'items/form' %>

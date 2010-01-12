@@ -54,10 +54,10 @@ var OldMap = {
 				$li.append('<p>End Time: ' + (end_time.format()) + '</p>');
       }
       $li.append('<p class="address">' + (item.address || '') + '</p>');
-      $li.append('<p class="description">' + (item.description || '') + '</p>');
-      if (item.url) {
-        $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
-      }
+      // $li.append('<p class="description">' + (item.description || '') + '</p>');
+      // if (item.url) {
+      //   $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
+      // }
 
       $li.data('marker', new google.maps.Marker({
         position: point, 
@@ -73,13 +73,13 @@ var OldMap = {
           $('aside li[data-item-id=' + id + ']').css('background', '#c2ebff');
           $('aside li[data-item-id=' + id + ']').css('color', '#6e6e6e');
           $('aside a').css('color', '#6e6e6e');
-          Map.setMarkerToActiveState($li.data('marker'));
+          //Map.setMarkerToActiveState($li.data('marker')); // This is for the hover-over when we have the pin graphic
       });
       google.maps.event.addListener($li.data('marker'), 'mouseout', function() {
           $('aside li[data-item-id=' + id + ']').css('background', '');
           $('aside li[data-item-id=' + id + ']').css('color', '');
           $('aside a').css('color', '');
-          Map.setMarkerToDefaultState($li.data('marker'));
+          //Map.setMarkerToDefaultState($li.data('marker')); // This is for the hover-over when we have the pin graphic
       });
     }
   },

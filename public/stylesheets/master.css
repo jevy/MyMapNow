@@ -11,17 +11,17 @@ a:hover							{text-decoration:underline;}
  * Date Slider
  ***************/
 
-#date-range					{ position:absolute; top:16px; height:8px; background:url(images/meter.png) repeat-x; left:305px; right:50px; -webkit-border-radius:4px; -moz-border-radius:4px; }
+#date-range					{ position:absolute; top:16px; height:8px; background:url(images/meter.png) repeat-x; left:315px; right:55px; -webkit-border-radius:4px; -moz-border-radius:4px; }
 #date-range a.ui-slider-handle { cursor:default; height:17px; width:17px; background:url(images/handle.png); display:block; position:absolute; margin:-4px 0 0 -4px;}
 #date-range a:active,
 #date-range a:focus { outline:none; border:none;}
 #date-range div.ui-slider-range  {height:8px; position:absolute; background:#42c1f3 url(images/meter.png) repeat-x;}
 #label-left,
-#label-right				{ position: absolute; z-index: 200; height: 35px; width: 117px; font-weight: bold; color:#fff; white-space:nowrap; text-shadow:#000 0 1px 1px; bottom: 25px; }
+#label-right				{ position: absolute; z-index: 10; height: 35px; width: 117px; font-weight: bold; color:#fff; white-space:nowrap; text-shadow:#000 0 1px 1px; bottom: 25px; }
 
 
-#label-left					{ left: 265px;  background: url(images/date_left.png) no-repeat; padding-left: 7px; }
-#label-right				{ right: 5px; background: url(images/date_right.png) no-repeat; padding-left: 7px; }
+#label-left					{ left: 270px;  background: url(images/date_left.png) no-repeat; padding-left: 7px; }
+#label-right				{ right: 3px; background: url(images/date_right.png) no-repeat; padding-left: 7px; }
 #label-left span,
 #label-right span { float: left; width: 100px; line-height: 26px; font-size: 12px; text-align: center;}
 
@@ -32,7 +32,7 @@ a:hover							{text-decoration:underline;}
 	height: 38px; 
 	width: 259px; 
 	margin-top: 5px;
-	z-index: 160;
+	z-index: 15;
 	background: url('/images/search_bg.png') no-repeat; 
 }
 #search button { 
@@ -60,18 +60,19 @@ a:hover							{text-decoration:underline;}
 
 /* Sidebar Block */
 #sidebar-wrapper { background: white; width: 259px; height: 100%; position: fixed; border-right: 1px solid #d4d4d4; }
-#sidebar-header { position: relative; display: block; background: white; height: 45px; width: 100%; }
+#sidebar-header { position: relative; display: block; background: white; width: 259px; height: 45px; width: 100%; }
 #sidebar-header a { text-decoration: none; }
 #sidebar-header img { border: 0;}
 #sidebar-header .logo { float: left; padding: 12px 13px 0 13px; }
 #sidebar-header .login { padding: 12px 12px 0 0; width: 91px; height: 25px; }
 
 
-section							{display:block; z-index:6; position:absolute; left:259px; border-right: 1px solid #d4d4d4; right:0; top:0px; bottom:40px;}
+section							{display:block; z-index: 6; position:absolute; left:259px; border-right: 1px solid #d4d4d4; right:0; top:0px; bottom:40px;}
 aside								{background:#fff; color: #818181; z-index:5; display:block; position:absolute; width:259px; left:0; top:80px; bottom:40px;}
-footer							{display:block; position:absolute; height:39px; border-top:1px solid #676767; background:#fff; color:#999; padding:0 10px; line-height:40px; left:0; right:0; bottom:0; text-align:right;}
-footer .copyright		{float:left;}
-footer a						{color:#fff; margin-left:15px;}
+footer							{display:block; position:absolute; height:39px; border-top:1px solid #d4d4d4; background:#fff; color:#999; line-height:40px; left:0; right:0; bottom:0; text-align:right; }
+
+#copyright			{ position: fixed; width:259px; left: 0; bottom: 0; line-height: 40px; border-right: 1px solid #d4d4d4; }
+#copyright a		{ color: #42c1f3; margin-left:10px; }
 
 aside h1						{font-size:11px; color:darkgrey; height:28px; border-bottom:1px solid #666; position:relative; padding:0 1px; line-height:28px;}
 aside ol						{position:absolute; list-style-type:none; top:0px; left:0; right:0; bottom:0; overflow:auto;}
@@ -82,7 +83,7 @@ aside img           {width: 160px;}
 aside .address			{color:#999;}
 aside .description	{color:#555;}
 
-aside li div        { background: url(images/pointers.png) no-repeat top left; }
+aside li div        { background: url('images/pointers.png') no-repeat top left; }
 aside .null div   { background-position: 0 -30px; } 
 aside .news   div   { background-position: 0 -85px; } 
 aside .review  div   { background-position: 0 -140px; } 
@@ -95,7 +96,18 @@ img.gravatar { width: 25px; height: 25px;}
 dt {clear: left; font-weight: bold; margin-top: 5px;}
 dt img {float: left; margin: 0 3px 3px 0;}
 
-#map                {height:100%;}
+#map                {height:100%; border-left: 1px solid #d4d4d4;}
+
+#spacer     {position:fixed; bottom:0; left:0; width: 285px; height:40px; border-top: 1px solid lightgray;}
+#spacer a#add-event {display:block; position:fixed; bottom:12px; left:200px; width: 53px; height:53px; background:url(images/buttonAddEvent.png); #555555; z-index: 150} 
+#spacer a#add-event span{ display:none; }
+
+#add-event-panel {
+	width:260px;
+	left: 260px;
+	background: white;
+	z-index: 25;
+}
 
 /*
  * Tab formatting
@@ -106,10 +118,11 @@ ul.tabs {
 	list-style:none; 
 	margin:0 !important; 
 	padding:0;
+	width: 259px;
 	height:30px;
 	border-top: 1px solid #d4d4d4;	
 	border-bottom: 1px solid #d4d4d4;	
-	background: url(../images/tabs.png) no-repeat 0 0;
+	background: url('../images/tabs.png') no-repeat 0 0;
 }
 
 /* single tab */
@@ -127,9 +140,10 @@ ul.tabs img {
 
 /* link inside the tab. uses a background image */
 ul.tabs a { 
-	background: url(../images/tabs.png) no-repeat 0 0; 	
+	background: url('../images/tabs.png') no-repeat 0 0; 	
 	font-size:11px;
 	display:block;
+	width: 259px;
 	height: 30px;  
 	line-height:30px;
 	width: 80px;
@@ -164,6 +178,7 @@ ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
 div.panes div {
 	display:none;		
 	border-top:0;
+	width: 259px;
 	font-size:14px;
 	color: darkgrey;
 	background-color:#fff;
