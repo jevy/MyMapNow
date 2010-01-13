@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+    <responseHeader>
+        <status>0</status>
+        <QTime>5</QTime>
+    </responseHeader>
+    <result name="response" numFound="11587" start="0">
+        <doc>
+            <str name="active">1</str>
+            <str name="additional_info"/>
+            <str name="addr1">53 Elgin St</str>
+            <str name="addr2"/>
+            <str name="alcohol_policy"/>
+            <str name="childrens_rules"/>
+            <str name="city">Ottawa</str>
+            <str name="country">CA</str>
+            <date name="dateLastIndexed">2010-01-11T11:36:40.298Z</date>
+            <str name="daylight_savings">1</str>
+            <str name="description">National Arts Centre</str>
+            <str name="directions"/><str name="general_rules"/>
+            <str name="id">11024</str>
+            <str name="image_url">stubhub_12552_SouthamHallNationalArtsCtr.png</str>
+            <str name="is_scrubbing_enabled">0</str>
+            <str name="is_seatmap_enabled">0</str>
+            <str name="is_section_mapped">0</str>
+            <str name="key">national-arts-centre-event-tickets</str>
+            <str name="keywords">National Arts Centre seating chart,National Arts Centre Tickets,National Arts Centre</str>
+            <str name="meta_description">National Arts Centre Tickets - Buy and Sell Tickets to events at National Arts Centre in Ottawa,ON at StubHub!</str>
+            <str name="node_id">11024</str>
+            <str name="parking"/>
+            <str name="phone1"/>
+            <str name="phone1_desc"/>
+            <str name="phone2"/>
+            <str name="phone2_desc"/>
+            <str name="phone3"/>
+            <str name="phone3_desc"/>
+            <str name="phone4"/>
+            <str name="phone4_desc"/>
+            <str name="phone5"/>
+            <str name="phone5_desc"/>
+            <str name="points_of_interest"/>
+            <str name="properties_id">10604</str>
+            <str name="region">Ottawa</str>
+            <str name="region_id">5874</str>
+            <str name="seating_notes_txt"/>
+            <str name="show_clean_sections">0</str>
+            <str name="state">ON</str>
+            <str name="stub_countries_id">2</str>
+            <str name="stubhubDocumentId">venue-12552</str>
+            <str name="stubhubDocumentType">venue</str>
+            <str name="super_venue_id">10604</str>
+            <str name="timezone">EST</str>
+            <str name="timezone_id">2</str>
+            <str name="transportation"/>
+            <str name="travel"/>
+            <str name="venue_config_id">12552</str>
+            <str name="venue_config_name">Southam Hall</str>
+            <str name="venue_id">12552</str>
+            <str name="venue_image_url">http://www.stubhub.com/data/venue_maps/12552/stubhub_12552_SouthamHallNationalArtsCtr.png</str>
+            <str name="venue_url">http://www.stubhub.com/national-arts-centre-event-tickets/</str>
+            <str name="venue_url_mapping">national-arts-centre-event-tickets</str>
+            <str name="where_to_eat"/>
+            <str name="willcall"/>
+            <str name="zip">K1P5W1</str>
+        </doc>
+    </result>
+</response>
