@@ -82,6 +82,7 @@ aside h2						{font-size:15px; font-family:"Helvetica Neue", Helvetica, Arial, T
 aside img           {width: 160px;}
 aside .address			{color:#999;}
 aside .description	{color:#555;}
+aside .link a				{color:#42c1f3;}				
 
 aside li div        { background: url('images/pointers.png') no-repeat top left; }
 aside .null div   { background-position: 0 -30px; } 
@@ -90,6 +91,7 @@ aside .review  div   { background-position: 0 -140px; }
 aside .discussion div   { background-position: 0 -195px; } 
 aside .movie  div   { background-position: 0 -250px; }
 aside .event  div   { background-position: 0 -305px; }
+
 
 img.gravatar { width: 25px; height: 25px;}
 
