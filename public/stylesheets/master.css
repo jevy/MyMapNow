@@ -101,7 +101,7 @@ dt img {float: left; margin: 0 3px 3px 0;}
 #map                {height:100%; border-left: 1px solid #d4d4d4;}
 
 #spacer     {position:fixed; bottom:0; left:0; width: 285px; height:40px; border-top: 1px solid lightgray;}
-#spacer a#add-event {display:block; position:fixed; bottom:12px; left:200px; width: 53px; height:53px; background:url(images/buttonAddEvent.png); #555555; z-index: 150} 
+#spacer a#add-event {display:block; position:fixed; bottom:12px; left:190px; width: 53px; height:53px; background:url(images/buttonAddEvent.png); #555555; z-index: 150} 
 #spacer a#add-event span{ display:none; }
 
 #add-event-panel {
