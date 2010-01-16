@@ -54,10 +54,10 @@ var OldMap = {
 				$li.append('<p>End Time: ' + (end_time.format()) + '</p>');
       }
       $li.append('<p class="address">' + (item.address || '') + '</p>');
-      // $li.append('<p class="description">' + (item.description || '') + '</p>');
-      // if (item.url) {
-      //   $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
-      // }
+      $li.append('<p class="description">' + (item.description || '') + '</p>');
+      if (item.url) {
+        $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
+      }
 
       $li.data('marker', new google.maps.Marker({
         position: point, 
@@ -105,8 +105,8 @@ var OldMap = {
   _markerImages: {},
   markerImages: function(kind, item) {
     if (!Map._markerImages[kind]) {
-      var url = item.find('div').css('background-image').match(/\((.*)\)/)[1];
-      var y = item.find('div').css('background-position').match(/-(\d+)/)[1];
+      var url = item.find('div').css('background-image').match(/\((.*)\)/)[1];  // FIXME:
+      var y = item.find('div').css('background-position').match(/-(\d+)/)[1];		// These lines are causing some errors in IE
       Map._markerImages[kind] =  new google.maps.MarkerImage(url,
         new google.maps.Size(23, 25),
         new google.maps.Point(0, y),

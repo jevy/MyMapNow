@@ -40,4 +40,24 @@ $(function() {
     return $.fn.strftime(dateForValue(n), '%B %D');
   }
 
+	$("#new-item").click(function(){
+		$("#new-item-panel").toggle();
+	});
+	
+	$("#login, #close-login").click(function(){
+		$("#login-panel").toggle();
+	});
+
+	$("#member-login-button").click(function(){
+		alert("Email:\nPassword:\nLogin to myMapNow");
+	});
+
+	$("#signup-button").click(function(){
+		alert("Signup for a myMapNow account");
+	});
+
+	$("#facebook-login-button").click(function(){
+		alert("Login using facebook connect");
+	});
+
 });
