@@ -93,14 +93,40 @@ a:hover							{text-decoration:underline;}
 	padding-top: 10px;
 }
 
-.member-login-button {
+#member-login-button {
 	padding-top: 10px;
 	float: right;
 }
 
+.facebook-login {
+	font-size: 1.1em;
+	font-weight: bold;
+	padding: 15px;
+	position: relative;
+	top: 0;
+}
+
+.facebook-login img {
+	padding-top: 10px;
+}
+
+#facebook-logo {
+	padding-top: 0;	
+	padding-bottom: 10px;
+}
+
+.facebook-text-block {
+	background: #feffce;
+	color: #818181;
+	font-size: 1em;
+	border: 1px solid #d4d4d4;
+	padding: 15px;
+	position: relative;
+}
+
 .login-spacer {
 	margin-top: 100px;
-	padding: 15px 0 15px 0;
+	padding: 15px 0 0 0;
 	border-top: 1px solid #d4d4d4; 
 }
 
@@ -146,7 +172,7 @@ footer							{display:block; position:absolute; height:39px; border-top:1px soli
 #date-range a.ui-slider-handle { cursor:default; height:17px; width:17px; background:url('images/handle.png'); display:block; position:absolute; margin:-4px 0 0 -4px;}
 #date-range a:active,
 #date-range a:focus { outline:none; border:none;}
-#date-range div.ui-slider-range  {height:8px; position:absolute; background:#42c1f3 url('images/meter.png') repeat-x;}
+#date-range div.ui-slider-range  { height:8px; position:absolute; background: #42c1f3 url('images/meter.png') repeat-x;}
 #label-left,
 #label-right				{ position: absolute; z-index: 10; height: 35px; width: 117px; font-weight: bold; color:#fff; white-space:nowrap; text-shadow:#000 0 1px 1px; bottom: 25px; }
 #label-left					{ left: 270px;  background: url('images/date_left.png') no-repeat; padding-left: 7px; }
@@ -171,7 +197,11 @@ footer							{display:block; position:absolute; height:39px; border-top:1px soli
 	bottom: 0;
 	background: #fff;
 	z-index: 25;
-	color: darkgrey;
+	color: #818181;
+	filter:alpha(opacity=1);
+		-moz-opacity: 1;
+		-khtml-opacity: 1;
+		opacity: 1;
 }
 
 /*

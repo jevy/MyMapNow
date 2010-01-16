@@ -48,4 +48,12 @@ $(function() {
 		$("#login-panel").toggle();
 	});
 
+	$("#member-login-button").click(function(){
+		alert("Email:\nPassword:\nLogin to myMapNow");
+	});
+
+	$("#facebook-login-button").click(function(){
+		alert("Login using facebook connect");
+	});
+
 });
