@@ -43,6 +43,9 @@ $(function() {
 	$("#new-item").click(function(){
 		$("#new-item-panel").toggle();
 	});
-
+	
+	$("#login").click(function(){
+		$("#login-panel").toggle();
+	});
 
 });
