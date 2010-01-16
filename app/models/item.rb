@@ -2,6 +2,7 @@ require 'levenshtein'
 
 class Item < ActiveRecord::Base
   ACCEPTABLE_TITLE_DISTANCE = 3
+  SUMMARY_MAX_LENGTH = 100
   validates_presence_of :title
   validates_presence_of :begin_at
   validate :end_at_is_after_begin_at
@@ -35,6 +36,13 @@ class Item < ActiveRecord::Base
     Item.find(:all, :conditions=>["begin_at BETWEEN ? AND ?",
         start_time.advance(:hours=>-hour_range),
         start_time.advance(:hours=>hour_range)])
+  end
+
+  def summary(max_length = SUMMARY_MAX_LENGTH)
+    summary=""
+    summary = self.description.add_elems_until_length("\n", max_length)
+    summary = summary.add_elems_until_length(".", max_length)
+    summary[0,max_length]
   end
 
   def self.group_by_date(items)
@@ -87,4 +95,20 @@ class String
   def simplify
     self.downcase.gsub(' ','')
   end
+
+  def add_elems_until_length(pattern, max_length)
+    summary = ""
+    self.split(pattern).each do |str|
+      current_length = str.length+summary.length
+      if (current_length < max_length || summary.blank?)
+        summary << "#{str+pattern}" unless str.strip.blank?
+      else
+        break
+      end
+    end
+    return summary
+  end
+
+  
+
 end
