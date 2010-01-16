@@ -52,6 +52,10 @@ $(function() {
 		alert("Email:\nPassword:\nLogin to myMapNow");
 	});
 
+	$("#signup-button").click(function(){
+		alert("Signup for a myMapNow account");
+	});
+
 	$("#facebook-login-button").click(function(){
 		alert("Login using facebook connect");
 	});
