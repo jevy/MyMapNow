@@ -75,7 +75,7 @@ footer							{display:block; position:absolute; height:39px; border-top:1px soli
 #copyright a		{ color: #42c1f3; margin-left:10px; }
 
 aside h1						{font-size:11px; color:darkgrey; height:28px; border-bottom:1px solid #666; position:relative; padding:0 1px; line-height:28px;}
-aside ol						{position:absolute; list-style-type:none; top:0px; left:0; right:0; bottom:0; overflow:auto;}
+aside ol						{position:absolute; list-style-type:none; top:0px; left:0; right:0; bottom:0; overflow:auto; }
 aside li						{position:relative; padding:8px 10px 8px 43px; border-bottom:1px solid #999;}
 aside div						{position:absolute; left:10px; top:8px; width:23px; height:25px; line-height:20px; color:#fff; text-align:center;}
 aside h2						{font-size:15px; font-family:"Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;}
@@ -100,14 +100,20 @@ dt img {float: left; margin: 0 3px 3px 0;}
 
 #map                {height:100%; border-left: 1px solid #d4d4d4;}
 
-#spacer     {position:fixed; bottom:0; left:0; width: 285px; height:40px; border-top: 1px solid lightgray;}
-#spacer a#add-event {display:block; position:fixed; bottom:12px; left:190px; width: 53px; height:53px; background:url(images/buttonAddEvent.png); #555555; z-index: 150} 
-#spacer a#add-event span{ display:none; }
+#spacer     {position:relative; bottom:0; left:0; width: 285px; height:40px; border-top: 1px solid lightgray;}
+#spacer a#new-item {display:block; position:fixed; bottom:12px; left:190px; width: 53px; height:53px; background:url(images/buttonAddEvent.png); #555555; z-index: 150} 
+#spacer a#new-item span{ display: none; }
 
-#add-event-panel {
-	width:260px;
+#new-item-panel {
+	position: fixed;
+	display: none;
+	overflow: auto;
+	border-right: 1px solid #d4d4d4;
+	top: 0;
+	width:259px;
 	left: 260px;
-	background: white;
+	bottom: 0;
+	background: #fff;
 	z-index: 25;
 }
 
