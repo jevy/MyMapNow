@@ -46,12 +46,13 @@ a:hover							{text-decoration:underline;}
  * sidebar block 
  *****************/
 #sidebar-header { position: relative; display: block; background: white; width: 259px; height: 45px; }
-#logo { position: fixed; left: 13px; top: 12px; width: 109px; height: 29; background: url('/images/mymapnow_logo.png') no-repeat; z-index: 106; }
+.logo { position: fixed; left: 13px; top: 12px; width: 109px; height: 25px; background: url('/images/mymapnow_logo.png') no-repeat; z-index: 6; }
 
 /*
  * login panel formatting
  **************************/
 #login { position: fixed; left: 155px; top: 11px; width: 91px; height: 25px; background: url( '/images/buttonLogin.png') no-repeat; z-index: 6; }
+#close-login { position: fixed; left: 222px; top: 13px; width: 22px; height: 22px; background: url( '/images/loginClose.png') no-repeat; z-index: 6; }
 #login-panel {
 	position: fixed;
 	display: none;
@@ -64,6 +65,43 @@ a:hover							{text-decoration:underline;}
 	background: #fff;
 	z-index: 25;
 	color: darkgrey;
+}
+
+.login-text-block {
+	background: #42c1f3;
+	color: white;
+	font-size: 1.1em;
+	padding: 15px;
+	position: relative;
+	top: 45px;
+}
+
+.uline {
+	color: white;
+	text-decoration: underline;
+}
+
+.member-login {
+	font-size: 1.1em;
+	font-weight: bold;
+	padding: 15px;
+	position: relative;
+	top: 50px;
+}
+
+.member-login img {
+	padding-top: 10px;
+}
+
+.member-login-button {
+	padding-top: 10px;
+	float: right;
+}
+
+.login-spacer {
+	margin-top: 100px;
+	padding: 15px 0 15px 0;
+	border-top: 1px solid #d4d4d4; 
 }
 
 /*
