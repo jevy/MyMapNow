@@ -57,7 +57,7 @@ var OldMap = {
                 $li.append('<p class="time"><br />End Time: ' + (item.end_at) + '</p>');
             }
             $li.append('<p class="address"><br />' + (item.address || '') + '</p>');
-            $li.append('<p class="description"><br />' + (item.description || '') + '</p>');
+            $li.append('<p class="description"><br />' + (item.summary || '') + '</p>');
             if (item.url) {
                 $li.append('<p class="link"><a href="' + item.url + '" target="_blank">More...</a>');
             }

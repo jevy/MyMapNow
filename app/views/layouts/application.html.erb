@@ -17,7 +17,7 @@
     <%= javascript_include_tag 'timeline', 'timeline_theme' %>
     <%= javascript_include_tag 'geoip', 'old_map', 'map', 'application' %>
     <%= javascript_include_tag 'items' %>
-        
+
   </head>
   <body>
     <div id="wrapper">
@@ -29,27 +29,27 @@
         <div id="sidebar-header">
           <img class="logo" src="/images/mymapnow_logo.png" /><a href="#"><img class="login" src="/images/buttonLogin.png" /></a>
         </div>
-        
+
         <!-- the tabs -->
         <ul class="tabs">
-        	<li><a href="#"><img class="login" src="/images/events.png" /></a></li>
-        	<li><a href="#"><img class="login" src="/images/comments.png" /></a></li>
+          <li><a href="#"><img class="login" src="/images/events.png" /></a></li>
+          <li><a href="#"><img class="login" src="/images/comments.png" /></a></li>
         </ul>
         <!-- tab "panes" -->
         <div class="panes">
-        	<div id="event-list">
-              <ol></ol>
-        	</div>
-        	<div id="comment-list">&nbsp;</div>
+          <div id="event-list">
+            <ol></ol>
+          </div>
+          <div id="comment-list">&nbsp;</div>
         </div>
-             
+
         <div id="copyright">
           <a href="/terms.html">Terms of Use</a>
         </div>
         <div id="sidebar-footer"> 
-        <div id="spacer">
-          <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %>
-        </div>
+          <div id="spacer">
+            <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %>
+          </div>
         </div>
       </div>
       <div>

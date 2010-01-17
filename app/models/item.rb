@@ -40,8 +40,8 @@ class Item < ActiveRecord::Base
 
   def summary(max_length = SUMMARY_MAX_LENGTH)
     summary=""
-    summary = self.description.add_elems_until_length("\n", max_length)
-    summary = summary.add_elems_until_length(".", max_length)
+    summary = self.description.strip.add_elems_until_length("\n", max_length)
+    summary = summary.add_elems_until_length(".", max_length).strip
     summary[0,max_length]
   end
 
@@ -100,10 +100,12 @@ class String
     summary = ""
     self.split(pattern).each do |str|
       current_length = str.length+summary.length
-      if (current_length < max_length || summary.blank?)
-        summary << "#{str+pattern}" unless str.strip.blank?
-      else
-        break
+      unless str.strip.blank?
+        if (current_length < max_length || summary.blank?)
+          summary << "#{str+pattern}" unless str.strip.blank?
+        else
+          break
+        end
       end
     end
     return summary
