@@ -64,7 +64,7 @@ a:hover							{text-decoration:underline;}
 	bottom: 0;
 	background: #fff;
 	z-index: 25;
-	color: darkgrey;
+	color: #818181;
 }
 
 .login-text-block {
@@ -183,9 +183,9 @@ footer							{display:block; position:absolute; height:39px; border-top:1px soli
 /*
  * new item panel
  ******************/
-#spacer     { position:relative; bottom:0; left:0; width: 285px; height:40px; border-top: 1px solid lightgray;}
+#spacer     { position:relative; bottom:0; left:0; width: 285px; height:40px; border-top: 1px solid #d4d4d4;}
 #new-item { display:block; position:fixed; bottom:12px; left:190px; width: 53px; height:53px; background:url('images/buttonAddEvent.png'); z-index: 15; } 
-
+#close-new-item { position: fixed; left: 222px; top: 13px; width: 22px; height: 22px; background: url( '/images/loginClose.png') no-repeat; z-index: 6; }
 #new-item-panel {
 	position: fixed;
 	display: none;
@@ -193,15 +193,24 @@ footer							{display:block; position:absolute; height:39px; border-top:1px soli
 	border-right: 1px solid #d4d4d4;
 	top: 0;
 	width:259px;
-	left: 260px;
+	left: 0;
 	bottom: 0;
 	background: #fff;
 	z-index: 25;
 	color: #818181;
-	filter:alpha(opacity=1);
-		-moz-opacity: 1;
-		-khtml-opacity: 1;
-		opacity: 1;
+}
+
+.new-item-text-block {
+	background: #42c1f3;
+	color: white;
+	font-size: 1.1em;
+	padding: 15px;
+	position: relative;
+	top: 45px;
+}
+
+.new-item-text-block h2 {
+	font-size: 1.2em;
 }
 
 /*

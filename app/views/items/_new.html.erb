@@ -1,4 +1,40 @@
-<br />
-<div>
+<div class="logo"></div><div id="close-new-item"></div>
+<div class="new-item-text-block">
 <h2>Add an Event</h2>
+<% form_for(@item = Item.new) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :begin_at %><br />
+    <%= f.datetime_select :begin_at %>
+  </p>
+  <p>
+    <%= f.label :end_at %><br />
+    <%= f.datetime_select :end_at %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :kind %><br />
+    <%= f.text_field :kind %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, "rows" => 4, "cols" => 28 %>
+  </p>
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>  
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+<%= link_to 'Back', '/' %>
 </div>
