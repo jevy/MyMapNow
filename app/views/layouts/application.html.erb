@@ -20,43 +20,6 @@
 
   </head>
   <body>
-<<<<<<< HEAD
-    <div id="wrapper">
-      <div id="search">
-        <button onclick="Map.search($('#search-box').val());"></button>
-        <input type="text" id="search-box" name="search-box" value=" " onKeyPress="return submitenter(this,event)" />
-      </div>      
-      <div id="sidebar-wrapper">
-        <div id="sidebar-header">
-          <img class="logo" src="/images/mymapnow_logo.png" /><a href="#"><img class="login" src="/images/buttonLogin.png" /></a>
-        </div>
-
-        <!-- the tabs -->
-        <ul class="tabs">
-          <li><a href="#"><img class="login" src="/images/events.png" /></a></li>
-          <li><a href="#"><img class="login" src="/images/comments.png" /></a></li>
-        </ul>
-        <!-- tab "panes" -->
-        <div class="panes">
-          <div id="event-list">
-            <ol></ol>
-          </div>
-          <div id="comment-list">&nbsp;</div>
-        </div>
-
-        <div id="copyright">
-          <a href="/terms.html">Terms of Use</a>
-        </div>
-        <div id="sidebar-footer"> 
-          <div id="spacer">
-            <%= link_to('<span>Add Event</span>', new_item_path, :id => 'add-event') %>
-          </div>
-        </div>
-      </div>
-      <div>
-        <%= yield %>
-      </div>
-=======
   <div id="search">
     <button onclick="Map.search($('#search-box').val());"></button>
     <input type="text" id="search-box" name="search-box" value=" " onKeyPress="return submitenter(this,event)" />
@@ -71,7 +34,6 @@
     <div id="login"></div>  
     <div id="login-panel">
       <%= render :partial => 'layouts/login' %>
->>>>>>> master
     </div>
   </div>
 
