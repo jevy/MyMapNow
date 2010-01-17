@@ -97,7 +97,7 @@ var OldMap = {
   cleanup: function() {
     $('aside li').each(function() {
       if($(this).data('info')) $(this).data('info').close();
-      //$(this).data('marker').set_map(null);
+      $(this).data('marker').set_map(null);
       $(this).remove();
     });
   },
