@@ -365,6 +365,7 @@ describe "Item Hash by Date" do
 
   describe "Summary" do
     LOREN_IPSUM = 'spec/models/test_data/loren_ipsum.txt'
+    LOREN_IPSUM_GS = 'spec/models/test_data/loren_ipsum_grouped_whitespace.txt'
     before(:each) do
       @length = 100
       @item = Item.create(:description => load_text)
@@ -401,6 +402,10 @@ describe "Item Hash by Date" do
     it "should return both paragraphs if there is a third." do
       summary = @item.summary(@length = 2010)
       summary.split("\n").should have(2).strings
+    end
+
+    it "should ignore grouped whitespace" do
+      
     end
 
     def load_text
