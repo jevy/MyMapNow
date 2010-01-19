@@ -40,14 +40,8 @@ class Item < ActiveRecord::Base
 
   def summary(max_length = SUMMARY_MAX_LENGTH)
     summary = self.description.strip.add_elems_until_length("\n", max_length)
-<<<<<<< HEAD
-    summary = summary.add_elems_until_length(".", max_length).strip
-    summary.length > max_length ? summary[0,max_length] : summary
-=======
     summary = summary.add_elems_until_length(".", max_length)
     summary.length > max_length ? summary.strip[0,max_length] : summary
-
->>>>>>> master
   end
 
   def self.group_by_date(items)
