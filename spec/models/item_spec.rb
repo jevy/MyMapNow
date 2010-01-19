@@ -395,17 +395,18 @@ describe "Item Hash by Date" do
       @length = 1
       (@item.summary(@length).length <= @length).should be_true
       @item.summary(@length).should eql('L')
-      @length = 5 #Just making sure.
-      @item.summary(@length).should eql('Lorem')
+      @item.summary(3).should eql('Lor')
     end
 
     it "should return both paragraphs if there is a third." do
       summary = @item.summary(@length = 2010)
-      summary.split("\n").should have(2).strings
+      summary.split("\n").should have(1).strings
     end
 
-    it "should ignore grouped whitespace" do
-      
+    it "should add a new sentence if the first group is only a few characters" do
+      @item = Item.create(:description=>"Mr. Brawndo, it's got what plants crave.")
+      @item.summary(@length = 10).should have(10).characters
+      @item.summary(@length).should eql(@item.description[0,10])
     end
 
     def load_text

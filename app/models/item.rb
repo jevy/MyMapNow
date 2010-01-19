@@ -39,10 +39,9 @@ class Item < ActiveRecord::Base
   end
 
   def summary(max_length = SUMMARY_MAX_LENGTH)
-    summary=""
     summary = self.description.strip.add_elems_until_length("\n", max_length)
     summary = summary.add_elems_until_length(".", max_length).strip
-    summary[0,max_length]
+    summary.length > max_length ? summary[0,max_length] : summary
   end
 
   def self.group_by_date(items)
@@ -101,8 +100,9 @@ class String
     self.split(pattern).each do |str|
       current_length = str.length+summary.length
       unless str.strip.blank?
-        if (current_length < max_length || summary.blank?)
-          summary << "#{str+pattern}" unless str.strip.blank?
+        if (current_length < max_length || summary.blank? || summary.length < 5)
+          summary << str unless str.strip.blank?
+          summary << pattern unless pattern.eql?("\n")
         else
           break
         end
@@ -110,7 +110,5 @@ class String
     end
     return summary
   end
-
   
-
 end

@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
 
     ActiveSupport.use_standard_json_time_format = false # without this, the returned dates are not parseable by javascripts' Date.parse()
     respond_to do |format|
-      format.js   { render :json => @items.to_json }
+      format.js   { render :json => @items.to_json(:methods => :summary) }
     end
   end
 
