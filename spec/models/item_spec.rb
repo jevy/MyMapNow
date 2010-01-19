@@ -393,18 +393,16 @@ describe "Item Hash by Date" do
 
     it "should return the first paragraphs even if the max_length is one" do
       @length = 1
-      (@item.summary(@length).length <= @length).should be_true
-      @item.summary(@length).should eql('L')
+      summary = @item.summary(@length=1)
+      (summary.length <= @length).should be_true
+      summary.should eql('L')
       @length = 5 #Just making sure.
       @item.summary(@length).should eql('Lorem')
     end
 
     it "should return both paragraphs if there is a third." do
       summary = @item.summary(@length = 2010)
-      summary.split("\n").should have(2).strings
-    end
-
-    it "should ignore grouped whitespace" do
+      summary.split("\n").should have(1).strings
       
     end
 
