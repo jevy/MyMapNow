@@ -407,6 +407,7 @@ describe "Item Hash by Date" do
       @item = Item.create(:description=>"Mr. Brawndo, it's got what plants crave.")
       @item.summary(@length = 10).should have(10).characters
       @item.summary(@length).should eql(@item.description[0,10])
+      
     end
 
     def load_text
