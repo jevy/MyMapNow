@@ -69,8 +69,8 @@ class LastfmRequest < FeedRequest
 
   def location_string
     result = []
-    result << @city if @city
-    result << @country if @country unless (@city && @state)
+    result << search_terms[:city] if search_terms[:city]
+    result << search_terms[:country] if search_terms[:country] unless (search_terms[:city] && search_terms[:region])
     result.join(',')
   end
 

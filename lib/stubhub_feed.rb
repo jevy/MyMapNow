@@ -9,8 +9,8 @@ class StubhubFeed < FeedRequest
 event_date_time_local title genreUrlPath urlPath venue_config_id)].join(',')
   ROWS = 50
 
-  def initialize
-    super(start_date ||= Date.today.next_year)
+  def initialize(args={:start_date=>Date.today, :end_date=>Date.today.next_week})
+    super(args)
   end
 
   def url(page_number=0)

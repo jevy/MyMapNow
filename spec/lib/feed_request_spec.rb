@@ -9,7 +9,7 @@ describe FeedRequest do
   describe "initialize" do
 
     it "should create an item with the correct initial dates" do
-      @feed_request = FeedRequest.new(Date.today.next_week, Date.today)
+      @feed_request = FeedRequest.new(:end_date=>Date.today.next_week, :start_date=>Date.today)
       @feed_request.start_date.should eql(Date.today)
       @feed_request.end_date.should eql(Date.today.next_week)
     end

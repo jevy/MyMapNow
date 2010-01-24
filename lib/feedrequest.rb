@@ -3,11 +3,12 @@ require 'open-uri'
 require 'uri'
 
 class FeedRequest
-  attr_accessor :start_date, :end_date
+  attr_accessor :start_date, :end_date, :search_terms
 
-  def initialize(date_end=Date.today.next_month, start=Date.today)
-    self.start_date = start
-    self.end_date = date_end
+  def initialize(args={:start_date=>Date.today, :end_date=>Date.today.next_week})
+    self.start_date = args[:start_date]
+    self.end_date = args[:end_date]
+    self.search_terms = args
   end
 
   def pull_items_from_service
@@ -55,6 +56,8 @@ class Hash
 end
 
 class String
+# A little hacky, deals with invalid windows(I think) characters coming out
+#  of eventbrite.
   def sanitize
     self.collect{|ch| ch[0] ==194 ? ' ' : ch }.to_s
   end

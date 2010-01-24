@@ -14,10 +14,11 @@ describe Lastfm do
   it "should parse the correct values up to the middle of a single page" do
     page1 = `cat spec/lib/testData/lastfm/ottawa-page-1`
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,CA&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
-                         :response => page1)
-    loc = Location.new('ottawa', 'ontario', 'CA')
-    items = Lastfm.get_items(loc, @today, Time.local(2009,10,11,0,0,0))
+      :response => page1)
+    items = LastfmRequest.new(:start_date=>@today, :end_date=>Time.local(2009,10,11,0,0,0),
+      :city=>'ottawa', :region=>'ontario', :country=>'CA').pull_items_from_service
 
+    
     items.size.should eql 9
 
     item = items.at(0)
@@ -47,12 +48,11 @@ describe Lastfm do
     page1 = `cat spec/lib/testData/lastfm/ottawa-page-1`
     page2 = `cat spec/lib/testData/lastfm/ottawa-page-2`
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,CA&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
-                         :response => page1)
+      :response => page1)
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,CA&api_key=b819d5a155749ad083fcd19407d4fc69&page=2", 
-                         :response => page2)
-    loc = Location.new('ottawa', 'ontario', 'CA')
-    items = Lastfm.get_items(loc, @today, Time.local(2009,10,15,23,59,0))
-
+      :response => page2)
+    items = LastfmRequest.new(:start_date=>@today, :end_date=>Time.local(2009,10,11,0,0,0),
+      :city=>'ottawa', :region=>'ontario', :country=>'CA').pull_items_from_service
     items.size.should eql 13
 
     item = items.at(0)
@@ -83,13 +83,13 @@ describe Lastfm do
     page2 = `cat spec/lib/testData/lastfm/ottawa-page-2`
     page3 = `cat spec/lib/testData/lastfm/ottawa-page-3`
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,CA&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
-                         :response => page1)
+      :response => page1)
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,CA&api_key=b819d5a155749ad083fcd19407d4fc69&page=2", 
-                         :response => page2)
+      :response => page2)
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,CA&api_key=b819d5a155749ad083fcd19407d4fc69&page=3", 
-                         :response => page3)
-    loc = Location.new('ottawa', 'ontario', 'CA')
-    items = Lastfm.get_items(loc, @today, Time.local(2010,12,31,0,0,0))
+      :response => page3)
+    items = LastfmRequest.new(:start_date=>@today, :end_date=>Time.local(2010,12,31,0,0,0),
+      :city=>'ottawa', :region=>'ontario', :country=>'CA').pull_items_from_service
 
     items.size.should eql 30
 
@@ -118,9 +118,9 @@ describe Lastfm do
   it "should quit nicely if no concerts found at a location" do
     page1 = `cat spec/lib/testData/lastfm/blahblah-feed`
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=blahblah&api_key=b819d5a155749ad083fcd19407d4fc69&page=1", 
-                         :response => page1)
-    loc = Location.new('blahblah', nil, nil)
-    items = Lastfm.get_items(loc, @today, Time.local(2010,12,31,0,0,0))
+      :response => page1)
+    items = LastfmRequest.new(:start_date=>@today, :end_date=>Time.local(2010,12,31,0,0,0),
+    :city=>'blahblah', :region=>nil, :country=>nil).pull_items_from_service
 
     items.size.should eql 0
   end

@@ -3,17 +3,14 @@ require 'feedrequest.rb'
 class MeetupRequest < FeedRequest
 
   @@APIKEY = "f2138374a26136042463e4e8e5d51"
-
-  @city = @region = @country = nil
-  attr_accessor :city, :region, :country, :start_date, :end_date
   
   # There is no 'region/state' for Meetup
   def url
     #URI.escape "http://api.meetup.com/events.xml/?country=#{@country}&city=#{@city}&key=#{@@APIKEY}"
     params = Hash.new
-    params['city'] = @city if @city
-    params['state'] = @region if @region and @country == "US"
-    params['country'] = @country if @country
+    params['city'] = search_terms[:city] if search_terms[:city]
+    params['state'] = search_terms[:region] if search_terms[:region] and search_terms[:country] == "US"
+    params['country'] = search_terms[:country] if search_terms[:country]
     params['key'] = @@APIKEY
     URI.escape "http://api.meetup.com/events.xml/?" + params.to_url_params
   end
@@ -35,11 +32,11 @@ class MeetupRequest < FeedRequest
       venue.address = (event/'venue_address1').inner_text
       venue.city = (event/'venue_city').inner_text
       venue.state = (event/'venue_state').inner_text
-      venue.country = @country
+      venue.country = search_terms[:country]
       public_meetup = true
     else
-      venue.city = @city
-      venue.country = @country
+      venue.city = search_terms[:city]
+      venue.country = search_terms[:country]
       public_meetup = false
     end
       
