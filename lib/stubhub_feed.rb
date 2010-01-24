@@ -2,12 +2,12 @@ require 'feedrequest.rb'
 
 class StubhubFeed < FeedRequest
 
-  attr_accessor :search_terms, :rows
+  attr_accessor :rows
 
   URL = "http://www.stubhub.com/listingCatalog/select/?"
   COLUMNS = [%w(description city state active cancelled venue_name
 event_date_time_local title genreUrlPath urlPath venue_config_id)].join(',')
-  ROWS = 50
+  @rows = 50
 
   def initialize(args={:start_date=>Date.today, :end_date=>Date.today.next_week})
     super(args)
@@ -25,7 +25,7 @@ event_date_time_local title genreUrlPath urlPath venue_config_id)].join(',')
     params = {}
     params['q'] = escape(solr_statement)
     params['fl'] = COLUMNS
-    params['rows'] = @rows ||= ROWS
+    params['rows'] = @rows
     params['start'] = params['rows'].to_i * page_number if page_number > 0
     URL + params.to_url_params
   end
@@ -65,7 +65,7 @@ event_date_time_local title genreUrlPath urlPath venue_config_id)].join(',')
   def total_pages
     doc = Nokogiri::XML(open(url))
     attribute = doc.xpath('//response//result').attr("numFound")
-    attribute ? (attribute.value.to_f/ROWS).ceil : raise("No event length")
+    attribute ? (attribute.value.to_f/@rows).ceil : raise("No event length")
   end
 
   def address_from_xml(event)
@@ -77,7 +77,8 @@ event_date_time_local title genreUrlPath urlPath venue_config_id)].join(',')
   end
 
   def description_terms(terms=@search_terms)
-    return "" unless terms
+    terms = terms.reject{|key, value| key.eql?(:start_date) || key.eql?(:end_date)}
+    return "" unless terms && !terms.empty?
     escape("description:") + terms.collect{|term| " \"#{term}\""}.join("")
   end
 
