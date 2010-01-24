@@ -1,6 +1,4 @@
-require 'hpricot'
-require 'open-uri'
-require 'uri'
+require 'feedrequest.rb'
 
 class ExpressParser
 

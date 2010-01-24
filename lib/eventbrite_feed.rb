@@ -55,15 +55,4 @@ class EventbriteFeed < FeedRequest
     "#{address}, #{city}, #{country}"
   end
 
-  def remove_formatting(string)
-    string = string.to_s.gsub('&amp;', '&').gsub('&lt;', '<').gsub('&gt;', '>').gsub('&quot;', "'").gsub(/<\/?[^>]*>/,  "")
-    string.sanitize.squeeze("\n").strip
-  end
-
-end
-
-class String
-  def sanitize
-    self.collect{|ch| ch[0] ==194 ? ' ' : ch }.to_s
-  end
 end
