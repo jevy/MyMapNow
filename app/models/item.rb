@@ -39,6 +39,7 @@ class Item < ActiveRecord::Base
   end
 
   def summary(max_length = SUMMARY_MAX_LENGTH)
+    return '' if description.nil?
     summary = self.description.strip.add_elems_until_length("\n", max_length)
     summary = summary.add_elems_until_length(".", max_length)
     summary.length > max_length ? summary.strip[0,max_length]+"..." : summary
