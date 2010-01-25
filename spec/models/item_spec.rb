@@ -414,6 +414,11 @@ describe "Item Hash by Date" do
       @item.summary(4).should eql('Mr. ...')
     end
 
+    it "should return blank if there's no description" do
+      @item = Item.create(:description=>nil)
+      @item.summary.should eql('')
+    end
+
     def load_text
       IO.read(LOREN_IPSUM)
     end
