@@ -1,6 +1,9 @@
 require 'levenshtein'
 
 class Item < ActiveRecord::Base
+  ITEM_KINDS = [['event', 'event'], ['review', 'review'],
+                ['discussion', 'discussion'],
+                ['movie', 'movie'], ['news', 'news']]
   ACCEPTABLE_TITLE_DISTANCE = 3
   SUMMARY_MAX_LENGTH = 100
   validates_presence_of :title

@@ -22,7 +22,7 @@
   </p>
   <p>
     <%= f.label :kind %><br />
-    <%= f.text_field :kind %>
+    <%= select :item, :kind, Item::ITEM_KINDS %>
   </p>
   <p>
     <%= f.label :description %><br />
