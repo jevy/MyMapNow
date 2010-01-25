@@ -10,7 +10,6 @@ class LastfmRequest < FeedRequest
   # @return all items on page as Nokogiri elements
   def grab_events_from_xml(page_number)
     xml = Nokogiri::XML open url(page_number)
-    puts xml
     xml.xpath('//event')
   end
 
@@ -26,14 +25,14 @@ class LastfmRequest < FeedRequest
     coordinates = venue.coordinates
 
     item_to_add = Lastfm.new(:title => (event/'title').inner_text,
-              :begin_at => LastfmRequest.extract_start_time(event),
-              :end_at => LastfmRequest.generate_end_time(event),
-              :url => (event/'url')[1].inner_text,
-              :address => venue.full_address,
-              :latitude => coordinates[0],
-              :longitude => coordinates[1],
-              :kind => 'event'
-            )
+      :begin_at => LastfmRequest.extract_start_time(event),
+      :end_at => LastfmRequest.generate_end_time(event),
+      :url => (event/'url')[1].inner_text,
+      :address => venue.full_address,
+      :latitude => coordinates[0],
+      :longitude => coordinates[1],
+      :kind => 'event'
+    )
 
     item_to_add
   end
@@ -57,25 +56,28 @@ class LastfmRequest < FeedRequest
     URL + params.to_url_params
   end
 
-  def total_pages()
-    i = nil
-    begin
-      xml = Nokogiri::XML open url(1)
-      i = xml.at('events')['totalpages'].to_i
-      puts "PARSED #{i} pages."
-    rescue
-      puts "RESCUED"
-      i = 0
-    end
-    puts i
-    return i
+  def total_pages
+    xml = Nokogiri::XML open(url(1))
+    xml.at('events')['totalpages'].to_i
   end
 
   def location_string
     result = []
-    result << search_terms[:city] if search_terms[:city]
-    result << search_terms[:country] if search_terms[:country] unless (search_terms[:city] && search_terms[:region])
+    result <<  city if city
+    result <<  country if country unless (city and region)
     result.join(',')
+  end
+
+  def country
+    search_terms[:country]
+  end
+
+  def region
+    search_terms[:region]
+  end
+
+  def city
+    search_terms[:city]
   end
 
 end

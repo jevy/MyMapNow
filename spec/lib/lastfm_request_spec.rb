@@ -1,6 +1,11 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 require 'fakeweb'
 
+FM_PAGE_1 = `cat spec/lib/testData/lastfm/ottawa-page-1`
+FM_PAGE_2 = `cat spec/lib/testData/lastfm/ottawa-page-2`
+FM_PAGE_3 = `cat spec/lib/testData/lastfm/ottawa-page-3`
+FM_BLAH_PAGE = `cat spec/lib/testData/lastfm/blahblah-feed`
+
 describe LastfmRequest do
   context "when extracting the start date/time" do
     it "should work with EST time zone" do
@@ -55,7 +60,7 @@ describe LastfmRequest do
     (start_time + 3.hours).should eql end_time
   end
 
-    before(:all) do
+  before(:all) do
     @today = Time.local(2009, 10, 8, 0, 0, 0)
   end
 
@@ -65,9 +70,8 @@ describe LastfmRequest do
   end
 
   it "should parse the correct values up to the middle of a single page" do
-    page1 = `cat spec/lib/testData/lastfm/ottawa-page-1`
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,CA&api_key=b819d5a155749ad083fcd19407d4fc69&page=1",
-      :response => page1)
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1",
+      :response => FM_PAGE_1)
     items = LastfmRequest.new(:start_date=>@today, :end_date=>Time.local(2009,10,11,0,0,0),
       :city=>'ottawa', :region=>'ontario', :country=>'CA').pull_items_from_service
     items.size.should eql 9
@@ -96,12 +100,10 @@ describe LastfmRequest do
   end
 
   it "should parse the correct values up to the middle of 2nd page" do
-    page1 = `cat spec/lib/testData/lastfm/ottawa-page-1`
-    page2 = `cat spec/lib/testData/lastfm/ottawa-page-2`
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,CA&api_key=b819d5a155749ad083fcd19407d4fc69&page=1",
-      :response => page1)
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,CA&api_key=b819d5a155749ad083fcd19407d4fc69&page=2",
-      :response => page2)
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1",
+      :response => FM_PAGE_1)
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=2",
+      :response => FM_PAGE_2)
     items = LastfmRequest.new(:start_date=>@today, :end_date=>Time.local(2009,10,11,0,0,0),
       :city=>'ottawa', :region=>'ontario', :country=>'CA').pull_items_from_service
     items.size.should eql 13
@@ -130,15 +132,12 @@ describe LastfmRequest do
   end
 
   it "should parse the correct values past when date goes past end of feed" do
-    page1 = `cat spec/lib/testData/lastfm/ottawa-page-1`
-    page2 = `cat spec/lib/testData/lastfm/ottawa-page-2`
-    page3 = `cat spec/lib/testData/lastfm/ottawa-page-3`
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,CA&api_key=b819d5a155749ad083fcd19407d4fc69&page=1",
-      :response => page1)
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,CA&api_key=b819d5a155749ad083fcd19407d4fc69&page=2",
-      :response => page2)
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa,CA&api_key=b819d5a155749ad083fcd19407d4fc69&page=3",
-      :response => page3)
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1",
+      :response => FM_PAGE_1)
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=2",
+      :response => FM_PAGE_2)
+    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=3",
+      :response => FM_PAGE_3)
     items = LastfmRequest.new(:start_date=>@today, :end_date=>Time.local(2010,12,31,0,0,0),
       :city=>'ottawa', :region=>'ontario', :country=>'CA').pull_items_from_service
 
@@ -167,19 +166,47 @@ describe LastfmRequest do
   end
 
   it "should quit nicely if no concerts found at a location" do
-    page1 = `cat spec/lib/testData/lastfm/blahblah-feed`
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=blahblah&api_key=b819d5a155749ad083fcd19407d4fc69&page=1",
-      :response => page1)
+      :response => FM_BLAH_PAGE)
     items = LastfmRequest.new(:start_date=>@today, :end_date=>Time.local(2010,12,31,0,0,0),
-      :city=>'blahblah', :region=>nil, :country=>nil).pull_items_from_service
+      :city=>'blahblah').pull_items_from_service
 
     items.size.should eql 0
   end
 
   describe "total pages" do
+
     before(:each) do
       @lastfm = LastfmRequest.new
-      @lastfm.url
+      FakeWeb.register_uri(:get, @lastfm.url(1),
+        :response => FM_PAGE_1)
     end
+
+    it "should basically work" do
+      @lastfm.total_pages.should eql(3)
+    end
+
+  end
+
+  describe "location string" do
+    before(:each) do
+      @lastfm = LastfmRequest.new
+    end
+
+    it "should build the string if city is a term" do
+      @lastfm.search_terms = {:city=>'ottawa'}
+      @lastfm.location_string.should eql('ottawa')
+    end
+
+    it "should return the city and country if no region" do
+      @lastfm.search_terms = {:city=>'ottawa', :country=>'CA',:region=>nil}
+      @lastfm.location_string.should eql('ottawa,CA')
+    end
+
+    it "should not return the country if the region is specified" do
+      @lastfm.search_terms = {:city=>'ottawa', :country=>'CA',:region=>'On'}
+      @lastfm.location_string.should eql('ottawa,On')
+    end
+
   end
 end
