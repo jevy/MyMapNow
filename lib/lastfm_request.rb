@@ -2,14 +2,15 @@ require 'feedrequest.rb'
 
 class LastfmRequest < FeedRequest
   attr_accessor :city, :region, :country
+  @city = @region = @country = nil
 
+  URL = "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&"
   @@APIKEY = "b819d5a155749ad083fcd19407d4fc69"
 
-  @city = @region = @country = nil
-  
   # @return all items on page as Nokogiri elements
   def grab_events_from_xml(page_number)
     xml = Nokogiri::XML open url(page_number)
+    puts xml
     xml.xpath('//event')
   end
 
@@ -48,23 +49,26 @@ class LastfmRequest < FeedRequest
     LastfmRequest.extract_start_time(event) + 3.hours
   end
 
-  # There is no 'region/state' for Meetup
-  def url(page_number)
-    #URI.escape "http://api.meetup.com/events.xml/?country=#{@country}&city=#{@city}&key=#{@@APIKEY}"
+  def url(page_number=1)
     params = Hash.new
     params['location'] = location_string
     params['api_key'] = @@APIKEY
     params['page'] = page_number.to_s
-    "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&" + params.to_url_params
+    URL + params.to_url_params
   end
 
-  def total_pages
+  def total_pages()
+    i = nil
     begin
       xml = Nokogiri::XML open url(1)
-      xml.at('events')['totalpages'].to_i
+      i = xml.at('events')['totalpages'].to_i
+      puts "PARSED #{i} pages."
     rescue
-      return 0
+      puts "RESCUED"
+      i = 0
     end
+    puts i
+    return i
   end
 
   def location_string

@@ -13,6 +13,31 @@ describe FeedRequest do
       @feed_request.start_date.should eql(Date.today)
       @feed_request.end_date.should eql(Date.today.next_week)
     end
+
+    it "should default start_date to today if no date is inputted" do
+      @feed_request = FeedRequest.new()
+      @feed_request.start_date.should eql(Date.today)
+    end
+
+    it "should default end_date to next week if no date is inputted" do
+      @feed_request = FeedRequest.new()
+      @feed_request.end_date.should eql(Date.today.next_week)
+    end
+
+    it "should default start and end date if args are inputted" do
+      @feed_request = FeedRequest.new(:junk=>'nothing')
+      @feed_request.end_date.should eql(Date.today.next_week)
+      @feed_request.start_date.should eql(Date.today)
+    end
+
+    it "should populate arguments without start and end date" do
+      @feed_request = FeedRequest.new(:end_date=>Date.today.next_week,
+        :start_date=>Date.today)
+      @feed_request.search_terms.should be_empty
+      @feed_request = FeedRequest.new(:end_date=>Date.today.next_week,
+        :start_date=>Date.today, :junk=>'nothing')
+      @feed_request.search_terms.should eql({:junk=>'nothing'})
+    end
     
   end
 

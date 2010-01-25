@@ -5,10 +5,10 @@ require 'uri'
 class FeedRequest
   attr_accessor :start_date, :end_date, :search_terms
 
-  def initialize(args={:start_date=>Date.today, :end_date=>Date.today.next_week})
-    self.start_date = args[:start_date]
-    self.end_date = args[:end_date]
-    self.search_terms = args
+  def initialize(args={})
+    self.start_date = args[:start_date] || Date.today
+    self.end_date = args[:end_date] || Date.today.next_week
+    self.search_terms = args.reject{|key, value| key.eql?(:start_date) || key.eql?(:end_date)}
   end
 
   def pull_items_from_service

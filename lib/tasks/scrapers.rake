@@ -25,7 +25,7 @@ namespace :scrape do
   task(:lastfm => :environment) do
     require 'lib/lastfm'
     loc = Location.new(nil, 'ontario', 'canada')
-    items = Lastfm.get_items(loc, Time.now, Time.now + 7.days)
+    items = LastfmRequest.new(:city=>loc.city, :region => loc.region, :country=>loc.country)
     items.each {|i| i.save}
   end
   
