@@ -38,16 +38,27 @@ var OldMap = {
     Map.cleanup();
     $(document).trigger('map:change', [bounds, timeframe]);
   },
-  
+
   addItem: function(item) {
     var id = item.id;
 
-		var start_time = new Date(Date.parse(item.begin_at));
-		var end_time = new Date(Date.parse(item.end_at));
+    var start_time = new Date(Date.parse(item.begin_at));
+    var end_time = new Date(Date.parse(item.end_at));
+    var dateId = 'day-separator-' + start_time.getFullYear() + '-' + (start_time.getMonth() + 1) + '-' + start_time.getDate();
+    var dateString = start_time.toDateString();
 
+    if (dateString == (new Date()).toDateString()) {
+      dateString = 'TODAY';
+    }
+
+    if(!$('aside li[id=' + dateId + ']')[0]) {
+      $('<li class="date-separator" id="' + dateId + '"><b>' + dateString + '</b></li>').appendTo('aside ol');
+    }
+
+    // for some reason addItem() is called twice for each item
     if(!$('aside li[data-item-id=' + id + ']')[0]) {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
-      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div></li>').appendTo('aside ol');
+      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div></li>')
       $li.append('<h2>' + item.title + '</h2>');
       $li.append('<p>Start Time: ' + (start_time.format()) + '</p>');
       if (item.end_at) {
@@ -58,6 +69,7 @@ var OldMap = {
       if (item.url) {
         $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
       }
+      $('aside ol li[id=' + dateId + ']').after($li);
 
       $li.data('marker', new google.maps.Marker({
         position: point, 
@@ -81,8 +93,7 @@ var OldMap = {
           $('aside a').css('color', '');
           //Map.setMarkerToDefaultState($li.data('marker')); // This is for the hover-over when we have the pin graphic
       });
-    }
-  },
+    }},
   
   showInfoWindow: function(id) {
     $('aside li[data-item-id="'+id+'"]:first').click();
@@ -95,11 +106,14 @@ var OldMap = {
   },
   
   cleanup: function() {
-    $('aside li').each(function() {
-      if($(this).data('info')) $(this).data('info').close();
-      $(this).data('marker').setMap(null);
-      $(this).remove();
-    });
+      $('aside li[data-item-id]').each(function() {
+          if($(this).data('info')) $(this).data('info').close();
+          $(this).data('marker').setMap(null);
+          $(this).remove();
+      });
+      $('aside li').each(function() {
+          $(this).remove();
+      });
   },
   
   _markerImages: {},

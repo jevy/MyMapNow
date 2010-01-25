@@ -1,6 +1,9 @@
 require 'levenshtein'
 
 class Item < ActiveRecord::Base
+  ITEM_KINDS = [['event', 'event'], ['review', 'review'],
+                ['discussion', 'discussion'],
+                ['movie', 'movie'], ['news', 'news']]
   ACCEPTABLE_TITLE_DISTANCE = 3
   SUMMARY_MAX_LENGTH = 100
   validates_presence_of :title
@@ -39,6 +42,7 @@ class Item < ActiveRecord::Base
   end
 
   def summary(max_length = SUMMARY_MAX_LENGTH)
+    return '' if description.nil?
     summary = self.description.strip.add_elems_until_length("\n", max_length)
     summary = summary.add_elems_until_length(".", max_length)
     summary.length > max_length ? summary.strip[0,max_length]+"..." : summary
