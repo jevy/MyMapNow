@@ -106,11 +106,14 @@ var OldMap = {
   },
   
   cleanup: function() {
-    $('aside li[data-item-id]').each(function() {
-      if($(this).data('info')) $(this).data('info').close();
-      $(this).data('marker').setMap(null);
-      $(this).remove();
-    });
+      $('aside li[data-item-id]').each(function() {
+          if($(this).data('info')) $(this).data('info').close();
+          $(this).data('marker').setMap(null);
+          $(this).remove();
+      });
+      $('aside li').each(function() {
+          $(this).remove();
+      });
   },
   
   _markerImages: {},
