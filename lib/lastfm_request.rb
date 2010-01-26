@@ -1,7 +1,7 @@
 require 'feedrequest.rb'
 
 class LastfmRequest < FeedRequest
-  attr_accessor :city, :region, :country
+  attr_accessor :city, :state, :country
   @city = @region = @country = nil
 
   URL = "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&"
@@ -24,7 +24,7 @@ class LastfmRequest < FeedRequest
 
     coordinates = venue.coordinates
 
-    item_to_add = Lastfm.new(:title => (event/'title').inner_text,
+    item_to_add = Item.new(:title => (event/'title').inner_text,
       :begin_at => LastfmRequest.extract_start_time(event),
       :end_at => LastfmRequest.generate_end_time(event),
       :url => (event/'url')[1].inner_text,
@@ -64,7 +64,7 @@ class LastfmRequest < FeedRequest
   def location_string
     result = []
     result <<  city if city
-    result <<  country if country unless (city and region)
+    result <<  country if country unless (city and state)
     result.join(',')
   end
 
@@ -72,8 +72,8 @@ class LastfmRequest < FeedRequest
     search_terms[:country]
   end
 
-  def region
-    search_terms[:region]
+  def state
+    search_terms[:state]
   end
 
   def city

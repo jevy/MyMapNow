@@ -14,7 +14,7 @@ describe MeetupRequest do
     it 'should generate the correct url for Ottawa, Ontario, Canada' do
       r = MeetupRequest.new
       r.search_terms[:city] = 'ottawa'
-      r.search_terms[:region] = 'ontario'
+      r.search_terms[:state] = 'ontario'
       r.search_terms[:country] = 'CA'
       r.url.should eql "http://api.meetup.com/events.xml/?city=ottawa&country=CA&key=#{@key}"
     end
@@ -27,7 +27,7 @@ describe MeetupRequest do
 
     it 'should generate the correct url for Wyoming, US' do
       r = MeetupRequest.new
-      r.search_terms[:region] = 'wyoming'
+      r.search_terms[:state] = 'wyoming'
       r.search_terms[:country] = 'US'
       r.url.should eql "http://api.meetup.com/events.xml/?country=US&key=#{@key}&state=wyoming"
     end
@@ -42,7 +42,7 @@ describe MeetupRequest do
 
       r = MeetupRequest.new
       r.search_terms[:city] = 'ottawa'
-      r.search_terms[:region] = 'ontario'
+      r.search_terms[:state] = 'ontario'
       r.search_terms[:country] = 'CA'
 
       events = r.grab_events_from_xml(0)
@@ -66,7 +66,7 @@ describe MeetupRequest do
     page = `cat spec/lib/testData/meetup/ottawa-oct-23-2009`
     FakeWeb.register_uri(:get, "http://api.meetup.com/events.xml/?city=ottawa&country=CA&key=f2138374a26136042463e4e8e5d51",
       :response => page)
-    items = MeetupRequest.new(:city=>'ottawa', :region=>'ontario',  :country=>'CA').pull_items_from_service
+    items = MeetupRequest.new(:city=>'ottawa', :state=>'ontario',  :country=>'CA').pull_items_from_service
 
     item = items.at(0)
     item.title.should eql("Halloween Meetup")
@@ -116,7 +116,7 @@ describe MeetupRequest do
     FakeWeb.register_uri(:get, "http://api.meetup.com/events.xml/?city=ottawa&country=CA&key=f2138374a26136042463e4e8e5d51",
       :response => page)
     items = MeetupRequest.new(:start_date=>@today, :end_date=>Time.mktime(2009,10,30,0,0,0),
-      :city=>'ottawa', :region=>'ontario',  :country=>'CA').pull_items_from_service
+      :city=>'ottawa', :state=>'ontario',  :country=>'CA').pull_items_from_service
 
     item = items.at(0)
     item.title.should eql("Halloween Meetup")

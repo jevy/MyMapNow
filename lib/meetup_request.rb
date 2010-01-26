@@ -2,17 +2,16 @@ require 'feedrequest.rb'
 
 class MeetupRequest < FeedRequest
 
+  URL ="http://api.meetup.com/events.xml/?"
   @@APIKEY = "f2138374a26136042463e4e8e5d51"
   
-  # There is no 'region/state' for Meetup
   def url
-    #URI.escape "http://api.meetup.com/events.xml/?country=#{@country}&city=#{@city}&key=#{@@APIKEY}"
-    params = Hash.new
+    params = {}
     params['city'] = search_terms[:city] if search_terms[:city]
     params['state'] = search_terms[:region] if search_terms[:region] and search_terms[:country] == "US"
     params['country'] = search_terms[:country] if search_terms[:country]
     params['key'] = @@APIKEY
-    URI.escape "http://api.meetup.com/events.xml/?" + params.to_url_params
+    URI.escape(URL + params.to_url_params)
   end
 
   # @return all items on page as Nokogiri elements
@@ -40,7 +39,7 @@ class MeetupRequest < FeedRequest
       public_meetup = false
     end
       
-    item_to_add = Meetup.new(:title => (event/'name').inner_text,
+    Item.new(:title => (event/'name').inner_text,
       :begin_at => MeetupRequest.extract_start_time(event),
       :end_at => MeetupRequest.extract_end_time(event),
       :url => (event/'event_url').inner_text,
@@ -48,11 +47,8 @@ class MeetupRequest < FeedRequest
       :latitude => (event/'venue_lat').inner_text,
       :longitude => (event/'venue_lon').inner_text,
       :kind => 'event',
-      :city_wide=> !public_meetup?(event)
+      :city_wide=> public_meetup
     )
-
-    item_to_add.public_meetup = public_meetup
-    item_to_add
   end
 
   def self.extract_start_time(event)

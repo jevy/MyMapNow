@@ -23,9 +23,7 @@ namespace :scrape do
 
   desc "This task will scrape the lastfm site."
   task(:lastfm => :environment) do
-    require 'lib/lastfm'
-    loc = Location.new(nil, 'ontario', 'canada')
-    items = LastfmRequest.new(:city=>loc.city, :region => loc.region, :country=>loc.country)
+    items = LastfmRequest.new(:state => 'ontario', :country=>'canada')
     items.each {|i| i.save}
   end
   
@@ -39,8 +37,7 @@ namespace :scrape do
 
   desc "This task will scrape Meetup.com"
   task(:meetup => :environment) do
-    loc = Location.new('ottawa', 'ontario', 'CA')
-    items = Meetup.get_items(loc, Time.now, Time.now + 7.days)
+    items = MeetupRequest.new(:city=>'ottawa', :state=>'ontario', :country=>'CA').pull_items_from_service
     items.each {|i| i.save if i.public_meetup}
   end
 
