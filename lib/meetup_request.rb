@@ -7,16 +7,16 @@ class MeetupRequest < FeedRequest
   
   def url
     params = {}
-    params['city'] = search_terms[:city] if search_terms[:city]
-    params['state'] = search_terms[:region] if search_terms[:region] and search_terms[:country] == "US"
-    params['country'] = search_terms[:country] if search_terms[:country]
+    params['city'] =  city if city
+    params['state'] = state if state and country == "US"
+    params['country'] = country if country
     params['key'] = @@APIKEY
     URI.escape(URL + params.to_url_params)
   end
 
   # @return all items on page as Nokogiri elements
   def grab_events_from_xml(page_number=nil)
-    xml = Nokogiri::XML open url
+    xml = Nokogiri::XML(open(url))
     xml.xpath('//item')
     # only one page so no more items to process
   end
@@ -31,15 +31,15 @@ class MeetupRequest < FeedRequest
       venue.address = (event/'venue_address1').inner_text
       venue.city = (event/'venue_city').inner_text
       venue.state = (event/'venue_state').inner_text
-      venue.country = search_terms[:country]
+      venue.country = country
       public_meetup = true
     else
-      venue.city = search_terms[:city]
-      venue.country = search_terms[:country]
+      venue.city = city
+      venue.country = country
       public_meetup = false
     end
       
-    Item.new(:title => (event/'name').inner_text,
+    i = Item.new(:title => (event/'name').inner_text,
       :begin_at => MeetupRequest.extract_start_time(event),
       :end_at => MeetupRequest.extract_end_time(event),
       :url => (event/'event_url').inner_text,
@@ -49,6 +49,8 @@ class MeetupRequest < FeedRequest
       :kind => 'event',
       :city_wide=> public_meetup
     )
+#    puts "ITEM:"+i.inspect
+    i
   end
 
   def self.extract_start_time(event)

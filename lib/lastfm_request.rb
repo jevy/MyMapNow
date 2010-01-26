@@ -1,8 +1,6 @@
 require 'feedrequest.rb'
 
 class LastfmRequest < FeedRequest
-  attr_accessor :city, :state, :country
-  @city = @region = @country = nil
 
   URL = "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&"
   @@APIKEY = "b819d5a155749ad083fcd19407d4fc69"
@@ -66,18 +64,6 @@ class LastfmRequest < FeedRequest
     result <<  city if city
     result <<  country if country unless (city and state)
     result.join(',')
-  end
-
-  def country
-    search_terms[:country]
-  end
-
-  def state
-    search_terms[:state]
-  end
-
-  def city
-    search_terms[:city]
   end
 
 end

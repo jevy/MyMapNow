@@ -43,6 +43,18 @@ class FeedRequest
     string.sanitize.squeeze("\n").strip
   end
 
+  def city
+    search_terms[:city]
+  end
+
+  def state
+    search_terms[:state]
+  end
+
+  def country
+    search_terms[:country]
+  end
+
 end
 
 class Hash
