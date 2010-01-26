@@ -14,21 +14,15 @@ class Lastfm < FeedRequest
   # If no time specified, it will occur at midnight (earlier in the day)
   # Could be bad
   def map_xml_to_item(event)
-    venue = Venue.new
-    venue.name = (event/'venue/name').inner_text
-    venue.address = (event/'venue/location/street').inner_text
-    venue.city = (event/'venue/location/city').inner_text
-    venue.country = (event/'venue/location/country').inner_text
-
-    coordinates = venue.coordinates
+    address = [(event/'venue/location/street').inner_text,
+    (event/'venue/location/city').inner_text,
+    (event/'venue/location/country').inner_text].join(", ")
 
     Item.new(:title => (event/'title').inner_text,
       :begin_at => extract_start_time(event),
       :end_at => generate_end_time(event),
       :url => (event/'url')[1].inner_text,
-      :address => venue.full_address,
-      :latitude => coordinates[0],
-      :longitude => coordinates[1],
+      :address => address,
       :kind => 'event'
     )
   end

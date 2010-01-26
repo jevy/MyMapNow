@@ -19,7 +19,7 @@ class ExpressParser
   def parse_events(page=@page)
     event_rows(page).collect{|row|
       info = event_information(URI+(row/"a")[0].attributes['href'])
-      Item.new info
+      Item.new(info)
     }
   end
 

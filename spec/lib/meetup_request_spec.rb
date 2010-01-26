@@ -68,7 +68,7 @@ describe Meetup do
     item.begin_at.should  eql(Time.gm(2009,10,23,22,0,0))
     item.url.should eql('http://www.meetup.com/Nihongo-Ottawa/calendar/11518741/')
     item.address.should eql("7893 Bleeks Rd, Munster, ON, CA")
-    item.city_wide.should be_true
+    item.city_wide.should be_false
     item.kind.should eql('event')
 
     item = items.at(1)
@@ -76,7 +76,7 @@ describe Meetup do
     item.begin_at.should eql(Time.gm(2009,10,23,22,15,0))
     item.url.should eql('http://www.meetup.com/Ottawa-Cashflow-to-Wealth-Club/calendar/11489086/')
     item.address.should eql("ottawa, CA")
-    item.city_wide.should be_false
+    item.city_wide.should be_true
     item.kind.should eql('event')
 
     item = items.at(2)
@@ -84,7 +84,7 @@ describe Meetup do
     item.begin_at.should eql(Time.gm(2009,10,23,23,0,0))
     item.url.should eql('http://www.meetup.com/EUROG-Europeans-of-Ottawa-Gatineau/calendar/11602750/')
     item.address.should eql("268, Preston, Ottawa, ON, CA")
-    item.city_wide.should be_true
+    item.city_wide.should be_false
     item.kind.should eql('event')
 
     item = items.at(3)
@@ -93,7 +93,7 @@ describe Meetup do
     item.end_at.should eql(Time.gm(2009, 10, 24, 02, 0, 0))
     item.url.should eql('http://www.meetup.com/htrio0/calendar/11639427/')
     item.address.should eql("ottawa, CA")
-    item.city_wide.should be_false
+    item.city_wide.should be_true
     item.kind.should eql('event')
 
     #FIXME Broken Spec

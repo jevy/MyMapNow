@@ -27,7 +27,7 @@ namespace :scrape do
   
   desc "This task will scrape Stubhub."
   task(:stubhub => :environment) do
-    scraper = Stubhub.new.pull_items_from_service
+    Stubhub.new.pull_items_from_service
   end
 
   desc "This task will scrape Meetup.com"
@@ -45,6 +45,6 @@ namespace :scrape do
 
   desc "Scrape eventbrite"
   task(:eventbrite=>:environment) do
-    e = Eventbrite.new.pull_items_from_service
+    Eventbrite.new.pull_items_from_service
   end
 end

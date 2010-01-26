@@ -63,14 +63,14 @@ class Flixster
   end
 
   def create_items_from_movies_hash(movies_with_times, theatre)
-    coordinates = theatre.coordinates
+#    coordinates = theatre.coordinates
     movies_with_times.each_pair do |movie_name, times|
       times.each do |time|
         Item.create(:title => movie_name,
           :begin_at => time,
           :address => theatre.full_address,
-          :latitude => coordinates[0],
-          :longitude => coordinates[1],
+#          :latitude => coordinates[0],
+#          :longitude => coordinates[1],
           :kind => 'movie')
       end
     end

@@ -25,32 +25,25 @@ class Meetup < FeedRequest
   end
 
   def map_xml_to_item(event)
-    venue = Venue.new
-    venue.name = (event/'venue_name').inner_text
-
-    public_meetup = false
-
+    info ={}
     if public_meetup?(event)
-      venue.address = (event/'venue_address1').inner_text
-      venue.city = (event/'venue_city').inner_text
-      venue.state = (event/'venue_state').inner_text
-      venue.country = country
-      public_meetup = true
+      info[:address] = (event/'venue_address1').inner_text
+      info[:city] = (event/'venue_city').inner_text
+      info[:state] = (event/'venue_state').inner_text
     else
-      venue.city = city
-      venue.country = country
-      public_meetup = false
+      info[:city] = city
     end
+    info[:country] = country
       
     Item.new(:title => (event/'name').inner_text,
       :begin_at => extract_start_time(event),
       :end_at => extract_end_time(event),
       :url => (event/'event_url').inner_text,
-      :address => venue.full_address,
+      :address => address(info[:address], info[:city], info[:state], info[:country]),
       :latitude => (event/'venue_lat').inner_text,
       :longitude => (event/'venue_lon').inner_text,
       :kind => 'event',
-      :city_wide=> public_meetup
+      :city_wide=> !public_meetup?(event)
     )
   end
 
@@ -71,5 +64,14 @@ class Meetup < FeedRequest
   # So just push everything back one day
   def should_save?(item)
     item.begin_at >= (start_date - 1.day) && item.begin_at <= end_date
+  end
+
+  def address(address, city, state, country)
+    result = []
+    result << address  unless address.nil? or address.empty?
+    result << city     unless city.nil? or city.empty?
+    result << state    unless state.nil? or state.empty?
+    result << country  unless country.nil? or country.empty?
+    result.join(", ")
   end
 end
