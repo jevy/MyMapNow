@@ -67,7 +67,7 @@ describe MeetupRequest do
     FakeWeb.register_uri(:get, "http://api.meetup.com/events.xml/?city=ottawa&country=CA&key=f2138374a26136042463e4e8e5d51",
       :response => page)
     items = MeetupRequest.new(:city=>'ottawa', :state=>'ontario',  :country=>'CA').pull_items_from_service
-
+    puts items.length
     item = items.at(0)
     item.title.should eql("Halloween Meetup")
     item.begin_at.should  eql(Time.gm(2009,10,23,22,0,0))
