@@ -2,6 +2,9 @@ require 'feedrequest.rb'
 
 class MeetupRequest < FeedRequest
 
+  @search_terms={:city => 'ottawa',
+    :state => 'ontario', :country => 'CA'}
+
   URL ="http://api.meetup.com/events.xml/?"
   @@APIKEY = "f2138374a26136042463e4e8e5d51"
   

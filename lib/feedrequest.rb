@@ -45,17 +45,17 @@ class FeedRequest
     string = string.to_s.gsub('&amp;', '&').gsub('&lt;', '<').gsub('&gt;', '>').gsub('&quot;', "'").gsub(/<\/?[^>]*>/,  "")
     string.sanitize.squeeze("\n").strip
   end
-
+    
   def city
-    search_terms[:city]
+    @search_terms[:city]
   end
-
+  
   def state
-    search_terms[:state]
+    @search_terms[:state]
   end
-
+  
   def country
-    search_terms[:country]
+    @search_terms[:country]
   end
 
 end

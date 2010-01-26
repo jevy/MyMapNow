@@ -7,8 +7,17 @@ FM_PAGE_3 = `cat spec/lib/testData/lastfm/ottawa-page-3`
 FM_BLAH_PAGE = `cat spec/lib/testData/lastfm/blahblah-feed`
 
 describe LastfmRequest do
-    it "should work with EST time zone" do
-      xml = Nokogiri::XML <<-EOXML
+  @today = Time.local(2009, 10, 8, 0, 0, 0)
+
+  before(:each) do
+    FakeWeb.allow_net_connect = false
+    FakeWeb.clean_registry
+    @lastfm = LastfmRequest.new
+  end
+    
+
+  it "should work with EST time zone" do
+    xml = Nokogiri::XML <<-EOXML
       <event>
         <venue>
           <location>
@@ -18,13 +27,13 @@ describe LastfmRequest do
         <startDate>Mon, 30 Jun 2008</startDate>
         <startTime>20:00</startTime>
       </event>
-      EOXML
-      time = LastfmRequest.extract_start_time(xml)
-      time.utc.should eql Time.gm(2008,7,1,01,00,00) # in UTC
-    end
+    EOXML
+    time = @lastfm.extract_start_time(xml)
+    time.utc.should eql Time.gm(2008,7,1,01,00,00) # in UTC
+  end
 
-    it "should work with PST time zone" do
-      xml = Nokogiri::XML <<-EOXML
+  it "should work with PST time zone" do
+    xml = Nokogiri::XML <<-EOXML
       <event>
         <venue>
           <location>
@@ -34,10 +43,10 @@ describe LastfmRequest do
         <startDate>Mon, 30 Jun 2008</startDate>
         <startTime>20:00</startTime>
       </event>
-      EOXML
-      time = LastfmRequest.extract_start_time(xml)
-      time.utc.should eql Time.gm(2008,7,1,04,00,00) # in UTC
-    end
+    EOXML
+    time = @lastfm.extract_start_time(xml)
+    time.utc.should eql Time.gm(2008,7,1,04,00,00) # in UTC
+  end
 
   it "should assume a length of 3 hours" do
     xml = Nokogiri::XML <<-EOXML
@@ -51,18 +60,9 @@ describe LastfmRequest do
       <startTime>20:00</startTime>
     </event>
     EOXML
-    start_time = LastfmRequest.extract_start_time(xml)
-    end_time   = LastfmRequest.generate_end_time(xml)
+    start_time = @lastfm.extract_start_time(xml)
+    end_time   = @lastfm.generate_end_time(xml)
     (start_time + 3.hours).should eql end_time
-  end
-
-  before(:all) do
-    @today = Time.local(2009, 10, 8, 0, 0, 0)
-  end
-
-  before(:each) do
-    FakeWeb.allow_net_connect = false
-    FakeWeb.clean_registry
   end
 
   it "should parse the correct values up to the middle of a single page" do
@@ -117,13 +117,13 @@ describe LastfmRequest do
     item.address.should eql("25, rue Laurier, Gatineau, Québec, Canada")
     item.kind.should eql('event')
     
-#    item = items.at(-1)
-#    item.title.should eql("Kalle Mattson")
-#    # FIXME: Also wrong due to DST
-#    item.begin_at.should eql(Time.local(2009, 10, 15, 21, 0,0))
-#    item.url.should eql('http://www.last.fm/event/1219409+Kalle+Mattson+at+Zaphod+Beeblebrox+on+15+October+2009')
-#    item.address.should eql("27 York St., Ottawa, Canada")
-#    item.kind.should eql('event')
+    #    item = items.at(-1)
+    #    item.title.should eql("Kalle Mattson")
+    #    # FIXME: Also wrong due to DST
+    #    item.begin_at.should eql(Time.local(2009, 10, 15, 21, 0,0))
+    #    item.url.should eql('http://www.last.fm/event/1219409+Kalle+Mattson+at+Zaphod+Beeblebrox+on+15+October+2009')
+    #    item.address.should eql("27 York St., Ottawa, Canada")
+    #    item.kind.should eql('event')
   end
 
   it "should parse the correct values past when date goes past end of feed" do
