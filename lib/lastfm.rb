@@ -1,6 +1,6 @@
 require 'feedrequest.rb'
 
-class LastfmRequest < FeedRequest
+class Lastfm < FeedRequest
   URL = "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&"
   API_KEY = "b819d5a155749ad083fcd19407d4fc69"
   @search_terms = [:state => 'ontario', :country=>'canada']

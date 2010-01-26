@@ -21,22 +21,19 @@ namespace :scrape do
 
   desc "This task will scrape the lastfm site."
   task(:lastfm => :environment) do
-    items = LastfmRequest.new.pull_items_from_service
+    items = Lastfm.new.pull_items_from_service
     items.each {|i| i.save}
   end
   
   desc "This task will scrape Stubhub."
   task(:stubhub => :environment) do
-    scraper = Stubhub.new
-    scraper.search_terms = ["Canada", "Ottawa", "Toronto", "Ontario", "Montreal"]
-    scraper.rows = 100
-    scraper.pull_items_from_service
+    scraper = Stubhub.new.pull_items_from_service
   end
 
   desc "This task will scrape Meetup.com"
   task(:meetup => :environment) do
-    items = MeetupRequest.new.pull_items_from_service
-    items.each {|i| i.save if i.city_wide}
+    items = Meetup.new.pull_items_from_service
+    items.each {|i| i.save if !i.city_wide}
   end
 
   desc "Scrape all of Flixster"
@@ -48,7 +45,6 @@ namespace :scrape do
 
   desc "Scrape eventbrite"
   task(:eventbrite=>:environment) do
-    e = EventbriteFeed.new
-    e.pull_items_from_service
+    e = Eventbrite.new.pull_items_from_service
   end
 end

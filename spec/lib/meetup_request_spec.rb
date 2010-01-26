@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe MeetupRequest do
+describe Meetup do
   before(:all) do
     @key =  "f2138374a26136042463e4e8e5d51"
   end
@@ -12,17 +12,17 @@ describe MeetupRequest do
 
   context 'url' do
     it 'should generate the correct url for Ottawa, Ontario, Canada' do
-      r = MeetupRequest.new(:city=>'ottawa', :state => 'ontario', :country=>'CA')
+      r = Meetup.new(:city=>'ottawa', :state => 'ontario', :country=>'CA')
       r.url.should eql "http://api.meetup.com/events.xml/?city=ottawa&country=CA&key=#{@key}"
     end
 
     it 'should generate the correct url for Canada' do 
-      r = MeetupRequest.new(:country=>'CA')
+      r = Meetup.new(:country=>'CA')
       r.url.should eql "http://api.meetup.com/events.xml/?country=CA&key=#{@key}"
     end
 
     it 'should generate the correct url for Wyoming, US' do
-      r = MeetupRequest.new(:state => 'wyoming', :country=>'US')
+      r = Meetup.new(:state => 'wyoming', :country=>'US')
       r.url.should eql "http://api.meetup.com/events.xml/?country=US&key=#{@key}&state=wyoming"
     end
   end
@@ -34,7 +34,7 @@ describe MeetupRequest do
       FakeWeb.register_uri(:get, "http://api.meetup.com/events.xml/?city=ottawa&country=CA&key=#{@key}",
         :response => page)
 
-      r = MeetupRequest.new
+      r = Meetup.new
       r.search_terms[:city] = 'ottawa'
       r.search_terms[:state] = 'ontario'
       r.search_terms[:country] = 'CA'
@@ -46,7 +46,7 @@ describe MeetupRequest do
 
 end
 
-describe MeetupRequest do
+describe Meetup do
   before(:all) do
     @today = Time.mktime(2009, 10, 23 , 0, 0, 0)
   end
@@ -60,7 +60,7 @@ describe MeetupRequest do
     page = `cat spec/lib/testData/meetup/ottawa-oct-23-2009`
     FakeWeb.register_uri(:get, "http://api.meetup.com/events.xml/?city=ottawa&country=CA&key=f2138374a26136042463e4e8e5d51",
       :response => page)
-    items = MeetupRequest.new(:start_date => @today, :end_date => Time.gm(2009, 10, 24, 02, 0, 0),
+    items = Meetup.new(:start_date => @today, :end_date => Time.gm(2009, 10, 24, 02, 0, 0),
       :city=>'ottawa', :state=>'ontario',  :country=>'CA').pull_items_from_service
 
     item = items.at(0)
@@ -111,7 +111,7 @@ describe MeetupRequest do
     page = `cat spec/lib/testData/meetup/ottawa-oct-23-2009`
     FakeWeb.register_uri(:get, "http://api.meetup.com/events.xml/?city=ottawa&country=CA&key=f2138374a26136042463e4e8e5d51",
       :response => page)
-    items = MeetupRequest.new(:start_date=>@today, :end_date=>Time.mktime(2009,10,30,0,0,0),
+    items = Meetup.new(:start_date=>@today, :end_date=>Time.mktime(2009,10,30,0,0,0),
       :city=>'ottawa', :state=>'ontario',  :country=>'CA').pull_items_from_service
 
     item = items.at(0)

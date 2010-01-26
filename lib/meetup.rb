@@ -1,19 +1,19 @@
 require 'feedrequest.rb'
 
-class MeetupRequest < FeedRequest
+class Meetup < FeedRequest
 
   @search_terms={:city => 'ottawa',
     :state => 'ontario', :country => 'CA'}
 
   URL ="http://api.meetup.com/events.xml/?"
-  @@APIKEY = "f2138374a26136042463e4e8e5d51"
+  API_KEY = "f2138374a26136042463e4e8e5d51"
   
   def url
     params = {}
     params['city'] =  city if city
     params['state'] = state if state and country == "US"
     params['country'] = country if country
-    params['key'] = @@APIKEY
+    params['key'] = API_KEY
     URI.escape(URL + params.to_url_params)
   end
 
@@ -42,9 +42,9 @@ class MeetupRequest < FeedRequest
       public_meetup = false
     end
       
-    i = Item.new(:title => (event/'name').inner_text,
-      :begin_at => MeetupRequest.extract_start_time(event),
-      :end_at => MeetupRequest.extract_end_time(event),
+    Item.new(:title => (event/'name').inner_text,
+      :begin_at => extract_start_time(event),
+      :end_at => extract_end_time(event),
       :url => (event/'event_url').inner_text,
       :address => venue.full_address,
       :latitude => (event/'venue_lat').inner_text,
@@ -52,15 +52,13 @@ class MeetupRequest < FeedRequest
       :kind => 'event',
       :city_wide=> public_meetup
     )
-#    puts "ITEM:"+i.inspect
-    i
   end
 
-  def self.extract_start_time(event)
+  def extract_start_time(event)
     Time.parse((event/'time').inner_text)
   end
 
-  def self.extract_end_time(event)
+  def extract_end_time(event)
     Time.parse((event/'time').inner_text) + 3.hours
   end
 

@@ -7,11 +7,11 @@ FULL_PAGE = 'spec/lib/testData/eventbrite/full_page.xml'
 VENUE = 'spec/lib/testData/eventbrite/venue.xml'
 SINGLE_EVENT = 'spec/lib/testData/eventbrite/single_event.xml'
 
-describe EventbriteFeed do
+describe Eventbrite do
   before(:each) do
     FakeWeb.allow_net_connect = false
     FakeWeb.clean_registry
-    @eventbrite = EventbriteFeed.new
+    @eventbrite = Eventbrite.new
   end
 
   describe "url building" do

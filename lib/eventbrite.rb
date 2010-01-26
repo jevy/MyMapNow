@@ -1,6 +1,6 @@
 require 'feedrequest.rb'
 
-class EventbriteFeed < FeedRequest
+class Eventbrite < FeedRequest
 
   API = 'NDcxMGM1MmQxMmI3'
   BASE_URL = 'http://www.eventbrite.com/xml/event_search?'

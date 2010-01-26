@@ -4,7 +4,7 @@ require 'uri'
 
 class FeedRequest
   attr_accessor :start_date, :end_date, :search_terms
-
+  
   def initialize(args={})
     self.start_date = args[:start_date] || Date.today
     self.end_date = args[:end_date] || Date.today.next_week
