@@ -68,7 +68,7 @@ describe MeetupRequest do
       :response => page)
     items = MeetupRequest.new(:start_date => @today, :end_date => Time.gm(2009, 10, 24, 02, 0, 0),
       :city=>'ottawa', :state=>'ontario',  :country=>'CA').pull_items_from_service
-    puts items.length
+
     item = items.at(0)
     item.title.should eql("Halloween Meetup")
     item.begin_at.should  eql(Time.gm(2009,10,23,22,0,0))
@@ -150,7 +150,7 @@ describe MeetupRequest do
 
     item = items.at(-1)
     item.title.should eql("Euchre and Trivia night")
-    item.begin_at.should eql(Time.local(2009, 10, 28, 19, 15, 0))
+    item.begin_at.should eql(Time.gm(2009, 10, 28, 23, 15, 0))
     item.url.should eql('http://www.meetup.com/A-Memorable-Introduction-com/calendar/11641337/')
     item.address.should eql("1221 Vancouver Avenue, Ottawa, ON, CA")
     item.kind.should eql('event')

@@ -5,7 +5,6 @@ class LastfmRequest < FeedRequest
   URL = "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&"
   @@APIKEY = "b819d5a155749ad083fcd19407d4fc69"
 
-  # @return all items on page as Nokogiri elements
   def grab_events_from_xml(page_number)
     xml = Nokogiri::XML open url(page_number)
     xml.xpath('//event')
@@ -22,7 +21,7 @@ class LastfmRequest < FeedRequest
 
     coordinates = venue.coordinates
 
-    item_to_add = Item.new(:title => (event/'title').inner_text,
+    Item.new(:title => (event/'title').inner_text,
       :begin_at => LastfmRequest.extract_start_time(event),
       :end_at => LastfmRequest.generate_end_time(event),
       :url => (event/'url')[1].inner_text,
@@ -31,8 +30,6 @@ class LastfmRequest < FeedRequest
       :longitude => coordinates[1],
       :kind => 'event'
     )
-
-    item_to_add
   end
 
   def self.extract_start_time(event)

@@ -88,8 +88,7 @@ describe LastfmRequest do
 
     item = items.at(-1)
     item.title.should eql("Staggered Crossing")
-    # FIXME: This is wrong! Ruby is translating due to DST! XML says 20:00 not 21:00
-    item.begin_at.should eql(Time.local(2009, 10, 10, 21, 0,0))
+    item.begin_at.should eql(Time.local(2009, 10, 10, 19, 0,0).utc)
     item.url.should eql('http://www.last.fm/event/1244803+Staggered+Crossing+at+Mavericks+on+10+October+2009')
     item.address.should eql("221 Rideau Street, Ottawa, Canada")
     item.kind.should eql('event')
@@ -117,7 +116,6 @@ describe LastfmRequest do
     item.url.should eql('http://www.last.fm/event/1085723+Karkwa+at+Salle+Jean-Despr%C3%A9z+on+8+October+2009')
     item.address.should eql("25, rue Laurier, Gatineau, Québec, Canada")
     item.kind.should eql('event')
-
     
 #    item = items.at(-1)
 #    item.title.should eql("Kalle Mattson")
@@ -149,7 +147,7 @@ describe LastfmRequest do
 
     item = items.at(1)
     item.title.should eql("Karkwa")
-    item.begin_at.should eql(Time.local(2009, 10, 8, 0, 0,0))
+    item.begin_at.should eql(Time.local(2009, 10, 8, 0, 0,0).utc)
     item.url.should eql('http://www.last.fm/event/1085723+Karkwa+at+Salle+Jean-Despr%C3%A9z+on+8+October+2009')
     item.address.should eql("25, rue Laurier, Gatineau, Québec, Canada")
     item.kind.should eql('event')

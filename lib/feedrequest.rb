@@ -13,20 +13,23 @@ class FeedRequest
 
   def pull_items_from_service
     result = []
-    1.upto(total_pages).each do |page_number|
-      events_from_page = grab_events_from_xml(page_number)
-      events_from_page.each do |event|
-        item = map_xml_to_item(event)
-        if item.valid?
-          if should_save?(item)
-            result << item
-          else
-            return result
+    begin
+      1.upto(total_pages).each do |page_number|
+        events = grab_events_from_xml(page_number)
+        events.each do |event|
+          item = map_xml_to_item(event)
+          if item.valid?
+            if should_save?(item)
+              result << item
+            else
+              return result
+            end
           end
         end
       end
+    rescue OpenURI::HTTPError => e
+      #Needs to be made fault tolerant.
     end
-
     return result
   end
 
@@ -68,8 +71,8 @@ class Hash
 end
 
 class String
-# A little hacky, deals with invalid windows(I think) characters coming out
-#  of eventbrite.
+  # A little hacky, deals with invalid windows(I think) characters coming out
+  #  of eventbrite.
   def sanitize
     self.collect{|ch| ch[0] ==194 ? ' ' : ch }.to_s
   end
