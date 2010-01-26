@@ -99,6 +99,7 @@ a:hover							{text-decoration:underline;}
 }
 
 .facebook-login {
+  display: none;
 	font-size: 1.1em;
 	font-weight: bold;
 	padding: 15px;
