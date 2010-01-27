@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 require 'fakeweb'
 
-describe Express do
+describe Xpress do
 
   $valid_event_row_1 = "<tr><td>&nbsp;</td><td><a href='/music/artist.aspx?iIDGroupe=34484'>Alexandre Désilets</a></td><td>&nbsp;</td><td><nobr>Song</nobr></td><td>&nbsp;</td><td><a href='/music/venue.aspx?iIDSalle=6664'>Salle Anaïs-Allard-Rousseau</a></td><td>&nbsp;</td><td><nobr>Oct 22</nobr></td></tr>"
   $valid_event_row_2 = "<tr><td class='musiqueAlternate'>&nbsp;</td><td class='musiqueAlternate'><a href='/music/artist.aspx?iIDGroupe=8010'>Bori</a></td><td class='musiqueAlternate'>&nbsp;</td><td class='musiqueAlternate'><nobr></nobr></td><td class='musiqueAlternate'>&nbsp;</td><td class='musiqueAlternate'><a href='/music/venue.aspx?iIDSalle=2642'>Granada Theater</a></td><td class='musiqueAlternate'>&nbsp;</td><td class='musiqueAlternate'><nobr>Oct 22</nobr></td></tr>"
@@ -32,7 +32,7 @@ describe Express do
   end
 
   it "should parse all document links from the test page" do
-    doc = @parser.instance_values['page']
+    doc = @parser.get_page
     @parser.send(:doc_links, doc).length.should eql(83)
   end
 
@@ -57,7 +57,7 @@ describe Express do
   end
 
   it "should parse the test file" do
-    doc = @parser.instance_values['page']
+        doc = @parser.get_page
     events_length = @parser.send(:event_links, doc).length
     events_length.should be_even #Two per event, artist and venue
     events_length.should eql(24)
@@ -155,7 +155,7 @@ describe Express do
   it "should respond with an error when a 500 Server Error is hit on Xpress" do
     register_uri({:url=>'http://www.ottawaxpress.ca/music/listings.aspx',
         :status => ["500", "Server Error in '/' Application."]})
-    lambda {Express.new}.should raise_error(RuntimeError)
+    lambda {Xpress.new.get_page}.should raise_error(RuntimeError)
   end
 
   it "should open the venue uri as expected" do
@@ -209,6 +209,20 @@ describe Express do
     @parser.send(:cleanup_div_lines, string).length.should eql(2)
   end
 
+  describe "url" do
+
+    it "should produce a default url with no args with no date" do
+      @parser.url.should eql('http://www.ottawaxpress.ca/music/listings.aspx')
+    end
+
+    it "should procude a url with data parameters if a date exists" do
+      date = Time.now
+      expected = 'http://www.ottawaxpress.ca/music/listings.aspx' + @parser.build_date_parameters(date)
+      @parser.url(date).should eql(expected)
+    end
+    
+  end
+
   def load_artist_file
     page = `cat spec/lib/testData/xpress/artist.html`
     args = {:url => 'http://www.ottawaxpress.ca/music/artist.aspx?iIDGroupe=34484',
@@ -228,7 +242,7 @@ describe Express do
   def create_parser(args)
     args[:url] ||= "#{args[:uri]}/music/listings.aspx"
     register_uri( args)
-    @parser = Express.new
+    @parser = Xpress.new
   end
 
   def register_uri(args)

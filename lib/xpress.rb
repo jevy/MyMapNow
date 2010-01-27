@@ -1,19 +1,35 @@
 require 'feedrequest.rb'
 
-class Express < FeedRequest
+class Xpress < FeedRequest
 
   URI = 'http://www.ottawaxpress.ca'
   EXTENSION = '/music/listings.aspx'
 
-  def initialize(date=nil)
+  def pull_items_from_service
+    list = []
+    
+    @start_date.upto(@end_date) do |date|
+      page = get_page(date)
+      list << parse_events(page)
+    end
+    list.flatten
+  end
+
+  def get_page(date=nil)
     begin
-      @page = open_uri(URI+EXTENSION+build_date_parameters(date))
+      @page = open_url(url(date))
     rescue OpenURI::HTTPError, Errno::ECONNRESET,
         Timeout::Error, Errno::ETIMEDOUT => error
       error_message = "Xpress Server Experienced a #{error.message}\n"
       date ||= Date.today
       raise(RuntimeError, error_message+"Cannot parse events for #{date}")
     end
+  end
+
+  def url(date=nil)
+    address = URI+EXTENSION
+    date ? address + build_date_parameters(date) : address
+    
   end
 
   def parse_events(page=@page)
@@ -26,10 +42,8 @@ class Express < FeedRequest
   def event_rows(doc=@page)
     doc_rows(doc).select{|row| is_event_row? row}
   end
-
-  private
-
-  def open_uri(uri)
+  
+  def open_url(uri)
     #User agent argument required to avoid random, 500 errors on Xpress server.
     Hpricot open(uri, 'User-Agent'=>'ruby')
   end
@@ -39,7 +53,7 @@ class Express < FeedRequest
   end
 
   def event_information(url)
-    info = artist_div(open_uri(url))
+    info = artist_div(open_url(url))
     location_link = doc_links(info)[0]
     info = cleanup_div_lines(info[0].to_plain_text)
 
@@ -51,7 +65,7 @@ class Express < FeedRequest
   end
 
   def parse_address(url)
-    venue_info = parse_event_cell(open_uri(url))
+    venue_info = parse_event_cell(open_url(url))
     information = cleanup_div_lines(venue_info.to_plain_text)
     information[1]
   end

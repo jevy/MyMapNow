@@ -5,20 +5,8 @@ namespace :scrape do
 
   desc "This task will scrape the Ottawa Xpress site."
   task(:xpress => :environment) do
-    Express.new.pull_items_from_service
-
-    start_date = Date.today
-    end_date = Date.today.end_of_week
-
-    start_date.upto(end_date) do |date|
-      begin
-        Express.new(date).parse_events.each do |event|
-          event.save
-        end
-      rescue RuntimeError => error
-        puts "Unable to parse events for #{date}, #{error.message}."
-      end
-    end
+    items = Xpress.new.pull_items_from_service
+    items.each {|i| i.save}
   end
 
   desc "This task will scrape the lastfm site."
