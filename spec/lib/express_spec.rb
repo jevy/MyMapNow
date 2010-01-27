@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 require 'fakeweb'
 
-describe ExpressParser do
+describe Express do
 
   $valid_event_row_1 = "<tr><td>&nbsp;</td><td><a href='/music/artist.aspx?iIDGroupe=34484'>Alexandre Désilets</a></td><td>&nbsp;</td><td><nobr>Song</nobr></td><td>&nbsp;</td><td><a href='/music/venue.aspx?iIDSalle=6664'>Salle Anaïs-Allard-Rousseau</a></td><td>&nbsp;</td><td><nobr>Oct 22</nobr></td></tr>"
   $valid_event_row_2 = "<tr><td class='musiqueAlternate'>&nbsp;</td><td class='musiqueAlternate'><a href='/music/artist.aspx?iIDGroupe=8010'>Bori</a></td><td class='musiqueAlternate'>&nbsp;</td><td class='musiqueAlternate'><nobr></nobr></td><td class='musiqueAlternate'>&nbsp;</td><td class='musiqueAlternate'><a href='/music/venue.aspx?iIDSalle=2642'>Granada Theater</a></td><td class='musiqueAlternate'>&nbsp;</td><td class='musiqueAlternate'><nobr>Oct 22</nobr></td></tr>"
@@ -155,7 +155,7 @@ describe ExpressParser do
   it "should respond with an error when a 500 Server Error is hit on Xpress" do
     register_uri({:url=>'http://www.ottawaxpress.ca/music/listings.aspx',
         :status => ["500", "Server Error in '/' Application."]})
-    lambda {ExpressParser.new}.should raise_error(RuntimeError)
+    lambda {Express.new}.should raise_error(RuntimeError)
   end
 
   it "should open the venue uri as expected" do
@@ -228,7 +228,7 @@ describe ExpressParser do
   def create_parser(args)
     args[:url] ||= "#{args[:uri]}/music/listings.aspx"
     register_uri( args)
-    @parser = ExpressParser.new
+    @parser = Express.new
   end
 
   def register_uri(args)

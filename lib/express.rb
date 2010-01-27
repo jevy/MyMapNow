@@ -1,6 +1,6 @@
 require 'feedrequest.rb'
 
-class ExpressParser
+class Express < FeedRequest
 
   URI = 'http://www.ottawaxpress.ca'
   EXTENSION = '/music/listings.aspx'
