@@ -13,7 +13,6 @@ class FeedRequest
 
   def pull_items_from_service
     result = []
-    begin
       1.upto(total_pages).each do |page_number|
         events = grab_events_from_xml(page_number)
         events.each do |event|
@@ -27,9 +26,6 @@ class FeedRequest
           end
         end
       end
-    rescue OpenURI::HTTPError => e
-      #Needs to be made fault tolerant.
-    end
     return result
   end
 

@@ -15,8 +15,8 @@ class Lastfm < FeedRequest
   # Could be bad
   def map_xml_to_item(event)
     address = [(event/'venue/location/street').inner_text,
-    (event/'venue/location/city').inner_text,
-    (event/'venue/location/country').inner_text].join(", ")
+      (event/'venue/location/city').inner_text,
+      (event/'venue/location/country').inner_text].join(", ")
 
     Item.new(:title => (event/'title').inner_text,
       :begin_at => extract_start_time(event),
@@ -47,8 +47,12 @@ class Lastfm < FeedRequest
   end
 
   def total_pages
-    xml = Nokogiri::XML open(url(1))
-    xml.at('events')['totalpages'].to_i
+    begin
+      xml = Nokogiri::XML open(url(1))
+      xml.at('events')['totalpages'].to_i
+    rescue OpenURI::HTTPError => e
+      return 0
+    end
   end
 
   def location_string
