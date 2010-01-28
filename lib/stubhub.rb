@@ -5,8 +5,11 @@ class Stubhub < FeedRequest
   URL = "http://www.stubhub.com/listingCatalog/select/?"
   COLUMNS = [%w(description city state active cancelled venue_name
 event_date_time_local title genreUrlPath urlPath venue_config_id)].join(',')
-  @search_terms={:rows => 50,
+
+  def default_terms
+    {:rows => 50,
     :list => ["Canada", "Ottawa", "Toronto", "Ontario", "Montreal"]}
+  end
 
   def url(page_number=0)
     solr_statement =[
@@ -52,7 +55,7 @@ event_date_time_local title genreUrlPath urlPath venue_config_id)].join(',')
   end
 
   def rows
-    i = @search_terms[:rows] ? i : 50
+    @search_terms[:rows] ||= 50
   end
 
   def build_result_url(event)

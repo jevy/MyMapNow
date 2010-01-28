@@ -2,12 +2,13 @@ require 'feedrequest.rb'
 
 class Meetup < FeedRequest
 
-  @search_terms={:city => 'ottawa',
-    :state => 'ontario', :country => 'CA'}
-
   URL ="http://api.meetup.com/events.xml/?"
   API_KEY = "f2138374a26136042463e4e8e5d51"
-  
+
+  def default_terms
+    {:city => 'ottawa',:state => 'ontario', :country => 'CA'}
+  end
+
   def url
     params = {}
     params['city'] =  city if city
@@ -21,7 +22,6 @@ class Meetup < FeedRequest
   def grab_events_from_xml(page_number=nil)
     xml = Nokogiri::XML(open(url))
     xml.xpath('//item')
-    # only one page so no more items to process
   end
 
   def map_xml_to_item(event)

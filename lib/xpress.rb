@@ -8,7 +8,7 @@ class Xpress < FeedRequest
   def pull_items_from_service
     list = []
     
-    @start_date.upto(@end_date) do |date|
+    start_date.upto(end_date) do |date|
       page = get_page(date)
       list << parse_events(page)
     end

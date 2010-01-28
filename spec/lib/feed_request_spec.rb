@@ -31,12 +31,14 @@ describe FeedRequest do
     end
 
     it "should populate arguments without start and end date" do
-      @feed_request = FeedRequest.new(:end_date=>Date.today.next_week,
-        :start_date=>Date.today)
-      @feed_request.search_terms.should be_empty
-      @feed_request = FeedRequest.new(:end_date=>Date.today.next_week,
-        :start_date=>Date.today, :junk=>'nothing')
-      @feed_request.search_terms.should eql({:junk=>'nothing'})
+      args = {:end_date=>Date.today.next_week,
+        :start_date=>Date.today}
+      @feed_request = FeedRequest.new(args)
+      @feed_request.search_terms.should eql(args  )
+      args = {:end_date=>Date.today.next_week,
+        :start_date=>Date.today, :junk=>'nothing'}
+      @feed_request = FeedRequest.new(args)
+      @feed_request.search_terms.should eql(args)
     end
     
   end
@@ -91,30 +93,47 @@ describe FeedRequest do
 
   describe "should save" do
     it "should not save nil items" do
-      @feed_request.end_date = Date.today
+      @feed_request = FeedRequest.new(:end_date => Date.today)
       @feed_request.should_save?(nil).should be_false
     end
 
     it "should not save items where begin_at is nil" do
-      @feed_request.end_date = Date.today
+      @feed_request = FeedRequest.new(:end_date => Date.today)
       @feed_request.should_save?(Item.new).should be_false
     end
 
     it "should not save items where the item is invalid" do
-      @feed_request.end_date = Date.today
-      @feed_request.should_save?(Item.new(:begin_at=>Date.today)).should be_false
+      @feed_request = FeedRequest.new(:end_date => Date.today-2.day)
+      @feed_request.should_save?(Item.new(:begin_at =>Date.today)).should be_false
     end
 
     it "should save items where the item begin_at date is before the end date" do
       i = build_valid_item(Date.yesterday)
-      @feed_request.end_date = Date.today
+      @feed_request = FeedRequest.new(:end_date => Date.today)
       @feed_request.should_save?(i).should be_true
     end
   end
 
-  describe "populate queue with items" do
-    
+  describe "should merge default search_terms with inputted values" do
+    before(:each) do
+      @feed = FeedRequest.new
+    end
+    it "should contain default values" do
+      @feed.start_date.should_not be_nil
+      @feed.end_date.should_not be_nil
+    end
+
+    it "should replace default values with inputted ones" do
+      @feed = FeedRequest.new(:end_date=>"Nothing")
+      @feed.end_date.should eql("Nothing")
+    end
+
+    it "default values should not take precedence over inputted values" do
+      FeedRequest.stub!(:default_terms).and_return({:value=>'this'})
+      FeedRequest.new(:value=>'not this').search_terms.should include({:value=>'not this'})
+    end
   end
+
 end
 
 def build_valid_item(date = Date.today)

@@ -11,18 +11,19 @@ describe Meetup do
   end
 
   context 'url' do
+
     it 'should generate the correct url for Ottawa, Ontario, Canada' do
       r = Meetup.new(:city=>'ottawa', :state => 'ontario', :country=>'CA')
       r.url.should eql "http://api.meetup.com/events.xml/?city=ottawa&country=CA&key=#{@key}"
     end
 
-    it 'should generate the correct url for Canada' do 
-      r = Meetup.new(:country=>'CA')
+    it 'should generate the correct url for Canada' do
+      r = Meetup.new(:country=>'CA', :city=>nil, :state=>nil)
       r.url.should eql "http://api.meetup.com/events.xml/?country=CA&key=#{@key}"
     end
 
     it 'should generate the correct url for Wyoming, US' do
-      r = Meetup.new(:state => 'wyoming', :country=>'US')
+      r = Meetup.new(:state => 'wyoming', :country=>'US', :city=>nil)
       r.url.should eql "http://api.meetup.com/events.xml/?country=US&key=#{@key}&state=wyoming"
     end
   end

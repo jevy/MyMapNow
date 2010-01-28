@@ -3,30 +3,36 @@ require 'open-uri'
 require 'uri'
 
 class FeedRequest
-  attr_accessor :start_date, :end_date, :search_terms
-  
+  attr_accessor :search_terms
+
   def initialize(args={})
-    @start_date = args[:start_date] || Date.today
-    @end_date = args[:end_date] || Date.today.next_week
-    @search_terms = args.reject{|key, value| key.eql?(:start_date) || key.eql?(:end_date)}
+    @search_terms = {:start_date=>Date.today, :end_date=>Date.today.next_week}.merge(default_terms.merge(args))
   end
 
   def pull_items_from_service
     result = []
-      1.upto(total_pages).each do |page_number|
-        events = grab_events_from_xml(page_number)
-        events.each do |event|
-          item = map_xml_to_item(event)
-          if item.valid?
-            if should_save?(item)
-              result << item
-            else
-              return result
-            end
+    1.upto(total_pages).each do |page_number|
+      events = grab_events_from_xml(page_number)
+      events.each do |event|
+        item = map_xml_to_item(event)
+        if item.valid?
+          if should_save?(item)
+            result << item
+          else
+            return result
           end
         end
       end
+    end
     return result
+  end
+
+  def open_url(url)
+    
+  end
+
+  def default_terms
+    {}
   end
 
   def total_pages
@@ -40,6 +46,14 @@ class FeedRequest
   def remove_formatting(string)
     string = string.to_s.gsub('&amp;', '&').gsub('&lt;', '<').gsub('&gt;', '>').gsub('&quot;', "'").gsub(/<\/?[^>]*>/,  "")
     string.sanitize.squeeze("\n").strip
+  end
+
+  def start_date
+    @search_terms[:start_date]
+  end
+
+  def end_date
+    @search_terms[:end_date]
   end
     
   def city

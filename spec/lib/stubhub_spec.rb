@@ -118,7 +118,7 @@ describe Stubhub do
   describe "description terms" do
 
     it "should return nothing if no terms are selected" do
-      @stubhub.description_terms.should eql("")
+      Stubhub.new(:list=>[]).description_terms.should eql("")
     end
 
     it "should transform single search terms correctly" do
