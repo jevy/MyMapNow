@@ -32,7 +32,7 @@ class Flixster
       theatre.address = doc.at("//input[@name='address']")['value']
       theatre.city = doc.at("//input[@name='city']")['value']
       theatre.state = doc.at("//input[@name='state']")['value']
-    rescue#What's being guarded against here Jevin?
+    rescue
       puts url
     end
     return theatre

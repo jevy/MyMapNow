@@ -3,8 +3,10 @@ require 'feedrequest.rb'
 class Lastfm < FeedRequest
   URL = "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&"
   API_KEY = "b819d5a155749ad083fcd19407d4fc69"
-  @search_terms = [:state => 'ontario', :country=>'canada']
-  
+
+  def default_terms
+    {:state => 'ontario', :country=>'canada'}
+  end
 
   def grab_events_from_xml(page_number)
     xml = Nokogiri::XML open url(page_number)
