@@ -40,7 +40,7 @@ $(function() {
     return $.fn.strftime(dateForValue(n), '%B %D');
   }
 
-	$("#new-item").click(function(){
+	$("#new-item, #close-new-item").click(function(){
 		$("#new-item-panel").toggle();
 	});
 	

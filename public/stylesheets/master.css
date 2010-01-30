@@ -64,7 +64,7 @@ a:hover							{text-decoration:underline;}
 	bottom: 0;
 	background: #fff;
 	z-index: 25;
-	color: darkgrey;
+	color: #818181;
 }
 
 .login-text-block {
@@ -99,6 +99,7 @@ a:hover							{text-decoration:underline;}
 }
 
 .facebook-login {
+  display: none;
 	font-size: 1.1em;
 	font-weight: bold;
 	padding: 15px;
@@ -143,6 +144,7 @@ aside								{background:#fff; color: #818181; z-index:5; display:block; positio
 aside h1						{font-size:11px; color:darkgrey; height:28px; border-bottom:1px solid #666; position:relative; padding:0 1px; line-height:28px;}
 aside ol						{position:absolute; list-style-type:none; top:0px; left:0; right:0; bottom:0; overflow:auto; }
 aside li						{position:relative; padding:8px 10px 8px 43px; border-bottom:1px solid #999;}
+aside li.date-separator { padding: 5px; font-size: 14px; }
 aside div						{position:absolute; left:10px; top:8px; width:23px; height:25px; line-height:20px; color:#fff; text-align:center;}
 aside h2						{font-size:15px; font-family:"Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;}
 aside img           {width: 160px;}
@@ -183,9 +185,9 @@ footer							{display:block; position:absolute; height:39px; border-top:1px soli
 /*
  * new item panel
  ******************/
-#spacer     { position:relative; bottom:0; left:0; width: 285px; height:40px; border-top: 1px solid lightgray;}
+#spacer     { position:relative; bottom:0; left:0; width: 285px; height:40px; border-top: 1px solid #d4d4d4;}
 #new-item { display:block; position:fixed; bottom:12px; left:190px; width: 53px; height:53px; background:url('images/buttonAddEvent.png'); z-index: 15; } 
-
+#close-new-item { position: fixed; left: 222px; top: 13px; width: 22px; height: 22px; background: url( '/images/loginClose.png') no-repeat; z-index: 6; }
 #new-item-panel {
 	position: fixed;
 	display: none;
@@ -193,15 +195,24 @@ footer							{display:block; position:absolute; height:39px; border-top:1px soli
 	border-right: 1px solid #d4d4d4;
 	top: 0;
 	width:259px;
-	left: 260px;
+	left: 0;
 	bottom: 0;
 	background: #fff;
 	z-index: 25;
 	color: #818181;
-	filter:alpha(opacity=1);
-		-moz-opacity: 1;
-		-khtml-opacity: 1;
-		opacity: 1;
+}
+
+.new-item-text-block {
+	background: #42c1f3;
+	color: white;
+	font-size: 1.1em;
+	padding: 15px;
+	position: relative;
+	top: 45px;
+}
+
+.new-item-text-block h2 {
+	font-size: 1.2em;
 }
 
 /*

@@ -1,7 +1,11 @@
 require 'levenshtein'
 
 class Item < ActiveRecord::Base
+  ITEM_KINDS = [['event', 'event'], ['review', 'review'],
+                ['discussion', 'discussion'],
+                ['movie', 'movie'], ['news', 'news']]
   ACCEPTABLE_TITLE_DISTANCE = 3
+  SUMMARY_MAX_LENGTH = 100
   validates_presence_of :title
   validates_presence_of :begin_at
   validate :end_at_is_after_begin_at
@@ -35,6 +39,13 @@ class Item < ActiveRecord::Base
     Item.find(:all, :conditions=>["begin_at BETWEEN ? AND ?",
         start_time.advance(:hours=>-hour_range),
         start_time.advance(:hours=>hour_range)])
+  end
+
+  def summary(max_length = SUMMARY_MAX_LENGTH)
+    return '' if description.nil?
+    summary = self.description.strip.add_elems_until_length("\n", max_length)
+    summary = summary.add_elems_until_length(".", max_length)
+    summary.length > max_length ? summary.strip[0,max_length]+"..." : summary
   end
 
   def self.group_by_date(items)
@@ -86,5 +97,21 @@ end
 class String
   def simplify
     self.downcase.gsub(' ','')
+  end
+
+  def add_elems_until_length(pattern, max_length)
+    summary = ""
+    self.split(pattern).each do |str|
+      current_length = str.length+summary.length
+      unless str.strip.blank?
+        if (current_length < max_length || summary.blank? || summary.length < 5)
+          summary << str unless str.strip.blank?
+          summary << pattern unless pattern.eql?("\n")
+        else
+          break
+        end
+      end
+    end
+    return summary
   end
 end

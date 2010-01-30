@@ -12,7 +12,7 @@ describe Item do
     
     Geocoder.stub!(:locate => stub(:latitude => 0, :longitude => 0))
   end
-
+  
   it "should create a new instance given valid attributes" do
     Item.create(@valid_attributes).should be_valid
   end
@@ -362,5 +362,66 @@ describe "Item Hash by Date" do
     end
 
   end
-  
+
+  describe "Summary" do
+    LOREN_IPSUM = 'spec/models/test_data/loren_ipsum.txt'
+    LOREN_IPSUM_GS = 'spec/models/test_data/loren_ipsum_grouped_whitespace.txt'
+    before(:each) do
+      @length = 100
+      @item = Item.create(:description => load_text)
+    end
+    
+    it "should return a description of max length" do
+      (@item.description.length >@length).should be_true
+      (@item.summary(@length).length <= @length).should be_true
+    end
+
+    it "should return the end of a sentence if possible" do
+      @length = 1000
+      summary = @item.summary(@length).strip
+      (summary.length <= @length).should be_true
+      summary.last.should eql('.')
+    end
+
+    it "should return the first paragraph if more than one are available" do
+      summary = @item.summary(@length = 2000)
+      (summary.length <= @length).should be_true
+      summary.last.should eql('.')
+      (summary.include?"\n").should be_false
+      summary.should eql(load_text.split("\n").first)
+    end
+
+    it "should return the first paragraphs even if the max_length is one" do
+      @length = 1
+      (@item.summary(@length).length <= @length+3).should be_true
+      @item.summary(@length).should eql('L...')
+      @item.summary(3).should eql('Lor...')
+    end
+
+    it "should return both paragraphs if there is a third." do
+      summary = @item.summary(@length = 2010)
+      summary.split("\n").should have(1).strings
+    end
+
+    it "should add a new sentence if the first group is only a few characters" do
+      @item = Item.create(:description=>"Mr. Brawndo, it's got what plants crave.")
+      @item.summary(@length = 10).should have(10+3).characters
+      @item.summary(@length).should eql(@item.description[0,10]+'...')
+    end
+
+    it "should add ... if the string has been truncated" do
+      @item = Item.create(:description=>"Mr. Brawndo, it's got what plants crave.")
+      @item.summary(4).should eql('Mr. ...')
+    end
+
+    it "should return blank if there's no description" do
+      @item = Item.create(:description=>nil)
+      @item.summary.should eql('')
+    end
+
+    def load_text
+      IO.read(LOREN_IPSUM)
+    end
+  end
+
 end
