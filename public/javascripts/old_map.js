@@ -60,10 +60,11 @@ var OldMap = {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
       var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div></li>')
       $li.append('<h2>' + item.title + '</h2>');
-      $li.append('<p>Start Time: ' + (start_time.format()) + '</p>');
+      $li.append('<p>' + (start_time.format()) );
       if (item.end_at) {
-				$li.append('<p>End Time: ' + (end_time.format()) + '</p>');
+				$li.append(' ' + (end_time.format()) );
       }
+      $li.append(' ' + '</p>');
       $li.append('<p class="address">' + (item.address || '') + '</p>');
       $li.append('<p class="description">' + (item.summary || '') + '</p>');
       if (item.url) {
@@ -75,7 +76,7 @@ var OldMap = {
         position: point, 
         map: Map.map,
         title: item.title, 
-        icon: Map.markerImages(item.kind, $li)
+        icon: "images/pin_off.png"
       }));
     
       google.maps.event.addListener($li.data('marker'), 'click', function() {
@@ -122,7 +123,7 @@ var OldMap = {
       var url = item.find('div').css('background-image').match(/\((.*)\)/)[1];  // FIXME:
       var y = item.find('div').css('background-position').match(/-(\d+)/)[1];		// These lines are causing some errors in IE
       Map._markerImages[kind] =  new google.maps.MarkerImage(url,
-        new google.maps.Size(23, 25),
+        new google.maps.Size(23, 30),
         new google.maps.Point(0, y),
         new google.maps.Point(0, 0),
         new google.maps.Point(11,20));
