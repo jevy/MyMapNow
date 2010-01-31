@@ -52,7 +52,7 @@ var OldMap = {
     var dateId = 'day-separator-' + start_time.getFullYear() + '-' + (start_time.getMonth() + 1) + '-' + start_time.getDate();
     var dateString = dateFormat(start_time, "mmmm dS, yyyy");
 
-    if (dateString == (new Date()).toDateString()) {
+    if (dateString == dateFormat((new Date()).toDateString(), "mmmm dS, yyyy")) {
       dateString = 'TODAY';
     }
 
@@ -102,8 +102,14 @@ var OldMap = {
     // Build the content for the infoWindow
     var start_time = dateFormat(new Date(Date.parse(item.begin_at)), "h:MM TT");
     var end_time = dateFormat(new Date(Date.parse(item.end_at)), "h:MM TT");
+    var url;
+    if (item.url) {
+      url = '<p class="link"><a href="'+item.url+'" target="_blank">More...</a></p>'; 
+    } else {
+      url = '';
+    }
     contentString = '<h2>' + item.title + '</h2>' + '<p>' + start_time + ' - ' + end_time + '</p>'
-      + '<p>' + (item.address || '') + '</p>' + '<p>' + (item.summary || '') + '</p>' + (item.url || '') + '<p class="link"><a href="'+item.url+'" target="_blank">More...</a>'; 
+      + '<p>' + (item.address || '') + '</p>' + '<p>' + (item.summary || '') + '</p>' + url; 
       
     $('aside li[data-item-id="'+id+'"]:first').click();  
   },
