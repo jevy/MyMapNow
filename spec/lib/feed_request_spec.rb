@@ -118,6 +118,7 @@ describe FeedRequest do
     before(:each) do
       @feed = FeedRequest.new
     end
+    
     it "should contain default values" do
       @feed.start_date.should_not be_nil
       @feed.end_date.should_not be_nil
@@ -151,8 +152,6 @@ describe FeedRequest do
       lambda {@feed.open_url('anything.html')}.should raise_error(StandardError)
     end
 
-    it "should return "
-
   end
 
 end
@@ -163,6 +162,6 @@ def build_valid_item(date = Date.today)
   result
 end
 
-  def register_url(args)
-    FakeWeb.register_uri(:get, args[:url], args)
-  end
+def register_url(args)
+  FakeWeb.register_uri(:get, args[:url], args)
+end

@@ -8,7 +8,9 @@ event_date_time_local title genreUrlPath urlPath venue_config_id)].join(',')
 
   def default_terms
     {:rows => 50,
-    :list => ["Canada", "Ottawa", "Toronto", "Ontario", "Montreal"]}
+    :list => ["Canada", "Ottawa", "Toronto", "Ontario", "Montreal"],
+    :end_date=> (Date.today + 6.months)
+    }
   end
 
   def url(page_number=0)
