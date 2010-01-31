@@ -28,7 +28,7 @@ class FeedRequest
   end
 
   def open_url(url)
-    
+    open(url)
   end
 
   def default_terms
@@ -81,8 +81,6 @@ class Hash
 end
 
 class String
-  # A little hacky, deals with invalid windows(I think) characters coming out
-  #  of eventbrite.
   def sanitize
     self.collect{|ch| ch[0] ==194 ? ' ' : ch }.to_s
   end

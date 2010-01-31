@@ -28,7 +28,7 @@ namespace :scrape do
 
   desc "Scrape all of Flixster"
   task(:flixster => :environment) do
-    raise RuntimeError, "Not To Be Run!"
+    raise "Not To Be Run!"
     f = Flixster.new
     f.create_all_movies_for_state_on_date("http://www.flixster.com/sitemap/theaters/CA/ON", Time.now)
   end

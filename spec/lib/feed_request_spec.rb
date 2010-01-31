@@ -134,6 +134,27 @@ describe FeedRequest do
     end
   end
 
+  describe "open url" do
+    before(:each) do
+      @feed = FeedRequest.new
+    end
+
+    it "should raise an Errno::ENOENT error after a server 500 error" do
+      register_url({:url=>'anything.html',
+          :status => ["500", "Server Error in '/' Application."]})
+      lambda {@feed.open_url('anything.html')}.should raise_error(StandardError)
+    end
+
+    it "should respond to a 503 with a Errno::ENOENT" do
+      register_url({:url=>'anything.html',
+          :status => ["503", "Service Unavailable"]})
+      lambda {@feed.open_url('anything.html')}.should raise_error(StandardError)
+    end
+
+    it "should return "
+
+  end
+
 end
 
 def build_valid_item(date = Date.today)
@@ -141,3 +162,7 @@ def build_valid_item(date = Date.today)
   result.stub!(:valid?).and_return(true)
   result
 end
+
+  def register_url(args)
+    FakeWeb.register_uri(:get, args[:url], args)
+  end
