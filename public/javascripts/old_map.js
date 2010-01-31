@@ -40,6 +40,7 @@ var OldMap = {
   },
 
   addItem: function(item) {
+    var MAX_TITLE_LEN = 19;
     var id = item.id;
 
     var start_time = new Date(Date.parse(item.begin_at));
@@ -59,7 +60,7 @@ var OldMap = {
     if(!$('aside li[data-item-id=' + id + ']')[0]) {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
       var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div></li>')
-      $li.append('<h2>' + truncate(item.title, 20) + '</h2>');
+      $li.append('<h2>' + truncate(item.title, MAX_TITLE_LEN) + '</h2>');
       $li.append('<p>' + dateFormat(start_time, "h:MM TT") + ' - ' + dateFormat(end_time, "h:MM TT") + '</p>');
       // $li.append('<p class="address">' + (item.address || '') + '</p>');
       // $li.append('<p class="description">' + (item.summary || '') + '</p>');
