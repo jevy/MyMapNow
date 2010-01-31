@@ -1,3 +1,6 @@
+// FIXME: global to build the infoWindow output
+var contentString;
+
 $('aside li').live('click', function(event) {
   var $this = $(this);
   $('aside li.active').each(function() {
@@ -6,8 +9,9 @@ $('aside li').live('click', function(event) {
   
   if(!$this.data('info')) {
     $this.data('info', new google.maps.InfoWindow({
-      content: $this.html(),
-      size: new google.maps.Size(250,150)
+      content: contentString,
+      maxWidth: 250,
+      size: new google.maps.Size(250,250)
     }));
   }
 
@@ -77,7 +81,7 @@ var OldMap = {
       }));
     
       google.maps.event.addListener($li.data('marker'), 'click', function() {
-        Map.showInfoWindow(id);
+        Map.showInfoWindow(item);
       });
       google.maps.event.addListener($li.data('marker'), 'mouseover', function() {
           $('aside li[data-item-id=' + id + ']').css('background', '#c2ebff');
@@ -92,15 +96,22 @@ var OldMap = {
           //Map.setMarkerToDefaultState($li.data('marker')); // This is for the hover-over when we have the pin graphic
       });
     }},
-  
-  showInfoWindow: function(id) {
-    $('aside li[data-item-id="'+id+'"]:first').click();
+    
+  showInfoWindow: function(item) {  
+    var id = item.id;    
+    // Build the content for the infoWindow
+    var start_time = dateFormat(new Date(Date.parse(item.begin_at)), "h:MM TT");
+    var end_time = dateFormat(new Date(Date.parse(item.end_at)), "h:MM TT");
+    contentString = '<h2>' + item.title + '</h2>' + '<p>' + start_time + ' - ' + end_time + '</p>'
+      + '<p>' + (item.address || '') + '</p>' + '<p>' + (item.summary || '') + '</p>' + (item.url || '') + '<p class="link"><a href="'+item.url+'" target="_blank">More...</a>'; 
+      
+    $('aside li[data-item-id="'+id+'"]:first').click();  
   },
   
   highlight: function(item) {
     Map.map.set_center(new google.maps.LatLng(item.latitude, item.longitude));
     Map.addItem(item);
-    Map.showInfoWindow(item.id);
+    Map.showInfoWindow(item);
   },
   
   cleanup: function() {

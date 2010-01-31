@@ -143,8 +143,8 @@ section							{display:block; z-index: 6; position:absolute; left:259px; border-
 aside								{background:#fff; color:#aaa; z-index:5; display:block; position:absolute; width:259px; left:0; top:80px; bottom:40px;}
 aside h1						{font-size:11px; color:#aaa; height:28px; border-bottom:1px solid #d4d4d4; position:relative; padding:0 1px; line-height:28px;}
 aside ol						{position:absolute; list-style-type:none; top:0px; left:0; right:0; bottom:0; overflow:auto; }
-aside li						{position:relative; padding:8px 10px 8px 43px; border-bottom:1px solid #d4d4d4;}
-aside li.date-separator { padding-left: 15px; font-size: 14px; line-height: 28px;}
+aside li						{position:relative; padding:8px 10px 8px 40px; border-bottom:1px solid #d4d4d4;}
+aside li.date-separator { padding-left: 10px; font-size: 14px; line-height: 28px;}
 aside div						{position:absolute; left:10px; top:8px; width:23px; height:30px; line-height:20px; color:#fff; text-align:center;}
 aside h2						{font-size:15px; font-family:"Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;}
 aside img           {width: 160px;}
