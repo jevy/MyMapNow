@@ -45,7 +45,7 @@ var OldMap = {
     var start_time = new Date(Date.parse(item.begin_at));
     var end_time = new Date(Date.parse(item.end_at));
     var dateId = 'day-separator-' + start_time.getFullYear() + '-' + (start_time.getMonth() + 1) + '-' + start_time.getDate();
-    var dateString = start_time.toDateString();
+    var dateString = dateFormat(start_time, "mmmm dS, yyyy");
 
     if (dateString == (new Date()).toDateString()) {
       dateString = 'TODAY';
@@ -59,17 +59,13 @@ var OldMap = {
     if(!$('aside li[data-item-id=' + id + ']')[0]) {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
       var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div></li>')
-      $li.append('<h2>' + item.title + '</h2>');
-      $li.append('<p>' + (start_time.format()) );
-      if (item.end_at) {
-				$li.append(' ' + (end_time.format()) );
-      }
-      $li.append(' ' + '</p>');
-      $li.append('<p class="address">' + (item.address || '') + '</p>');
-      $li.append('<p class="description">' + (item.summary || '') + '</p>');
-      if (item.url) {
-        $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
-      }
+      $li.append('<h2>' + truncate(item.title, 20) + '</h2>');
+      $li.append('<p>' + dateFormat(start_time, "h:MM TT") + ' - ' + dateFormat(end_time, "h:MM TT") + '</p>');
+      // $li.append('<p class="address">' + (item.address || '') + '</p>');
+      // $li.append('<p class="description">' + (item.summary || '') + '</p>');
+      // if (item.url) {
+      //   $li.append('<p class="link"><a href="'+item.url+'" target="_blank">More...</a>');
+      // }
       $('aside ol li[id=' + dateId + ']').after($li);
 
       $li.data('marker', new google.maps.Marker({
@@ -109,7 +105,7 @@ var OldMap = {
   cleanup: function() {
       $('aside li[data-item-id]').each(function() {
           if($(this).data('info')) $(this).data('info').close();
-          $(this).data('marker').setMap(null);
+            $(this).data('marker').setMap(null);
           $(this).remove();
       });
       $('aside li').each(function() {
@@ -120,8 +116,8 @@ var OldMap = {
   _markerImages: {},
   markerImages: function(kind, item) {
     if (!Map._markerImages[kind]) {
-      var url = item.find('div').css('background-image').match(/\((.*)\)/)[1];  // FIXME:
-      var y = item.find('div').css('background-position').match(/-(\d+)/)[1];		// These lines are causing some errors in IE
+      var url = ('images/pin_off.png')
+      var y = item.find('div').css('background-position').match(/-(\d+)/)[1];    // These lines are causing some errors in IE
       Map._markerImages[kind] =  new google.maps.MarkerImage(url,
         new google.maps.Size(23, 30),
         new google.maps.Point(0, y),
@@ -130,4 +126,22 @@ var OldMap = {
     }
     return Map._markerImages[kind];
   }
+};
+
+var truncate = function (str, limit) {
+	var bits, i;
+	bits = str.split('');
+	if (bits.length > limit) {
+		for (i = bits.length - 1; i > -1; --i) {
+			if (i > limit) {
+				bits.length = i;
+			}
+			else if (' ' === bits[i]) {
+				bits.length = i;
+				break;
+			}
+		}
+		bits.push('...');
+	}
+	return bits.join('');
 };

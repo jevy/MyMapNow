@@ -227,7 +227,6 @@ ul.tabs {
 	width: 259px;
 	height:30px;
 	border-top: 1px solid #d4d4d4;	
-	border-bottom: 1px solid #d4d4d4;	
 	background: url('../images/tabs.png') no-repeat 0 0;
 }
 
@@ -277,7 +276,6 @@ ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
 	background-position: 0 -60px;	
 	cursor:default !important; 
 	color:#000 !important;
-	border-right: 1px solid #d4d4d4;
 }
 
 /* initially all panes are hidden */ 
