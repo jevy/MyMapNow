@@ -33,8 +33,9 @@
     <div class="logo"></div>
     <% if current_user.nil? %>
     <div id="login"></div>
-    <% else %>
-    <%= link_to 'Logout', user_session_url, :method => 'delete' %>
+    <% else %>  
+    <%= link_to(image_tag('/images/buttonLogout.png', :alt => 'Logout'), 
+user_session_url, :class => 'logout', :method => :delete) %>
     <% end %>
     <div id="login-panel">
       <%= render :partial => 'login/login' %>

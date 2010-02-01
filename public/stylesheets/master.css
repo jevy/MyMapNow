@@ -31,14 +31,14 @@ a:hover							{text-decoration:underline;}
 #search input { 
 		background-color: #78cbf3; 	
     font-size: 14px; 
-		line-height: 26px;
+		line-height: 30px;
 		border: none;
 		margin-top: 4px;
     color: #ffffff;
-		padding-top: 6px;
+		padding-top: 0px;
 		text-align: center;
 		width: 210px;
-		height: 27px;
+		height: 30px;
 		background: url('/images/search_input_bg.png') no-repeat; 
 }
 
@@ -52,6 +52,7 @@ a:hover							{text-decoration:underline;}
  * login panel formatting
  **************************/
 #login { position: fixed; left: 155px; top: 11px; width: 91px; height: 25px; background: url( '/images/buttonLogin.png') no-repeat; z-index: 6; }
+.logout img { position: fixed; left: 155px; top: 11px; width: 91px; height: 25px; border: 0; }
 #close-login { position: fixed; left: 222px; top: 13px; width: 22px; height: 22px; background: url( '/images/loginClose.png') no-repeat; z-index: 6; }
 #login-panel {
 	position: fixed;
@@ -76,9 +77,10 @@ a:hover							{text-decoration:underline;}
 	top: 45px;
 }
 
-.uline {
+.login-text-block a {
 	color: white;
 	text-decoration: underline;
+	line-height: 23px;
 }
 
 #member-login {
@@ -97,15 +99,17 @@ a:hover							{text-decoration:underline;}
    background: url('/images/login-textfield-bg.png') no-repeat;
    width: 230px;
    height: 24px;
-   padding: 3px 15px 0px 15px;
+   padding: 3px 3px 3px 3px;
 }
 
 .login-textfield {
    background: #cfcfcf;
    border: 0px;
    color: white;
-   width: 200px;
-   font-size: 12pt;
+   width: 180px;
+   font-size: 13px;
+   margin-left: 10px;
+   padding-left: 2px;
 }
 
 .login-button {
@@ -120,11 +124,15 @@ a:hover							{text-decoration:underline;}
 
 #member-login-button {
 	padding-top: 10px;
-
 }
 
 #member-signup {
-   display: none;
+  display: none;
+  font-size: 1.1em;
+	font-weight: bold;
+	padding: 15px;
+	position: relative;
+	top: 50px;
 }
 
 .facebook-login {
