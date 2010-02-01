@@ -31,14 +31,14 @@ a:hover							{text-decoration:underline;}
 #search input { 
 		background-color: #78cbf3; 	
     font-size: 14px; 
-		line-height: 26px;
+		line-height: 30px;
 		border: none;
 		margin-top: 4px;
     color: #ffffff;
-		padding-top: 6px;
+		padding-top: 0px;
 		text-align: center;
 		width: 210px;
-		height: 27px;
+		height: 30px;
 		background: url('/images/search_input_bg.png') no-repeat; 
 }
 
