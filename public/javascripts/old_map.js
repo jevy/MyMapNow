@@ -76,19 +76,20 @@ var OldMap = {
       }));
     
       google.maps.event.addListener($li.data('marker'), 'click', function() {
-        Map.showInfoWindow(item);
+          Map.showInfoWindow(item);
       });
       google.maps.event.addListener($li.data('marker'), 'mouseover', function() {
           $('aside li[data-item-id=' + id + ']').css('background', '#c2ebff');
           $('aside li[data-item-id=' + id + ']').css('color', '#6e6e6e');
           $('aside a').css('color', '#6e6e6e');
-          Map.setMarkerToActiveState($li.data('marker')); // This is for the hover-over when we have the pin graphic
+          $li.data('marker').setIcon('images/pin_on.png');
       });
       google.maps.event.addListener($li.data('marker'), 'mouseout', function() {
           $('aside li[data-item-id=' + id + ']').css('background', '');
           $('aside li[data-item-id=' + id + ']').css('color', '');
           $('aside a').css('color', '');
-          Map.setMarkerToDefaultState($li.data('marker')); // This is for the hover-over when we have the pin graphic
+          $li.data('marker').setIcon('images/pin_off.png');
+          if($li.data('info')) $li.data('info').close();
       });
     }},
     
