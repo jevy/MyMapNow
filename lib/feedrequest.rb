@@ -12,11 +12,7 @@ class FeedRequest
   def pull_items_from_service_and_save
     items = pull_items_from_service
     items.each do|event|
-      if(event.valid?)
-        event.save
-      else
-        logger.error("Could not save event #{event}")
-      end
+      logger.error("Could not save event #{event}") unless event.save
     end
   end
 
