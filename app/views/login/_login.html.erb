@@ -2,29 +2,44 @@
 <div class="login-text-block">
   With an account, you can contribute to the myMapNow community by adding events and information and participate in relevant mapped discussions.
   <br /><br />
-  <span class="uline">Register for myMapNow</span> <img id="signup-button" src="/images/signupArrow.png">
+  <%= link_to_function 'Register for myMapNow', "$('#member-login').hide(); $('#login-spacer').hide(); $('#member-signup').show();" %> <img id="signup-button" src="/images/signupArrow.png">
 </div>  
-<div class="member-login">
+<div id="member-login">
   If you are already have an account, login here:
   
-  <%= @user_session = UserSession.new %>
+  <% @user_session = UserSession.new %>
   <% form_for @user_session, :url => user_session_path do |f| %>
     <%= f.error_messages %>
-    <%= f.text_field :email, :class => 'login_textfield' %><br />
     <br />
-    <%= f.password_field :password, :class => 'login_textfield' %><br />
+    <div class="login-textfield-container">
+    <%= f.text_field :email, :value => 'Login email', :class => 'login-textfield' %>
+    </div>
+    <div class="login-textfield-container">
+    <%= f.password_field :password, :class => 'login-textfield' %>
+    </div>
     <br />
-    <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
-    <br />
-    <%= f.submit "Login" %>
+    <%= f.submit '', :class => 'login-button' %>
   <% end %>
-
-  <img src="/images/login-email.png">
-  <img src="/images/login-pass.png">
-
-  <img id="member-login-button" src="/images/memberLogin.png">
-</div>  
+</div>
 <div class="login-spacer"></div>
+
+<div id="member-signup">
+  <% @user = User.new %>
+  <% form_for @user, :url => account_path do |f| %>
+    <%= f.error_messages %>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %><br />
+    <br />
+    <%= f.label :password %><br />
+    <%= f.password_field :password %><br />
+    <br />
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %><br />
+
+    <%= f.submit "Register" %>
+  <% end %>
+</div>  
+
 <div class="facebook-login">
   <img id="facebook-logo" src="/images/facebookLogo.png">
   <div class="facebook-text-block">

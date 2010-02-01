@@ -81,7 +81,7 @@ a:hover							{text-decoration:underline;}
 	text-decoration: underline;
 }
 
-.member-login {
+#member-login {
 	font-size: 1.1em;
 	font-weight: bold;
 	padding: 15px;
@@ -89,13 +89,42 @@ a:hover							{text-decoration:underline;}
 	top: 50px;
 }
 
-.member-login img {
+#member-login img {
 	padding-top: 10px;
+}
+
+.login-textfield-container {
+   background: url('/images/login-textfield-bg.png') no-repeat;
+   width: 230px;
+   height: 24px;
+   padding: 3px 15px 0px 15px;
+}
+
+.login-textfield {
+   background: #cfcfcf;
+   border: 0px;
+   color: white;
+   width: 200px;
+   font-size: 12pt;
+}
+
+.login-button {
+   background: url('/images/memberLogin.png');
+   width: 152px;
+   height: 23px;
+   border: 0px;
+   padding: 0px;
+   padding-top: 10px;
+   float: right;
 }
 
 #member-login-button {
 	padding-top: 10px;
-	float: right;
+
+}
+
+#member-signup {
+   display: none;
 }
 
 .facebook-login {
