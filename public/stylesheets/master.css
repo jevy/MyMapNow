@@ -52,6 +52,7 @@ a:hover							{text-decoration:underline;}
  * login panel formatting
  **************************/
 #login { position: fixed; left: 155px; top: 11px; width: 91px; height: 25px; background: url( '/images/buttonLogin.png') no-repeat; z-index: 6; }
+.logout img { position: fixed; left: 155px; top: 11px; width: 91px; height: 25px; border: 0; }
 #close-login { position: fixed; left: 222px; top: 13px; width: 22px; height: 22px; background: url( '/images/loginClose.png') no-repeat; z-index: 6; }
 #login-panel {
 	position: fixed;
