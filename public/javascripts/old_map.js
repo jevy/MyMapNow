@@ -89,7 +89,7 @@ var OldMap = {
           $('aside li[data-item-id=' + id + ']').css('color', '');
           $('aside a').css('color', '');
           $li.data('marker').setIcon('images/pin_off.png');
-          if($li.data('info')) $li.data('info').close();
+          //if($li.data('info')) $li.data('info').close();
       });
     }},
     
