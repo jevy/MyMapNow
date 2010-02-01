@@ -1,5 +1,6 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
+    drop_table :users if table_exists?(:users)
     create_table :users do |t|
       t.string    :email,               :null => false
       t.string    :crypted_password,    :null => false
