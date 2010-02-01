@@ -1,7 +1,7 @@
 namespace :scrape do
   desc "This task will run all scrapers."
-  task :all => ["scrape:lastfm", "scrape:stubhub",
-    "scrape:meetup", "scrape:eventbrite", "scrape:xpress"]
+  task :all => ["scrape:lastfm",
+    "scrape:meetup", "scrape:eventbrite", "scrape:xpress","scrape:stubhub"]
 
   desc "This task will scrape the Ottawa Xpress site."
   task(:xpress => :environment) do
