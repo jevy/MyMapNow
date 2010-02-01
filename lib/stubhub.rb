@@ -8,8 +8,8 @@ event_date_time_local title genreUrlPath urlPath venue_config_id)].join(',')
 
   def default_terms
     {:rows => 50,
-    :list => ["Canada", "Ottawa", "Toronto", "Ontario", "Montreal"],
-    :end_date=> (Date.today + 6.months)
+      :list => ["Canada", "Ottawa", "Toronto", "Ontario", "Montreal"],
+      :end_date=> (Date.today + 6.months)
     }
   end
 
@@ -28,16 +28,6 @@ event_date_time_local title genreUrlPath urlPath venue_config_id)].join(',')
     params['rows'] = rows
     params['start'] = params['rows'].to_i * page_number if page_number > 0
     URL + params.to_url_params
-  end
-
-  def pull_items_from_service
-    super.each do |event|
-      begin
-        event.geocode_address
-        event.save
-      rescue Graticule::AddressError
-      end
-    end
   end
 
   def grab_events_from_xml(page_number)

@@ -6,23 +6,32 @@ class FeedRequest
   attr_accessor :search_terms
 
   def initialize(args={})
-    @search_terms = {:start_date=>Date.today, :end_date=>Date.today.next_week}.merge(default_terms.merge(args))
+    @search_terms = {:start_date=>Date.today, :end_date=>Date.today.next_month}.merge(default_terms.merge(args))
+  end
+
+  def pull_items_from_service_and_save
+    items = pull_items_from_service
+    items.each do|event|
+      if(event.valid?)
+        event.save
+      else
+        logger.error("Could not save event #{event}")
+      end
+    end
   end
 
   def pull_items_from_service
     result = []
-    1.upto(total_pages).each do |page_number|
-      events = grab_events_from_xml(page_number)
-      events.each do |event|
-        item = map_xml_to_item(event)
-        if item.valid?
-          if should_save?(item)
-            result << item
-          else
-            return result
-          end
+    begin
+      1.upto(total_pages).each do |page_number|
+        events = grab_events_from_xml(page_number)
+        events.each do |event|
+          item = map_xml_to_item(event)
+          result << item if should_save?(item)
         end
       end
+    rescue RuntimeError => e
+      logger.error "#{self.class} ended by #{e.message}"
     end
     return result
   end
@@ -67,7 +76,10 @@ class FeedRequest
   def country
     @search_terms[:country]
   end
-
+  
+  def logger
+    RAILS_DEFAULT_LOGGER
+  end
 end
 
 class Hash

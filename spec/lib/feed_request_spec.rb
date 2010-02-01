@@ -21,12 +21,12 @@ describe FeedRequest do
 
     it "should default end_date to next week if no date is inputted" do
       @feed_request = FeedRequest.new()
-      @feed_request.end_date.should eql(Date.today.next_week)
+      @feed_request.end_date.should eql(Date.today.next_month)
     end
 
     it "should default start and end date if args are inputted" do
       @feed_request = FeedRequest.new(:junk=>'nothing')
-      @feed_request.end_date.should eql(Date.today.next_week)
+      @feed_request.end_date.should eql(Date.today.next_month)
       @feed_request.start_date.should eql(Date.today)
     end
 
@@ -153,7 +153,6 @@ describe FeedRequest do
     end
 
   end
-
 end
 
 def build_valid_item(date = Date.today)
@@ -164,4 +163,8 @@ end
 
 def register_url(args)
   FakeWeb.register_uri(:get, args[:url], args)
+end
+
+def logger
+  RAILS_DEFAULT_LOGGER
 end
