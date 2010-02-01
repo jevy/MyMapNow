@@ -1,11 +1,24 @@
 <div class="logo"></div><div id="close-login"></div>
 <div class="login-text-block">
-  With an account, you can contribute to the myMapNow community by adding events and innformation and participate in relevant mapped discussions.
+  With an account, you can contribute to the myMapNow community by adding events and information and participate in relevant mapped discussions.
   <br /><br />
   <span class="uline">Register for myMapNow</span> <img id="signup-button" src="/images/signupArrow.png">
 </div>  
 <div class="member-login">
   If you are already have an account, login here:
+  
+  <%= @user_session = UserSession.new %>
+  <% form_for @user_session, :url => user_session_path do |f| %>
+    <%= f.error_messages %>
+    <%= f.text_field :email, :class => 'login_textfield' %><br />
+    <br />
+    <%= f.password_field :password, :class => 'login_textfield' %><br />
+    <br />
+    <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
+    <br />
+    <%= f.submit "Login" %>
+  <% end %>
+
   <img src="/images/login-email-tmp.png">
   <img src="/images/login-pass-tmp.png">
   <img id="member-login-button" src="/images/memberLogin.png">
