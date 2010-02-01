@@ -65,67 +65,6 @@ describe Lastfm do
     (start_time + 3.hours).should eql end_time
   end
 
-  it "should parse the correct values up to the middle of a single page" do
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1",
-      :response => FM_PAGE_1)
-    items = Lastfm.new(:start_date=>@today, :end_date=>Time.local(2009,10,11,0,0,0),
-      :city=>'ottawa', :state =>'ontario', :country=>'CA').pull_items_from_service
-    items.size.should eql 9
-
-    item = items.at(0)
-    item.title.should eql("Daniel Wesley")
-    item.begin_at.should eql(Time.local(2009, 10, 8, 0, 0,0))
-    item.url.should eql('http://www.last.fm/event/1251131+Daniel+Wesley+at+Live+Lounge+on+8+October+2009')
-    item.address.should eql("128.5 York St., Ottawa, Canada")
-    item.kind.should eql('event')
-
-    item = items.at(1)
-    item.title.should eql("Karkwa")
-    item.begin_at.should eql(Time.local(2009, 10, 8, 0, 0,0))
-    item.url.should eql('http://www.last.fm/event/1085723+Karkwa+at+Salle+Jean-Despr%C3%A9z+on+8+October+2009')
-    item.address.should eql("25, rue Laurier, Gatineau, Québec, Canada")
-    item.kind.should eql('event')
-
-    item = items.at(-1)
-    item.title.should eql("Staggered Crossing")
-    item.begin_at.should eql(Time.local(2009, 10, 10, 19, 0,0).utc)
-    item.url.should eql('http://www.last.fm/event/1244803+Staggered+Crossing+at+Mavericks+on+10+October+2009')
-    item.address.should eql("221 Rideau Street, Ottawa, Canada")
-    item.kind.should eql('event')
-  end
-
-  it "should parse the correct values up to the middle of 2nd page" do
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1",
-      :response => FM_PAGE_1)
-    FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=2",
-      :response => FM_PAGE_2)
-    items = Lastfm .new(:start_date=>@today, :end_date=>Time.local(2009,10,15,0,0,0),
-      :city=>'ottawa', :state =>'ontario', :country=>'CA').pull_items_from_service
-    items.size.should eql 12
-
-    item = items.at(0)
-    item.title.should eql("Daniel Wesley")
-    item.begin_at.should eql(Time.local(2009, 10, 8, 0, 0,0))
-    item.url.should eql('http://www.last.fm/event/1251131+Daniel+Wesley+at+Live+Lounge+on+8+October+2009')
-    item.address.should eql("128.5 York St., Ottawa, Canada")
-    item.kind.should eql('event')
-
-    item = items.at(1)
-    item.title.should eql("Karkwa")
-    item.begin_at.should eql(Time.local(2009, 10, 8, 0, 0,0))
-    item.url.should eql('http://www.last.fm/event/1085723+Karkwa+at+Salle+Jean-Despr%C3%A9z+on+8+October+2009')
-    item.address.should eql("25, rue Laurier, Gatineau, Québec, Canada")
-    item.kind.should eql('event')
-    
-    #    item = items.at(-1)
-    #    item.title.should eql("Kalle Mattson")
-    #    # FIXME: Also wrong due to DST
-    #    item.begin_at.should eql(Time.local(2009, 10, 15, 21, 0,0))
-    #    item.url.should eql('http://www.last.fm/event/1219409+Kalle+Mattson+at+Zaphod+Beeblebrox+on+15+October+2009')
-    #    item.address.should eql("27 York St., Ottawa, Canada")
-    #    item.kind.should eql('event')
-  end
-
   it "should parse the correct values past when date goes past end of feed" do
     FakeWeb.register_uri(:get, "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=ottawa&api_key=b819d5a155749ad083fcd19407d4fc69&page=1",
       :response => FM_PAGE_1)

@@ -96,16 +96,6 @@ describe Meetup do
     item.address.should eql("ottawa, CA")
     item.city_wide.should be_true
     item.kind.should eql('event')
-
-    #FIXME Broken Spec
-    #    item = items.at(-1)
-    #    item.title.should eql("Ski / Board @ Mt. Tremblant (Available: carpools, x-country skiing, snowshoeing)")
-    #    item.begin_at.should eql(Time.gm(2009, 12, 19, 12, 30, 0))
-    #    item.end_at.should eql(Time.gm(2009, 12, 19, 15, 30, 0))
-    #    item.url.should eql('http://www.meetup.com/Singles-Outdoors-Club/calendar/11530846/')
-    #    item.address.should eql("ottawa, CA")
-    #    item.city_wide.should be_false
-    #    item.kind.should eql('event')
   end
 
   it 'should return the correct items for the next week' do
