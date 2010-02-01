@@ -77,9 +77,10 @@ a:hover							{text-decoration:underline;}
 	top: 45px;
 }
 
-.uline {
+.login-text-block a {
 	color: white;
 	text-decoration: underline;
+	line-height: 23px;
 }
 
 #member-login {
@@ -98,15 +99,17 @@ a:hover							{text-decoration:underline;}
    background: url('/images/login-textfield-bg.png') no-repeat;
    width: 230px;
    height: 24px;
-   padding: 3px 15px 0px 15px;
+   padding: 3px 3px 3px 3px;
 }
 
 .login-textfield {
    background: #cfcfcf;
    border: 0px;
    color: white;
-   width: 200px;
-   font-size: 12pt;
+   width: 180px;
+   font-size: 13px;
+   margin-left: 10px;
+   padding-left: 2px;
 }
 
 .login-button {
@@ -121,11 +124,15 @@ a:hover							{text-decoration:underline;}
 
 #member-login-button {
 	padding-top: 10px;
-
 }
 
 #member-signup {
-   display: none;
+  display: none;
+  font-size: 1.1em;
+	font-weight: bold;
+	padding: 15px;
+	position: relative;
+	top: 50px;
 }
 
 .facebook-login {

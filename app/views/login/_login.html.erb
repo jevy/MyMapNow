@@ -2,7 +2,7 @@
 <div class="login-text-block">
   With an account, you can contribute to the myMapNow community by adding events and information and participate in relevant mapped discussions.
   <br /><br />
-  <%= link_to_function 'Register for myMapNow', "$('#member-login').hide(); $('#login-spacer').hide(); $('#member-signup').show();" %> <img id="signup-button" src="/images/signupArrow.png">
+  <%= link_to_function 'Register for myMapNow', "$('#member-login').hide(); $('#login-spacer').hide(); $('#member-signup').show();" %> 
 </div>  
 <div id="member-login">
   If you are already have an account, login here:
@@ -21,24 +21,26 @@
     <%= f.submit '', :class => 'login-button' %>
   <% end %>
 </div>
-<div class="login-spacer"></div>
-
 <div id="member-signup">
   <% @user = User.new %>
   <% form_for @user, :url => account_path do |f| %>
     <%= f.error_messages %>
     <%= f.label :email %><br />
-    <%= f.text_field :email %><br />
-    <br />
+    <div class="login-textfield-container">
+    <%= f.text_field :email, :class => 'login-textfield' %>
+    </div>
     <%= f.label :password %><br />
-    <%= f.password_field :password %><br />
-    <br />
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %><br />
-
-    <%= f.submit "Register" %>
+    <div class="login-textfield-container">
+    <%= f.password_field :password, :class => 'login-textfield' %>
+    </div>
+    <%= f.label :password_confirmation %>
+    <div class="login-textfield-container">
+    <%= f.password_field :password_confirmation, :class => 'login-textfield' %>
+    </div><br />
+    <%= f.submit '', :class => 'login-button' %>
   <% end %>
 </div>  
+<div class="login-spacer"></div>
 
 <div class="facebook-login">
   <img id="facebook-logo" src="/images/facebookLogo.png">
