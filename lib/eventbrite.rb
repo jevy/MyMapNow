@@ -27,12 +27,6 @@ class Eventbrite < FeedRequest
     (xml/'/events/event')
   end
 
-  def pull_items_from_service
-    super.each do |event|
-      event.save
-    end
-  end
-
   def map_xml_to_item(event)
     coordinates = (event/"venue/Lat-Long").inner_text.split('/')
     Item.new(

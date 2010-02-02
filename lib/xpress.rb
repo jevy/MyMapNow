@@ -5,14 +5,14 @@ class Xpress < FeedRequest
   URI = 'http://www.ottawaxpress.ca'
   EXTENSION = '/music/listings.aspx'
 
-  def pull_items_from_service
+  def pull_items_from_service_and_save
     list = []
     
     start_date.upto(end_date) do |date|
       page = get_page(date)
       list << parse_events(page)
     end
-    list.flatten
+    list.flatten.each{|event| event.save}
   end
 
   def get_page(date=nil)

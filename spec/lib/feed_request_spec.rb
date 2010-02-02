@@ -21,12 +21,12 @@ describe FeedRequest do
 
     it "should default end_date to next week if no date is inputted" do
       @feed_request = FeedRequest.new()
-      @feed_request.end_date.should eql(Date.today.next_week)
+      @feed_request.end_date.should eql(Date.today.next_month)
     end
 
     it "should default start and end date if args are inputted" do
       @feed_request = FeedRequest.new(:junk=>'nothing')
-      @feed_request.end_date.should eql(Date.today.next_week)
+      @feed_request.end_date.should eql(Date.today.next_month)
       @feed_request.start_date.should eql(Date.today)
     end
 
@@ -118,6 +118,7 @@ describe FeedRequest do
     before(:each) do
       @feed = FeedRequest.new
     end
+    
     it "should contain default values" do
       @feed.start_date.should_not be_nil
       @feed.end_date.should_not be_nil
@@ -134,10 +135,36 @@ describe FeedRequest do
     end
   end
 
+  describe "open url" do
+    before(:each) do
+      @feed = FeedRequest.new
+    end
+
+    it "should raise an Errno::ENOENT error after a server 500 error" do
+      register_url({:url=>'anything.html',
+          :status => ["500", "Server Error in '/' Application."]})
+      lambda {@feed.open_url('anything.html')}.should raise_error(StandardError)
+    end
+
+    it "should respond to a 503 with a Errno::ENOENT" do
+      register_url({:url=>'anything.html',
+          :status => ["503", "Service Unavailable"]})
+      lambda {@feed.open_url('anything.html')}.should raise_error(StandardError)
+    end
+
+  end
 end
 
 def build_valid_item(date = Date.today)
   result = Item.new(:begin_at=>date)
   result.stub!(:valid?).and_return(true)
   result
+end
+
+def register_url(args)
+  FakeWeb.register_uri(:get, args[:url], args)
+end
+
+def logger
+  RAILS_DEFAULT_LOGGER
 end

@@ -31,14 +31,14 @@ a:hover							{text-decoration:underline;}
 #search input { 
 		background-color: #78cbf3; 	
     font-size: 14px; 
-		line-height: 26px;
+		line-height: 30px;
 		border: none;
 		margin-top: 4px;
     color: #ffffff;
-		padding-top: 6px;
+		padding-top: 0px;
 		text-align: center;
 		width: 210px;
-		height: 27px;
+		height: 30px;
 		background: url('/images/search_input_bg.png') no-repeat; 
 }
 
@@ -52,6 +52,7 @@ a:hover							{text-decoration:underline;}
  * login panel formatting
  **************************/
 #login { position: fixed; left: 155px; top: 11px; width: 91px; height: 25px; background: url( '/images/buttonLogin.png') no-repeat; z-index: 6; }
+.logout img { position: fixed; left: 155px; top: 11px; width: 91px; height: 25px; border: 0; }
 #close-login { position: fixed; left: 222px; top: 13px; width: 22px; height: 22px; background: url( '/images/loginClose.png') no-repeat; z-index: 6; }
 #login-panel {
 	position: fixed;
@@ -76,12 +77,13 @@ a:hover							{text-decoration:underline;}
 	top: 45px;
 }
 
-.uline {
+.login-text-block a {
 	color: white;
 	text-decoration: underline;
+	line-height: 23px;
 }
 
-.member-login {
+#member-login {
 	font-size: 1.1em;
 	font-weight: bold;
 	padding: 15px;
@@ -89,13 +91,48 @@ a:hover							{text-decoration:underline;}
 	top: 50px;
 }
 
-.member-login img {
+#member-login img {
 	padding-top: 10px;
+}
+
+.login-textfield-container {
+   background: url('/images/login-textfield-bg.png') no-repeat;
+   width: 230px;
+   height: 24px;
+   padding: 3px 3px 3px 3px;
+}
+
+.login-textfield {
+   background: #cfcfcf;
+   border: 0px;
+   color: white;
+   width: 180px;
+   font-size: 13px;
+   margin-left: 10px;
+   padding-left: 2px;
+}
+
+.login-button {
+   background: url('/images/memberLogin.png');
+   width: 152px;
+   height: 23px;
+   border: 0px;
+   padding: 0px;
+   padding-top: 10px;
+   float: right;
 }
 
 #member-login-button {
 	padding-top: 10px;
-	float: right;
+}
+
+#member-signup {
+  display: none;
+  font-size: 1.1em;
+	font-weight: bold;
+	padding: 15px;
+	position: relative;
+	top: 50px;
 }
 
 .facebook-login {
@@ -140,16 +177,16 @@ section							{display:block; z-index: 6; position:absolute; left:259px; border-
 /* 
  * event list
  **************/
-aside								{background:#fff; color: #818181; z-index:5; display:block; position:absolute; width:259px; left:0; top:80px; bottom:40px;}
-aside h1						{font-size:11px; color:darkgrey; height:28px; border-bottom:1px solid #666; position:relative; padding:0 1px; line-height:28px;}
+aside								{background:#fff; color:#aaa; z-index:5; display:block; position:absolute; width:259px; left:0; top:80px; bottom:40px;}
+aside h1						{font-size:11px; color:#aaa; height:28px; border-bottom:1px solid #d4d4d4; position:relative; padding:0 1px; line-height:28px;}
 aside ol						{position:absolute; list-style-type:none; top:0px; left:0; right:0; bottom:0; overflow:auto; }
-aside li						{position:relative; padding:8px 10px 8px 43px; border-bottom:1px solid #999;}
-aside li.date-separator { padding: 5px; font-size: 14px; }
-aside div						{position:absolute; left:10px; top:8px; width:23px; height:25px; line-height:20px; color:#fff; text-align:center;}
+aside li						{position:relative; padding:8px 10px 8px 40px; border-bottom:1px solid #d4d4d4;}
+aside li.date-separator { padding-left: 10px; font-size: 14px; line-height: 28px;}
+aside div						{position:absolute; left:10px; top:8px; width:23px; height:30px; line-height:20px; color:#fff; text-align:center;}
 aside h2						{font-size:15px; font-family:"Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;}
 aside img           {width: 160px;}
-aside .address			{color:#999;}
-aside .description	{color:#555;}
+aside .address			{color:#aaa;}
+aside .description	{color:#aaa;}
 aside .link a				{color:#42c1f3;}				
 
 aside li div        { background: url('images/pointers.png') no-repeat top left; }
@@ -227,7 +264,6 @@ ul.tabs {
 	width: 259px;
 	height:30px;
 	border-top: 1px solid #d4d4d4;	
-	border-bottom: 1px solid #d4d4d4;	
 	background: url('../images/tabs.png') no-repeat 0 0;
 }
 
@@ -277,7 +313,6 @@ ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
 	background-position: 0 -60px;	
 	cursor:default !important; 
 	color:#000 !important;
-	border-right: 1px solid #d4d4d4;
 }
 
 /* initially all panes are hidden */ 

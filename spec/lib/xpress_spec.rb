@@ -57,7 +57,7 @@ describe Xpress do
   end
 
   it "should parse the test file" do
-        doc = @parser.get_page
+    doc = @parser.get_page
     events_length = @parser.send(:event_links, doc).length
     events_length.should be_even #Two per event, artist and venue
     events_length.should eql(24)

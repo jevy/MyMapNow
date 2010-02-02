@@ -5,7 +5,7 @@ class Lastfm < FeedRequest
   API_KEY = "b819d5a155749ad083fcd19407d4fc69"
 
   def default_terms
-    {:state => 'ontario', :country=>'canada'}
+    {:city=>'ottawa',:state => 'ontario', :country=>'canada'}
   end
 
   def grab_events_from_xml(page_number)

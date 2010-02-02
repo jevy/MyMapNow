@@ -31,7 +31,12 @@
 
   <div id="sidebar-header">
     <div class="logo"></div>
-    <div id="login"></div>  
+    <% if current_user.nil? %>
+    <div id="login"></div>
+    <% else %>  
+    <%= link_to(image_tag('/images/buttonLogout.png', :alt => 'Logout'), 
+user_session_url, :class => 'logout', :method => :delete) %>
+    <% end %>
     <div id="login-panel">
       <%= render :partial => 'login/login' %>
     </div>
@@ -57,10 +62,12 @@
   </div>
 
   <div id="spacer">
+    <% unless current_user.nil? %>
     <div id="new-item"></div>  
     <div id="new-item-panel">
       <%= render :partial => '/items/new' %>
-    </div>  
+    </div>
+    <% end %>
   </div>  
 
 </body>

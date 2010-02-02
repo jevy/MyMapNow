@@ -1,16 +1,47 @@
 <div class="logo"></div><div id="close-login"></div>
 <div class="login-text-block">
-  With an account, you can contribute to the myMapNow community by adding events and innformation and participate in relevant mapped discussions.
+  With an account, you can contribute to the myMapNow community by adding events and information and participate in relevant mapped discussions.
   <br /><br />
-  <span class="uline">Register for myMapNow</span> <img id="signup-button" src="/images/signupArrow.png">
+  <%= link_to_function 'Register for myMapNow', "$('#member-login').hide(); $('#login-spacer').hide(); $('#member-signup').show();" %> 
 </div>  
-<div class="member-login">
+<div id="member-login">
   If you are already have an account, login here:
-  <img src="/images/login-email-tmp.png">
-  <img src="/images/login-pass-tmp.png">
-  <img id="member-login-button" src="/images/memberLogin.png">
+  
+  <% @user_session = UserSession.new %>
+  <% form_for @user_session, :url => user_session_path do |f| %>
+    <%= f.error_messages %>
+    <br />
+    <div class="login-textfield-container">
+    <%= f.text_field :email, :value => 'Login email', :class => 'login-textfield' %>
+    </div>
+    <div class="login-textfield-container">
+    <%= f.password_field :password, :class => 'login-textfield' %>
+    </div>
+    <br />
+    <%= f.submit '', :class => 'login-button' %>
+  <% end %>
+</div>
+<div id="member-signup">
+  <% @user = User.new %>
+  <% form_for @user, :url => account_path do |f| %>
+    <%= f.error_messages %>
+    <%= f.label :email %><br />
+    <div class="login-textfield-container">
+    <%= f.text_field :email, :class => 'login-textfield' %>
+    </div>
+    <%= f.label :password %><br />
+    <div class="login-textfield-container">
+    <%= f.password_field :password, :class => 'login-textfield' %>
+    </div>
+    <%= f.label :password_confirmation %>
+    <div class="login-textfield-container">
+    <%= f.password_field :password_confirmation, :class => 'login-textfield' %>
+    </div><br />
+    <%= f.submit '', :class => 'login-button' %>
+  <% end %>
 </div>  
 <div class="login-spacer"></div>
+
 <div class="facebook-login">
   <img id="facebook-logo" src="/images/facebookLogo.png">
   <div class="facebook-text-block">
