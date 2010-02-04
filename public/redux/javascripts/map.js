@@ -159,5 +159,5 @@ $(document).bind('map:change', Map.cleanup);
 $(Map.initialize);
 
 // For testing purposes only - remove before launch!
-$(Map.search('Halifax, NS'));
-$(function() { $('input[name=q]').val('Halifax, NS'); });
+$(Map.search('Ottawa, ON'));
+$(function() { $('input[name=q]').val('Ottawa, ON'); });
