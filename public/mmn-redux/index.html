@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyMapNow.com</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="authenticity-token" id="authenticity-token" content="<%= form_authenticity_token %>">
+    <link rel=StyleSheet href="stylesheets/dialog/jquery-ui-1.7.2.custom.css" type="text/css">
+    <link rel=StyleSheet href="stylesheets/master.css" type="text/css">
+    <!--[if IE]>
+      <script src=="javascripts/html5.js"></script>
+    <![endif]-->
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="javascripts/jquery-1.3.2.min.js"></script>
+    <script src="javascripts/jquery-ui-1.7.2.custom.min.js"></script>
+    <script src="javascripts/perfecttime/PerfectTime.js"></script>
+    <script src="javascripts/date.format.js"></script>
+    <script src="javascripts/application.js"></script>
+    <script src="javascripts/map.js"></script>
+    <script src="javascripts/items.js"></script>
+    <script src="javascripts/flickr.js"></script>
+    <script src="javascripts/jquery.form.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>MyMapNow</h1>
+      <p><input type="text" id="q" name="q" value="Ottawa, ON"></p>
+      <h5>during</h5>
+      <div id="date-range">
+        <div id="label-left"><span></span></div>
+        <div id="label-right"><span></span></div>
+      </div>
+      <p><button id="search">Search</button></p>
+    </header>
+    <section>
+      <div id="map"></div>
+    </section>
+    <aside>
+      <ol>
+      </ol>
+    </aside>
+    <footer>
+      <p class="copyright">Copyright &copy; 2009 MyMapNow - All Rights Reserved</p>
+      <p class="links"><a href="#">Submit News/Events</a>   <a href="#">About MyMapNow</a>    <a href="#">Privacy Policy</a>   <a href="#">Terms and Conditions</a></p>
+    </footer>
+    <div id="dialogs">
+      
+    </div>
+  </body>
+</html>
