@@ -22,7 +22,8 @@ var Map = {
       zoom: 13,
       center: new google.maps.LatLng(45.420833, -75.69),
       mapTypeControl: false,
-      navigationControl: false,
+      navigationControl: true,
+      navigationControlOptions: {style: google.maps.NavigationControlStyle.ANDROID},
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
@@ -62,9 +63,11 @@ var Map = {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
 
       var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div><h2>' + truncate(item.title, MAX_TITLE_LEN) + '</h2>');
-      //$li.append('<h2 class="title-full">' + item.title + '</h2>' )
       $li.append('<p>' + dateFormat(start_time, "h:MM TT") + ' - ' + dateFormat(end_time, "h:MM TT") + '</p>');
       $li.append('<p class="address">'+ (item.address || '') +'<p class="description">'+ (item.body || '') +'</p>');
+      if (item.url) {
+        $li.append('<p class="item-url"><a href="'+item.url+'" target="_blank">More...</a></p>'); 
+      } 
       $('aside ol li[id=' + dateId + ']').after($li);
                 
       $li.data('marker', new google.maps.Marker({
@@ -103,6 +106,23 @@ var Map = {
     });
   },
   
+  updateSearchBoxWithCurrentLocation: function() {
+    $('input[name=search-box]').val(GeoIP.city() + ', ' + GeoIP.region() + ', ' + GeoIP.country());
+  },
+  
+  moveTo: function(location) { // FIXME: untested
+    Map.map.panTo(location);
+  },
+  
+  search: function(query) { // FIXME: the callback is untested
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': query }, function(response, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+	      Map.moveTo(response[0].geometry.location);
+      }
+    });
+  },
+  
   _markerImages: {},
   markerImages: function(kind, item) {
     if (!Map._markerImages[kind]) {
@@ -136,5 +156,8 @@ var truncate = function (str, limit) {
 };
 
 $(document).bind('map:change', Map.cleanup);
-
 $(Map.initialize);
+
+// For testing purposes only - remove before launch!
+$(Map.search('Halifax, NS'));
+$(function() { $('input[name=q]').val('Halifax, NS'); });

@@ -4,7 +4,7 @@ body, p, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, fieldset, button, 
 /* Structure */
 html								{margin:0; padding:0;}
 body								{background:#fff; overflow:hidden; color:#222;}
-a										{color:#06C; text-decoration:none;}
+a										{color:#555; text-decoration:none;}
 a:hover							{text-decoration:underline;}
 
 header							{display:block; position:absolute; left:0; right:0; top: 0; height:40px; background:#111 url(images/header.png) repeat-x;}
@@ -45,6 +45,7 @@ aside img           {width: 160px;}
 aside .title-full   {display: none;}
 aside .address			{display: none; color:#999;}
 aside .description	{display: none; color:#555;}
+aside .item-url     {display:none;}
 
 aside li div            { background: url(images/pointers.png) no-repeat top left; }
 aside .black div        { background-position: 0 -30px; } 

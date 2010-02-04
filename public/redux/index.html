@@ -16,20 +16,21 @@
     <script src="javascripts/date.format.js"></script>
     <script src="javascripts/application.js"></script>
     <script src="javascripts/map.js"></script>
-    <script src="javascripts/items.js"></script>
-    <script src="javascripts/flickr.js"></script>
     <script src="javascripts/jquery.form.js"></script>
+    <script src="javascripts/items.js"></script>
   </head>
   <body>
     <header>
       <h1>MyMapNow</h1>
-      <p><input type="text" id="q" name="q" value="Ottawa, ON"></p>
+      <p><input type="text" id="q" name="q" value="Ottawa, ON" onKeyPress="return submitenter(this,event)" /></p>
       <h5>during</h5>
       <div id="date-range">
         <div id="label-left"><span></span></div>
         <div id="label-right"><span></span></div>
       </div>
-      <p><button id="search">Search</button></p>
+      <p>
+        <button id="search" onclick="Map.search($('#q').val());"></button>
+      </p>
     </header>
     <section>
       <div id="map"></div>
@@ -46,3 +47,21 @@
     </div>
   </body>
 </html>
+<script type="text/javascript">
+ <!--
+  function submitenter(myfield,e) {
+  	var keycode;
+  	if (window.event) keycode = window.event.keyCode;
+  	else if (e) keycode = e.which;
+  	else return true;
+
+  	if (keycode == 13)
+  	   {
+  	   Map.search($('#q').val());
+  	   return false;
+  	   }
+  	else
+  	   return true;
+  }
+ // -->
+</script>
