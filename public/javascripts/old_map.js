@@ -9,7 +9,7 @@ $('aside li').live('click', function(event) {
   
   if(!$this.data('info')) {
     $this.data('info', new google.maps.InfoWindow({
-      content: contentString,
+      content: $this.html(),
       maxWidth: 250,
       size: new google.maps.Size(250,250)
     }));
@@ -24,10 +24,11 @@ var OldMap = {
     Map.map = new google.maps.Map($('#map')[0], {
       zoom: 13,
       center: new google.maps.LatLng(45.420833, -75.69),
+      mapTypeControl: false,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
-    $("#date-range").change();
+    //$("#date-range").change();
     google.maps.event.addListener(Map.map, 'bounds_changed', function() {
       Map.fetch();
     });
@@ -46,6 +47,7 @@ var OldMap = {
   addItem: function(item) {
     var MAX_TITLE_LEN = 19;
     var id = item.id;
+    var url;
 
     var start_time = new Date(Date.parse(item.begin_at));
     var end_time = new Date(Date.parse(item.end_at));
@@ -60,12 +62,15 @@ var OldMap = {
       $('<li class="date-separator" id="' + dateId + '"><b>' + dateString + '</b></li>').appendTo('aside ol');
     }
 
-    // for some reason addItem() is called twice for each item
     if(!$('aside li[data-item-id=' + id + ']')[0]) {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
-      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div></li>')
+      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div></li>');
       $li.append('<h2>' + truncate(item.title, MAX_TITLE_LEN) + '</h2>');
       $li.append('<p>' + dateFormat(start_time, "h:MM TT") + ' - ' + dateFormat(end_time, "h:MM TT") + '</p>');
+      $li.append('<p class="address">' + (item.address || '') + '</p>' + '<p class="description">' + (item.summary || '') + '</p>');
+      if (item.url) {
+        $li.append('<p class="item-url"><a href="'+item.url+'" target="_blank">More...</a></p>'); 
+      }      
       $('aside ol li[id=' + dateId + ']').after($li);
 
       $li.data('marker', new google.maps.Marker({
@@ -76,7 +81,7 @@ var OldMap = {
       }));
     
       google.maps.event.addListener($li.data('marker'), 'click', function() {
-          Map.showInfoWindow(item);
+          Map.showInfoWindow(id);
       });
       google.maps.event.addListener($li.data('marker'), 'mouseover', function() {
           $('aside li[data-item-id=' + id + ']').css('background', '#c2ebff');
@@ -93,28 +98,14 @@ var OldMap = {
       });
     }},
     
-  showInfoWindow: function(item) {  
-    var id = item.id;    
-    // Build the content for the infoWindow
-    var event_date = dateFormat(new Date(Date.parse(item.begin_at)), "mmmm dS, yyyy");
-    var start_time = dateFormat(new Date(Date.parse(item.begin_at)), "h:MM TT");
-    var end_time = dateFormat(new Date(Date.parse(item.end_at)), "h:MM TT");
-    var url;
-    if (item.url) {
-      url = '<p class="link"><a href="'+item.url+'" target="_blank">More...</a></p>'; 
-    } else {
-      url = '';
-    }
-    contentString = '<h3>' + item.title + '</h3>' + '<p>' + event_date + '</p>' + '<p>' + start_time + ' - ' + end_time + '</p>'
-      + '<p>' + (item.address || '') + '</p>' + '<p>' + (item.summary || '') + '</p>' + url; 
-      
+  showInfoWindow: function(id) {  
     $('aside li[data-item-id="'+id+'"]:first').click();  
   },
   
   highlight: function(item) {
     Map.map.set_center(new google.maps.LatLng(item.latitude, item.longitude));
     Map.addItem(item);
-    Map.showInfoWindow(item);
+    Map.showInfoWindow(item.id);
   },
   
   cleanup: function() {
@@ -131,7 +122,7 @@ var OldMap = {
   _markerImages: {},
   markerImages: function(kind, item) {
     if (!Map._markerImages[kind]) {
-      var url = ('images/pin_off.png')
+      var url = ('images/pin_off.png');
       var y = item.find('div').css('background-position').match(/-(\d+)/)[1];    // These lines are causing some errors in IE
       Map._markerImages[kind] =  new google.maps.MarkerImage(url,
         new google.maps.Size(23, 30),

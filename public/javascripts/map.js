@@ -1,18 +1,5 @@
 var Map = {
-  initialize: function() {
-    var lat = GeoIP.latitude();
-    var lng = GeoIP.longitude();
-    Map.map = new google.maps.Map($('#map')[0], {
-      zoom: 13,
-      center: new google.maps.LatLng(lat, lng),
-			mapTypeControl: false,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-    // FIXME: the next line is untested
-    google.maps.event.addListener(Map.map, 'bounds_changed', function() {
-      Map.fetch();
-    });
-  },
+
   updateSearchBoxWithCurrentLocation: function() {
     $('input[name=search-box]').val(GeoIP.city() + ', ' + GeoIP.region() + ', ' + GeoIP.country());
   },
@@ -27,6 +14,7 @@ var Map = {
       }
     });
   },
+  initialize: OldMap.initialize,
   cleanup: OldMap.cleanup,
   fetch: OldMap.fetch,
   showInfoWindow: OldMap.showInfoWindow,

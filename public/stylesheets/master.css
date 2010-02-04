@@ -185,9 +185,9 @@ aside li.date-separator { padding-left: 10px; font-size: 14px; line-height: 28px
 aside div						{position:absolute; left:10px; top:8px; width:23px; height:30px; line-height:20px; color:#fff; text-align:center;}
 aside h2						{font-size:15px; font-family:"Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;}
 aside img           {width: 160px;}
-aside .address			{color:#aaa;}
-aside .description	{color:#aaa;}
-aside .link a				{color:#42c1f3;}				
+aside .address			{color:#aaa; display: none;}
+aside .description	{color:#aaa; display: none;}
+aside .item-url a		{color:#42c1f3; display:none;}				
 
 aside li div        { background: url('images/pointers.png') no-repeat top left; }
 aside .null div   { background-position: 0 -30px; } 
