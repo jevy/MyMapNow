@@ -31,20 +31,11 @@
 
   <div id="sidebar-header">
     <div class="logo"></div>
-    <% if current_user.nil? %>
-    <div id="login"></div>
-    <% else %>  
-    <%= link_to(image_tag('/images/buttonLogout.png', :alt => 'Logout'), 
-user_session_url, :class => 'logout', :method => :delete) %>
-    <% end %>
-    <div id="login-panel">
-      <%= render :partial => 'login/login' %>
-    </div>
   </div>
 
   <ul class="tabs">
   	<li class="current"><a href="#"><img class="event-tab" src="/images/events.png" /></a></li>
-  	<li><a href="#"><img class="comment-tab" src="/images/comments.png" /></a></li>
+        </li>
   </ul>
 
 	<aside>
