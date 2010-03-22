@@ -1,7 +1,9 @@
 h1. What?
+
 This is the source code for the MyMapNow website.  Now, the website never did get out the door, but lots of cool people worked on it.  This code is released in the hopes that people will fix the bugs and use it for their own purposes.
 
 h1. Who?
+
 Contributers (in alphabetical order):
 Steven Baker
 Nancy Blenkhorn
@@ -10,4 +12,5 @@ Arjun Mehta
 Bennett Stevenson
 
 h1. Thanks!
+
 Special thanks to IRAP for help to get this project started
