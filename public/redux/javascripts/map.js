@@ -1,6 +1,3 @@
-// FIXME: global to build the infoWindow output
-var contentString;
-
 $('aside li').live('click', function(event) {
   var $this = $(this);
   $('aside li.active').each(function() {
@@ -19,16 +16,18 @@ $('aside li').live('click', function(event) {
   $this.data('info').open(Map.map, $this.data('marker'));
 });
 
-var OldMap = {
+var Map = {
   initialize: function() {
     Map.map = new google.maps.Map($('#map')[0], {
       zoom: 13,
       center: new google.maps.LatLng(45.420833, -75.69),
       mapTypeControl: false,
+      navigationControl: true,
+      navigationControlOptions: {style: google.maps.NavigationControlStyle.ANDROID},
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
-    //$("#date-range").change();
+    $("#date-range").change();
     google.maps.event.addListener(Map.map, 'bounds_changed', function() {
       Map.fetch();
     });
@@ -40,15 +39,13 @@ var OldMap = {
       start: $('#date-range').data('start'),
       end: $('#date-range').data('end')
     };
-    Map.cleanup();
     $(document).trigger('map:change', [bounds, timeframe]);
   },
-
+  
   addItem: function(item) {
     var MAX_TITLE_LEN = 19;
     var id = item.id;
-    var url;
-
+    
     var start_time = new Date(Date.parse(item.begin_at));
     var end_time = new Date(Date.parse(item.end_at));
     var dateId = 'day-separator-' + start_time.getFullYear() + '-' + (start_time.getMonth() + 1) + '-' + start_time.getDate();
@@ -61,45 +58,34 @@ var OldMap = {
     if(!$('aside li[id=' + dateId + ']')[0]) {
       $('<li class="date-separator" id="' + dateId + '"><b>' + dateString + '</b></li>').appendTo('aside ol');
     }
-
+    
     if(!$('aside li[data-item-id=' + id + ']')[0]) {
       var point = new google.maps.LatLng(item.latitude, item.longitude);
-      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div></li>');
-      $li.append('<h2>' + truncate(item.title, MAX_TITLE_LEN) + '</h2>');
+
+      var $li = $('<li class="'+item.kind+'" data-item-id="'+item.id+'"><div></div><h2>' + truncate(item.title, MAX_TITLE_LEN) + '</h2>');
       $li.append('<p>' + dateFormat(start_time, "h:MM TT") + ' - ' + dateFormat(end_time, "h:MM TT") + '</p>');
-      $li.append('<p class="address">' + (item.address || '') + '</p>' + '<p class="description">' + (item.summary || '') + '</p>');
+      $li.append('<p class="address">'+ (item.address || '') +'<p class="description">'+ (item.body || '') +'</p>');
       if (item.url) {
         $li.append('<p class="item-url"><a href="'+item.url+'" target="_blank">More...</a></p>'); 
-      }      
+      } 
       $('aside ol li[id=' + dateId + ']').after($li);
-
+                
       $li.data('marker', new google.maps.Marker({
-        position: point, 
-        map: Map.map,
-        title: item.title, 
-        icon: "images/pin_off.png"
+          position: point, 
+          map: Map.map, 
+          title: item.title, 
+          icon: Map.markerImages(item.kind, $li)
       }));
     
       google.maps.event.addListener($li.data('marker'), 'click', function() {
-          Map.showInfoWindow(id);
+        Map.showInfoWindow(id);
       });
-      google.maps.event.addListener($li.data('marker'), 'mouseover', function() {
-          $('aside li[data-item-id=' + id + ']').css('background', '#c2ebff');
-          $('aside li[data-item-id=' + id + ']').css('color', '#6e6e6e');
-          $('aside a').css('color', '#6e6e6e');
-          $li.data('marker').setIcon('images/pin_on.png');
-      });
-      google.maps.event.addListener($li.data('marker'), 'mouseout', function() {
-          $('aside li[data-item-id=' + id + ']').css('background', '');
-          $('aside li[data-item-id=' + id + ']').css('color', '');
-          $('aside a').css('color', '');
-          $li.data('marker').setIcon('images/pin_off.png');
-          //if($li.data('info')) $li.data('info').close();
-      });
-    }},
+    }
     
-  showInfoWindow: function(id) {  
-    $('aside li[data-item-id="'+id+'"]:first').click();  
+  },
+  
+  showInfoWindow: function(id) {
+    $('aside li[data-item-id="'+id+'"]:first').click();
   },
   
   highlight: function(item) {
@@ -109,25 +95,42 @@ var OldMap = {
   },
   
   cleanup: function() {
-      $('aside li[data-item-id]').each(function() {
-          if($(this).data('info')) $(this).data('info').close();
-            $(this).data('marker').setMap(null);
-          $(this).remove();
-      });
-      $('aside li').each(function() {
-          $(this).remove();
-      });
+    // Remove items out of view
+    $('aside li').each(function() {
+      var $this = $(this);
+      if(!Map.map.getBounds().contains($this.data('marker').getPosition())) {
+          if($this.data('info')) $this.data('info').close();
+          $this.data('marker').setMap(null);
+          $this.remove();
+      }
+    });
+  },
+  
+  updateSearchBoxWithCurrentLocation: function() {
+    $('input[name=search-box]').val(GeoIP.city() + ', ' + GeoIP.region() + ', ' + GeoIP.country());
+  },
+  
+  moveTo: function(location) { // FIXME: untested
+    Map.map.panTo(location);
+  },
+  
+  search: function(query) { // FIXME: the callback is untested
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': query }, function(response, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+	      Map.moveTo(response[0].geometry.location);
+      }
+    });
   },
   
   _markerImages: {},
   markerImages: function(kind, item) {
     if (!Map._markerImages[kind]) {
-      var url = ('images/pin_off.png');
-      var y = item.find('div').css('background-position').match(/-(\d+)/)[1];    // These lines are causing some errors in IE
+      var url = item.find('div').css('background-image').match(/\((.*)\)/)[1];
+      var y = item.find('div').css('background-position').match(/-(\d+)/)[1];
       Map._markerImages[kind] =  new google.maps.MarkerImage(url,
-        new google.maps.Size(23, 30),
+        new google.maps.Size(23, 25),
         new google.maps.Point(0, y),
-        new google.maps.Point(0, 0),
         new google.maps.Point(11,20));
     }
     return Map._markerImages[kind];
@@ -151,3 +154,10 @@ var truncate = function (str, limit) {
 	}
 	return bits.join('');
 };
+
+$(document).bind('map:change', Map.cleanup);
+$(Map.initialize);
+
+// For testing purposes only - remove before launch!
+$(Map.search('Ottawa, ON'));
+$(function() { $('input[name=q]').val('Ottawa, ON'); });
